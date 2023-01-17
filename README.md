@@ -1,3 +1,5 @@
+> [Information for Technical Reviewers](docs/reviewers.md)
+
 [Improvements & Errata - list of corrections](docs/errata)
 
 # Apps and Services with .NET 8, Second Edition
