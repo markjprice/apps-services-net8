@@ -63,6 +63,9 @@ Corrections for typos and other mistakes and improvements like refactoring code.
 - [Improvements & Errata - list of corrections](docs/errata)
 - [Second edition's support for .NET 9](docs/dotnet9.md)
 
+## Microsoft Certifications
+Microsoft used to have exams and certifications for developers that covered skills like C# and ASP.NET. Sadly, they have retired them all. These days, the only developer-adjacent exams and certifications are for Azure or Power Platform, as you can see from the certification poster: https://aka.ms/traincertposter
+
 ## Microsoft .NET community support
 - [.NET Developer Community](https://dotnet.microsoft.com/platform/community)
 - [.NET Tech Community Forums for topic discussions](https://techcommunity.microsoft.com/t5/net/ct-p/dotnet)
@@ -72,6 +75,7 @@ Corrections for typos and other mistakes and improvements like refactoring code.
 
 ## Interviews with me
 Podcast interviews with me:
+- [Yet Another Podcast with Jesse Liberty - December 2022](https://jesseliberty.com/2022/12/10/mark-price-on-c-11-fixed/)
 - [The .NET Core Podcast - February 4, 2022](https://dotnetcore.show/episode-91-c-sharp-10-and-dotnet-6-with-mark-j-price/)
 - [Yet Another Podcast with Jesse Liberty - May 2021](http://jesseliberty.com/2021/05/16/mark-price-on-c9-and-net-6/)
 - [The .NET Core Podcast - February 7, 2020](https://dotnetcore.show/episode-44-learning-net-core-with-mark-j-price/)
