@@ -13,6 +13,19 @@ This online-only section is about some common types that are included with .NET 
   - [Understanding compiler-generated types and members](#understanding-compiler-generated-types-and-members)
 - [Making a type or member obsolete](#making-a-type-or-member-obsolete)
 - [Dynamically loading assemblies and executing methods](#dynamically-loading-assemblies-and-executing-methods)
+  - [Doing more with reflection](#doing-more-with-reflection)
+- [Working with expression trees](#working-with-expression-trees)
+  - [Understanding components of expression trees](#understanding-components-of-expression-trees)
+  - [Executing the simplest expression tree](#executing-the-simplest-expression-tree)
+- [Creating source generators](#creating-source-generators)
+  - [Implementing the simplest source generator](#implementing-the-simplest-source-generator)
+  - [Enabling source generators for Visual Studio Code](#enabling-source-generators-for-visual-studio-code)
+  - [Reviewing the generated file](#reviewing-the-generated-file)
+  - [Doing more with source generators](#doing-more-with-source-generators)
+- [Practicing and exploring](#practicing-and-exploring)
+  - [Exercise 1C.1 – Test your knowledge](#exercise-1c1--test-your-knowledge)
+  - [Exercise 1C.2 – Explore topics](#exercise-1c2--explore-topics)
+- [Summary](#summary)
 
 # Using an analyzer to write better code
 
@@ -34,10 +47,10 @@ Let's see it in action:
 ```
 The `$schema` entry enables IntelliSense while editing the `stylecop.json` file in your code editor.
 
-5.	Move the insertion point inside the settings section and press *Ctrl + Space*, and note the IntelliSense showing valid subsections of settings, as shown in Figure 1c.1:
+5.	Move the insertion point inside the settings section and press *Ctrl + Space*, and note the IntelliSense showing valid subsections of settings, as shown in Figure 1C.1:
 
 ![stylecop.json IntelliSense showing valid subsections of settings](assets/B19587_01C_01.png) 
-*Figure 1c.1: stylecop.json IntelliSense showing valid subsections of settings*
+*Figure 1C.1: stylecop.json IntelliSense showing valid subsections of settings*
 
 6.	In the `CodeAnalyzing` project file, add entries to configure the file named `stylecop.json` to not be included in published deployments, and to enable it as an additional file for processing during development, as shown highlighted in the following markup:
 ```xml
@@ -86,10 +99,10 @@ class Program
 ```
 
 8.	Build the `CodeAnalyzing` project.
-9.	You will see warnings for everything it thinks is wrong, as shown in *Figure 1.2c*:
+9.	You will see warnings for everything it thinks is wrong, as shown in *Figure 1C.2*:
 
 ![StyleCop code analyzer warnings](assets/B19587_01C_02.png) 
-*Figure 1.2c: StyleCop code analyzer warnings*
+*Figure 1C.2: StyleCop code analyzer warnings*
 
 For example, it wants using directives to be put within the namespace declaration, as shown in the following output:
 ```
@@ -255,7 +268,11 @@ Within a class, record, struct, or interface, you should order the contents as s
 
 # Working with reflection and attributes
 
-**Reflection** is a programming feature that allows code to understand and manipulate itself. An assembly is made up of up to four parts:
+**Reflection** is a programming feature that allows code to understand and manipulate itself. 
+
+> **Warning!** Reflection prevents the use of Ahead-of-Time (AOT) native compilation. If you want to use AOT, avoid reflection.
+
+An assembly is made up of up to four parts:
 
 - **Assembly metadata and manifest**: Name, assembly, and file version, referenced assemblies, and so on.
 - **Type metadata**: Information about the types, their members, and so on.
@@ -573,15 +590,20 @@ Constructor: .ctor (Animal)
 # Dynamically loading assemblies and executing methods
 
 Normally, if a .NET project needs to execute in another .NET assembly, you reference the package or project, and then at compile time, the compiler knows the assemblies that will be loaded into the memory of the calling codebase during start up at runtime. But sometimes you may not know the assemblies that you need to call until runtime. For example, a word processor does not need to have the functionality the perform a mail merge loaded all the time. The mail merge feature could be implemented as a separate assembly that is only loaded into memory when it is activated by the user. Another example would be an application that allows custom plugins, perhaps even created by other developers.
-You can dynamically load a set of assemblies into an AssemblyLoadContext, execute methods in them, and then unload the AssemblyLoadContext, which unloads the assemblies too. A side effect of this is reduced memory usage.
-In .NET 7, the overhead of using reflection to invoke a member of a type, like calling a method or setting or getting a property, has been made up to four times faster when it is done more than once on the same member.
+
+You can dynamically load a set of assemblies into an `AssemblyLoadContext`, execute methods in them, and then unload the `AssemblyLoadContext`, which unloads the assemblies too. A side effect of this is reduced memory usage.
+
+In .NET 7, the overhead of using reflection to invoke a member of a type, like calling a method or setting or getting a property, was made up to four times faster when it is done more than once on the same member.
+
 Let's see how to dynamically load an assembly and then instantiate a class and interact with its members:
-1.	Use your preferred code editor to add a new Class Library/classlib project named DynamicLoadAndExecute.Library to the Chapter06 solution/workspace.
-2.	In the project file, treat warnings as errors, statically and globally import the Console class, and globally import the namespace for working with reflection, as shown highlighted in the following markup:
+
+1.	Use your preferred code editor to add a new **Class Library** / `classlib` project named `DynamicLoadAndExecute.Library` to the `Chapter01c` solution/workspace.
+2.	In the project file, treat warnings as errors, statically and globally import the `Console` class, and globally import the namespace for working with reflection, as shown highlighted in the following markup:
+```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -593,8 +615,11 @@ Let's see how to dynamically load an assembly and then instantiate a class and i
   </ItemGroup>
 
 </Project>
-3.	Rename Class1.cs to Dog.cs.
-4.	In Dog.cs, define a Dog class with a Speak method that writes a simple message to the console based on a string parameter passed to the method, as shown in the following code:
+```
+
+3.	Rename `Class1.cs` to `Dog.cs`.
+4.	In `Dog.cs`, define a `Dog` class with a `Speak` method that writes a simple message to the console based on a `string` parameter passed to the method, as shown in the following code:
+```cs
 namespace DynamicLoadAndExecute.Library;
 
 public class Dog
@@ -604,13 +629,16 @@ public class Dog
     WriteLine($"{name} says Woof!");
   }
 }
-5.	Use your preferred code editor to add a new Console App/console project named DynamicLoadAndExecute.Console to the Chapter06 solution/workspace.
-6.	In the project file, treat warnings as errors, statically and globally import the Console class, and globally import the namespace for working with reflection, as shown highlighted in the following markup:
+```
+
+5.	Use your preferred code editor to add a new **Console App** / `console` project named `DynamicLoadAndExecute.Console` to the `Chapter01c` solution/workspace.
+6.	In the project file, treat warnings as errors, statically and globally import the `Console` class, and globally import the namespace for working with reflection, as shown highlighted in the following markup:
+```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -622,13 +650,16 @@ public class Dog
   </ItemGroup>
 
 </Project>
-7.	Build the DynamicLoadAndExecute.Library project to create the assembly in its bin folder structure.
-8.	Build the DynamicLoadAndExecute.Console project to create its bin folder structure.
-9.	Copy the three files from the DynamicLoadAndExecute.Library project's bin\Debug\net7.0 folder to the equivalent folder in the DynamicLoadAndExecute.Console project, as shown in the following list:
-•	DynamicLoadAndExecute.Library.deps.json
-•	DynamicLoadAndExecute.Library.dll
-•	DynamicLoadAndExecute.Library.pdb
-10.	In the DynamicLoadAndExecute.Console project, add a new class file named Program.Helpers.cs and modify its contents to define a method to output information about an assembly and its types, as shown in the following code:
+```
+
+7.	Build the `DynamicLoadAndExecute.Library` project to create the assembly in its `bin` folder structure.
+8.	Build the `DynamicLoadAndExecute.Console` project to create its `bin` folder structure.
+9.	Copy the three files from the `DynamicLoadAndExecute.Library` project's `bin\Debug\net8.0` folder to the equivalent folder in the `DynamicLoadAndExecute.Console` project, as shown in the following list:
+    - `DynamicLoadAndExecute.Library.deps.json`
+    - `DynamicLoadAndExecute.Library.dll`
+    - `DynamicLoadAndExecute.Library.pdb`
+10.	In the `DynamicLoadAndExecute.Console` project, add a new class file named `Program.Helpers.cs` and modify its contents to define a method to output information about an assembly and its types, as shown in the following code:
+```cs
 partial class Program
 {
   static void OutputAssemblyInfo(Assembly a)
@@ -637,6 +668,7 @@ partial class Program
     WriteLine("Location: {0}", Path.GetDirectoryName(a.Location));
     WriteLine("IsCollectible: {0}", a.IsCollectible);
     WriteLine("Defined types:");
+
     foreach (TypeInfo info in a.DefinedTypes)
     {
       if (!info.Name.EndsWith("Attribute"))
@@ -648,7 +680,10 @@ partial class Program
     WriteLine();
   }
 }
-11.	In the DynamicLoadAndExecute.Console project, add a new class file named DemoAssemblyLoadContext.cs, and modify its contents to load a named assembly into the current context at runtime using an assembly dependency resolver, as shown in the following code:
+```
+
+11.	In the `DynamicLoadAndExecute.Console` project, add a new class file named `DemoAssemblyLoadContext.cs`, and modify its contents to load a named assembly into the current context at runtime using an assembly dependency resolver, as shown in the following code:
+```cs
 using System.Runtime.Loader; // AssemblyDependencyResolver
 
 internal class DemoAssemblyLoadContext : AssemblyLoadContext
@@ -661,7 +696,10 @@ internal class DemoAssemblyLoadContext : AssemblyLoadContext
     _resolver = new AssemblyDependencyResolver(mainAssemblyToLoadPath);
   }
 }
-12.	In Program.cs, delete the existing statements. Then, use the load context class to load the class library and output information about it, and then dynamically create an instance of the Dog class and call its Speak method, as shown in the following code:
+```
+
+12.	In `Program.cs`, delete the existing statements. Then, use the load context class to load the class library and output information about it, and then dynamically create an instance of the Dog class and call its Speak method, as shown in the following code:
+```cs
 Assembly? thisAssembly = Assembly.GetEntryAssembly();
 
 if (thisAssembly is null)
@@ -711,9 +749,12 @@ if (method != null)
 WriteLine();
 WriteLine("Unloading context and assemblies.");
 loadContext.Unload();
+```
+
 13.	Start the console app and note the results, as shown in the following output:
+```
 FullName: DynamicLoadAndExecute.Console, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Location: C:\apps-services-net7\Chapter06\DynamicLoadAndExecute.Console\bin\Debug\net7.0
+Location: C:\apps-services-net8\Chapter01c\DynamicLoadAndExecute.Console\bin\Debug\net8.0
 IsCollectible: False
 Defined types:
   Name: DemoAssemblyLoadContext, Members: 29
@@ -726,7 +767,7 @@ Loading:
   DynamicLoadAndExecute.Library.dll
 
 FullName: DynamicLoadAndExecute.Library, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Location: C:\apps-services-net7\Chapter06\DynamicLoadAndExecute.Console\bin\Debug\net7.0
+Location: C:\apps-services-net8\Chapter01c\DynamicLoadAndExecute.Console\bin\Debug\net8.0
 IsCollectible: True
 Defined types:
   Name: Dog, Members: 6
@@ -743,42 +784,66 @@ Fido says Woof!
 Fido says Woof!
 
 Unloading context and assemblies.
+```
+
 Note that the entry assembly (the console app) is not collectible, meaning that it cannot be removed from memory, but the dynamically loaded class library is collectible.
-Doing more with reflection
+
+## Doing more with reflection
+
 This is just a taster of what can be achieved with reflection. Reflection can also do the following:
-•	Inspect assembly contents using MetadataLoadContext: https://docs.microsoft.com/en-us/dotnet/standard/assembly/inspect-contents-using-metadataloadcontext
-•	Dynamically generate new code and assemblies: https://docs.microsoft.com/en-us/dotnet/api/system.reflection.emit.assemblybuilder
-Working with expression trees
+- Inspect assembly contents using MetadataLoadContext: https://docs.microsoft.com/en-us/dotnet/standard/assembly/inspect-contents-using-metadataloadcontext
+- Dynamically generate new code and assemblies: https://docs.microsoft.com/en-us/dotnet/api/system.reflection.emit.assemblybuilder
+
+# Working with expression trees
+
 Expression trees represent code as a structure that you can examine or execute. Expression trees are immutable so you cannot change one, but you can create a copy with the changes you want. 
+
 If you compare expression trees to functions, then although functions have flexibility in the parameter values passed to the function, the structure of the function, what it does with those values and how, is fixed. Expression trees provide a structure that can dynamically change, so what and how a function is implemented can be dynamically changed at runtime. Expression trees are also used to represent an expression in an abstract way, so instead of being expressed using C# code, the expression is expressed as a data structure in memory. This then allows that data structure to be expressed in other ways, using other languages.
+
 When you write a LINQ expression for the EF Core database provider, it is represented by an expression tree that is then translated into an SQL statement. But even the simplest C# statement can be represented as an expression tree. 
+
 Let's look at a simple example, adding two numbers:
+```cs
 int three = 1 + 2;
-This statement would be represented as the tree in Figure 9.1:
- 
-Figure 9.1: An expression tree of a simple statement adding two numbers
-Understanding components of expression trees
-The System.Linq.Expressions namespace contains types for representing the components of an expression tree. For example:
-Type	Description
-BinaryExpression	An expression with a binary operator.
-BlockExpression	A block containing a sequence of expressions where variables can be defined.
-CatchBlock	A catch statement in a try block.
-ConditionalExpression	An expression that has a conditional operator.
-LambdaExpression	A lambda expression.
-MemberAssignment	Assigning to a field or property.
-MemberExpression	Accessing a field or property.
-MethodCallExpression	A call to a method.
-NewExpression	A call to a constructor.
+```
+
+This statement would be represented as the tree in Figure 1C.3:
+
+![An expression tree of a simple statement adding two numbers](assets/B19587_01C_03.png)
+
+*Figure 1C.3: An expression tree of a simple statement adding two numbers*
+
+## Understanding components of expression trees
+
+The `System.Linq.Expressions` namespace contains types for representing the components of an expression tree. For example:
+
+Type|Description
+---|---
+BinaryExpression|An expression with a binary operator.
+BlockExpression|A block containing a sequence of expressions where variables can be defined.
+CatchBlock|A catch statement in a try block.
+ConditionalExpression|An expression that has a conditional operator.
+LambdaExpression|A lambda expression.
+MemberAssignment|Assigning to a field or property.
+MemberExpression|Accessing a field or property.
+MethodCallExpression|A call to a method.
+NewExpression|A call to a constructor.
 
 Only expression trees that represent lambda expressions can be executed.
-Executing the simplest expression tree
+
+## Executing the simplest expression tree
+
 Let's see how to construct, compile, and execute an expression tree:
-1.	Use your preferred code editor to add a new Console App/console project named WorkingWithExpressionTrees to the Chapter06 solution/workspace.
-2.	In the project file, statically and globally import the Console class, as shown in the following markup:
+1.	Use your preferred code editor to add a new **Console App** / `console` project named `WorkingWithExpressionTrees` to the `Chapter01c` solution/workspace.
+2.	In the project file, statically and globally import the `Console` class, as shown in the following markup:
+```xml
 <ItemGroup>
   <Using Include="System.Console" Static="true" />
 </ItemGroup>
-3.	In Program.cs, delete the existing statements and then define an expression tree and execute it, as shown in the following code:
+```
+
+3.	In `Program.cs`, delete the existing statements and then define an expression tree and execute it, as shown in the following code:
+```cs
 using System.Linq.Expressions; // Expression and so on
 
 ConstantExpression one = Expression.Constant(1, typeof(int));
@@ -790,14 +855,25 @@ Expression<Func<int>> expressionTree = Expression.Lambda<Func<int>>(add);
 Func<int> compiledTree = expressionTree.Compile();
 
 WriteLine($"Result: {compiledTree()}");
+```
+
 4.	Run the console app and note the result, as shown in the following output:
+```
 Result: 3
-Creating source generators
+```
+
+# Creating source generators
+
 Source generators were introduced with C# 9 and .NET 5. They allow a programmer to get a compilation object that represents all the code being compiled, dynamically generate additional code files, and compile those too. Source generators are like code analyzers that can add more code to the compilation process.
-A great example is the System.Text.Json source generator. The classic method for serializing JSON uses reflection at runtime to dynamically analyze an object model, but this is slow. The better method uses source generators to create source code that is then compiled to give improved performance.
-You can read more about the System.Text.Json source generator at the following link: https://devblogs.microsoft.com/dotnet/try-the-new-system-text-json-source-generator/
-Implementing the simplest source generator
-We will create a source generator that programmatically creates a code file that adds a method to the Program class, as shown in the following code:
+
+A great example is the `System.Text.Json` source generator. The classic method for serializing JSON uses reflection at runtime to dynamically analyze an object model, but this is slow. The better method uses source generators to create source code that is then compiled to give improved performance.
+
+You can read more about the `System.Text.Json` source generator at the following link: https://devblogs.microsoft.com/dotnet/try-the-new-system-text-json-source-generator/
+
+## Implementing the simplest source generator
+
+We will create a source generator that programmatically creates a code file that adds a method to the `Program` class, as shown in the following code:
+```cs
 // source-generated code
 static partial class Program
 {
@@ -806,24 +882,39 @@ static partial class Program
     System.Console.WriteLine($"Generator says: '{message}'"); 
   }
 }
-This method can then be called in the Program.cs file of the project that uses this source generator.
+```
+
+This method can then be called in the `Program.cs` file of the project that uses this source generator.
+
 Let's see how to do this:
-1.	Use your preferred code editor to add a new Console App / console project named GeneratingCodeApp to the Chapter06 solution/workspace.
-2.	In the project file, statically and globally import the Console class, as shown in the following markup:
+
+1.	Use your preferred code editor to add a new **Console App** / `console` project named `GeneratingCodeApp` to the `Chapter01c` solution/workspace.
+2.	In the project file, statically and globally import the `Console` class, as shown in the following markup:
+```xml
 <ItemGroup>
   <Using Include="System.Console" Static="true" />
 </ItemGroup>
-3.	Add a new class file name Program.Methods.cs.
-4.	In Program.Methods.cs, define a partial Program class with a partial method with a string parameter, as shown in the following code:
+```
+
+3.	Add a new class file name `Program.Methods.cs`.
+4.	In `Program.Methods.cs`, define a partial `Program` class with a partial method with a `string` parameter, as shown in the following code:
+```cs
 partial class Program
 {
   static partial void Message(string message);
 }
-5.	In Program.cs, delete the existing statements and then call the partial method, as shown in the following code:
+```
+5.	In `Program.cs`, delete the existing statements and then call the partial method, as shown in the following code:
+```cs
 Message("Hello from some source generator code.");
-6.	Use your preferred code editor to add a new Class Library/classlib project named GeneratingCodeLib that targets .NET Standard 2.0 to the Chapter06 solution/workspace.
-Currently, source generators must target .NET Standard 2.0. The default C# version used for class libraries that target .NET Standard 2.0 is C# 7.3, as shown at the following link: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version#defaults.
-7.	In the project file, set the C# language version to 10 or later (to support global using statements), statically and globally import the Console class, and add the NuGet packages Microsoft.CodeAnalysis.Analyzers and Microsoft.CodeAnalysis.CSharp, as shown highlighted in the following markup:
+```
+
+6.	Use your preferred code editor to add a new **Class Library** / `classlib` project named `GeneratingCodeLib` that targets .NET Standard 2.0 to the `Chapter01c` solution/workspace.
+
+> Currently, source generators must target .NET Standard 2.0. The default C# version used for class libraries that target .NET Standard 2.0 is C# 7.3, as shown at the following link: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version#defaults.
+
+7.	In the project file, set the C# language version to 10 or later (to support `global using` statements), statically and globally import the `Console` class, and add the NuGet packages `Microsoft.CodeAnalysis.Analyzers` and `Microsoft.CodeAnalysis.CSharp`, as shown highlighted in the following markup:
+```xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -847,10 +938,14 @@ Currently, source generators must target .NET Standard 2.0. The default C# versi
   </ItemGroup>
 
 </Project>
-This project does not enable null warnings because the <Nullable>enable</Nullable> element is missing. If you add it, then you will see some null warnings later.
-8.	Build the GeneratingCodeLib project.
-9.	Rename Class1.cs to MessageSourceGenerator.cs.
-10.	In the GeneratingCodeLib project, in MessageSourceGenerator.cs, define a class that implements ISourceGenerator and is decorated with the [Generator] attribute, as shown in the following code:
+```
+
+> This project delierately does not enable `null` warnings because the `<Nullable>enable</Nullable>` element is missing. If you add it, then you will see some `null` warnings later.
+
+8.	Build the `GeneratingCodeLib` project.
+9.	Rename `Class1.cs` to `MessageSourceGenerator.cs`.
+10.	In the `GeneratingCodeLib` project, in `MessageSourceGenerator.cs`, define a class that implements `ISourceGenerator` and is decorated with the `[Generator]` attribute, as shown in the following code:
+```cs
 using Microsoft.CodeAnalysis; // [Generator], GeneratorInitializationContext
                               // ISourceGenerator, GeneratorExecutionContext
 
@@ -882,24 +977,43 @@ static partial class {mainMethod.ContainingType.Name}
     // this source generator does not need any initialization
   }
 }
-Good Practice: Include .g. or .generated. in the filename of source generated files.
-11.	In the GeneratingCodeApp project, in the project file, add a reference to the class library project, as shown in the following markup:
+```
+
+> **Good Practice**: Include `.g.` or `.generated.` in the filename of source generated files.
+
+11.	In the `GeneratingCodeApp` project, in the project file, add a reference to the class library project, as shown in the following markup:
+```xml
 <ItemGroup>
   <ProjectReference Include="..\GeneratingCodeLib\GeneratingCodeLib.csproj"
                     OutputItemType="Analyzer"
                     ReferenceOutputAssembly="false" />
 </ItemGroup>
-Good Practice: It is sometimes necessary to restart Visual Studio 2022 to see the results of working with source generators.
-12.	Build the GeneratingCodeApp project and note the auto-generated class file:
-•	In Visual Studio 2022, in Solution Explorer, expand the Dependencies | Analyzers | GeneratingCodeLib | Packt.Shared.MessageSourceGenerator nodes to find the Program.Methods.g.cs file, as shown in Figure 9.2:
+```
+
+> **Good Practice**: It is sometimes necessary to restart Visual Studio 2022 to see the results of working with source generators.
+
+12.	Build the `GeneratingCodeApp` project and note the auto-generated class file:
+    - In Visual Studio 2022, in **Solution Explorer**, expand the **Dependencies** | **Analyzers** | **GeneratingCodeLib** | **Packt.Shared.MessageSourceGenerator** nodes to find the `Program.Methods.g.cs` file, as shown in Figure 1C.4:
  
-Figure 9.2: The source generated Program.Methods.g.cs file
+![The source generated Program.Methods.g.cs file](assets/B19587_01C_04.png)
+
+*Figure 9.2: The source generated Program.Methods.g.cs file*
+
+## Enabling source generators for Visual Studio Code
+
 Visual Studio Code does not automatically run analyzers. We must add an extra entry in the project file to enable the automatic generation of the source generator file.
-•	In Visual Studio Code, in the GeneratingCodeApp project, in the project file, in the <PropertyGroup>, add an entry to enable the generation of the code file, as shown in the following markup:
+
+1. In Visual Studio Code, in the `GeneratingCodeApp` project, in the project file, in the `<PropertyGroup>`, add an entry to enable the generation of the code file, as shown in the following markup:
+```
 <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-•	In Visual Studio Code, in Terminal, build the GeneratingCodeApp project.
-•	In Visual Studio Code, in the obj/Debug/net7.0 folder, note the generated folder and its subfolder GeneratingCodeLib/Packt.Shared.MessageSourceGenerator, and the auto-generated file named Program.Methods.g.cs.
-13.	Open the Program.Methods.g.cs file and note its contents, as shown in the following code:
+```
+2. In **Terminal**, build the `GeneratingCodeApp` project.
+3. In the `obj/Debug/net8.0` folder, note the `generated` folder and its subfolder `GeneratingCodeLib/Packt.Shared.MessageSourceGenerator`, and the auto-generated file named `Program.Methods.g.cs`.
+
+## Reviewing the generated file
+
+1.	Open the `Program.Methods.g.cs` file and note its contents, as shown in the following code:
+```cs
 // source-generated code
 static partial class Program
 {
@@ -908,19 +1022,31 @@ static partial class Program
     System.Console.WriteLine($"Generator says: '{message}'");
   }
 }
-14.	Run the console app and note the message, as shown in the following output:
+```
+
+2.	Run the console app and note the message, as shown in the following output:
+```
 Generator says: 'Hello from some source generator code.'
-You can control the path for automatically generated code files by adding a <CompilerGeneratedFilesOutputPath> element.
-Doing more with source generators
-Source generators are a massive topic. 
-To learn more, use the following links:
-•	Source Generators design specification: https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.md
-•	Source Generators samples: https://github.com/dotnet/roslyn-sdk/tree/main/samples/CSharp/SourceGenerators
-•	Source Generators cookbook: https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.cookbook.md
-Practicing and exploring
+```
+
+You can control the path for automatically generated code files by adding a `<CompilerGeneratedFilesOutputPath>` element.
+
+## Doing more with source generators
+
+Source generators are a massive topic. To learn more, use the following links:
+
+- Source Generators design specification: https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.md
+- Source Generators samples: https://github.com/dotnet/roslyn-sdk/tree/main/samples/CSharp/SourceGenerators
+- Source Generators cookbook: https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.cookbook.md
+
+# Practicing and exploring
+
 Test your knowledge and understanding by answering some questions, getting some hands-on practice, and exploring with deeper research into the topics in this chapter.
-Exercise 6.1 – Test your knowledge
+
+## Exercise 1C.1 – Test your knowledge
+
 Use the web to answer the following questions:
+
 1.	What are the four parts of a .NET assembly and which are optional?
 2.	What can an attribute be applied to?
 3.	What are the names of the parts of a version number and what do they mean if they follow the rules of semantic versioning?
@@ -931,12 +1057,17 @@ Use the web to answer the following questions:
 8.	What is an expression tree?
 9.	What is a source generator?
 10.	Which interface must a source generator class implement and what methods are part of that interface?
-Exercise 6.2 – Explore topics
+
+## Exercise 1C.2 – Explore topics
+
 Use the links on the following page to learn more detail about the topics covered in this chapter:
-https://github.com/markjprice/apps-services-net7/blob/main/book-links.md#chapter-6---controlling-the-roslyn-compiler-reflection-and-expression-trees
-Summary
+
+https://github.com/markjprice/apps-services-net8/blob/main/book-links.md#chapter-1c---controlling-the-roslyn-compiler-reflection-and-expression-trees
+
+# Summary
+
 In this chapter, you:
-•	Reflected on code and attributes.
-•	Constructed, compiled, and executed a simple expression tree.
-•	Built a source generator and used it in a console app project.
-In the next chapter, we will learn how to work with data stored in SQL Server.
+
+- Reflected on code and attributes.
+- Constructed, compiled, and executed a simple expression tree.
+- Built a source generator and used it in a console app project.
