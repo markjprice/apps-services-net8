@@ -928,13 +928,13 @@ Message("Hello from some source generator code.");
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" 
-                      Version="3.3.3">
+                      Version="3.3.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; 
                      buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp" 
-                      Version="4.1.0" />
+                      Version="4.6.0" />
   </ItemGroup>
 
 </Project>

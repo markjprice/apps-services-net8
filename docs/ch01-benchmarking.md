@@ -9,6 +9,8 @@ This online-only section is about benchmarking performance and testing.
   - [Implementing a Recorder class](#implementing-a-recorder-class)
   - [Measuring the efficiency of processing strings](#measuring-the-efficiency-of-processing-strings)
 - [Monitoring performance and memory using Benchmark.NET](#monitoring-performance-and-memory-using-benchmarknet)
+  - [Building a console app with Benchmark.NET](#building-a-console-app-with-benchmarknet)
+  - [Running a console app with Benchmark.NET](#running-a-console-app-with-benchmarknet)
 - [Summary](#summary)
 
 # Monitoring performance and resource usage
@@ -264,14 +266,18 @@ Now that you've learned how to measure the performance and resource efficiency o
 
 # Monitoring performance and memory using Benchmark.NET
 
-There is a popular benchmarking NuGet package for .NET that Microsoft uses in its blog posts about performance improvements, so it is good for .NET developers to know how it works and use it for their own performance testing. Let's see how we could use it to compare performance between `string` concatenation and `StringBuilder`:
+There is a popular benchmarking NuGet package for .NET that Microsoft uses in its blog posts about performance improvements, so it is good for .NET developers to know how it works and use it for their own performance testing. 
+
+## Building a console app with Benchmark.NET
+
+Let's see how we could use it to compare performance between `string` concatenation and `StringBuilder`:
 
 1.	Use your preferred code editor to add a new console app to the `Chapter1b` solution/workspace named `Benchmarking`.
     - In Visual Studio Code, select `Benchmarking` as the active OmniSharp project.
 2.	In the `Benchmarking` project, add a package reference to Benchmark.NET, remembering that you can find out the latest version and use that instead of the version I used, as shown in the following markup:
 ```xml
 <ItemGroup>
-  <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+  <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
 </ItemGroup>
 ```
 3.	Build the project to restore packages.
@@ -326,10 +332,12 @@ using BenchmarkDotNet.Running;
 BenchmarkRunner.Run<StringBenchmarks>();
 ```
 
-7.	Use your preferred coding tool to run the console app with its release configuration:
+## Running a console app with Benchmark.NET
+
+1.	Use your preferred coding tool to run the console app with its release configuration:
     - In Visual Studio 2022, in the toolbar, set **Solution Configurations** to **Release**, and then navigate to **Debug** | **Start Without Debugging**.
     - In Visual Studio Code, in a terminal, enter the `dotnet run --configuration Release` command.
-8.	Note the results, including some artifacts like report files, and the most important, a summary table that shows that `string` concatenation took a mean of 412.990 ns and `StringBuilder` took a mean of 275.082 ns, as shown in the following partial output:
+2.	Note the results, including some artifacts like report files, and the most important, a summary table that shows that `string` concatenation took a mean of 412.990 ns and `StringBuilder` took a mean of 275.082 ns, as shown in the following partial output:
 ```
 // ***** BenchmarkRunner: Finish  *****
 
