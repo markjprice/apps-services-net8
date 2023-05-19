@@ -3,6 +3,7 @@
 - [Installing Docker and the Azure SQL Edge container image](#installing-docker-and-the-azure-sql-edge-container-image)
 - [Run the Azure SQL Edge container image](#run-the-azure-sql-edge-container-image)
 - [Connecting to Azure SQL Edge in a Docker container](#connecting-to-azure-sql-edge-in-a-docker-container)
+- [Removing Docker resources](#removing-docker-resources)
 
 
 # Installing Docker and the Azure SQL Edge container image
@@ -90,3 +91,24 @@ CONTAINER ID   IMAGE                              COMMAND                  CREAT
 5.	In **Server Explorer**, refresh the data connection if needed, right-click **Tables** and select **Refresh**, and note that 13 tables have been created, for example, `Categories`, `Customers`, and `Products`. Also note that dozens of views and stored procedures have also been created.
 
 You now have a running instance of Azure SQL Edge containing the Northwind database that you can connect to from a console app.
+
+# Removing Docker resources
+
+If you have completed all the chapters in the book, or plan to use full SQL Server or Azure SQL Database, and now want to remove all the Docker resources, then follow these steps:
+
+1.	At the command prompt or terminal, stop the `azuresqledge` container, as shown in the following command:
+```
+docker stop azuresqledge
+```
+
+2.	At the command prompt or terminal, remove the `azuresqledge` container, as shown in the following command:
+```
+docker rm azuresqledge
+```
+
+> Removing the container will delete all data inside it.
+
+3.	At the command prompt or terminal, remove the `azure-sql-edge` image to release its disk space, as shown in the following command:
+```
+docker rmi mcr.microsoft.com/azure-sql-edge
+```
