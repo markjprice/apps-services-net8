@@ -96,7 +96,7 @@ The main con of graph databases is reduced performance when performing lots of t
 
 Let's review some key terms related to graph databases, as shown in *Figure 4A.1*:
 
-![Key terms related to graph databases](assets/B19587_04a_01.png.png)
+![Key terms related to graph databases](assets/B19587_04a_01.png)
 *Figure 4A.1: Key terms related to graph databases*
 
 *Figure 4A.1* shows a graph with two vertices with unique `id` values `1` and `2`. An edge connects the two vertices with a unique `id` `3`. Note that the edge has a direction, which goes out from vertex `1` and in to vertex `2`. From the perspective of the edge, vertex `1` is its **out vertex** and vertex `2` is its **in vertex**. As well as unique `id` values, vertices and edges also have **labels** to categorize them, like `Customer` and `Product`.
