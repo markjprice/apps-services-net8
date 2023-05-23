@@ -10,6 +10,7 @@
 - [Adding edges using Azure portal](#adding-edges-using-azure-portal)
 - [Building a console app client for graph data](#building-a-console-app-client-for-graph-data)
 - [Testing the console app](#testing-the-console-app)
+- [Exercise 3.1A – Test your knowledge](#exercise-31a--test-your-knowledge)
 
 The API for working with graph data in Azure Cosmos DB is Gremlin.
 
@@ -810,5 +811,13 @@ Total requests charge: 2,351.44 RUs
 *Figure 4A.10: Querying for products that cost more than $90*
 
 7.	Close the browser.
+
+# Exercise 3.1A – Test your knowledge
+
+Answer the following questions:
+7.	What is the difference between a **vertex** and an **edge** in a graph database?
+8.	What package should you reference to programmatically execute Gremlin scripts?
+9.	What Gremlin command returns all vertices that have a label of `product` and have a property named `unitsInStock` with more than 10 units in stock?
+10.	Why do some edges have weights?
 
 > This is the end of the bonus section about Gremlin API.
