@@ -173,8 +173,8 @@ Now, let's use the Azure portal to create Cosmos DB graph resources like an acco
 4.	In the **Gremlin (Graph)** box, click the **Create** button.
 5.	On the **Basics** tab:
     - Select your **Subscription**. Mine is named **Pay-As-You-Go**.
-    - Select a **Resource Group** or create a new one. I used the name `apps-services-net8`.
-    - Enter an **Azure Cosmos DB Account Name**. I used `apps-services-net8-graph`. Account names must be globally unique so you will have to use something different.
+    - Select a **Resource Group** or create a new one. I used the name `apps-services-book`.
+    - Enter an **Azure Cosmos DB Account Name**. I used `apps-services-book-graph`. Account names must be globally unique so you will have to use something different.
     - Select a **Location**. I chose **(Europe) UK West** as it is the closest to me.
     - Leave **Capacity mode** set to **Provisioned throughput**.
     - Set **Apply Free Tier Discount** to **Do not apply**. Only apply the discount if you want this account to be the only account within your subscription to be on the free tier. You might be better off saving this discount for another account that you might use for a real project, rather than a temporary learning account while reading this book.
@@ -354,7 +354,7 @@ partial class Program
 
   // To use Azure Cosmos DB in the cloud.
   private static string account =
-    "apps-services-net8-graph"; // change to your account
+    "apps-services-book-graph"; // change to your account
 
   // Change to your primary key for your cloud account.
   private static string primaryKeyCloud 
@@ -391,7 +391,7 @@ Note the following in the preceding code:
 - The `useLocal` field can be set to true or false to toggle between using the local emulator or your Azure account.
 - The `RequestChargeHeader` field contains the name of the HTTP header sent in a response from the Cosmos DB graph service to show how many RUs the request cost.
 - The `endpointUriLocal` and `primaryKeyLocal` field values are the same for everyone, so enter them exactly as shown.
-- The `account` field contains the name of your Azure Cosmos DB Gremlin API account. I used `apps-services-net8-graph`, but you might have used something else.
+- The `account` field contains the name of your Azure Cosmos DB Gremlin API account. I used `apps-services-book-graph`, but you might have used something else.
 - The `primaryKeyCloud` field contains the key for your account. It is used for both the .NET SDK and any Gremlin client. You must keep this secret.
 - The `endpointUriCloud` field is the same for everyone except the account name part. It uses `documents.azure.com` as the domain when using .NET SDK and port 443.
 - To use a Gremlin client, you will need the host name and port number. These are different for local emulator and Azure cloud accounts.
@@ -721,7 +721,7 @@ Now we can delete the graph database, and then run the console app to recreate i
 *
 * CosmosClient details:
 *
-  Uri: https://apps-services-net8-graph.documents.azure.com/
+  Uri: https://apps-services-book-graph.documents.azure.com/
 Database Id: NorthwindGraphDb, Status: created.
 Container Id: CustomerProductViews, Status: created.
   PartitionKeyPath: /partitionKey
@@ -731,7 +731,7 @@ Container Id: CustomerProductViews, Status: created.
 *
 * Gremlin Server details:
 *
-  Uri:      wss://apps-services-net8-graph.gremlin.cosmos.azure.com/gremlin
+  Uri:      wss://apps-services-book-graph.gremlin.cosmos.azure.com/gremlin
   Username: /dbs/NorthwindGraphDb/colls/CustomerProductViews
   Password: qeYFsB...2g==
 *
