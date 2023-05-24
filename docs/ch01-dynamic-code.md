@@ -33,7 +33,7 @@ This online-only section is about some common types that are included with .NET 
 
 Let's see it in action:
 
-1.	Use your preferred code editor to create a **Console App** / `console` project named `CodeAnalyzing` in a `Chapter01c` solution/workspace.
+1.	Use your preferred code editor to create a **Console App** / `console` project named `CodeAnalyzing` in a `Chapter01` solution/workspace.
 2.	In the `CodeAnalyzing` project, add a package reference for `StyleCop.Analyzers`.
 3.	Add a JSON file to your project named `stylecop.json` for controlling StyleCop settings.
 4.	Modify its contents, as shown in the following markup:
@@ -316,7 +316,7 @@ Optionally, a version can include these:
 ## Reading assembly metadata
 
 Let's explore working with attributes:
-1.	Use your preferred code editor to add a new **Console App** / `console` project named `WorkingWithReflection` to the `Chapter01c` solution/workspace.
+1.	Use your preferred code editor to add a new **Console App** / `console` project named `WorkingWithReflection` to the `Chapter01` solution/workspace.
     - In Visual Studio 2022, set the startup project to the current selection.
     - In Visual Studio Code, select `WorkingWithReflection` as the active OmniSharp project.
 2.	In the project file, statically and globally import the `Console` class, as shown in the following markup:
@@ -355,7 +355,7 @@ foreach (Attribute a in attributes)
 ```
 Assembly metadata:
   Full name: WorkingWithReflection, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  Location: C:\apps-services-net8\Chapter01c\WorkingWithReflection\bin\Debug\net8.0\WorkingWithReflection.dll
+  Location: C:\apps-services-net8\Chapter01\WorkingWithReflection\bin\Debug\net8.0\WorkingWithReflection.dll
   Entry point: <Main>$
   Assembly-level attributes:
     System.Runtime.CompilerServices.CompilationRelaxationsAttribute
@@ -597,7 +597,7 @@ In .NET 7, the overhead of using reflection to invoke a member of a type, like c
 
 Let's see how to dynamically load an assembly and then instantiate a class and interact with its members:
 
-1.	Use your preferred code editor to add a new **Class Library** / `classlib` project named `DynamicLoadAndExecute.Library` to the `Chapter01c` solution/workspace.
+1.	Use your preferred code editor to add a new **Class Library** / `classlib` project named `DynamicLoadAndExecute.Library` to the `Chapter01` solution/workspace.
 2.	In the project file, treat warnings as errors, statically and globally import the `Console` class, and globally import the namespace for working with reflection, as shown highlighted in the following markup:
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -631,7 +631,7 @@ public class Dog
 }
 ```
 
-5.	Use your preferred code editor to add a new **Console App** / `console` project named `DynamicLoadAndExecute.Console` to the `Chapter01c` solution/workspace.
+5.	Use your preferred code editor to add a new **Console App** / `console` project named `DynamicLoadAndExecute.Console` to the `Chapter01` solution/workspace.
 6.	In the project file, treat warnings as errors, statically and globally import the `Console` class, and globally import the namespace for working with reflection, as shown highlighted in the following markup:
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -754,7 +754,7 @@ loadContext.Unload();
 13.	Start the console app and note the results, as shown in the following output:
 ```
 FullName: DynamicLoadAndExecute.Console, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Location: C:\apps-services-net8\Chapter01c\DynamicLoadAndExecute.Console\bin\Debug\net8.0
+Location: C:\apps-services-net8\Chapter01\DynamicLoadAndExecute.Console\bin\Debug\net8.0
 IsCollectible: False
 Defined types:
   Name: DemoAssemblyLoadContext, Members: 29
@@ -767,7 +767,7 @@ Loading:
   DynamicLoadAndExecute.Library.dll
 
 FullName: DynamicLoadAndExecute.Library, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Location: C:\apps-services-net8\Chapter01c\DynamicLoadAndExecute.Console\bin\Debug\net8.0
+Location: C:\apps-services-net8\Chapter01\DynamicLoadAndExecute.Console\bin\Debug\net8.0
 IsCollectible: True
 Defined types:
   Name: Dog, Members: 6
@@ -834,7 +834,7 @@ Only expression trees that represent lambda expressions can be executed.
 ## Executing the simplest expression tree
 
 Let's see how to construct, compile, and execute an expression tree:
-1.	Use your preferred code editor to add a new **Console App** / `console` project named `WorkingWithExpressionTrees` to the `Chapter01c` solution/workspace.
+1.	Use your preferred code editor to add a new **Console App** / `console` project named `WorkingWithExpressionTrees` to the `Chapter01` solution/workspace.
 2.	In the project file, statically and globally import the `Console` class, as shown in the following markup:
 ```xml
 <ItemGroup>
@@ -888,7 +888,7 @@ This method can then be called in the `Program.cs` file of the project that uses
 
 Let's see how to do this:
 
-1.	Use your preferred code editor to add a new **Console App** / `console` project named `GeneratingCodeApp` to the `Chapter01c` solution/workspace.
+1.	Use your preferred code editor to add a new **Console App** / `console` project named `GeneratingCodeApp` to the `Chapter01` solution/workspace.
 2.	In the project file, statically and globally import the `Console` class, as shown in the following markup:
 ```xml
 <ItemGroup>
@@ -909,7 +909,7 @@ partial class Program
 Message("Hello from some source generator code.");
 ```
 
-6.	Use your preferred code editor to add a new **Class Library** / `classlib` project named `GeneratingCodeLib` that targets .NET Standard 2.0 to the `Chapter01c` solution/workspace.
+6.	Use your preferred code editor to add a new **Class Library** / `classlib` project named `GeneratingCodeLib` that targets .NET Standard 2.0 to the `Chapter01` solution/workspace.
 
 > Currently, source generators must target .NET Standard 2.0. The default C# version used for class libraries that target .NET Standard 2.0 is C# 7.3, as shown at the following link: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version#defaults.
 

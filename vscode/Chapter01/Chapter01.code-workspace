@@ -1,0 +1,34 @@
+{
+	"folders": [
+		{
+			"path": "CodeAnalyzing"
+		},
+		{
+			"path": "MonitoringApp"
+		},
+		{
+			"path": "MonitoringLib"
+		},
+		{
+			"path": "Benchmarking"
+		},
+		{
+			"path": "WorkingWithReflection"
+		},
+		{
+			"path": "GeneratingCodeApp"
+		},
+		{
+			"path": "GeneratingCodeLib"
+		},
+		{
+			"path": "DynamicLoadAndExecute.Console"
+		},
+		{
+			"path": "DynamicLoadAndExecute.Library"
+		},
+		{
+			"path": "WorkingWithExpressionTrees"
+		}
+	]
+}

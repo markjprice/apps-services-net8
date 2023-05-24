@@ -46,11 +46,11 @@ The `System.Diagnostics` namespace has lots of useful types for monitoring your 
 
 1.	Use your preferred coding tool to create a class library project, as defined in the following list:
     - Project template: **Class Library** / `classlib`
-    - Workspace/solution file and folder: `Chapter1b`
+    - Workspace/solution file and folder: `Chapter1`
     - Project file and folder: `MonitoringLib`
 2.	Add a console app project, as defined in the following list:
     - Project template: **Console App** / `console`
-    - Workspace/solution file and folder: `Chapter1b`
+    - Workspace/solution file and folder: `Chapter1`
     - Project file and folder: `MonitoringApp`
 3.	Use your preferred coding tool to set which project is active:
     - If you are using Visual Studio 2022, set the startup project for the solution to the current selection.
@@ -272,7 +272,7 @@ There is a popular benchmarking NuGet package for .NET that Microsoft uses in it
 
 Let's see how we could use it to compare performance between `string` concatenation and `StringBuilder`:
 
-1.	Use your preferred code editor to add a new console app to the `Chapter1b` solution/workspace named `Benchmarking`.
+1.	Use your preferred code editor to add a new console app to the `Chapter1` solution/workspace named `Benchmarking`.
     - In Visual Studio Code, select `Benchmarking` as the active OmniSharp project.
 2.	In the `Benchmarking` project, add a package reference to Benchmark.NET, remembering that you can find out the latest version and use that instead of the version I used, as shown in the following markup:
 ```xml
