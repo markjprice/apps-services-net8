@@ -16,46 +16,38 @@ All of my books on Packt's website: https://subscription.packtpub.com/search?que
 
 If you have Visual Studio 2022 for Windows and Visual Studio Code and its C# extension installed on the same computer, the build process can sometimes conflict. This is because Visual Studio has its own non-standard build server that is different from the standard build server used by .NET SDK. Visual Studio 2022 and Visual Studio Code also use different file types to group projects. So I have duplicated and separated solution code for each product:
 
-- [/vs4win](/vs4win): Visual Studio 2022 for Windows solution files and projects for each chapter
-- [/vscode](/vscode): Visual Studio Code workspace files and projects for each chapter
+- [/vs](/vs): Visual Studio 2022 for Windows or Mac solution files and projects for each chapter.
+- [/vscode](/vscode): Visual Studio Code workspace files and projects for each chapter.
 
 ## Chapters
 - Chapter 1 Introducing Apps and Services with .NET
-- Chapter 2 What's New in Modern C# and .NET
-- Chapter 3 Benchmarking Performance and Testing
-- Chapter 4 Managing Relational Data Using SQL Server
-- Chapter 5 Building Entity Models for SQL Server Using EF Core
-- Chapter 6 Managing NoSQL Data Using Azure Cosmos DB
-- Chapter 7 Multitasking and Concurrency
-- Chapter 8 Implementing Popular Third-Party Libraries
-- Chapter 9 Observing and Modifying Code Execution Dynamically
-- Chapter 10 Handling Dates, Times, and Internationalization
-- Chapter 11 Protecting Your Data and Applications
-- Chapter 12 Building and Securing Web Services with Minimal APIs
-- Chapter 13 Caching, Queuing, and Service Architecture
-- Chapter 14 Building Serverless Nanoservices Using Azure Functions
-- Chapter 15 Broadcasting Real-Time Communication Using SignalR
-- Chapter 16 Combining Data Sources Using GraphQL
-- Chapter 17 Building Efficient Microservices Using gRPC
-- Chapter 18 Building Web User Interfaces Using ASP.NET Core
-- Chapter 19 Building Web Components Using Blazor WebAssembly
-- Chapter 20 Leveraging Open-Source Blazor Component Libraries
-- Chapter 21 Building Mobile and Desktop Apps Using .NET MAUI
-- Chapter 22 Implementing Model-View-ViewModel for .NET MAUI
-- Chapter 23 Integrating .NET MAUI Apps with Blazor and Native Platforms
-- Chapter 24 Introducing the Survey Project Challenge
+- Chapter 2 Managing Relational Data Using SQL Server
+- Chapter 3 Building Entity Models for SQL Server Using EF Core
+- Chapter 4 Managing NoSQL Data Using Azure Cosmos DB
+- Chapter 5 Multitasking and Concurrency
+- Chapter 6 Implementing Popular Third-Party Libraries
+- Chapter 7 Handling Dates, Times, and Internationalization
+- Chapter 8 Protecting Your Data and Applications
+- Chapter 9 Building and Securing Web Services with Minimal APIs
+- Chapter 10 Caching, Queuing, and Service Architecture
+- Chapter 11 Building Serverless Nanoservices Using Azure Functions
+- Chapter 12 Broadcasting Real-Time Communication Using SignalR
+- Chapter 13 Combining Data Sources Using GraphQL
+- Chapter 14 Building Efficient Microservices Using gRPC
+- Chapter 15 Building Web User Interfaces Using ASP.NET Core
+- Chapter 16 Building Web Components Using Blazor WebAssembly
+- Chapter 17 Leveraging Open-Source Blazor Component Libraries
+- Chapter 18 Building Mobile and Desktop Apps Using .NET MAUI
+- Chapter 19 Implementing Model-View-ViewModel for .NET MAUI
+- Chapter 20 Integrating .NET MAUI Apps with Blazor and Native Platforms
+- Chapter 21 Introducing the Survey Project Challenge
 
-## Extra content
+## Extra content to download
 
 The appendix and color figures are available to download as PDFs:
 
 - Appendix A, Answers to the Test Your Knowledge Questions: coming November 2023.
 - Color images of the screenshots/diagrams used in this book: coming November 2023.
-
-Online-only bonus content:
-
-- Exposing Data via the Web Using OData Services
-- Managing Graph Data Using Gremlin API
 
 ## Important
 Corrections for typos and other mistakes and improvements like refactoring code. Useful links to other related material. 
