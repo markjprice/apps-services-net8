@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33712.159
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Console.SqlClient", "Northwind.Console.SqlClient\Northwind.Console.SqlClient.csproj", "{91716395-0AA5-46F3-BD0D-952D68306AFE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91716395-0AA5-46F3-BD0D-952D68306AFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91716395-0AA5-46F3-BD0D-952D68306AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91716395-0AA5-46F3-BD0D-952D68306AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91716395-0AA5-46F3-BD0D-952D68306AFE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC5BF7A8-9024-432E-AE3C-DEF084EF4C20}
+	EndGlobalSection
+EndGlobal

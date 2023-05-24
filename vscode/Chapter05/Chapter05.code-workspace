@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "WorkingWithTasks"
+		},
+		{
+			"path": "SynchronizingResourceAccess"
+		},
+		{
+			"path": "AsyncConsole"
+		},
+		{
+			"path": "AsyncEnumerable"
+		},
+		{
+			"path": "WpfResponsive"
+		}
+	]
+}

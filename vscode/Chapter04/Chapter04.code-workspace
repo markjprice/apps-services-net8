@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "Northwind.CosmosDb.SqlApi"
+		},
+		{
+			"path": "Northwind.CosmosDb.Gremlin"
+		}
+	]
+}
