@@ -4,9 +4,9 @@ If you are a Technical Reviewer for this book, then you will find useful informa
 
 ## Installing previews
 
-I expect Microsoft to start releasing official previews of .NET 8 in February 2023. 
+Microsoft releases official previews of .NET 8 on [Patch Tuesday](https://en.wikipedia.org/wiki/Patch_Tuesday) each month or one week later. I maintain a list of [.NET 8 preview releases](https://github.com/markjprice/cs11dotnet7/blob/main/docs/dotnet8.md).
 
-- [Download .NET 8 Preview 1](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [Download .NET 8 Previews](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 
 ## Word files
 
