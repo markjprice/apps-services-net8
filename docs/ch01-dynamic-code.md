@@ -573,6 +573,8 @@ foreach (MemberInfo member in members)
     obsolete is null ? "" : $"Obsolete! {obsolete.Message}");
 ```
 
+> Note the addition of the `{3}` placeholder in the call to `WriteLine` to output if the member is obsolete!
+
 3.	Run the code and view the result, as shown in the following output:
 ```
 Type: Packt.Shared.Animal
