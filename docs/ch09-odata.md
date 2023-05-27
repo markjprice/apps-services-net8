@@ -1,6 +1,7 @@
 **Exposing Data via the Web Using OData Services**
 
-In this chapter, you will be introduced to OData, a standard that makes it easy to expose data via the Web to make it accessible to any client that can make an HTTP request.
+In this chapter, you will be introduced to **OData**, a standard that makes it easy to expose data via the Web to make it accessible to any client that can make an HTTP request.
+
 This chapter will cover the following topics:
 
 - [Understanding OData](#understanding-odata)
@@ -22,6 +23,10 @@ This chapter will cover the following topics:
 - [Building clients for OData services](#building-clients-for-odata-services)
   - [Calling services in the Northwind MVC website](#calling-services-in-the-northwind-mvc-website)
   - [Revisiting the introductory query](#revisiting-the-introductory-query)
+- [Practicing and exploring](#practicing-and-exploring)
+  - [Exercise 10.1 – Test your knowledge](#exercise-101--test-your-knowledge)
+  - [Exercise 10.2 – Explore topics](#exercise-102--explore-topics)
+- [Summary](#summary)
 
 
 # Understanding OData
@@ -686,7 +691,7 @@ We will create an ASP.NET Core website project to act as a client, and a model c
 	<ProjectReference Include="..\..\Chapter03\Northwind.Common.EntityModels.SqlServer\Northwind.Common.EntityModels.SqlServer.csproj" />
 </ItemGroup>
 ```
-4.	Build the `Northwind.OData.Client.Mvc` project.
+4.	Build the `Northwind.OData.Client.Mvc` project at the command prompt or terminal.
 5.	In the `Properties` folder, open `launchSettings.json`.
 6.	In the `Northwind.OData.Client.Mvc` profile, modify the `applicationUrl` to use port `5094` for HTTPS, as shown in the following markup:
 ```
@@ -726,16 +731,22 @@ builder.Services.AddHttpClient(name: "Northwind.OData.Service",
 
 Next, we will call the service on the home page:
 
-1.	In the Controllers folder, in HomeController.cs, declare a field to store the registered HTTP client factory service, as shown in the following code:
+1.	In the `Controllers` folder, in `HomeController.cs`, declare a field to store the registered HTTP client factory service, as shown in the following code:
+```cs
 protected readonly IHttpClientFactory clientFactory;
+```
+
 2.	In the class constructor, add statements to pass and store the registered HTTP client factory service, as shown highlighted in the following code:
+```cs
 public HomeController(ILogger<HomeController> logger, 
   IHttpClientFactory clientFactory)
 {
   _logger = logger;
   this.clientFactory = clientFactory;
 }
-3.	Make the Index method asynchronous, and then add statements that call the OData service to get products that start with Cha and store the result in the ViewData dictionary, as shown highlighted in the following code:
+```
+
+3.	Make the `Index` method asynchronous, and then add statements that call the OData service to get products that start with `Cha` and store the result in the `ViewData` dictionary, as shown highlighted in the following code:
 ```cs
 public async Task<IActionResult> Index(string startsWith = "Cha")
 {
@@ -764,7 +775,7 @@ public async Task<IActionResult> Index(string startsWith = "Cha")
 }
 ```
 
-4.	In Views/Home, in Index.cshtml, delete its existing markup and then add markup to render the products with a form for the visitor to enter the start of a product name, as shown in the following markup:
+4.	In `Views/Home`, in `Index.cshtml`, delete its existing markup and then add markup to render the products with a form for the visitor to enter the start of a product name, as shown in the following markup:
 ```html
 @using Packt.Shared
 @{
@@ -839,13 +850,17 @@ info: System.Net.Http.HttpClient.Northwind.OData.Service.LogicalHandler[101]
 
 At the start of this chapter, I introduced an example of a query you could run against an OData service. Let's see if it works with our service:
 
-1.	In Visual Studio Code, in the RestClientTests folder, create a new file named odata-final-query.http, as shown in the following HTTP request:
+1.	In Visual Studio Code, in the `RestClientTests` folder, create a new file named `odata-final-query.http`, as shown in the following HTTP request:
+```
 GET https://localhost:5101/catalog/products
   ?$filter=contains(ProductName, 'ch') and UnitPrice lt 44.95
   &$orderby=Supplier/Country,UnitPrice
   &$select=ProductName,UnitPrice
   &$expand=Supplier
-2.	Click Send Request and note the response contains products and their suppliers, sorted by country first and then, within each country, sorted by unit price, as shown in the following partial output:
+```
+
+2.	Click **Send Request** and note the response contains products and their suppliers, sorted by country first and then, within each country, sorted by unit price, as shown in the following partial output:
+```
 The parts of the output that I clipped out to save space are indicated with ellipses (…).
 HTTP/1.1 200 OK
 Connection: close
@@ -909,24 +924,31 @@ OData-Version: 4.0
     ...
   ]
 }
-Practicing and exploring
+```
+
+# Practicing and exploring
+
 Test your knowledge and understanding by answering some questions, getting some hands-on practice, and exploring this chapter's topics with deeper research.
-Exercise 10.1 – Test your knowledge
+
+## Exercise 10.1 – Test your knowledge
+
 Answer the following questions:
 1.	What transport protocol does an OData service use?
 2.	Why is an OData service more flexible than a traditional ASP.NET Core Web API service?
 3.	What must you do to an action method in an OData controller to enable query strings to customize what it returns?
 4.	What URL path would return customers in Germany who have made more than one order?
 5.	How do you get related entities?
-Exercise 10.2 – Explore topics
+
+## Exercise 10.2 – Explore topics
+
 Use the links on the following page to learn more detail about the topics covered in this chapter:
 https://github.com/markjprice/apps-services-net7/blob/main/book-links.md#chapter-10---exposing-data-via-the-web-using-odata
-Summary
-In this chapter, you learned:
-•	The concepts around OData services.
-•	How to build an OData service using ASP.NET Core and a Microsoft NuGet package.
-•	How to query an OData service.
-•	How to perform data modifications.
-•	How to build an OData client.
-In the next chapter, you will learn about GraphQL, another standard that enables client control over the data returned from a service.
 
+# Summary
+
+In this online-only section, you learned:
+- The concepts around OData services.
+- How to build an OData service using ASP.NET Core and a Microsoft NuGet package.
+- How to query an OData service.
+- How to perform data modifications.
+- How to build an OData client.

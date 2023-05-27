@@ -37,7 +37,7 @@ If you have Visual Studio 2022 and Visual Studio Code and its C# extension insta
 
 **Services**
 - Chapter 9 Building and Securing Web Services with Minimal APIs
-- Chapter 10 Caching, Queuing, and Service Architecture
+- Chapter 10 Caching, Queuing, and Resilient Background Services
 - Chapter 11 Building Serverless Nanoservices Using Azure Functions
 - Chapter 12 Broadcasting Real-Time Communication Using SignalR
 - Chapter 13 Combining Data Sources Using GraphQL
