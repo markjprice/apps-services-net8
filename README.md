@@ -65,6 +65,7 @@ The appendix and color figures are available to download as PDFs:
 
 ## Important
 Corrections for typos and other mistakes and improvements like refactoring code. Useful links to other related material. 
+- [Command-Lines](docs/command-lines.md) page lists all commands as a single line that can be copied and pasted to make it easier to enter commands at the prompt.
 - [Book Links](docs/book-links.md)
 - [Common Mistakes, Improvements, and Errata aka list of corrections](docs/errata/README.md)
 - [Second edition's support for .NET 9](docs/dotnet9.md)
