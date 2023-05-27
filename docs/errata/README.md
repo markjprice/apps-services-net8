@@ -1,4 +1,4 @@
-# Errata and Improvements
+# Common Mistakes, Improvements, and Errata aka list of corrections
 
 If you find any mistakes in the first edition, *Apps and Services with .NET 8*, or if you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 

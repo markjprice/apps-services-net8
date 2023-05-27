@@ -1,6 +1,6 @@
-> [Information for Technical Reviewers](docs/reviewers.md)
+> **IMPORTANT!** [Information for Technical Reviewers](docs/reviewers.md)
 
-[Improvements & Errata - list of corrections](docs/errata)
+[Common Mistakes, Improvements, and Errata aka list of corrections](docs/errata/README.md)
 
 # Apps and Services with .NET 8, Second Edition
 
@@ -10,37 +10,51 @@ This book is expected to publish on Tuesday, December 5, 2023.
 
 My author page on Amazon: https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/ 
 
-All of my books on Packt's website: https://subscription.packtpub.com/search?query=mark+j.+price
+All of my books on my publisher Packt's website: https://subscription.packtpub.com/search?query=mark+j.+price
 
 ## Code solutions for Visual Studio 2022 and Visual Studio Code
 
-If you have Visual Studio 2022 for Windows and Visual Studio Code and its C# extension installed on the same computer, the build process can sometimes conflict. This is because Visual Studio has its own non-standard build server that is different from the standard build server used by .NET SDK. Visual Studio 2022 and Visual Studio Code also use different file types to group projects. So I have duplicated and separated solution code for each product:
+If you have Visual Studio 2022 and Visual Studio Code and its C# extension installed on the same computer, the build process can sometimes conflict. This is because Visual Studio has its own non-standard build server that is different from the standard build server used by .NET SDK. Visual Studio 2022 and Visual Studio Code also use different file types to group projects. So I have duplicated and separated solution code for each product:
 
 - [/vs](/vs): Visual Studio 2022 for Windows or Mac solution files and projects for each chapter.
 - [/vscode](/vscode): Visual Studio Code workspace files and projects for each chapter.
 
 ## Chapters
+
+**Introduction**
 - Chapter 1 Introducing Apps and Services with .NET
+
+**Data**
 - Chapter 2 Managing Relational Data Using SQL Server
 - Chapter 3 Building Entity Models for SQL Server Using EF Core
 - Chapter 4 Managing NoSQL Data Using Azure Cosmos DB
+
+**Specialized Libraries**
 - Chapter 5 Multitasking and Concurrency
 - Chapter 6 Implementing Popular Third-Party Libraries
 - Chapter 7 Handling Dates, Times, and Internationalization
 - Chapter 8 Protecting Your Data and Applications
+
+**Services**
 - Chapter 9 Building and Securing Web Services with Minimal APIs
 - Chapter 10 Caching, Queuing, and Service Architecture
 - Chapter 11 Building Serverless Nanoservices Using Azure Functions
 - Chapter 12 Broadcasting Real-Time Communication Using SignalR
 - Chapter 13 Combining Data Sources Using GraphQL
 - Chapter 14 Building Efficient Microservices Using gRPC
+
+**Apps**
 - Chapter 15 Building Web User Interfaces Using ASP.NET Core
 - Chapter 16 Building Web Components Using Blazor WebAssembly
 - Chapter 17 Leveraging Open-Source Blazor Component Libraries
 - Chapter 18 Building Mobile and Desktop Apps Using .NET MAUI
 - Chapter 19 Implementing Model-View-ViewModel for .NET MAUI
 - Chapter 20 Integrating .NET MAUI Apps with Blazor and Native Platforms
+
+**Wrap Up**
 - Chapter 21 Introducing the Survey Project Challenge
+- Epilogue
+- Appendix - Answers to the Test Your Knowledge Questions
 
 ## Extra content to download
 
@@ -52,7 +66,7 @@ The appendix and color figures are available to download as PDFs:
 ## Important
 Corrections for typos and other mistakes and improvements like refactoring code. Useful links to other related material. 
 - [Book Links](docs/book-links.md)
-- [Improvements & Errata - list of corrections](docs/errata)
+- [Common Mistakes, Improvements, and Errata aka list of corrections](docs/errata/README.md)
 - [Second edition's support for .NET 9](docs/dotnet9.md)
 
 ## Microsoft Certifications
