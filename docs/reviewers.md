@@ -15,3 +15,13 @@ I will add a comment to the top of each Word document for a chapter that specifi
 ## Operating systems and code editors
 
 Inevitably there will be differences in .NET on different operating systems. Historically about 70% of readers use Visual Studio 2022 on Windows so that is the primary code editor and OS that I use while writing preliminary drafts (PDs) during May to July. I often do not test on macOS with Visual Studio Code until final drafts (FDs) in September. I may not test on Linux at all, so if you're willing to, that'd be awesome! 
+
+## Lifetime of .NET 8 and the book
+
+.NET 8 will release in November 2023. It will reach end-of-life in November 2026. 
+
+I want to enable readers to pick up the book and use it to learn at any point in those three years so the book needs to be written with that in mind.
+
+For example, many readers will consume the book early in .NET 8's lifetime. These readers should be easy to cater for. I write instructions today as if they are to be read after November 2023, for example, .NET packages references like `Microsoft.EntityFramework.SqlServer` are `8.0.0` instead of `8.0.0-preview.1.5673.345` and so on. In early chapters I remind readers to check if there is a later version for third-party packages.
+
+A reader who starts reading the book in Spring 2024 might want to use .NET 9 previews. A reader who starts reading the book after November 2024 might want to use the release version of .NET 9. And then in February 2025 they could start using .NET 10 previews!  I plan to add a notes in Chapter 1 to help those readers be successful too.
