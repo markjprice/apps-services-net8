@@ -33,28 +33,23 @@ If you have Visual Studio 2022 and Visual Studio Code and its C# extension insta
 - Chapter 5 Multitasking and Concurrency
 - Chapter 6 Implementing Popular Third-Party Libraries
 - Chapter 7 Handling Dates, Times, and Internationalization
-- Chapter 8 Protecting Your Data and Applications
 
 **Services**
-- Chapter 9 Building and Securing Web Services with Minimal APIs
-- Chapter 10 Caching, Queuing, and Resilient Background Services
-- Chapter 11 Building Serverless Nanoservices Using Azure Functions
-- Chapter 12 Broadcasting Real-Time Communication Using SignalR
-- Chapter 13 Combining Data Sources Using GraphQL
-- Chapter 14 Building Efficient Microservices Using gRPC
+- Chapter 8 Building and Securing Web Services with Minimal APIs
+- Chapter 9 Caching, Queuing, and Resilient Background Services
+- Chapter 10 Building Serverless Nanoservices Using Azure Functions
+- Chapter 11 Broadcasting Real-Time Communication Using SignalR
+- Chapter 12 Combining Data Sources Using GraphQL
+- Chapter 13 Building Efficient Microservices Using gRPC
 
 **Apps**
-- Chapter 15 Building Web User Interfaces Using ASP.NET Core
-- Chapter 16 Building Web Components Using Blazor WebAssembly
-- Chapter 17 Leveraging Open-Source Blazor Component Libraries
-- Chapter 18 Building Mobile and Desktop Apps Using .NET MAUI
-- Chapter 19 Implementing Model-View-ViewModel for .NET MAUI
-- Chapter 20 Integrating .NET MAUI Apps with Blazor and Native Platforms
-
-**Wrap Up**
-- Chapter 21 Introducing the Survey Project Challenge
-- Epilogue
-- Appendix - Answers to the Test Your Knowledge Questions
+- Chapter 14 Building Web User Interfaces Using ASP.NET Core
+- Chapter 15 Building Web Components Using Blazor WebAssembly
+- Chapter 16 Leveraging Open-Source Blazor Component Libraries
+- Chapter 17 Building Mobile and Desktop Apps Using .NET MAUI
+- Chapter 18 Implementing Model-View-ViewModel for .NET MAUI
+- Chapter 19 Integrating .NET MAUI Apps with Blazor and Native Platforms
+- Chapter 20 Introducing the Survey Project Challenge
 
 ## Extra content to download
 
