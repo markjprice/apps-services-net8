@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="EnterYourDob" xml:space="preserve">
+    <value>تاریخ تولد خود را وارد کنید / Enter your date of birth: </value>
+  </data>
+  <data name="EnterYourName" xml:space="preserve">
+    <value>اسم خود را وارد کنید / Enter your name: </value>
+  </data>
+  <data name="EnterYourSalary" xml:space="preserve">
+    <value>حقوق خود را وارد کنید / Enter your salary: </value>
+  </data>
+  <data name="PersonDetails" xml:space="preserve">
+    <value>{0} در {1:dddd}به دنیا آمد. {0} {2:N0} دقیقه است. {0} {3:C}.</value>
+  </data>
+</root>

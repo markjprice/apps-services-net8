@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "WorkingWithTime"
+		},
+		{
+			"path": "WorkingWithCultures"
+		},
+		{
+			"path": "WorkingWithTimeZones"
+		},
+		{
+			"path": "TestingWithTimeProvider"
+		},
+		{
+			"path": "TimeFunctionsLib"
+		},
+		{
+			"path": "WorkingWithNodaTime"
+		}
+	]
+}

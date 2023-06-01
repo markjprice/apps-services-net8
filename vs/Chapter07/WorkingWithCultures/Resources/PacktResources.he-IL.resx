@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <data name="EnterYourDob" xml:space="preserve">
+    <value>הזן את תאריך הלידה שלך: </value>
+  </data>
+  <data name="EnterYourName" xml:space="preserve">
+    <value>הזן את שמך: </value>
+  </data>
+  <data name="EnterYourSalary" xml:space="preserve">
+    <value>הזן את המשכורת שלך: </value>
+  </data>
+  <data name="PersonDetails" xml:space="preserve">
+    <value>{0} נולד ב-{1:dddd}. {0} הוא {2:N0} בן דקות. {0} מרוויח {3:C}.</value>
+  </data>
+</root>
