@@ -35,7 +35,7 @@ If you have Visual Studio 2022 and Visual Studio Code and its C# extension insta
 - Chapter 7 Handling Dates, Times, and Internationalization
 
 **Services**
-- Chapter 8 Building and Securing Web Services with Minimal APIs
+- Chapter 8 Building and Securing Web Services Using Minimal APIs
 - Chapter 9 Caching, Queuing, and Resilient Background Services
 - Chapter 10 Building Serverless Nanoservices Using Azure Functions
 - Chapter 11 Broadcasting Real-Time Communication Using SignalR
@@ -44,7 +44,7 @@ If you have Visual Studio 2022 and Visual Studio Code and its C# extension insta
 
 **Apps**
 - Chapter 14 Building Web User Interfaces Using ASP.NET Core
-- Chapter 15 Building Web Components Using Blazor WebAssembly
+- Chapter 15 Building Web Components Using Blazor
 - Chapter 16 Leveraging Open-Source Blazor Component Libraries
 - Chapter 17 Building Mobile and Desktop Apps Using .NET MAUI
 - Chapter 18 Implementing Model-View-ViewModel for .NET MAUI
