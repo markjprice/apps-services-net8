@@ -1,0 +1,55 @@
+﻿@{
+  ViewData["Title"] = "Products using JavaScript";
+}
+<div class="text-center">
+  <h1 class="display-4">@ViewData["Title"]</h1>
+  <div>
+    Go to <a href="/home/products">Products using .NET</a>
+  </div>
+  <div>
+    <input id="productName" placeholder="Enter part of a product name" />
+    <input id="getProductsButton" type="button" value="Get Products" />
+  </div>
+  <div>
+    <table id="productsTable" class="table">
+      <thead>
+        <tr>
+          <th scope="col">Product Name</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+  </div>
+  <script>
+    var baseaddress = "https://localhost:5081/";
+
+    function xhr_load() {
+        console.log(this.responseText);
+
+        var products = JSON.parse(this.responseText);
+
+        var out = "";
+        var i;
+        for (i = 0; i < products.length; i++) {
+            out += '<tr><td><a href="' + baseaddress + 'api/products/' +
+                products[i].productId + '">' +
+                products[i].productName + '</a></td></tr>';
+        }
+        document.getElementById("tableBody").innerHTML = out;
+    }
+
+    function getProductsButton_click() {
+        xhr.open("GET", baseaddress + "api/products/" +
+          document.getElementById("productName").value);
+
+        xhr.send();
+    }
+
+    document.getElementById("getProductsButton")
+      .addEventListener("click", getProductsButton_click);
+
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", xhr_load);
+  </script>
+</div>
