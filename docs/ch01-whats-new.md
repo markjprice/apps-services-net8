@@ -1,6 +1,6 @@
 **What's New in Modern C# and .NET**
 
-This chapter covers the following topics:
+This online-only section covers the following topics:
 
 - [Understanding modern .NET](#understanding-modern-net)
   - [Understanding .NET support](#understanding-net-support)
