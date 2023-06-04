@@ -1,6 +1,6 @@
 **Exposing Data via the Web Using OData Services**
 
-In this chapter, you will be introduced to **OData**, a standard that makes it easy to expose data via the Web to make it accessible to any client that can make an HTTP request.
+In this online-only section, you will be introduced to **OData**, a standard that makes it easy to expose data via the Web to make it accessible to any client that can make an HTTP request.
 
 This chapter will cover the following topics:
 
