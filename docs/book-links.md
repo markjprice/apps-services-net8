@@ -35,8 +35,7 @@
 - [Chapter 7 - Handling Dates, Times, and Internationalization](#chapter-7---handling-dates-times-and-internationalization)
   - [Dates and times](#dates-and-times)
   - [Internationalization](#internationalization)
-- [Chapter 8 - Protecting Your Data and Applications](#chapter-8---protecting-your-data-and-applications)
-- [Chapter 9 - Building and Securing Web Services with Minimal APIs](#chapter-9---building-and-securing-web-services-with-minimal-apis)
+- [Chapter 8 - Building and Securing Web Services with Minimal APIs](#chapter-8---building-and-securing-web-services-with-minimal-apis)
   - [Web service technologies](#web-service-technologies)
   - [Web Service design](#web-service-design)
   - [Web service routing](#web-service-routing)
@@ -46,30 +45,30 @@
   - [Security and privacy](#security-and-privacy)
   - [Health checks and reliable web services](#health-checks-and-reliable-web-services)
   - [Exposing Data via the Web Using OData](#exposing-data-via-the-web-using-odata)
-- [Chapter 10 - Caching, Queuing, and Resilient Background Services](#chapter-10---caching-queuing-and-resilient-background-services)
+- [Chapter 9 - Caching, Queuing, and Resilient Background Services](#chapter-9---caching-queuing-and-resilient-background-services)
   - [Scheduled Jobs with Quartz.NET](#scheduled-jobs-with-quartznet)
   - [Background services with Hangfire](#background-services-with-hangfire)
   - [Queueing with RabbitMQ, Azure Service Bus, and Event Hub](#queueing-with-rabbitmq-azure-service-bus-and-event-hub)
   - [Caching with ASP.NET Core and Redis](#caching-with-aspnet-core-and-redis)
   - [Resilience with Polly](#resilience-with-polly)
-- [Chapter 11 - Building Serverless Nanoservices Using Azure Functions](#chapter-11---building-serverless-nanoservices-using-azure-functions)
-- [Chapter 12 - Broadcasting Real-Time Communication Using SignalR](#chapter-12---broadcasting-real-time-communication-using-signalr)
-- [Chapter 13 - Combining Data Sources Using GraphQL](#chapter-13---combining-data-sources-using-graphql)
-- [Chapter 14 - Building Efficient Microservices Using gRPC](#chapter-14---building-efficient-microservices-using-grpc)
-- [Chapter 15 - Building Web User Interfaces Using ASP.NET Core](#chapter-15---building-web-user-interfaces-using-aspnet-core)
+- [Chapter 10 - Building Serverless Nanoservices Using Azure Functions](#chapter-10---building-serverless-nanoservices-using-azure-functions)
+- [Chapter 11 - Broadcasting Real-Time Communication Using SignalR](#chapter-11---broadcasting-real-time-communication-using-signalr)
+- [Chapter 12 - Combining Data Sources Using GraphQL](#chapter-12---combining-data-sources-using-graphql)
+- [Chapter 13 - Building Efficient Microservices Using gRPC](#chapter-13---building-efficient-microservices-using-grpc)
+- [Chapter 14 - Building Web User Interfaces Using ASP.NET Core](#chapter-14---building-web-user-interfaces-using-aspnet-core)
   - [ASP.NET Core](#aspnet-core)
   - [Razor views and layouts](#razor-views-and-layouts)
-- [Chapter 16 - Building Web Components Using Blazor](#chapter-16---building-web-components-using-blazor)
+- [Chapter 15 - Building Web Components Using Blazor](#chapter-15---building-web-components-using-blazor)
   - [Blazor hosting models](#blazor-hosting-models)
   - [Blazor components](#blazor-components)
   - [Advanced techniques](#advanced-techniques)
-- [Chapter 17 - Leveraging Open-Source Blazor Component Libraries](#chapter-17---leveraging-open-source-blazor-component-libraries)
+- [Chapter 16 - Leveraging Open-Source Blazor Component Libraries](#chapter-16---leveraging-open-source-blazor-component-libraries)
   - [Blazor resources](#blazor-resources)
-- [Chapter 18 - Building Mobile and Desktop Apps Using .NET MAUI](#chapter-18---building-mobile-and-desktop-apps-using-net-maui)
-- [Chapter 19 - Implementing Model-View-ViewModel for .NET MAUI](#chapter-19---implementing-model-view-viewmodel-for-net-maui)
+- [Chapter 17 - Building Mobile and Desktop Apps Using .NET MAUI](#chapter-17---building-mobile-and-desktop-apps-using-net-maui)
+- [Chapter 18 - Implementing Model-View-ViewModel for .NET MAUI](#chapter-18---implementing-model-view-viewmodel-for-net-maui)
   - [MVVM](#mvvm)
-- [Chapter 20 - Integrating .NET MAUI Apps with Blazor and Native Platforms](#chapter-20---integrating-net-maui-apps-with-blazor-and-native-platforms)
-- [Chapter 21 - Introducing the Survey Project Challenge](#chapter-21---introducing-the-survey-project-challenge)
+- [Chapter 19 - Integrating .NET MAUI Apps with Blazor and Native Platforms](#chapter-19---integrating-net-maui-apps-with-blazor-and-native-platforms)
+- [Chapter 20 - Introducing the Survey Project Challenge](#chapter-20---introducing-the-survey-project-challenge)
 - [Epilogue](#epilogue)
   - [Next steps on your C# and .NET learning journey](#next-steps-on-your-c-and-net-learning-journey)
   - [Alternatives to using Azure resources](#alternatives-to-using-azure-resources)
@@ -309,17 +308,7 @@
 - [Globalizing and localizing .NET applications](https://learn.microsoft.com/en-us/dotnet/standard/globalization-localization/)
 - [Time zones](https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/)
 
-# Chapter 8 - Protecting Your Data and Applications
-
-- [Features supported by which OS](https://learn.microsoft.com/en-us/dotnet/standard/security/cross-platform-cryptography)
-- [Dictionary Attacks 101](https://blog.codinghorror.com/dictionary-attacks-101/)
-- [The first publicly known SHA1 collision happened in 2017](https://arstechnica.co.uk/information-technology/2017/02/at-deaths-door-for-years-widely-used-sha1-function-is-now-dead/)
-- [The RSA algorithm is based on the factorization of large integers](http://mathworld.wolfram.com/RSAEncryption.html)
-- [Key Security Concepts](https://learn.microsoft.com/en-us/dotnet/standard/security/key-security-concepts)
-- [Encrypting Data](https://learn.microsoft.com/en-us/dotnet/standard/security/encrypting-data)
-- [Cryptographic Signatures](https://learn.microsoft.com/en-us/dotnet/standard/security/cryptographic-signatures)
-
-# Chapter 9 - Building and Securing Web Services with Minimal APIs
+# Chapter 8 - Building and Securing Web Services with Minimal APIs
 
 ## Web service technologies
 - [Media types](http://en.wikipedia.org/wiki/Media_type)
@@ -389,7 +378,7 @@
 - [The Future of OData NxT (Neo)](https://devblogs.microsoft.com/odata/the-future-of-odata-odata-nxt/)
 - [API versioning extension with ASP.NET Core OData 8](https://devblogs.microsoft.com/odata/api-versioning-extension-with-asp-net-core-odata-8/)
 
-# Chapter 10 - Caching, Queuing, and Resilient Background Services
+# Chapter 9 - Caching, Queuing, and Resilient Background Services
 
 ## Scheduled Jobs with Quartz.NET
 - [Quartz.NET](https://www.quartz-scheduler.net/)
@@ -404,7 +393,7 @@
 ## Resilience with Polly
 - [The Polly Project](http://www.thepollyproject.org/)
 
-# Chapter 11 - Building Serverless Nanoservices Using Azure Functions
+# Chapter 10 - Building Serverless Nanoservices Using Azure Functions
 
 - [.NET 7 comes to Azure Functions & Visual Studio 2022](https://devblogs.microsoft.com/dotnet/dotnet-7-comes-to-azure-functions/)
 - [Azure Functions](https://azure.microsoft.com/en-us/services/functions/)
@@ -412,13 +401,13 @@
 - [Azure serverless community library](https://www.serverlesslibrary.net/)
 - [Building Serverless Applications with .NET 7 and Azure functions | .NET Conf 2022](https://www.youtube.com/watch?v=ITpcihRwbTc)
 
-# Chapter 12 - Broadcasting Real-Time Communication Using SignalR
+# Chapter 11 - Broadcasting Real-Time Communication Using SignalR
 
 - [Overview of ASP.NET Core SignalR](https://learn.microsoft.com/en-us/aspnet/core/signalr/introduction)
 - [SignalR GitHub repository](https://github.com/dotnet/aspnetcore/tree/main/src/SignalR)
 - [Azure SignalR Service](https://azure.microsoft.com/en-gb/services/signalr-service/)
 
-# Chapter 13 - Combining Data Sources Using GraphQL
+# Chapter 12 - Combining Data Sources Using GraphQL
 
 - [GraphQL](https://graphql.org/)
 - [HotChocolate - ChilliCream GraphQL Platform](https://chillicream.com/docs/hotchocolate)
@@ -426,7 +415,7 @@
 - [Getting started with GraphQL and HotChocolate](https://learn.microsoft.com/en-us/shows/on-net/getting-started-with-hotchocolate)
 - [Say hello to Hot Chocolate 12!](https://chillicream.com/blog/2021/09/27/hot-chocolate-12)
 
-# Chapter 14 - Building Efficient Microservices Using gRPC
+# Chapter 13 - Building Efficient Microservices Using gRPC
 
 - [gRPC](https://grpc.io/)
 - [gRPC - Architecting Cloud Native .NET Applications for Azure](https://learn.microsoft.com/en-us/dotnet/architecture/cloud-native/grpc)
@@ -438,7 +427,7 @@
 - [From RESTful HTTP API to gRPC | .NET Conf 2022](https://www.youtube.com/watch?v=o7MHxvcjFm4)
 - [Using CoreWCF to unblock modernization of WCF apps | .NET Conf 2022](https://www.youtube.com/watch?v=jbcNF-QsxNs)
 
-# Chapter 15 - Building Web User Interfaces Using ASP.NET Core
+# Chapter 14 - Building Web User Interfaces Using ASP.NET Core
 
 ## ASP.NET Core
 - [State of ASP.NET Core | .NET Conf 2022](https://www.youtube.com/watch?v=gNyEpkJMmcM)
@@ -458,7 +447,7 @@
 - [The `<partial>` tag helper](https://learn.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/built-in/partial-tag-helper)
 - [Why it is good to put <script> elements at the bottom of the <body>](https://stackoverflow.com/questions/436411/where-should-i-put-script-tags-in-html-markup)
 
-# Chapter 16 - Building Web Components Using Blazor
+# Chapter 15 - Building Web Components Using Blazor
 
 ## Blazor hosting models
 - [Blazor](https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor)
@@ -482,7 +471,7 @@
 - [Testing Blazor Applications with Playwright | .NET Conf 2022](https://www.youtube.com/watch?v=gBky9_AskNQ)
 - [CSS Techniques for Blazor Developers | .NET Conf 2022](https://www.youtube.com/watch?v=w_x1keHyXAY)
 
-# Chapter 17 - Leveraging Open-Source Blazor Component Libraries
+# Chapter 16 - Leveraging Open-Source Blazor Component Libraries
 
 ## Blazor resources
 - [Awesome Blazor: A collection of awesome Blazor resources](https://github.com/AdrienTorris/awesome-blazor)
@@ -491,7 +480,7 @@
 - [Carl Franklin's Blazor Train](https://www.youtube.com/playlist?list=PL8h4jt35t1wjvwFnvcB2LlYL4jLRzRmoz)
 - [Welcome to PACMAN written in C# and running on Blazor WebAssembly](https://github.com/SteveDunn/PacManBlazor)
 
-# Chapter 18 - Building Mobile and Desktop Apps Using .NET MAUI
+# Chapter 17 - Building Mobile and Desktop Apps Using .NET MAUI
 
 - [State of .NET MAUI | .NET Conf 2022](https://www.youtube.com/watch?v=Z6UPJmerTo8)
 - [.NET Multi-platform App UI](https://dotnet.microsoft.com/en-us/apps/maui)
@@ -517,12 +506,12 @@
 - [Accelerate your WinUI 3 app with the Windows Community Toolkit | .NET Conf 2022](https://www.youtube.com/watch?v=WH-vRxvY95M)
 - [OSS Spotlight - Build amazing cross-platform UI for .NET with Avalonia UI!](https://www.youtube.com/watch?v=qcZSr2ejH5I)
 
-# Chapter 19 - Implementing Model-View-ViewModel for .NET MAUI
+# Chapter 18 - Implementing Model-View-ViewModel for .NET MAUI
 
 ## MVVM
 - [MVVM is easier than ever before with Source Generators, .NET 7, and the MVVM Toolkit| .NET Conf 2022](https://www.youtube.com/watch?v=oQluWTag-e4)
 
-# Chapter 20 - Integrating .NET MAUI Apps with Blazor and Native Platforms
+# Chapter 19 - Integrating .NET MAUI Apps with Blazor and Native Platforms
 
 - [Create native desktop & mobile apps using web skills in Blazor Hybrid | .NET Conf 2022](https://www.youtube.com/watch?v=ojcvL8KCOwo)
 - [Host a Blazor web app in a .NET MAUI app using BlazorWebView](https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/blazorwebview)
@@ -542,7 +531,7 @@
 - [Secure storage](https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/secure-storage)
 - [Modernize your WPF and Windows Forms application with Blazor | .NET Conf 2022](https://www.youtube.com/watch?v=niX1DbFwgq4)
 
-# Chapter 21 - Introducing the Survey Project Challenge
+# Chapter 20 - Introducing the Survey Project Challenge
 
 - [Survey Monkey Question Types](https://help.surveymonkey.com/en/create/question-types/)
 
