@@ -1,0 +1,14 @@
+POST https://localhost:5081/api/products/
+Content-Type: application/json
+
+{
+  "productName": "Harry's Hamburgers",
+  "supplierId": 7,
+  "categoryId": 6,
+  "quantityPerUnit": "6 per box",
+  "unitPrice": 24.99,
+  "unitsInStock": 0,
+  "unitsOnOrder": 20,
+  "reorderLevel": 10,
+  "discontinued": false
+}

@@ -1,0 +1,30 @@
+### Configure a variable for the web service base address.
+@base_address = https://localhost:5084/catalog/
+
+###
+{{base_address}}categories/
+  ?$select=CategoryId,CategoryName
+###
+{{base_address}}products/
+  ?$filter=startswith(ProductName,'Ch') or (UnitPrice gt 50)
+###
+{{base_address}}products(77)/
+  ?$select=ProductId,ProductName,UnitPrice
+###
+{{base_address}}products/
+  ?$orderby=UnitPrice desc,ProductName
+  &$select=ProductId,ProductName,UnitPrice
+###
+{{base_address}}categories/
+  ?$select=CategoryId,CategoryName
+  &$expand=Products
+###
+{{base_address}}categories(8)/
+  ?$select=CategoryId,CategoryName
+  &$expand=Products
+###
+{{base_address}}products(50)
+###
+{{base_address}}v2/products(50)
+###
+{{base_address}}products(78)

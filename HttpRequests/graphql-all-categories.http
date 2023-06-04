@@ -1,0 +1,7 @@
+POST https://localhost:5005/graphql
+Content-Type: application/json
+Content-Length: 61
+
+{
+  "query" : "{categories{categoryId categoryName description}}"
+}

@@ -1,0 +1,8 @@
+POST https://localhost:5005/graphql
+Content-Type: application/json
+Content-Length: 168
+
+{
+  "query": "query categoryAndItsProducts($id: Int!){category(categoryId: $id){categoryId categoryName products{productId productName}}}",
+  "variables": {"id":4}
+}

@@ -1,0 +1,14 @@
+PUT https://localhost:5081/api/products/78
+Content-Type: application/json
+
+{
+  "productName": "Harry's Hamburgers",
+  "supplierId": 7,
+  "categoryId": 6,
+  "quantityPerUnit": "12 per box",
+  "unitPrice": 44.99,
+  "unitsInStock": 50,
+  "unitsOnOrder": 20,
+  "reorderLevel": 10,
+  "discontinued": false
+}

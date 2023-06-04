@@ -13,7 +13,11 @@ WriteLine($"X-Client-Id will be: {clientName}");
 
 HttpClient client = new();
 
-client.BaseAddress = new("https://localhost:5081");
+string scheme = "http"; // Web API: https, AOT: http.
+string port = "5083"; // Web API: 5081, AOT: 5083.
+string path = "products"; // Web API: api/products, AOT: products.
+
+client.BaseAddress = new($"{scheme}://localhost:{port}");
 
 client.DefaultRequestHeaders.Accept.Add(new("application/json"));
 
@@ -29,7 +33,7 @@ while (true)
 
   try
   {
-    HttpResponseMessage response = await client.GetAsync("api/products");
+    HttpResponseMessage response = await client.GetAsync(path);
 
     if (response.IsSuccessStatusCode)
     {

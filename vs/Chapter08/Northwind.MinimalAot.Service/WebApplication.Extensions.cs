@@ -1,16 +1,38 @@
 ﻿using Microsoft.Data.SqlClient; // To use SqlConnection and so on.
 using Northwind.Models; // To use Product.
 using System.Data; // To use CommandType.
+using Microsoft.AspNetCore.RateLimiting; // To use RateLimiterOptions.
+using System.Threading.RateLimiting; // To use QueueProcessingOrder.
 
 public static class WebApplicationExtensions
 {
+  private static string _policyName = "fixed5per10seconds";
+
+  public static void UseCustomRateLimiting(this WebApplication app)
+  {
+    // Configure ASP.NET Core rate limiting middleware.
+    RateLimiterOptions rateLimiterOptions = new();
+
+    rateLimiterOptions.AddFixedWindowLimiter(
+      policyName: _policyName, options =>
+      {
+        options.PermitLimit = 5;
+        options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+        options.QueueLimit = 2;
+        options.Window = TimeSpan.FromSeconds(10);
+      });
+
+    app.UseRateLimiter(rateLimiterOptions);
+  }
+
   public static void MapGets(this WebApplication app)
   {
     // app.MapGet(pattern, handler);
 
     app.MapGet("/", () => "Hello from a native AOT minimal API web service.");
 
-    app.MapGet("/products", GetProducts);
+    app.MapGet("/products", GetProducts)
+      .RequireRateLimiting(policyName: _policyName);
 
     app.MapGet("/products/{minimumUnitPrice:decimal?}", GetProducts);
   }

@@ -8,6 +8,8 @@ builder.Services.ConfigureHttpJsonOptions(options =>
 
 var app = builder.Build();
 
+app.UseCustomRateLimiting();
+
 app.MapGets();
 
 app.Run();

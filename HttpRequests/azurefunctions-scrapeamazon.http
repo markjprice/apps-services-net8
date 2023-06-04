@@ -1,0 +1,11 @@
+### Get information about the NumbersToWordsFunction function
+GET http://localhost:7071/admin/functions/NumbersToWordsFunction
+
+### Get information about the ScrapeAmazonFunction function
+GET http://localhost:7071/admin/functions/ScrapeAmazonFunction
+
+### Make a manual request to the Timer function
+POST http://localhost:7071/admin/functions/ScrapeAmazonFunction
+Content-Type: application/json
+
+{}

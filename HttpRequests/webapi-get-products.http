@@ -1,0 +1,20 @@
+### Configure a variable for the web service base address.
+@base_address = https://localhost:5081/api/products/
+
+### Get first page of 10 products that are in stock and not discontinued.
+GET {{base_address}}
+
+### Get third page of 10 products that are in stock and not discontinued
+GET {{base_address}}?page=3
+
+### Get products that are out-of-stock but not discontinued
+GET {{base_address}}outofstock
+
+### Get products that are discontinued
+GET {{base_address}}discontinued
+
+### Get product 77
+GET {{base_address}}77
+
+### Get products that contain "man"
+GET {{base_address}}man

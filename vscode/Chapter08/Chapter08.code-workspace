@@ -11,6 +11,12 @@
 		},
 		{
 			"path": "Northwind.WebApi.Service"
+		},
+		{
+			"path": "Northwind.OData.Client.Mvc"
+		},
+		{
+			"path": "Northwind.OData.Service"
 		}
 	]
 }

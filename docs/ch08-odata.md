@@ -11,8 +11,8 @@ This chapter will cover the following topics:
   - [Defining OData models for the EF Core models](#defining-odata-models-for-the-ef-core-models)
   - [Testing the OData models](#testing-the-odata-models)
   - [Creating and testing OData controllers](#creating-and-testing-odata-controllers)
-- [Testing OData services using Visual Studio Code extensions](#testing-odata-services-using-visual-studio-code-extensions)
-  - [Querying OData services using REST Client](#querying-odata-services-using-rest-client)
+- [Testing OData services using code editor tools](#testing-odata-services-using-code-editor-tools)
+  - [Querying OData services using the `.http` file tool](#querying-odata-services-using-the-http-file-tool)
     - [Understanding OData standard query options](#understanding-odata-standard-query-options)
     - [Understanding OData operators](#understanding-odata-operators)
     - [Understanding OData functions](#understanding-odata-functions)
@@ -24,8 +24,8 @@ This chapter will cover the following topics:
   - [Calling services in the Northwind MVC website](#calling-services-in-the-northwind-mvc-website)
   - [Revisiting the introductory query](#revisiting-the-introductory-query)
 - [Practicing and exploring](#practicing-and-exploring)
-  - [Exercise 10.1 – Test your knowledge](#exercise-101--test-your-knowledge)
-  - [Exercise 10.2 – Explore topics](#exercise-102--explore-topics)
+  - [Exercise 8B.1 – Test your knowledge](#exercise-8b1--test-your-knowledge)
+  - [Exercise 8B.2 – Explore topics](#exercise-8b2--explore-topics)
 - [Summary](#summary)
 
 
@@ -33,9 +33,9 @@ This chapter will cover the following topics:
 
 One of the most common uses of a web service is to expose a database to clients that do not understand how to work directly with the native database. Another common use is to provide a simplified or abstracted API that exposes an authenticated interface to a subset of the data to control access.
 
-In *Chapter 2, Managing Relational Data Using SQL Server*, you learned how to create an EF Core model to expose an SQL Server database to any .NET project. But what about non-.NET projects? I know it's crazy to imagine, but not every developer uses .NET!
+In *Chapter 3, Building Entity Models for SQL Server Using EF Core*, you learned how to create an EF Core model to expose an SQL Server database to any .NET project. But what about non-.NET projects? I know it's crazy to imagine, but not every developer uses .NET!
 
-Luckily, all development platforms support HTTP, so all development platforms can call web services, and ASP.NET Core has a package for making that easy and powerful using a standard named OData.
+Luckily, all development platforms support HTTP, so all development platforms can call web services, and ASP.NET Core has a package for making that easy and powerful using a standard named **OData**.
 
 ## Understanding the OData standard
 
@@ -49,20 +49,31 @@ Unlike traditional Web APIs where the service defines all the methods and what g
 
 For example, when querying the Northwind database that we created in *Chapter 2* for SQL Server, a client might only need two fields of data, `ProductName` and `Cost`, and the related `Supplier` object, and only for products where the `ProductName` contains the word `burger` and the cost is less than `4.95`, with the results sorted by country and then cost. The client would construct their query as a URL query string using standard named parameters, as shown in the following request:
 ```
-GET https://example.com/v1/products?$filter=contains(ProductName, 'burger') and UnitPrice lt 4.95&$orderby=Shipper/Country,UnitPrice&$select=ProductName,UnitPrice&$expand=Supplier
+GET https://example.com/v1/products?
+  $filter=contains(ProductName, 'burger') and UnitPrice lt 4.95&
+  $orderby=Shipper/Country,UnitPrice&
+  $select=ProductName,UnitPrice&
+  $expand=Supplier
 ```
 
 # Building a web service that supports OData
 
-There is no `dotnet new` project template for ASP.NET Core OData, but it uses controller classes, so we will use the ASP.NET Core Web API project template and then add package references to add the OData capabilities:
+There is no `dotnet new` project template for ASP.NET Core OData, but it uses controller classes, so we will use the ASP.NET Core Web API project template with the option to **Use controllers**, and then add package references to add the OData capabilities:
 
 1.	Use your preferred code editor to create a new project, as defined in the following list:
     - Project template: **ASP.NET Core Web API** / `webapi`
-    - Workspace/solution file and folder: `Chapter09`
+    - Workspace/solution file and folder: `Chapter08`
     - Project file and folder: `Northwind.OData.Service`
-    - Other Visual Studio options: **Authentication Type**: None, **Configure for HTTPS**: Selected, **Enable Docker**: Cleared, **Use controllers (uncheck to use minimal APIs)**: Checked, **Enable OpenAPI support**: Selected, **Do not use top-level statements**: Cleared.
-    - In Visual Studio Code, select `Northwind.OData.Service` as the active OmniSharp project. 
-2.	Configure the project to treat warnings as errors and add a package reference for ASP.NET Core OData alongside the existing package references for OpenApi and Swashbuckle, as shown highlighted in the following markup:
+    - **Authentication Type**: None.
+    - **Configure for HTTPS**: Selected.
+    - **Enable Docker**: Cleared.
+    - **Use controllers (uncheck to use minimal APIs)**: Checked.
+    - **Enable OpenAPI support**: Selected.
+    - **Do not use top-level statements**: Cleared.
+
+> In Visual Studio Code, select `Northwind.OData.Service` as the active OmniSharp project. 
+
+2.	Configure the project to treat warnings as errors, set invariant globalization to `false`, and add a package reference for ASP.NET Core OData alongside the existing package references for OpenApi and Swashbuckle, as shown highlighted in the following markup:
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
@@ -70,13 +81,14 @@ There is no `dotnet new` project template for ASP.NET Core OData, but it uses co
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>false</InvariantGlobalization>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
 </Project>
@@ -95,12 +107,12 @@ There is no `dotnet new` project template for ASP.NET Core OData, but it uses co
 
     - If you did not complete the task to create the class libraries in *Chapter 3*, then download the solution projects from the GitHub repository.
 
-4.	At the command line or terminal, build the `Northwind.OData.Service` project to make sure the two projects outside the current solution are properly compiled, as shown in the following command:
+4.	At the command prompt or terminal, build the `Northwind.OData.Service` project to make sure the projects outside the current solution are properly compiled, as shown in the following command:
 ```
 dotnet build
 ```
 
-> **Warning!** If you are using Visual Studio 2022, if you try to build the OData project using the **Build** menu then you will get the following error: `error NU1105: Unable to find project information for 'C:\apps-services-net7\Chapter02\Northwind.Common.DataContext.SqlServer\Northwind.Common.DataContext.SqlServer.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line.`
+> **Warning!** If you are using Visual Studio 2022, if you try to build the OData project using the **Build** menu then you will get the following error: `error NU1105: Unable to find project information for 'C:\apps-services-net8\Chapter03\Northwind.Common.DataContext.SqlServer\Northwind.Common.DataContext.SqlServer.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line.`
 
 5.	In the `Northwind.OData.Service` folder, delete `WeatherForecast.cs`.
 6.	In the `Controllers folder`, delete `WeatherForecastController.cs`.
@@ -116,9 +128,9 @@ Let's define two OData models: one to expose the Northwind product catalog, i.e.
 1.	Add a new class file named `Program.Methods.cs`.
 2.	In `Program.Methods.cs`, import some namespaces for working with OData and our entity models, and then add a method to define and return an OData model for the Northwind catalog that will only expose the entity sets, i.e. tables for `Categories`, `Products`, and `Suppliers`, as shown in the following code:
 ```cs
-using Microsoft.OData.Edm; // IEdmModel
-using Microsoft.OData.ModelBuilder; // ODataConventionModelBuilder
-using Packt.Shared; // NorthwindContext and entity models
+using Microsoft.OData.Edm; // To use IEdmModel.
+using Microsoft.OData.ModelBuilder; // To use ODataConventionModelBuilder.
+using Northwind.EntityModels; // To use Category and so on.
 
 partial class Program
 {
@@ -149,8 +161,8 @@ static IEdmModel GetEdmModelForOrderSystem()
 
 4.	In `Program.cs`, import the namespace for working with OData and the namespace for the database context registration extension method, as shown in the following code:
 ```cs
-using Microsoft.AspNetCore.OData; // AddOData extension method
-using Packt.Shared; // AddNorthwindContext extension method
+using Microsoft.AspNetCore.OData; // To use AddOData extension method.
+using Northwind.EntityModels; // To use AddNorthwindContext extension method.
 ```
 
 5.	In the services configuration section, before the call to `AddControllers`, add a statement to register the Northwind database context, as shown in the following code:
@@ -162,36 +174,40 @@ builder.Services.AddNorthwindContext();
 ```cs
 builder.Services.AddControllers()
   .AddOData(options => options
-    // register OData models
+
+    // Register two OData models.
     .AddRouteComponents(routePrefix: "catalog", 
       model: GetEdmModelForCatalog())
 
     .AddRouteComponents(routePrefix: "ordersystem",
       model: GetEdmModelForOrderSystem())
 
-    // enable query options
-    .Select() // enable $select for projection
-    .Expand() // enable $expand to navigate to related entities
-    .Filter() // enable $filter
-    .OrderBy() // enable $orderby
-    .SetMaxTop(100) // enable $top
-    .Count() // enable $count
+    // Enable query options:
+    .Select()       // $select for projection.
+    .Expand()       // $expand to navigate to related entities.
+    .Filter()       // $filter.
+    .OrderBy()      // $orderby to sort.
+    .SetMaxTop(100) // $top.
+    .Count()        // $count.
   );
 ```
 
 7.	In the `Properties` folder, open `launchSettings.json`.
-8.	In the `Northwind.OData.Service` profile, modify the `applicationUrl` to use port `5101` for HTTPS, as shown in the following markup:
+8.	In the `Northwind.OData.Service` profile, modify the `applicationUrl` to use port `5084` for HTTPS, as shown in the following markup:
 ```xml
-"applicationUrl": "https://localhost:5101",
+"applicationUrl": "https://localhost:5084",
 ```
 
 ## Testing the OData models
 
 Now we can check that the OData models have been defined correctly:
 
-1.	Start the `Northwind.OData.Service` project.
+1.	Start the `Northwind.OData.Service` project using the `https` launch profile without debugging.
+
+> If the **Windows Defender Firewall** blocks some features then click **Allow access**.
+
 2.	Start Chrome if it does not start automatically.
-3.	Navigate to https://localhost:5101/swagger and note the **Northwind.OData.Service v1** service is documented, as shown in *Figure 9.1A*:
+3.	Navigate to https://localhost:5084/swagger and note the **Northwind.OData.Service v1** service is documented, as shown in *Figure 9.1A*:
  
 ![Swagger documentation for the Northwind.OData.Service project](assets/B19587_09A_01.png)
 *Figure 9.1A: Swagger documentation for the Northwind.OData.Service project*
@@ -199,7 +215,7 @@ Now we can check that the OData models have been defined correctly:
 4.	In the **Metadata** section, click **GET /catalog**, click **Try it out**, click **Execute**, and note the response body that shows the names and URLs of the three entity sets in the catalog OData model, as shown in the following output:
 ```json
 {
-  "@odata.context": "https://localhost:5101/catalog/$metadata",
+  "@odata.context": "https://localhost:5084/catalog/$metadata",
   "value": [
     {
       "name": "Categories",
@@ -221,7 +237,7 @@ Now we can check that the OData models have been defined correctly:
 ```
 
 5.	Click **GET /catalog** to collapse that section.
-6.	Click **GET /catalog/$metadata**, click **Try it out**, click **Execute**, and note the model describes the entities like Category in detail with properties and keys, including navigation properties for the products in each category, as shown in *Figure 9.2A*:
+6.	Click **GET /catalog/$metadata**, click **Try it out**, click **Execute**, and note the model describes the entities like `Category` in detail with properties and keys, including navigation properties for the products in each category, as shown in *Figure 9.2A*:
  
 ![OData model metadata for the Northwind catalog](assets/B19587_09A_02.png)
 *Figure 9.2A: OData model metadata for the Northwind catalog*
@@ -236,10 +252,10 @@ Next, we must create OData controllers, one for each type of entity, to retrieve
 1.	In the `Controllers` folder, add an empty controller class file named `CategoriesController.cs`.
 2.	Modify its contents to inherit from `ODataController`, get an instance of the Northwind database context using constructor parameter injection, and define two `Get` methods to retrieve all categories or one category using a unique key, as shown in the following code:
 ```cs
-using Microsoft.AspNetCore.Mvc; // IActionResult
-using Microsoft.AspNetCore.OData.Query; // [EnableQuery]
-using Microsoft.AspNetCore.OData.Routing.Controllers; // ODataController
-using Packt.Shared; // NorthwindContext
+using Microsoft.AspNetCore.Mvc; // To use IActionResult.
+using Microsoft.AspNetCore.OData.Query; // To use [EnableQuery].
+using Microsoft.AspNetCore.OData.Routing.Controllers; // To use ODataController.
+using Northwind.EntityModels; // To use NorthwindContext.
 
 namespace Northwind.OData.Service.Controllers;
 
@@ -271,8 +287,8 @@ public class CategoriesController : ODataController
 
 > I will leave it as an optional task for the reader to do the same for the other entities to enable the order system OData model if you choose. Note the `CustomerId` is a `string` instead of an `int`.
 
-4.	Start the `Northwind.OData.Service` web service.	
-5.	Start Chrome, navigate to https://localhost:5101/swagger, and note the `Categories`, `Products`, and `Suppliers` entity sets are now documented because you created OData controllers for them, as shown in *Figure 9.3A*:
+4.	Start the `Northwind.OData.Service` web service without debugging.
+5.	Start Chrome, navigate to https://localhost:5084/swagger, and note the `Categories`, `Products`, and `Suppliers` entity sets are now documented because you created OData controllers for them, as shown in *Figure 9.3A*:
 
 ![The Categories entity set is now documented](assets/B19587_09A_03.png)
 *Figure 9.3A: The Categories entity set is now documented*
@@ -280,7 +296,7 @@ public class CategoriesController : ODataController
 6.	Click **GET /catalog/Categories**, click **Try it out**, click **Execute**, and note the response body that shows a JSON document containing all categories in the entity set, as partially shown in the following output:
 ```json
 {
-  "@odata.context": "https://localhost:5101/catalog/$metadata#Categories",
+  "@odata.context": "https://localhost:5084/catalog/$metadata#Categories",
   "value": [
     {
       "CategoryId": 1,
@@ -314,19 +330,23 @@ Later, we will use EF Core logs again to see how OData queries are automatically
 
 8.	Close Chrome and shut down the web server.
 
-# Testing OData services using Visual Studio Code extensions
+# Testing OData services using code editor tools
 
-Using the Swagger user interface to test OData controllers can quickly get clumsy. A better tool is the Visual Studio Code extension named REST Client:
+Using the Swagger user interface to test OData controllers can quickly get clumsy. Better tools are the Visual Studio 2022 **Endpoints Explorer** and its `.http` file support and the Visual Studio Code extension named REST Client:
 
 1.	If you have not already installed **REST Client** by Huachao Mao (`humao.rest-client`), then install it in Visual Studio Code now.
 2.	In your preferred code editor, start the `Northwind.OData.Service` project web service and leave it running.
-3.	In Visual Studio Code, in the `apps-services-net8` folder, if it does not already exist, create a `RestClientTests` folder, and then open the folder.
-4.	In the `RestClientTests` folder, create a file named `odata-catalog.http` and modify its contents to contain a request to get all categories, as shown in the following code:
+3.	In the `apps-services-net8` folder, if it does not already exist, create a `HttpRequests` folder, and then open the folder.
+4.	In the `HttpRequests` folder, create a file named `odata-catalog.http` and modify its contents to contain a request to get all categories, as shown in the following code:
 ```
-GET https://localhost:5101/catalog/categories/ HTTP/1.1
+### Configure a variable for the web service base address.
+@base_address = https://localhost:5084/catalog/
+
+### Get all categories.
+GET {{base_address}}categories HTTP/1.1
 ```
 
-> Good Practice: Specifying the HTTP version at the end of the request is optional because **REST Client** will default to using `1.1`. To avoid clutter, I will not specify it in future requests. The `GET` verb is also optional because **REST Client** will default to making a `GET` request.
+> **Good Practice**: Specifying the HTTP version at the end of the request is optional because the `.http` file tool will default to using `1.1`.The `GET` verb is also optional because the `.http` file tool will default to making a `GET` request. To avoid clutter, I will not specify them in future requests.
 
 5.	Click **Send Request**, and note the response is the same as what was returned by Swagger, a JSON document containing all categories, as shown in *Figure 9.4A*:
 
@@ -337,25 +357,25 @@ GET https://localhost:5101/catalog/categories/ HTTP/1.1
 
 Request|Response
 ---|---
-https://localhost:5101/catalog/categories(3)|<code>{<br>  "@odata.context": "https://localhost:5101/catalog/$metadata#Categories/$entity",<br>  "CategoryId": 3,<br>  "CategoryName": "Confections",<br>  "Description": "Desserts, candies, and sweet breads",<br>  "Picture": "FRwvAA..."<br>}</code>
-https://localhost:5101/catalog/categories/3|Same as above.
-https://localhost:5101/catalog/categories/$count|8
-https://localhost:5101/catalog/products|JSON document containing all products.
-https://localhost:5101/catalog/products/$count|77
-https://localhost:5101/catalog/products(2)|<code>{<br>"@odata.context": "https://localhost:5101/catalog/$metadata#Products/$entity",<br>  "ProductId": 2,<br>  "ProductName": "Chang",<br>  "SupplierId": 1,<br>  "CategoryId": 1,<br>  "QuantityPerUnit": "24 - 12 oz bottles",<br>  "UnitPrice": 19.0000,<br>  "UnitsInStock": 17,<br>  "UnitsOnOrder": 40,<br>  "ReorderLevel": 25,<br>  "Discontinued": false<br>}</code>
-https://localhost:5101/catalog/suppliers|JSON document containing all suppliers.
-https://localhost:5101/catalog/suppliers/$count|29
+`{{base_address}}categories(3)`|<code>{<br>  "@odata.context": "https://localhost:5084/catalog/$metadata#Categories/$entity",<br>  "CategoryId": 3,<br>  "CategoryName": "Confections",<br>  "Description": "Desserts, candies, and sweet breads",<br>  "Picture": "FRwvAA..."<br>}</code>
+`{{base_address}}categories/3`|Same as above.
+`{{base_address}}categories/$count`|8
+`{{base_address}}products`|JSON document containing all products.
+`{{base_address}}products/$count`|77
+`{{base_address}}products(2)`|<code>{<br>"@odata.context": "https://localhost:5084/catalog/$metadata#Products/$entity",<br>  "ProductId": 2,<br>  "ProductName": "Chang",<br>  "SupplierId": 1,<br>  "CategoryId": 1,<br>  "QuantityPerUnit": "24 - 12 oz bottles",<br>  "UnitPrice": 19.0000,<br>  "UnitsInStock": 17,<br>  "UnitsOnOrder": 40,<br>  "ReorderLevel": 25,<br>  "Discontinued": false<br>}</code>
+`{{base_address}}suppliers`|JSON document containing all suppliers.
+`{{base_address}}suppliers/$count`|29
 
-7.	Note that you can execute an HTTP request by clicking **Send Request** above each query, or by navigating to View | Command Palette and selecting the Rest Client: Send Request command or using its keyboard shortcut for your operating system, as shown in *Figure 9.5A*:
+7.	Note that you can execute an HTTP request by clicking **Send Request** above each query, or by navigating to **View** | **Command Palette** and selecting the **Rest Client: Send Request** command or using its keyboard shortcut for your operating system, as shown in *Figure 9.5A*:
 
 ![Queries in REST Client](assets/B19587_09A_05.png) 
 *Figure 10.5: Queries in REST Client*
 
-## Querying OData services using REST Client
+## Querying OData services using the `.http` file tool
 
 To execute arbitrary queries against an OData model, we earlier enabled selecting, filtering, and ordering.
 
-For the official documentation of OData URL conventions and standard queries, see the following link: http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#_Toc31360954.
+> **More Information**: For the official documentation of OData URL conventions and standard queries, see the following link: http://docs.oasis-open.org/odata/odata/v4.01/odata-v4.01-part2-url-conventions.html#_Toc31360954.
 
 ### Understanding OData standard query options
 
@@ -369,7 +389,7 @@ Option|Description|Example
 `$orderby`|Sorts the entities by the properties listed in ascending (default) or descending order.|`$orderby=UnitPrice desc,ProductName`
 `$skip`, `$top`|Skips the specified number of items. Takes the specified number of items.|`$skip=40&$top=10`
 
-For performance reasons, batching with $skip and $top is disabled by default. 
+For performance reasons, batching with `$skip` and `$top` is disabled by default. 
 
 ### Understanding OData operators
 
@@ -416,44 +436,48 @@ Operator|Description
 
 Let's experiment with some OData queries:
 
-1.	In the `RestClientTests` folder, create a file named `odata-catalog-queries.http`, and modify its contents to contain a request to get all categories, as shown in the following code:
+1.	In the `HttpRequests` folder, create a file named `odata-catalog-queries.http`, and modify its contents to contain a request to get all categories, as shown in the following code:
 ```
-GET https://localhost:5101/catalog/categories/
+### Configure a variable for the web service base address.
+@base_address = https://localhost:5084/catalog/
+
+###
+{{base_address}}categories/
   ?$select=CategoryId,CategoryName
 ```
 
 > **Good Practice**: Put the query string part on a new line to make the queries easier to read, as shown in the previous example.
 
-2.	Click **Send Request** and note that the response is a JSON document containing all categories, but only the ID and name properties.
+2.	Click **Send Request** and note that the response is a JSON document containing all categories, but only the `CategoryId` and `CategoryName` properties.
 3.	Separated by `###`, add and send a request to get products with names that start with `Ch`, like `Chai` and `Chef Anton's Gumbo Mix`, or have a unit price of more than `50`, like `Mishi Kobe Niku` or `Sir Rodney's Marmalade`, as shown in the following request:
 ```
-GET https://localhost:5101/catalog/products/
+{{base_address}}products/
   ?$filter=startswith(ProductName,'Ch') or (UnitPrice gt 50)
 ```
 
 4.	Add and send a request to get products sorted with most expensive at the top, and then sorted within a price by product name, and only include the ID, name, and price properties, as shown in the following request:
 ```
-GET https://localhost:5101/catalog/products/
+{{base_address}}products/
   ?$orderby=UnitPrice desc,ProductName
   &$select=ProductId,ProductName,UnitPrice
 ```
 
 5.	Add and send a request to get a specific product, and only include the ID, name, and price properties, as shown in the following request:
 ```
-GET https://localhost:5101/catalog/products(77)/
+{{base_address}}products(77)/
   ?$select=ProductId,ProductName,UnitPrice
 ```
 
 6.	Add and send a request to get categories and their related products, as shown in the following request:
 ```
-GET https://localhost:5101/catalog/categories/
+{{base_address}}categories/
   ?$select=CategoryId,CategoryName
   &$expand=Products
 ```
 
 7.	Add and send a request to get a specific category and its related products, as shown in the following request:
 ```
-GET https://localhost:5101/catalog/categories(8)/
+{{base_address}}categories(8)/
   ?$select=CategoryId,CategoryName
   &$expand=Products
 ```
@@ -464,11 +488,11 @@ GET https://localhost:5101/catalog/categories(8)/
 How does OData querying work? Let's find out by using the logging in the Northwind database context to see the actual SQL statements that are executed:
 
 1.	Start the `Northwind.OData.Service` web service.
-2.	Start Chrome and navigate to `https://localhost:5101/catalog/products/?$filter=startswith(ProductName,'Ch') or (UnitPrice gt 50)&$select=ProductId,ProductName,UnitPrice`
+2.	Start Chrome and navigate to `https://localhost:5084/catalog/products/?$filter=startswith(ProductName,'Ch') or (UnitPrice gt 50)&$select=ProductId,ProductName,UnitPrice`
 
 3.	In Chrome, note the result, as shown in the following output:
 ```json
-{"@odata.context":"https://localhost:5101/catalog/$metadata#Products(ProductId,ProductName,UnitPrice)","value":[{"ProductId":1,"ProductName":"Chai","UnitPrice":18.0000},{"ProductId":2,"ProductName":"Chang","UnitPrice":19.0000},{"ProductId":4,"ProductName":"Chef Anton's Cajun Seasoning","UnitPrice":22.0000},{"ProductId":5,"ProductName":"Chef Anton's Gumbo Mix","UnitPrice":21.3500},{"ProductId":9,"ProductName":"Mishi Kobe Niku","UnitPrice":97.0000},{"ProductId":18,"ProductName":"Carnarvon Tigers","UnitPrice":62.5000},{"ProductId":20,"ProductName":"Sir Rodney's Marmalade","UnitPrice":81.0000},{"ProductId":29,"ProductName":"Th\u00fcringer Rostbratwurst","UnitPrice":123.7900},{"ProductId":38,"ProductName":"C\u00f4te de Blaye","UnitPrice":263.5000},{"ProductId":39,"ProductName":"Chartreuse verte","UnitPrice":18.0000},{"ProductId":48,"ProductName":"Chocolade","UnitPrice":12.7500},{"ProductId":51,"ProductName":"Manjimup Dried Apples","UnitPrice":53.0000},{"ProductId":59,"ProductName":"Raclette Courdavault","UnitPrice":55.0000}]}
+{"@odata.context":"https://localhost:5084/catalog/$metadata#Products(ProductId,ProductName,UnitPrice)","value":[{"ProductId":1,"ProductName":"Chai","UnitPrice":18.0000},{"ProductId":2,"ProductName":"Chang","UnitPrice":19.0000},{"ProductId":4,"ProductName":"Chef Anton's Cajun Seasoning","UnitPrice":22.0000},{"ProductId":5,"ProductName":"Chef Anton's Gumbo Mix","UnitPrice":21.3500},{"ProductId":9,"ProductName":"Mishi Kobe Niku","UnitPrice":97.0000},{"ProductId":18,"ProductName":"Carnarvon Tigers","UnitPrice":62.5000},{"ProductId":20,"ProductName":"Sir Rodney's Marmalade","UnitPrice":81.0000},{"ProductId":29,"ProductName":"Th\u00fcringer Rostbratwurst","UnitPrice":123.7900},{"ProductId":38,"ProductName":"C\u00f4te de Blaye","UnitPrice":263.5000},{"ProductId":39,"ProductName":"Chartreuse verte","UnitPrice":18.0000},{"ProductId":48,"ProductName":"Chocolade","UnitPrice":12.7500},{"ProductId":51,"ProductName":"Manjimup Dried Apples","UnitPrice":53.0000},{"ProductId":59,"ProductName":"Raclette Courdavault","UnitPrice":55.0000}]}
 ```
 
 4.	At the command prompt or terminal, note the logged SQL statement that was executed, as shown in the following output:
@@ -492,12 +516,8 @@ It is good practice to plan for future versions of your OData models that might 
 
 To maintain backward compatibility, you can use OData URL prefixes to specify a version number:
 
-1.	In the `Northwind.OData.Service` project, in `Program.cs`, in the services configuration section, after adding the two OData models for catalog and orders, add a third OData model that has a version number and uses the same GetEdmModelForCatalog method, as shown highlighted in the following code:
+1.	In the `Northwind.OData.Service` project, in `Program.cs`, in the services configuration section, after adding the two OData models for catalog and orders, add a third OData model that has a version number and uses the same GetEdmModelForCatalog method, as shown in the following code:
 ```cs
-.AddRouteComponents(routePrefix: "catalog", 
-  model: GetEdmModelForCatalog())
-.AddRouteComponents(routePrefix: "ordersystem", 
-  model: GetEdmModelForOrderSystem())
 .AddRouteComponents(routePrefix: "catalog/v{version}", 
   model: GetEdmModelForCatalog())
 ```
@@ -536,15 +556,15 @@ public IActionResult Get(int key, string version = "1")
 ```
 
 3.	In your preferred code editor, start the `Northwind.OData.Service` project web service.
-4.	In Visual Studio Code, in `odata-catalog-queries.http`, add a request to get the product with ID 50 using the v2 OData model, as shown in the following code:
+4.	In `odata-catalog-queries.http`, add a request to get the product with ID 50 using the v2 OData model, as shown in the following code:
 ```
-GET https://localhost:5101/catalog/v2/products(50)
+{{base_address}}v2/products(50)
 ```
 
 5.	Click **Send Request**, and note the response is the product with its name appended with `version 2.0`, as shown highlighted in the following output:
 ```json
 {
-  "@odata.context": "https://localhost:5101/v2/$metadata#Products/$entity",
+  "@odata.context": "https://localhost:5084/v2/$metadata#Products/$entity",
   "ProductId": 50,
   "ProductName": "Valkoinen suklaa version 2.0",
   "SupplierId": 23,
@@ -565,7 +585,7 @@ GET https://localhost:5101/catalog/v2/products(50)
 
 7.	In `odata-catalog-queries.http`, add a request to get the product with ID 50 using the default (v1) OData model, as shown in the following code:
 ```
-GET https://localhost:5101/catalog/products(50)
+{{base_address}}products(50)
 ```
 
 8.	Click **Send Request**, and note the response is the product with its name unmodified.
@@ -592,9 +612,9 @@ public IActionResult Post([FromBody] Product product)
 
 2.	Set a breakpoint on the open brace of the method.
 3.	Start the OData web service with debugging.
-4.	In Visual Studio Code, in the `RestClientTests` folder, create a new file named `odata-catalog-insert-product.http`, as shown in the following HTTP request:
+4.	In Visual Studio Code, in the `HttpRequests` folder, create a new file named `odata-catalog-insert-product.http`, as shown in the following HTTP request:
 ```
-POST https://localhost:5101/catalog/products
+POST https://localhost:5084/catalog/products
 Content-Type: application/json
 Content-Length: 234
 
@@ -623,14 +643,14 @@ Content-Length: 234
 HTTP/1.1 201 Created
 Connection: close
 Content-Type: application/json; odata.metadata=minimal; odata.streaming=true
-Date: Sun, 22 May 2022 15:13:11 GMT
+Date: Sun, 22 May 2023 15:13:11 GMT
 Server: Kestrel
-Location: https://localhost:5101/catalog/Products(78)
+Location: https://localhost:5084/catalog/Products(78)
 Transfer-Encoding: chunked
 OData-Version: 4.0
 
 {
-  "@odata.context": "https://localhost:5101/catalog/$metadata#Products/$entity",
+  "@odata.context": "https://localhost:5084/catalog/$metadata#Products/$entity",
   "ProductId": 78,
   "ProductName": "Impossible Burger",
   "SupplierId": 7,
@@ -658,7 +678,7 @@ catalog/products/?$filter=startswith(ProductName, 'Cha')&$select=ProductId,Produ
 OData returns data in a JSON document with a property named value that contains the resulting products as an array, as shown in the following JSON document:
 ```json
 {
-  "@odata.context": "https://localhost:5101/catalog/$metadata#Products",
+  "@odata.context": "https://localhost:5084/catalog/$metadata#Products",
   "value": [
     {
       "ProductId": 1,
@@ -679,7 +699,7 @@ We will create an ASP.NET Core website project to act as a client, and a model c
 1.	Use your preferred code editor to add an MVC website project, as defined in the following list:
     - Project template: **ASP.NET Core Web App (Model-View-Controller) [C#]** / `mvc`
     - Project file and folder: `Northwind.OData.Client.Mvc`
-    - Workspace/solution file and folder: `Chapter09`
+    - Workspace/solution file and folder: `Chapter08`
     - Additional information - **Authentication type**: None 
     - For Visual Studio, leave all other options as their defaults.
 
@@ -693,14 +713,14 @@ We will create an ASP.NET Core website project to act as a client, and a model c
 ```
 4.	Build the `Northwind.OData.Client.Mvc` project at the command prompt or terminal.
 5.	In the `Properties` folder, open `launchSettings.json`.
-6.	In the `Northwind.OData.Client.Mvc` profile, modify the `applicationUrl` to use port `5094` for HTTPS, as shown in the following markup:
+6.	In the `Northwind.OData.Client.Mvc` profile, modify the `applicationUrl` to use port `5085` for HTTPS, as shown in the following markup:
 ```
-"applicationUrl": "https://localhost:5094",
+"applicationUrl": "https://localhost:5085",
 ```
 
 7.	In the `Northwind.OData.Client.Mvc` project, in the `Models` folder, add a new class file named `ODataProducts.cs`, as shown in the following code:
 ```cs
-using Packt.Shared; // Product
+using Northwind.EntityModels; // To use Product.
 
 namespace Northwind.OData.Client.Mvc.Models;
 
@@ -712,7 +732,7 @@ public class ODataProducts
 
 8.	In `Program.cs`, add a statement to import the namespace for setting media types in an HTTP header, as shown in the following code:
 ```cs
-using System.Net.Http.Headers; // MediaTypeWithQualityHeaderValue
+using System.Net.Http.Headers; // To use MediaTypeWithQualityHeaderValue.
 ```
 
 9.	In `Program.cs`, after the call to `AddControllersWithViews`, add statements to register an HTTP client for the OData service that will request JSON for the response data format, as shown in the following code:
@@ -720,7 +740,7 @@ using System.Net.Http.Headers; // MediaTypeWithQualityHeaderValue
 builder.Services.AddHttpClient(name: "Northwind.OData.Service",
   configureClient: options =>
   {
-    options.BaseAddress = new Uri("https://localhost:5101/");
+    options.BaseAddress = new Uri("https://localhost:5084/");
     options.DefaultRequestHeaders.Accept.Add(
       new MediaTypeWithQualityHeaderValue(
       "application/json", 1.0));
@@ -733,7 +753,7 @@ Next, we will call the service on the home page:
 
 1.	In the `Controllers` folder, in `HomeController.cs`, declare a field to store the registered HTTP client factory service, as shown in the following code:
 ```cs
-protected readonly IHttpClientFactory clientFactory;
+protected readonly IHttpClientFactory _clientFactory;
 ```
 
 2.	In the class constructor, add statements to pass and store the registered HTTP client factory service, as shown highlighted in the following code:
@@ -742,7 +762,7 @@ public HomeController(ILogger<HomeController> logger,
   IHttpClientFactory clientFactory)
 {
   _logger = logger;
-  this.clientFactory = clientFactory;
+  _clientFactory = clientFactory;
 }
 ```
 
@@ -752,7 +772,7 @@ public async Task<IActionResult> Index(string startsWith = "Cha")
 {
   try
   {
-    HttpClient client = clientFactory.CreateClient(
+    HttpClient client = _clientFactory.CreateClient(
       name: "Northwind.OData.Service");
 
     HttpRequestMessage request = new(
@@ -777,7 +797,7 @@ public async Task<IActionResult> Index(string startsWith = "Cha")
 
 4.	In `Views/Home`, in `Index.cshtml`, delete its existing markup and then add markup to render the products with a form for the visitor to enter the start of a product name, as shown in the following markup:
 ```html
-@using Packt.Shared
+@using Northwind.EntityModels
 @{
   ViewData["Title"] = "Home Page";
   Product[]? products = ViewData["products"] as Product[];
@@ -815,13 +835,13 @@ public async Task<IActionResult> Index(string startsWith = "Cha")
 
 5.	Start the `Northwind.OData.Service` project without debugging.
 6.	Start the `Northwind.OData.Client.Mvc` project without debugging.
-7.	Start Chrome and navigate to https://localhost:5094/.
+7.	Start Chrome and navigate to https://localhost:5085/.
 8.	Note that three products are returned from the OData service, as shown in *Figure 9.7A*:
 
 ![Three product names starting with Cha returned from the OData service](assets/B19587_09A_07.png)
 *Figure 9.7A: Three product names starting with Cha returned from the OData service*
 
-9.	At the command line or terminal for the OData service, note the SQL command used, as shown in the following output:
+9.	At the command prompt or terminal for the OData service, note the SQL command used, as shown in the following output:
 ```
 info: Microsoft.EntityFrameworkCore.Database.Command[20101]
       Executed DbCommand (28ms) [Parameters=[@__TypedProperty_0='?' (Size = 4000), @__TypedProperty_0_1='?' (Size = 40)], CommandType='Text', CommandTimeout='30']
@@ -830,12 +850,12 @@ info: Microsoft.EntityFrameworkCore.Database.Command[20101]
       WHERE @__TypedProperty_0 = N'' OR LEFT([p].[ProductName], LEN(@__TypedProperty_0_1)) = @__TypedProperty_0
 ```
 
-10.	At the command line or terminal for the MVC website, note the HTTP request made and its response, as shown in the following output:
+10.	At the command prompt or terminal for the MVC website, note the HTTP request made and its response, as shown in the following output:
 ```
 info: System.Net.Http.HttpClient.Northwind.OData.Service.LogicalHandler[100]
-      Start processing HTTP request GET https://localhost:5101/catalog/products/?$filter=startswith(ProductName,'Cha')&$select=ProductId,ProductName,UnitPrice
+      Start processing HTTP request GET https://localhost:5084/catalog/products/?$filter=startswith(ProductName,'Cha')&$select=ProductId,ProductName,UnitPrice
 info: System.Net.Http.HttpClient.Northwind.OData.Service.ClientHandler[100]
-      Sending HTTP request GET https://localhost:5101/catalog/products/?$filter=startswith(ProductName,'Cha')&$select=ProductId,ProductName,UnitPrice
+      Sending HTTP request GET https://localhost:5084/catalog/products/?$filter=startswith(ProductName,'Cha')&$select=ProductId,ProductName,UnitPrice
 info: System.Net.Http.HttpClient.Northwind.OData.Service.ClientHandler[101]
       Received HTTP response headers after 998.5241ms - 200
 info: System.Net.Http.HttpClient.Northwind.OData.Service.LogicalHandler[101]
@@ -850,9 +870,9 @@ info: System.Net.Http.HttpClient.Northwind.OData.Service.LogicalHandler[101]
 
 At the start of this chapter, I introduced an example of a query you could run against an OData service. Let's see if it works with our service:
 
-1.	In Visual Studio Code, in the `RestClientTests` folder, create a new file named `odata-final-query.http`, as shown in the following HTTP request:
+1.	In Visual Studio Code, in the `HttpRequests` folder, create a new file named `odata-final-query.http`, as shown in the following HTTP request:
 ```
-GET https://localhost:5101/catalog/products
+GET https://localhost:5084/catalog/products
   ?$filter=contains(ProductName, 'ch') and UnitPrice lt 44.95
   &$orderby=Supplier/Country,UnitPrice
   &$select=ProductName,UnitPrice
@@ -860,8 +880,10 @@ GET https://localhost:5101/catalog/products
 ```
 
 2.	Click **Send Request** and note the response contains products and their suppliers, sorted by country first and then, within each country, sorted by unit price, as shown in the following partial output:
+
+> The parts of the output that I clipped out to save space are indicated with ellipses (…).
+
 ```
-The parts of the output that I clipped out to save space are indicated with ellipses (…).
 HTTP/1.1 200 OK
 Connection: close
 Content-Type: application/json; odata.metadata=minimal; odata.streaming=true
@@ -871,7 +893,7 @@ Transfer-Encoding: chunked
 OData-Version: 4.0
 
 {
-  "@odata.context": "https://localhost:5101/catalog/$metadata#Products(ProductName,UnitPrice,Supplier())",
+  "@odata.context": "https://localhost:5084/catalog/$metadata#Products(ProductName,UnitPrice,Supplier())",
   "value": [
     ...
     {
@@ -930,7 +952,7 @@ OData-Version: 4.0
 
 Test your knowledge and understanding by answering some questions, getting some hands-on practice, and exploring this chapter's topics with deeper research.
 
-## Exercise 10.1 – Test your knowledge
+## Exercise 8B.1 – Test your knowledge
 
 Answer the following questions:
 1.	What transport protocol does an OData service use?
@@ -939,10 +961,10 @@ Answer the following questions:
 4.	What URL path would return customers in Germany who have made more than one order?
 5.	How do you get related entities?
 
-## Exercise 10.2 – Explore topics
+## Exercise 8B.2 – Explore topics
 
 Use the links on the following page to learn more detail about the topics covered in this chapter:
-https://github.com/markjprice/apps-services-net7/blob/main/book-links.md#chapter-10---exposing-data-via-the-web-using-odata
+https://github.com/markjprice/apps-services-net8/blob/main/docs/book-links.md#exposing-data-via-the-web-using-odata
 
 # Summary
 

@@ -1,0 +1,2 @@
+### Trigger the NumbersToWordsFunction function
+GET http://localhost:7071/api/NumbersToWordsFunction?amount=123456
