@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithTime", "WorkingWithTime\WorkingWithTime.csproj", "{BB3047CB-0723-4839-B2D1-590AA3EFE2FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingWithTimeProvider", "TestingWithTimeProvider\TestingWithTimeProvider.csproj", "{C55B384F-CA7F-4B8C-8212-078042904C09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeFunctionsLib", "TimeFunctionsLib\TimeFunctionsLib.csproj", "{91C22269-30CE-4773-84DD-AA383E963B73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithTimeZones", "WorkingWithTimeZones\WorkingWithTimeZones.csproj", "{574353FE-3C71-4CB1-91E8-74C5F9828E51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithCultures", "WorkingWithCultures\WorkingWithCultures.csproj", "{92E622A3-8A4B-417D-8DA6-9387C89518E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkingWithNodaTime", "WorkingWithNodaTime\WorkingWithNodaTime.csproj", "{F0E0F632-1B42-4C46-BA08-53C8410778D0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB3047CB-0723-4839-B2D1-590AA3EFE2FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB3047CB-0723-4839-B2D1-590AA3EFE2FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB3047CB-0723-4839-B2D1-590AA3EFE2FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB3047CB-0723-4839-B2D1-590AA3EFE2FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C55B384F-CA7F-4B8C-8212-078042904C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C55B384F-CA7F-4B8C-8212-078042904C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C55B384F-CA7F-4B8C-8212-078042904C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C55B384F-CA7F-4B8C-8212-078042904C09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C22269-30CE-4773-84DD-AA383E963B73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C22269-30CE-4773-84DD-AA383E963B73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C22269-30CE-4773-84DD-AA383E963B73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C22269-30CE-4773-84DD-AA383E963B73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{574353FE-3C71-4CB1-91E8-74C5F9828E51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{574353FE-3C71-4CB1-91E8-74C5F9828E51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{574353FE-3C71-4CB1-91E8-74C5F9828E51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{574353FE-3C71-4CB1-91E8-74C5F9828E51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92E622A3-8A4B-417D-8DA6-9387C89518E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92E622A3-8A4B-417D-8DA6-9387C89518E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92E622A3-8A4B-417D-8DA6-9387C89518E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92E622A3-8A4B-417D-8DA6-9387C89518E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0E0F632-1B42-4C46-BA08-53C8410778D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0E0F632-1B42-4C46-BA08-53C8410778D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0E0F632-1B42-4C46-BA08-53C8410778D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0E0F632-1B42-4C46-BA08-53C8410778D0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0BEE56A-5B4D-4EFD-9222-88F3B57006DE}
+	EndGlobalSection
+EndGlobal

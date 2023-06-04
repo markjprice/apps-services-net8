@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "Northwind.MinimalAot.Service"
+		},
+		{
+			"path": "Northwind.WebApi.Client.Console"
+		},
+		{
+			"path": "Northwind.WebApi.Client.Mvc"
+		},
+		{
+			"path": "Northwind.WebApi.Service"
+		}
+	]
+}
