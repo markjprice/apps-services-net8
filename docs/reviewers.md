@@ -23,10 +23,12 @@ Inevitably there will be differences in .NET on different operating systems. His
 
 # Lifetime of .NET 8 and the book
 
-.NET 8 will release in November 2023. It will reach end-of-life in November 2026. 
+.NET 8 will release in November 2023. It will reach end-of-life in November 2026.
 
 I want to enable readers to pick up the book and use it to learn at any point in those three years so the book needs to be written with that in mind.
 
 For example, many readers will consume the book early in .NET 8's lifetime. These readers should be easy to cater for. I write instructions today as if they are to be read after November 2023, for example, .NET packages references like `Microsoft.EntityFramework.SqlServer` are `8.0.0` instead of `8.0.0-preview.1.5673.345` and so on. In early chapters I remind readers to check if there is a later version for third-party packages.
 
 A reader who starts reading the book in Spring 2024 might want to use .NET 9 previews. A reader who starts reading the book after November 2024 might want to use the release version of .NET 9. And then in February 2025 they could start using .NET 10 previews!  I plan to add a notes in Chapter 1 to help those readers be successful too.
+
+Packt will likely only publish a .NET 9 edition of the *C# 13 and .NET 9 - Modern Cross-Platform Development Fundamentals* book. The third edition of the *Apps and Services* book is likely to be for .NET 10. So the second edition *Apps and Services with .NET 8* will need to be in the market for two years before being updated for .NET 10.
