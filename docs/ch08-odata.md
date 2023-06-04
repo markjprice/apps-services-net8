@@ -105,7 +105,7 @@ There is no `dotnet new` project template for ASP.NET Core OData, but it uses co
 </ItemGroup>
 ```
 
-    - If you did not complete the task to create the class libraries in *Chapter 3*, then download the solution projects from the GitHub repository.
+> If you did not complete the task to create the class libraries in *Chapter 3*, then download the solution projects from the GitHub repository.
 
 4.	At the command prompt or terminal, build the `Northwind.OData.Service` project to make sure the projects outside the current solution are properly compiled, as shown in the following command:
 ```
