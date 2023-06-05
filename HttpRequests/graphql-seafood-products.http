@@ -1,7 +1,0 @@
-POST https://localhost:5111/graphql
-Content-Type: application/json
-Content-Length: 90
-
-{
-  "query" : "{productsInCategory(categoryId:8){productId productName unitsInStock}}"
-}

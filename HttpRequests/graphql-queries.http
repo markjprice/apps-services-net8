@@ -1,0 +1,30 @@
+### Configure a variable for the GraphQL service base address.
+@base_address = http://localhost:5121/graphql
+
+###
+POST {{base_address}}
+Content-Type: application/json
+Content-Length: 61
+
+{
+  "query" : "{categories{categoryId categoryName description}}"
+}
+
+###
+POST {{base_address}}
+Content-Type: application/json
+Content-Length: 168
+
+{
+  "query": "query categoryAndItsProducts($id: Int!){category(categoryId: $id){categoryId categoryName products{productId productName}}}",
+  "variables": {"id":4}
+}
+
+###
+POST {{base_address}}
+Content-Type: application/json
+Content-Length: 90
+
+{
+  "query" : "{productsInCategory(categoryId:8){productId productName unitsInStock}}"
+}

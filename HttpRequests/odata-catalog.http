@@ -5,25 +5,25 @@
 GET {{base_address}}categories HTTP/1.1
 
 ### Get the single category 3.
-{{base_address}}categories(3)
+GET {{base_address}}categories(3)
 
 ### Get the single category 3 (alternate syntax).
-{{base_address}}categories/3
+GET {{base_address}}categories/3
 
 ### Get a count of the number of categories.
-{{base_address}}categories/$count
+GET {{base_address}}categories/$count
 
 ### Get all products.
-{{base_address}}products
+GET {{base_address}}products
 
 ### Get a count of the number of products.
-{{base_address}}products/$count
+GET {{base_address}}products/$count
 
 ### Get the single product 3.
-{{base_address}}products(2)
+GET {{base_address}}products(2)
 
 ### Get all suppliers.
-{{base_address}}suppliers
+GET {{base_address}}suppliers
 
 ### Get a count of the number of suppliers.
-{{base_address}}suppliers/$count
+GET {{base_address}}suppliers/$count

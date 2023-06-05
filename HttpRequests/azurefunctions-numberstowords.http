@@ -1,2 +1,5 @@
-### Trigger the NumbersToWordsFunction function
-GET http://localhost:7071/api/NumbersToWordsFunction?amount=123456
+### Configure a variable for the Azure Functions base address.
+@base_address = http://localhost:7274/
+
+### Trigger the NumbersToWordsFunction function.
+GET {{base_address}}api/NumbersToWordsFunction?amount=123456
