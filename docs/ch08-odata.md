@@ -346,7 +346,7 @@ Using the Swagger user interface to test OData controllers can quickly get clums
 GET {{base_address}}categories HTTP/1.1
 ```
 
-> **Good Practice**: Specifying the HTTP version at the end of the request is optional because the `.http` file tool will default to using `1.1`.The `GET` verb is also optional because the `.http` file tool will default to making a `GET` request. To avoid clutter, I will not specify them in future requests.
+> **Good Practice**: Specifying the HTTP version at the end of the request is optional because both code editor `.http` file tools will default to using `1.1`.The `GET` verb is optional with Visual Studio Code's REST Client extension but sadly this is not the case with Visual Studio 2022 and its `.http` file tool. So we must continue to explicitly specify `GET`.
 
 5.	Click **Send Request**, and note the response is the same as what was returned by Swagger, a JSON document containing all categories, as shown in *Figure 9.4A*:
 
@@ -357,14 +357,14 @@ GET {{base_address}}categories HTTP/1.1
 
 Request|Response
 ---|---
-`{{base_address}}categories(3)`|<code>{<br>  "@odata.context": "https://localhost:5084/catalog/$metadata#Categories/$entity",<br>  "CategoryId": 3,<br>  "CategoryName": "Confections",<br>  "Description": "Desserts, candies, and sweet breads",<br>  "Picture": "FRwvAA..."<br>}</code>
-`{{base_address}}categories/3`|Same as above.
-`{{base_address}}categories/$count`|8
-`{{base_address}}products`|JSON document containing all products.
-`{{base_address}}products/$count`|77
-`{{base_address}}products(2)`|<code>{<br>"@odata.context": "https://localhost:5084/catalog/$metadata#Products/$entity",<br>  "ProductId": 2,<br>  "ProductName": "Chang",<br>  "SupplierId": 1,<br>  "CategoryId": 1,<br>  "QuantityPerUnit": "24 - 12 oz bottles",<br>  "UnitPrice": 19.0000,<br>  "UnitsInStock": 17,<br>  "UnitsOnOrder": 40,<br>  "ReorderLevel": 25,<br>  "Discontinued": false<br>}</code>
-`{{base_address}}suppliers`|JSON document containing all suppliers.
-`{{base_address}}suppliers/$count`|29
+`GET {{base_address}}categories(3)`|<code>{<br>  "@odata.context": "https://localhost:5084/catalog/$metadata#Categories/$entity",<br>  "CategoryId": 3,<br>  "CategoryName": "Confections",<br>  "Description": "Desserts, candies, and sweet breads",<br>  "Picture": "FRwvAA..."<br>}</code>
+`GET {{base_address}}categories/3`|Same as above.
+`GET {{base_address}}categories/$count`|8
+`GET {{base_address}}products`|JSON document containing all products.
+`GET {{base_address}}products/$count`|77
+`GET {{base_address}}products(2)`|<code>{<br>"@odata.context": "https://localhost:5084/catalog/$metadata#Products/$entity",<br>  "ProductId": 2,<br>  "ProductName": "Chang",<br>  "SupplierId": 1,<br>  "CategoryId": 1,<br>  "QuantityPerUnit": "24 - 12 oz bottles",<br>  "UnitPrice": 19.0000,<br>  "UnitsInStock": 17,<br>  "UnitsOnOrder": 40,<br>  "ReorderLevel": 25,<br>  "Discontinued": false<br>}</code>
+`GET {{base_address}}suppliers`|JSON document containing all suppliers.
+`GET {{base_address}}suppliers/$count`|29
 
 7.	Note that you can execute an HTTP request by clicking **Send Request** above each query, or by navigating to **View** | **Command Palette** and selecting the **Rest Client: Send Request** command or using its keyboard shortcut for your operating system, as shown in *Figure 9.5A*:
 
@@ -414,7 +414,7 @@ Operator|Description
 
 ### Understanding OData functions
 
-OData has functions for use with the $filter option, as shown in the following table:
+OData has functions for use with the `$filter` option, as shown in the following table:
 
 Operator|Description
 ---|---
@@ -442,7 +442,7 @@ Let's experiment with some OData queries:
 @base_address = https://localhost:5084/catalog/
 
 ###
-{{base_address}}categories/
+GET {{base_address}}categories/
   ?$select=CategoryId,CategoryName
 ```
 
@@ -451,33 +451,33 @@ Let's experiment with some OData queries:
 2.	Click **Send Request** and note that the response is a JSON document containing all categories, but only the `CategoryId` and `CategoryName` properties.
 3.	Separated by `###`, add and send a request to get products with names that start with `Ch`, like `Chai` and `Chef Anton's Gumbo Mix`, or have a unit price of more than `50`, like `Mishi Kobe Niku` or `Sir Rodney's Marmalade`, as shown in the following request:
 ```
-{{base_address}}products/
+GET {{base_address}}products/
   ?$filter=startswith(ProductName,'Ch') or (UnitPrice gt 50)
 ```
 
 4.	Add and send a request to get products sorted with most expensive at the top, and then sorted within a price by product name, and only include the ID, name, and price properties, as shown in the following request:
 ```
-{{base_address}}products/
+GET {{base_address}}products/
   ?$orderby=UnitPrice desc,ProductName
   &$select=ProductId,ProductName,UnitPrice
 ```
 
 5.	Add and send a request to get a specific product, and only include the ID, name, and price properties, as shown in the following request:
 ```
-{{base_address}}products(77)/
+GET {{base_address}}products(77)/
   ?$select=ProductId,ProductName,UnitPrice
 ```
 
 6.	Add and send a request to get categories and their related products, as shown in the following request:
 ```
-{{base_address}}categories/
+GET {{base_address}}categories/
   ?$select=CategoryId,CategoryName
   &$expand=Products
 ```
 
 7.	Add and send a request to get a specific category and its related products, as shown in the following request:
 ```
-{{base_address}}categories(8)/
+GET {{base_address}}categories(8)/
   ?$select=CategoryId,CategoryName
   &$expand=Products
 ```
@@ -558,7 +558,7 @@ public IActionResult Get(int key, string version = "1")
 3.	In your preferred code editor, start the `Northwind.OData.Service` project web service.
 4.	In `odata-catalog-queries.http`, add a request to get the product with ID 50 using the v2 OData model, as shown in the following code:
 ```
-{{base_address}}v2/products(50)
+GET {{base_address}}v2/products(50)
 ```
 
 5.	Click **Send Request**, and note the response is the product with its name appended with `version 2.0`, as shown highlighted in the following output:
@@ -585,7 +585,7 @@ public IActionResult Get(int key, string version = "1")
 
 7.	In `odata-catalog-queries.http`, add a request to get the product with ID 50 using the default (v1) OData model, as shown in the following code:
 ```
-{{base_address}}products(50)
+GET {{base_address}}products(50)
 ```
 
 8.	Click **Send Request**, and note the response is the product with its name unmodified.
