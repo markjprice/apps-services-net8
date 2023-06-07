@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "Northwind.GraphQL.Client.Console"
+		},
+		{
+			"path": "Northwind.GraphQL.Client.Mvc"
+		},
+		{
+			"path": "Northwind.GraphQL.Service"
+		}
+	]
+}

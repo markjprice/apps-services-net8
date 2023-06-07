@@ -1,0 +1,108 @@
+﻿@using Northwind.EntityModels
+@using Northwind.GraphQL.Client.Mvc.Models @* for VS Code only *@
+@model IndexViewModel
+@{
+  ViewData["Title"] = "Products from GraphQL service";
+}
+<div class="text-center">
+  <h1 class="display-4">@ViewData["Title"]</h1>
+  <div class="card card-body">
+    <form>
+      Enter a category id
+      <input name="id" value="1" />
+      <input type="submit" />
+    </form>
+  </div>
+  @if (Model.Errors is not null)
+  {
+    <div class="alert alert-danger" role="alert">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td>Message</td>
+            <td>Path</td>
+            <td>Locations</td>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (Error error in Model.Errors)
+          {
+            <tr>
+              <td>@error.Message</td>
+              <td>
+                @if (error.Path is not null)
+                {
+                  @foreach (string path in error.Path)
+                  {
+                    <span class="badge bg-danger">@path</span>
+                  }
+                }
+              </td>
+              <td>
+                @if (error.Locations is not null)
+                {
+                  @foreach (Location location in error.Locations)
+                  {
+                    <span class="badge bg-danger">
+                      @location.Line, @location.Column
+                    </span>
+                  }
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (Model.Categories is not null)
+  {
+    <div>
+      <p class="alert alert-success" role="alert">
+        There are @Model.Categories.Count() products.
+      </p>
+      <p>
+        @foreach (Category category in Model.Categories)
+        {
+          <span class="badge bg-dark">
+            @category.CategoryId
+            @category.CategoryName
+          </span>
+        }
+      </p>
+    </div>
+  }
+  @if (Model.Products is not null)
+  {
+    <div>
+      <p class="alert alert-success" role="alert">
+        There are @Model.Products.Count() products.
+      </p>
+      <p>
+        @foreach (Product p in Model.Products)
+        {
+          <span class="badge bg-dark">
+            @p.ProductId
+            @p.ProductName
+            -
+            @(p.UnitsInStock is null ? "0" : p.UnitsInStock.Value) in stock
+          </span>
+        }
+      </p>
+    </div>
+  }
+  <p>
+    <a class="btn btn-primary" data-bs-toggle="collapse"
+       href="#collapseExample" role="button"
+       aria-expanded="false" aria-controls="collapseExample">
+      Show/Hide Details
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      Status code @((int)Model.Code): @Model.Code
+      <hr />
+      @Model.RawResponseBody
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <!--The following element is needed to prevent a compile error with 
+        Strawberry Shake and recent versions of Visual Studio 2022:
+        SS0006 Access to the path 'obj\\berry' is denied.-->
+    <StrawberryShake_State>
+      $(MSBuildProjectExtensionsPath)berry</StrawberryShake_State>
+  </PropertyGroup>
+
+  <!--An element like this will remove the file from the build process.
+  <ItemGroup>
+    <GraphQL Remove="seafoodProducts.graphql" />
+  </ItemGroup>
+  -->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0-*" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0-*" />
+    <PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="12.18.0" />
+    <PackageReference Include="StrawberryShake.Transport.Http" Version="12.18.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Using Include="System.Console" Static="true" />
+  </ItemGroup>
+
+</Project>

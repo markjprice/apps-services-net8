@@ -1,0 +1,166 @@
+﻿schema {
+  query: Query
+}
+
+type Query {
+  greeting: String!
+  farewell: String!
+  rollTheDie: Int!
+  categories: [Category!]!
+  category(categoryId: Int!): Category
+  products: [Product!]!
+  productsInCategory(categoryId: Int!): [Product!]!
+  productsByUnitPrice(minimumUnitPrice: Decimal!): [Product!]!
+}
+
+type Category {
+  categoryId: Int!
+  categoryName: String!
+  description: String
+  picture: [Byte!]
+  products: [Product!]!
+}
+
+type Product {
+  productId: Int!
+  productName: String!
+  supplierId: Int
+  categoryId: Int
+  quantityPerUnit: String
+  unitPrice: Decimal
+  unitsInStock: Short
+  unitsOnOrder: Short
+  reorderLevel: Short
+  discontinued: Boolean!
+  category: Category
+  orderDetails: [OrderDetail!]!
+  supplier: Supplier
+}
+
+"The built-in `Decimal` scalar type."
+scalar Decimal
+
+type Supplier {
+  supplierId: Int!
+  companyName: String!
+  contactName: String
+  contactTitle: String
+  address: String
+  city: String
+  region: String
+  postalCode: String
+  country: String
+  phone: String
+  fax: String
+  homePage: String
+  products: [Product!]!
+}
+
+type OrderDetail {
+  orderId: Int!
+  productId: Int!
+  unitPrice: Decimal!
+  quantity: Short!
+  discount: Float!
+  order: Order!
+  product: Product!
+}
+
+"The `Short` scalar type represents non-fractional signed whole 16-bit numeric values. Short can represent values between -(2^15) and 2^15 - 1."
+scalar Short
+
+"The `Byte` scalar type represents non-fractional whole numeric values. Byte can represent values between 0 and 255."
+scalar Byte
+
+type Order {
+  orderId: Int!
+  customerId: String
+  employeeId: Int
+  orderDate: DateTime
+  requiredDate: DateTime
+  shippedDate: DateTime
+  shipVia: Int
+  freight: Decimal
+  shipName: String
+  shipAddress: String
+  shipCity: String
+  shipRegion: String
+  shipPostalCode: String
+  shipCountry: String
+  customer: Customer
+  employee: Employee
+  orderDetails: [OrderDetail!]!
+  shipViaNavigation: Shipper
+}
+
+type Shipper {
+  shipperId: Int!
+  companyName: String!
+  phone: String
+  orders: [Order!]!
+}
+
+type Employee {
+  employeeId: Int!
+  lastName: String!
+  firstName: String!
+  title: String
+  titleOfCourtesy: String
+  birthDate: DateTime
+  hireDate: DateTime
+  address: String
+  city: String
+  region: String
+  postalCode: String
+  country: String
+  homePhone: String
+  extension: String
+  photo: [Byte!]
+  notes: String
+  reportsTo: Int
+  photoPath: String
+  inverseReportsToNavigation: [Employee!]!
+  orders: [Order!]!
+  reportsToNavigation: Employee
+  territories: [Territory!]!
+  lastRefreshed: DateTime!
+}
+
+type Customer {
+  customerId: String!
+  companyName: String!
+  contactName: String
+  contactTitle: String
+  address: String
+  city: String
+  region: String
+  postalCode: String
+  country: String
+  phone: String
+  fax: String
+  orders: [Order!]!
+  customerTypes: [CustomerDemographic!]!
+}
+
+"The `DateTime` scalar represents an ISO-8601 compliant date time type."
+scalar DateTime
+
+type CustomerDemographic {
+  customerTypeId: String!
+  customerDesc: String
+  customers: [Customer!]!
+}
+
+type Territory {
+  territoryId: String!
+  territoryDescription: String!
+  regionId: Int!
+  region: Region!
+  employees: [Employee!]!
+}
+
+type Region {
+  regionId: Int!
+  regionDescription: String!
+  territories: [Territory!]!
+}

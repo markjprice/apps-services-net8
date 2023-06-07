@@ -1,0 +1,56 @@
+﻿@using Northwind.Chat.Models
+@{
+  ViewData["Title"] = "SignalR Chat";
+}
+<div class="container">
+  <h1>@ViewData["Title"]</h1>
+  <hr />
+  <div class="row">
+    <div class="col">
+      <h2>Register User</h2>
+      <div class="mb-3">
+        <label for="myName" class="form-label">My name</label>
+        <input type="text" class="form-control"
+               id="myName" value="Alice" required />
+      </div>
+      <div class="mb-3">
+        <label for="myGroups" class="form-label">My groups</label>
+        <input type="text" class="form-control"
+               id="myGroups" value="Sales,IT" />
+      </div>
+      <div class="mb-3">
+        <input type="button" class="form-control"
+               id="registerButton" value="Register User" />
+      </div>
+    </div>
+    <div class="col">
+      <h2>Send Message</h2>
+      <div class="mb-3">
+        <label for="from" class="form-label">From</label>
+        <input type="text" class="form-control"
+               id="from" value="Alice" readonly />
+      </div>
+      <div class="mb-3">
+        <label for="to" class="form-label">To</label>
+        <input type="text" class="form-control" id="to" />
+      </div>
+      <div class="mb-3">
+        <label for="body" class="form-label">Body</label>
+        <input type="text" class="form-control" id="body" />
+      </div>
+      <div class="mb-3">
+        <input type="button" class="form-control"
+               id="sendButton" value="Send Message" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <hr />
+      <h2>Messages received</h2>
+      <ul id="messages"></ul>
+    </div>
+  </div>
+</div>
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
