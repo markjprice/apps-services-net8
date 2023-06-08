@@ -46,6 +46,7 @@
   - [Health checks and reliable web services](#health-checks-and-reliable-web-services)
   - [Exposing Data via the Web Using OData](#exposing-data-via-the-web-using-odata)
 - [Chapter 9 - Caching, Queuing, and Resilient Background Services](#chapter-9---caching-queuing-and-resilient-background-services)
+  - [Understanding service architecture](#understanding-service-architecture)
   - [Scheduled Jobs with Quartz.NET](#scheduled-jobs-with-quartznet)
   - [Background services with Hangfire](#background-services-with-hangfire)
   - [Queueing with RabbitMQ, Azure Service Bus, and Event Hub](#queueing-with-rabbitmq-azure-service-bus-and-event-hub)
@@ -379,6 +380,11 @@
 - [API versioning extension with ASP.NET Core OData 8](https://devblogs.microsoft.com/odata/api-versioning-extension-with-asp-net-core-odata-8/)
 
 # Chapter 9 - Caching, Queuing, and Resilient Background Services
+
+## Understanding service architecture
+
+- [Are networks now faster than disks?](https://serverfault.com/questions/238417/are-networks-now-faster-than-disks)
+- [The Infinite Space Between Words](https://blog.codinghorror.com/the-infinite-space-between-words/)
 
 ## Scheduled Jobs with Quartz.NET
 - [Quartz.NET](https://www.quartz-scheduler.net/)
