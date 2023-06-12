@@ -1,0 +1,66 @@
+﻿@using Northwind.EntityModels
+@model HomeProductsViewModel
+@{
+  ViewData["Title"] = "Products using Polly";
+}
+<div class="text-center">
+  <h1 class="display-4">@ViewData["Title"]</h1>
+  <div class="alert alert-info">
+    <p>
+      This page calls a web service endpoint that will randomly fail two out of three times.
+      It will use Polly to retry the call automatically.
+    </p>
+  </div>
+  @if (Model is not null)
+  {
+    if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+    {
+      <div class="alert alert-danger">
+        @Model.ErrorMessage
+      </div>
+    }
+    <form action="/home/products">
+      <input name="name" placeholder="Enter part of a product name"
+             value="@Model.NameContains" />
+      <input type="submit" value="Get Products" />
+      @if (!string.IsNullOrWhiteSpace(Model.NameContains))
+      {
+        <span>
+          Searched for:
+          <span class="badge bg-primary rounded-pill">
+            @Model.NameContains
+          </span>
+        </span>
+      }
+    </form>
+    <div>
+      @if (Model.Products is not null)
+      {
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Product Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            @if (Model.Products.Any())
+            {
+              @foreach (Product p in Model.Products)
+              {
+                <tr>
+                  <td>
+                    <a href="@(Model.BaseAddress)api/products/@p.ProductId">@p.ProductName</a>
+                  </td>
+                </tr>
+              }
+            }
+            else
+            {
+              <tr><td>0 products found.</td></tr>
+            }
+          </tbody>
+        </table>
+      }
+    </div>
+  }
+</div>

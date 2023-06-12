@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "Northwind.WebApi.Service"
+		},
+		{
+			"path": "Northwind.WebApi.Client.Mvc"
+		},
+		{
+			"path": "Northwind.Queue.Models"
+		},
+		{
+			"path": "Northwind.Queue.Consumer"
+		},
+		{
+			"path": "Northwind.Background.Workers"
+		},
+		{
+			"path": "Northwind.Background.Hangfire"
+		}
+	]
+}

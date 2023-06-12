@@ -1,0 +1,36 @@
+﻿@model HomeSendMessageViewModel
+@{
+  ViewData["Title"] = "Send a Message";
+}
+<div class="text-center">
+  <h1 class="display-4">@ViewData["Title"]</h1>
+
+  @if (Model is not null)
+  {
+    if (Model.Error is not null)
+    {
+      <div class="alert alert-danger">
+        <h2>Error</h2>
+        <p>@Model.Error</p>
+      </div>
+    }
+    if (Model.Info is not null)
+    {
+      <div class="alert alert-info">
+        <h2>Information</h2>
+        <p>@Model.Info</p>
+      </div>
+    }
+  }
+  <form asp-controller="Home" asp-action="SendMessage" method="post">
+    <div>
+      <label for="message">Message</label>
+      <input id="message" name="message" />
+    </div>
+    <div>
+      <label for="productId">Product ID</label>
+      <input id="productId" name="productId" />
+    </div>
+    <input type="submit" value="Send" />
+  </form>
+</div>
