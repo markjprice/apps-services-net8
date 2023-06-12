@@ -1,13 +1,13 @@
+**Book Links**
+
 - [Chapter 1 - Introducing Apps and Services with .NET](#chapter-1---introducing-apps-and-services-with-net)
   - [Visual Studio 2022 for Windows and Mac](#visual-studio-2022-for-windows-and-mac)
   - [Visual Studio Code](#visual-studio-code)
   - [Other C# code editors and platforms](#other-c-code-editors-and-platforms)
-  - [Command Line Interfaces](#command-line-interfaces)
+  - [Command-Line Interfaces](#command-line-interfaces)
   - [.NET](#net)
   - [C# language version and the journey to C# 11](#c-language-version-and-the-journey-to-c-11)
   - [C# implemented proposals](#c-implemented-proposals)
-  - [C# proposals being worked on](#c-proposals-being-worked-on)
-  - [C# language](#c-language)
   - [Azure and .NET](#azure-and-net)
   - [Help and learning](#help-and-learning)
   - [Assemblies and reflection](#assemblies-and-reflection)
@@ -26,48 +26,33 @@
   - [Azure Cosmos DB](#azure-cosmos-db)
 - [Chapter 5 - Multitasking and Concurrency](#chapter-5---multitasking-and-concurrency)
 - [Chapter 6 - Implementing Popular Third-Party Libraries](#chapter-6---implementing-popular-third-party-libraries)
-  - [Working with images](#working-with-images)
-  - [Serilog](#serilog)
-  - [Mapping objects](#mapping-objects)
-  - [FluentValidation](#fluentvalidation)
-  - [Fluent Assertions](#fluent-assertions)
-  - [QuestPDF](#questpdf)
 - [Chapter 7 - Handling Dates, Times, and Internationalization](#chapter-7---handling-dates-times-and-internationalization)
-  - [Dates and times](#dates-and-times)
-  - [Internationalization](#internationalization)
 - [Chapter 8 - Building and Securing Web Services with Minimal APIs](#chapter-8---building-and-securing-web-services-with-minimal-apis)
-  - [Web service technologies](#web-service-technologies)
-  - [Web Service design](#web-service-design)
+  - [Web service technologies and design](#web-service-technologies-and-design)
   - [Web service routing](#web-service-routing)
   - [Web service clients](#web-service-clients)
   - [Documenting web services](#documenting-web-services)
   - [Securing web services](#securing-web-services)
-  - [Security and privacy](#security-and-privacy)
-  - [Health checks and reliable web services](#health-checks-and-reliable-web-services)
   - [Exposing Data via the Web Using OData](#exposing-data-via-the-web-using-odata)
 - [Chapter 9 - Caching, Queuing, and Resilient Background Services](#chapter-9---caching-queuing-and-resilient-background-services)
   - [Understanding service architecture](#understanding-service-architecture)
-  - [Scheduled Jobs with Quartz.NET](#scheduled-jobs-with-quartznet)
-  - [Background services with Hangfire](#background-services-with-hangfire)
-  - [Queueing with RabbitMQ, Azure Service Bus, and Event Hub](#queueing-with-rabbitmq-azure-service-bus-and-event-hub)
   - [Caching with ASP.NET Core and Redis](#caching-with-aspnet-core-and-redis)
   - [Resilience with Polly](#resilience-with-polly)
+  - [Queueing with RabbitMQ, Azure Service Bus, and Event Hub](#queueing-with-rabbitmq-azure-service-bus-and-event-hub)
+  - [Background services](#background-services)
+  - [Health checks and reliable web services](#health-checks-and-reliable-web-services)
 - [Chapter 10 - Building Serverless Nanoservices Using Azure Functions](#chapter-10---building-serverless-nanoservices-using-azure-functions)
 - [Chapter 11 - Broadcasting Real-Time Communication Using SignalR](#chapter-11---broadcasting-real-time-communication-using-signalr)
 - [Chapter 12 - Combining Data Sources Using GraphQL](#chapter-12---combining-data-sources-using-graphql)
 - [Chapter 13 - Building Efficient Microservices Using gRPC](#chapter-13---building-efficient-microservices-using-grpc)
 - [Chapter 14 - Building Web User Interfaces Using ASP.NET Core](#chapter-14---building-web-user-interfaces-using-aspnet-core)
-  - [ASP.NET Core](#aspnet-core)
-  - [Razor views and layouts](#razor-views-and-layouts)
 - [Chapter 15 - Building Web Components Using Blazor](#chapter-15---building-web-components-using-blazor)
   - [Blazor hosting models](#blazor-hosting-models)
   - [Blazor components](#blazor-components)
   - [Advanced techniques](#advanced-techniques)
 - [Chapter 16 - Leveraging Open-Source Blazor Component Libraries](#chapter-16---leveraging-open-source-blazor-component-libraries)
-  - [Blazor resources](#blazor-resources)
 - [Chapter 17 - Building Mobile and Desktop Apps Using .NET MAUI](#chapter-17---building-mobile-and-desktop-apps-using-net-maui)
 - [Chapter 18 - Implementing Model-View-ViewModel for .NET MAUI](#chapter-18---implementing-model-view-viewmodel-for-net-maui)
-  - [MVVM](#mvvm)
 - [Chapter 19 - Integrating .NET MAUI Apps with Blazor and Native Platforms](#chapter-19---integrating-net-maui-apps-with-blazor-and-native-platforms)
 - [Chapter 20 - Introducing the Survey Project Challenge](#chapter-20---introducing-the-survey-project-challenge)
 - [Epilogue](#epilogue)
@@ -82,6 +67,7 @@
 - [Visual Studio for Windows documentation](https://learn.microsoft.com/en-us/visualstudio/windows/)
 - [MSBuild and 64-bit Visual Studio 2022](https://devblogs.microsoft.com/dotnet/msbuild-and-64-bit-visual-studio-2022/)
 - [Visual Studio 2022 for Mac is now available](https://devblogs.microsoft.com/visualstudio/visual-studio-2022-for-mac-is-now-available/)
+- [Visual Studio for Mac documentation](https://learn.microsoft.com/en-us/visualstudio/mac/)
 
 ## Visual Studio Code
 - [Download Visual Studio Code](https://code.visualstudio.com/)
@@ -96,12 +82,11 @@
 ## Other C# code editors and platforms
 - [Stack Overflow survey 2021 - Integrated development environment](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment)
 - [Stack Overflow survey 2019 - Most Popular Development Environments](https://insights.stackoverflow.com/survey/2019#development-environments-and-tools)
-- [Visual Studio for Mac documentation](https://learn.microsoft.com/en-us/visualstudio/mac/)
 - [GitHub Codespaces](https://docs.github.com/en/codespaces/overview)
 - [JetBrains Rider](https://www.jetbrains.com/rider/)
 - [Rider documentation](https://www.jetbrains.com/help/rider/Introduction.html)
 
-## Command Line Interfaces
+## Command-Line Interfaces
 - [Windows Terminal as your Default Command Line Experience](https://devblogs.microsoft.com/commandline/windows-terminal-as-your-default-command-line-experience/)
 - [.NET CLI overview](https://aka.ms/dotnet-cli-docs)
 
@@ -134,6 +119,14 @@
 - [C# language versioning](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/configure-language-version)
 - [EPIC - .NET 6 C# project templates use latest language idioms #3359](https://github.com/dotnet/templating/issues/3359)
 - [SDK support for implicit namespaces in C# projects #25066](https://github.com/dotnet/docs/issues/25066)
+- [C# Reference](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/)
+- [C# Programming Guide](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/)
+- [C# Keywords](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/index)
+- [Naming guidelines](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines)
+- [Types (C# Programming Guide)](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/)
+- [Statements (C# Programming Guide)](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/statements)
+- [Pattern matching overview](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/pattern-matching)
+- [Patterns (C# reference)](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns)
 
 ## C# implemented proposals
 - [C# 11](https://github.com/dotnet/csharplang/tree/main/proposals/csharp-11.0)
@@ -145,21 +138,9 @@
 - [C# 7.1](https://github.com/dotnet/csharplang/tree/main/proposals/csharp-7.1)
 - [C# 7.0](https://github.com/dotnet/csharplang/tree/main/proposals/csharp-7.0)
 - [C# 6.0](https://github.com/dotnet/csharplang/tree/main/proposals/csharp-6.0)
-
-## C# proposals being worked on
 - [Proposal: Required Properties #3630](https://github.com/dotnet/csharplang/issues/3630)
 - [Proposal: Semi-Auto-Properties; field keyword #140](https://github.com/dotnet/csharplang/issues/140)
 - [Working Set (of proposals)](https://github.com/dotnet/csharplang/milestone/19)
-
-## C# language
-- [C# Reference](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/)
-- [C# Programming Guide](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/)
-- [C# Keywords](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/index)
-- [Naming guidelines](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/naming-guidelines)
-- [Types (C# Programming Guide)](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/)
-- [Statements (C# Programming Guide)](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/statements)
-- [Pattern matching overview](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/pattern-matching)
-- [Patterns (C# reference)](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns)
 
 ## Azure and .NET
 - [State of Azure + .NET | .NET Conf 2022](https://www.youtube.com/watch?v=NBbI52liUR4)
@@ -191,7 +172,6 @@
 - [Introducing C# Source Generators](https://devblogs.microsoft.com/dotnet/introducing-c-source-generators/)
 - [Source Generators Cookbook](https://github.com/dotnet/roslyn/blob/main/docs/features/source-generators.cookbook.md)
 - [C# Source Generators](https://github.com/amis92/csharp-source-generators): "A list of C# Source Generators (not necessarily awesome), because I haven't found a good list yet."
-
 
 # Chapter 2 - Managing Relational Data Using SQL Server
 
@@ -279,59 +259,41 @@
 - [Performance Improvements in .NET 7 | .NET Conf 2022](https://www.youtube.com/watch?v=yNPEdaxkTZw)
 
 # Chapter 6 - Implementing Popular Third-Party Libraries
-
-## Working with images
 - [ImageSharp](https://github.com/SixLabors/ImageSharp)
-
-## Serilog
+- [Humanizer](https://github.com/Humanizr/Humanizer)
 - [Serilog](https://serilog.net/)
-
-## Mapping objects
 - [AutoMapper, a convention-based object-object mapper](https://automapper.org)
-
-## FluentValidation
 - [FluentValidation documentation](https://docs.fluentvalidation.net/en/latest/)
-
-## Fluent Assertions
 - [Fluent Assertions - Introduction](https://fluentassertions.com/introduction)
-
-## QuestPDF
 - [Modern .NET library for PDF document generation](https://www.questpdf.com/)
 
 # Chapter 7 - Handling Dates, Times, and Internationalization
 
-## Dates and times
 - [Date, Time, and Time Zone Enhancements in .NET 6](https://devblogs.microsoft.com/dotnet/date-time-and-time-zone-enhancements-in-net-6/)
 - [.NET 6: Date and Time Structures](https://www.infoq.com/news/2021/04/Net6-Date-Time/)
 - [Noda Time: A better date and time API for .NET](https://nodatime.org/)
-
-## Internationalization
 - [Globalizing and localizing .NET applications](https://learn.microsoft.com/en-us/dotnet/standard/globalization-localization/)
 - [Time zones](https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/)
 
 # Chapter 8 - Building and Securing Web Services with Minimal APIs
 
-## Web service technologies
+## Web service technologies and design
 - [Media types](http://en.wikipedia.org/wiki/Media_type)
-- [WS-* standards](https://en.wikipedia.org/wiki/List_of_web_service_specifications)
-- [Bring WCF apps to the latest .NET with CoreWCF and Upgrade Assistant](https://devblogs.microsoft.com/dotnet/migration-wcf-to-corewcf-upgrade-assistant/)
 - [HTTP OPTIONS method and other HTTP methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS)
 - [HTTP POST requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)
 - [Create web APIs with ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/web-api/)
-
-## Web Service design
 - [RESTful web API design](https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design)
 - [Making the Most of Minimal APIs in .NET 7 | .NET Conf 2022](https://www.youtube.com/watch?v=HXHwtEjQoyM)
 - [Building modern high performance services with ASP.NET Core and .NET 7](https://www.youtube.com/watch?v=P7lmBFuw92s)
 
 ## Web service routing
-- [Design decisions around endpoint routing](https://devblogs.microsoft.com/aspnet/asp-net-core-2-2-0-preview1-endpoint-routing/)
 - [Endpoint routing](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing)
 - [Previous routing system](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-2.1)
 - [Route constraints](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing#route-constraint-reference)
 - [Dependency injection for ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection)
 - [Proposed standard for Problem Details for HTTP APIs](https://tools.ietf.org/html/rfc7807)
 - [Implementing problem details](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.problemdetails)
+- [Design decisions around endpoint routing](https://devblogs.microsoft.com/aspnet/asp-net-core-2-2-0-preview1-endpoint-routing/)
 
 ## Web service clients
 - [REST Client](https://github.com/Huachao/vscode-restclient/blob/master/README.md)
@@ -354,20 +316,11 @@
 - [Verifying that the tokens used to call your web APIs are requested with the expected claims](https://learn.microsoft.com/en-us/azure/active-directory/develop/scenario-protected-web-api-verification-scope-app-roles)
 - [CORS can be enabled to allow different origin requests](https://learn.microsoft.com/en-us/aspnet/core/security/cors)
 - [Common HTTP security headers that you might want to add](https://www.meziantou.net/security-headers-in-asp-net-core.htm)
-
-## Security and privacy
 - [Built-in features for compliance with modern privacy requirements like GDPR](https://learn.microsoft.com/en-us/aspnet/core/security/gdpr)
 - [ASP.NET Core's support for authenticator apps](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity-enable-qrcodes)
 - [Identity UI library](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/scaffold-identity?tabs=netcore-cli)
 - [Authorization](https://learn.microsoft.com/en-us/aspnet/core/security/authorization/introduction)
 - [Anti-forgery tokens](https://learn.microsoft.com/en-us/aspnet/core/security/anti-request-forgery)
-
-## Health checks and reliable web services
-- [Health checks in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks)
-- [How to extend the health check response](https://blogs.msdn.microsoft.com/webdev/2018/08/22/asp-net-core-2-2-0-preview1-healthcheck/)
-- [How Polly can make your web services more reliable](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly)
-- [Use HttpClientFactory to implement resilient HTTP requests](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
-- [Redis](https://redis.io)
 
 ## Exposing Data via the Web Using OData
 
@@ -386,21 +339,35 @@
 - [Are networks now faster than disks?](https://serverfault.com/questions/238417/are-networks-now-faster-than-disks)
 - [The Infinite Space Between Words](https://blog.codinghorror.com/the-infinite-space-between-words/)
 
-## Scheduled Jobs with Quartz.NET
-- [Quartz.NET](https://www.quartz-scheduler.net/)
-- [Quartz.NET GitHub repository](https://github.com/quartznet/quartznet)
-
-## Background services with Hangfire
-
-## Queueing with RabbitMQ, Azure Service Bus, and Event Hub
-
 ## Caching with ASP.NET Core and Redis
+- [Overview of caching in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/overview)
+- [Cache in-memory in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/memory)
+- [Distributed caching in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed)
+- [Distributed Redis Cache](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed#distributed-redis-cache)
+- [Redis C#/.NET guide](https://redis.io/docs/clients/dotnet/)
+- [Response caching in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/performance/caching/response)
 
 ## Resilience with Polly
 - [The Polly Project](http://www.thepollyproject.org/)
 - [Resilience policies](https://github.com/App-vNext/Polly#resilience-policies)
 - [Retry with jitter](https://github.com/App-vNext/Polly/wiki/Retry-with-jitter)
 - [Transient fault handling and proactive resilience engineering](https://github.com/App-vNext/Polly/wiki/Transient-fault-handling-and-proactive-resilience-engineering)
+
+## Queueing with RabbitMQ, Azure Service Bus, and Event Hub
+
+## Background services
+- [Worker services in .NET](https://learn.microsoft.com/en-us/dotnet/core/extensions/workers)
+- [Background tasks with hosted services in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services)
+- [Implement the IHostedService interface](https://learn.microsoft.com/en-us/dotnet/core/extensions/timer-service)
+- [Hangfire](https://www.hangfire.io/)
+- [Quartz.NET](https://www.quartz-scheduler.net/)
+- [Quartz.NET GitHub repository](https://github.com/quartznet/quartznet)
+
+## Health checks and reliable web services
+- [Health checks in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks)
+- [How to extend the health check response](https://blogs.msdn.microsoft.com/webdev/2018/08/22/asp-net-core-2-2-0-preview1-healthcheck/)
+- [How Polly can make your web services more reliable](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly)
+- [Use HttpClientFactory to implement resilient HTTP requests](https://learn.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
 
 # Chapter 10 - Building Serverless Nanoservices Using Azure Functions
 
@@ -438,13 +405,10 @@
 
 # Chapter 14 - Building Web User Interfaces Using ASP.NET Core
 
-## ASP.NET Core
 - [State of ASP.NET Core | .NET Conf 2022](https://www.youtube.com/watch?v=gNyEpkJMmcM)
 - [ASP.NET Core fundamentals](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/)
 - [Overview of ASP.NET Core MVC](https://learn.microsoft.com/en-us/aspnet/core/mvc/overview)
 - [Free TLS/SSL certificates](https://letsencrypt.org)
-
-## Razor views and layouts
 - [Razor syntax reference for ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/mvc/views/razor)
 - [HtmlHelper class](https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.mvc.viewfeatures.htmlhelper)
 - [Views in ASP.NET Core MVC](https://learn.microsoft.com/en-us/aspnet/core/mvc/views/overview)
@@ -482,7 +446,6 @@
 
 # Chapter 16 - Leveraging Open-Source Blazor Component Libraries
 
-## Blazor resources
 - [Awesome Blazor: A collection of awesome Blazor resources](https://github.com/AdrienTorris/awesome-blazor)
 - [Blazor University: Learn the new .NET SPA framework from Microsoft](https://blazor-university.com)
 - [Blazor - app building workshop: In this workshop, we will build a complete Blazor app and learn about the various Blazor framework features along the way](https://github.com/dotnet-presentations/blazor-workshop/)
@@ -517,7 +480,6 @@
 
 # Chapter 18 - Implementing Model-View-ViewModel for .NET MAUI
 
-## MVVM
 - [MVVM is easier than ever before with Source Generators, .NET 7, and the MVVM Toolkit| .NET Conf 2022](https://www.youtube.com/watch?v=oQluWTag-e4)
 
 # Chapter 19 - Integrating .NET MAUI Apps with Blazor and Native Platforms
