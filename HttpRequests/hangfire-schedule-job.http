@@ -1,0 +1,10 @@
+### Configure a variable for the Hangfire web service base address.
+@base_address = https://localhost:5095/
+
+POST {{base_address}}schedulejob
+Content-Type: application/json
+
+{
+  "message": "Hangfire is awesome!",
+  "seconds": 30
+}

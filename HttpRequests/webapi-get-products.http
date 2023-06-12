@@ -1,4 +1,7 @@
 ### Configure a variable for the web service base address.
+### Use port 5081 for testing the Chapter 8 web service.
+### Use port 5091 for testing the Chapter 9 web service.
+
 @base_address = https://localhost:5081/api/products/
 
 ### Get first page of 10 products that are in stock and not discontinued.
