@@ -398,6 +398,9 @@
 
 ## Resilience with Polly
 - [The Polly Project](http://www.thepollyproject.org/)
+- [Resilience policies](https://github.com/App-vNext/Polly#resilience-policies)
+- [Retry with jitter](https://github.com/App-vNext/Polly/wiki/Retry-with-jitter)
+- [Transient fault handling and proactive resilience engineering](https://github.com/App-vNext/Polly/wiki/Transient-fault-handling-and-proactive-resilience-engineering)
 
 # Chapter 10 - Building Serverless Nanoservices Using Azure Functions
 
