@@ -1,0 +1,22 @@
+﻿@using Google.Protobuf.Collections
+@using Northwind.Grpc.Client.Mvc
+@model RepeatedField<ProductReply>
+@{
+  ViewData["Title"] = "Products";
+}
+<h1>@ViewData["Title"]</h1>
+<table>
+  <thead>
+    <tr><th>Product ID</th><th>Product Name</th><th>Unit Price</th></tr>
+  </thead>
+  <tbody>
+    @foreach (ProductReply p in Model)
+    {
+      <tr>
+        <td>@p.ProductId</td>
+        <td>@p.ProductName</td>
+        <td>@p.UnitPrice</td>
+      </tr>
+    }
+  </tbody>
+</table>

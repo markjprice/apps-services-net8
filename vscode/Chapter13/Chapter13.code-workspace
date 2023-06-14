@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "Northwind.Grpc.Service"
+		},
+		{
+			"path": "Northwind.Grpc.Client.Mvc"
+		}
+	]
+}

@@ -1,0 +1,30 @@
+﻿@using Northwind.Grpc.Client.Mvc.Models
+@model HomeIndexViewModel
+@{
+  ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+  <h1 class="display-4">Welcome</h1>
+  <div class="alert alert-secondary">
+    <form>
+      <input name="name" placeholder="Enter your name" />
+      <input type="submit" />
+    </form>
+    <form>
+      <input name="id" placeholder="Enter a shipper id" />
+      <input type="submit" />
+    </form>
+  </div>
+  @if (Model.Greeting is not null)
+  {
+    <p class="alert alert-primary">@Model.Greeting</p>
+  }
+  @if (Model.ErrorMessage is not null)
+  {
+    <p class="alert alert-danger">@Model.ErrorMessage</p>
+  }
+  @if (Model.ShipperSummary is not null)
+  {
+    <p class="alert alert-primary">@Model.ShipperSummary</p>
+  }
+</div>
