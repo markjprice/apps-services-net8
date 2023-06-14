@@ -1,19 +1,14 @@
 syntax = "proto3";
 
-option csharp_namespace = "Northwind.Grpc.Service";
+option csharp_namespace = "Northwind.Grpc.Client.Mvc";
 
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";
-import "google/api/annotations.proto";
 
 package employee;
 
 service Employee {
-  rpc GetEmployee (EmployeeRequest) returns (EmployeeReply) {
-    option (google.api.http) = {
-      get: "/v1/employee/{employee_id}"
-    };
-  };
+  rpc GetEmployee (EmployeeRequest) returns (EmployeeReply);
   rpc GetEmployees (EmployeesRequest) returns (EmployeesReply);
 }
 

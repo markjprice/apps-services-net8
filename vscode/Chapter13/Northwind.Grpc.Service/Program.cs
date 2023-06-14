@@ -8,7 +8,7 @@ using Northwind.EntityModels; // To use AddNorthwindContext method.
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddGrpc();
+builder.Services.AddGrpc().AddJsonTranscoding();
 
 builder.Services.AddNorthwindContext();
 

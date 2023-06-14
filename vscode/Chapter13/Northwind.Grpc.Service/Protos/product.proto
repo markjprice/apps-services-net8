@@ -2,6 +2,8 @@ syntax = "proto3";
 
 option csharp_namespace = "Northwind.Grpc.Service";
 
+import "Protos/decimal.proto";
+
 package product;
 
 service Product {
@@ -19,7 +21,7 @@ message ProductsRequest {
 }
 
 message ProductsMinimumPriceRequest {
-  string minimum_price = 1;
+  decimal.DecimalValue minimum_price = 1;
 }
 
 message ProductReply {
@@ -28,7 +30,7 @@ message ProductReply {
   int32 supplier_id = 3;
   int32 category_id = 4;
   string quantity_per_unit = 5;
-  string unit_price = 6;
+  decimal.DecimalValue unit_price = 6;
   int32 units_in_stock = 7;
   int32 units_on_order = 8;
   int32 reorder_level = 9;

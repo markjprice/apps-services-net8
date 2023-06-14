@@ -3,7 +3,6 @@ using Northwind.Grpc.Client.Mvc.Models;
 using System.Diagnostics;
 using Grpc.Net.ClientFactory; // To use GrpcClientFactory.
 using Grpc.Core; // To use AsyncUnaryCall<T>.
-using System.Xml.Linq;
 
 namespace Northwind.Grpc.Client.Mvc.Controllers
 {
@@ -13,14 +12,17 @@ namespace Northwind.Grpc.Client.Mvc.Controllers
     private readonly Greeter.GreeterClient _greeterClient;
     private readonly Shipper.ShipperClient _shipperClient;
     private readonly Product.ProductClient _productClient;
+    private readonly Employee.EmployeeClient _employeeClient;
 
     public HomeController(ILogger<HomeController> logger,
       GrpcClientFactory factory)
     {
       _logger = logger;
+
       _greeterClient = factory.CreateClient<Greeter.GreeterClient>("Greeter");
       _shipperClient = factory.CreateClient<Shipper.ShipperClient>("Shipper");
       _productClient = factory.CreateClient<Product.ProductClient>("Product");
+      _employeeClient = factory.CreateClient<Employee.EmployeeClient>("Employee");
     }
 
     public async Task<IActionResult> Index(
@@ -75,12 +77,20 @@ namespace Northwind.Grpc.Client.Mvc.Controllers
       return View(model);
     }
 
-    public async Task<IActionResult> Products()
+    public async Task<IActionResult> Products(decimal minimumPrice = 0M)
     {
-      ProductsReply reply = await _productClient.GetProductsAsync(
-        new ProductsRequest());
+      ProductsReply reply = await _productClient.GetProductsMinimumPriceAsync(
+        new ProductsMinimumPriceRequest() { MinimumPrice = minimumPrice });
 
       return View(reply.Products);
+    }
+
+    public async Task<IActionResult> Employees()
+    {
+      EmployeesReply reply = await _employeeClient.GetEmployeesAsync(
+        new EmployeesRequest());
+
+      return View(reply.Employees);
     }
 
     public IActionResult Privacy()

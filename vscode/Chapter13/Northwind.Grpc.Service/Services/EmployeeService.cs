@@ -1,6 +1,8 @@
 ﻿using Grpc.Core; // To use ServerCallContext.
 using Microsoft.Data.SqlClient; // To use SqlConnection and so on.
 using System.Data; // To use CommandType.
+using Google.Protobuf; // To use ByteString.
+using Google.Protobuf.WellKnownTypes; // To use ToTimestamp method.
 
 namespace Northwind.Grpc.Service.Services;
 
@@ -43,12 +45,36 @@ public class EmployeeService : Employee.EmployeeBase
 
   private EmployeeReply ReaderToEmployee(SqlDataReader r)
   {
-    return new()
-    {
-      EmployeeId = r.GetInt32("ProductId"),
-      LastName = r.GetString("LastName"),
-      FirstName = r.GetString("FirstName"),
-    };
+    EmployeeReply e = new();
+
+    e.EmployeeId = r.GetInt32("EmployeeId");
+    e.LastName = r.GetString("LastName");
+    e.FirstName = r.GetString("FirstName");
+    e.Title = r.GetString("Title");
+    e.TitleOfCourtesy = r.GetString("TitleOfCourtesy");
+
+    // We must convert DateTime to UTC DateTime and then to Timestamp.
+    e.BirthDate = r.GetDateTime("BirthDate").ToUniversalTime().ToTimestamp();
+    e.HireDate = r.GetDateTime("HireDate").ToUniversalTime().ToTimestamp();
+
+    e.Address = r.GetString("Address");
+    e.City = r.GetString("City");
+    e.Region = r.IsDBNull("Region") ? string.Empty : r.GetString("Region");
+    e.PostalCode = r.GetString("PostalCode");
+    e.Country = r.GetString("Country");
+    e.HomePhone = r.GetString("HomePhone");
+    e.Extension = r.GetString("Extension");
+
+    // We must convert byte[] to ByteString.
+    e.Photo = r.IsDBNull("Photo") ? ByteString.Empty 
+      : ByteString.FromStream(r.GetStream("Photo"));
+
+    // Any nullable column must be checked for DBNull.
+    e.Notes = r.IsDBNull("Notes") ? string.Empty : r.GetString("Notes");
+    e.ReportsTo = r.IsDBNull("ReportsTo") ? 0 : r.GetInt32("ReportsTo");
+    e.PhotoPath = r.IsDBNull("PhotoPath") ? string.Empty : r.GetString("PhotoPath");
+
+    return e;
   }
 
   public override async Task<EmployeeReply?> GetEmployee(

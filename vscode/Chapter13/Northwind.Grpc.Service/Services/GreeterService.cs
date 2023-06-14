@@ -11,12 +11,22 @@ namespace Northwind.Grpc.Service.Services
       _logger = logger;
     }
 
-    public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+    public override async Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
     {
-      return Task.FromResult(new HelloReply
+      await Task.Delay(1000);
+
+      if (Random.Shared.Next(1, 4) == 1)
       {
-        Message = "Hello " + request.Name
-      });
+        return new HelloReply
+        {
+          Message = "Hello " + request.Name
+        };
+      }
+      else
+      {
+        throw new RpcException(new Status(StatusCode.Unavailable,
+          "Service is temporarily unavailable. Try again later."));
+      }
     }
   }
 }

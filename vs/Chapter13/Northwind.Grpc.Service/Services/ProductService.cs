@@ -43,19 +43,23 @@ public class ProductService : Product.ProductBase
 
   private ProductReply ReaderToProduct(SqlDataReader r)
   {
-    return new()
-    {
-      ProductId = r.GetInt32("ProductId"),
-      ProductName = r.GetString("ProductName"),
-      SupplierId = r.GetInt32("SupplierId"),
-      CategoryId = r.GetInt32("CategoryId"),
-      QuantityPerUnit = r.GetString("QuantityPerUnit"),
-      UnitPrice = r.GetDecimal("UnitPrice").ToString(),
-      UnitsInStock = r.GetInt16("UnitsInStock"),
-      UnitsOnOrder = r.GetInt16("UnitsOnOrder"),
-      ReorderLevel = r.GetInt16("ReorderLevel"),
-      Discontinued = r.GetBoolean("Discontinued")
-    };
+    ProductReply p = new();
+
+    p.ProductId = r.GetInt32("ProductId");
+    p.ProductName = r.GetString("ProductName");
+    p.SupplierId = r.GetInt32("SupplierId");
+    p.CategoryId = r.GetInt32("CategoryId");
+    p.QuantityPerUnit = r.GetString("QuantityPerUnit");
+
+    // Uses our custom conversion from decimal to DecimalValue.
+    p.UnitPrice = r.GetDecimal("UnitPrice");
+
+    p.UnitsInStock = r.GetInt16("UnitsInStock");
+    p.UnitsOnOrder = r.GetInt16("UnitsOnOrder");
+    p.ReorderLevel = r.GetInt16("ReorderLevel");
+    p.Discontinued = r.GetBoolean("Discontinued");
+
+    return p;
   }
 
   public override async Task<ProductReply?> GetProduct(
@@ -107,7 +111,10 @@ public class ProductService : Product.ProductBase
   {
     SqlCommand cmd = await GetCommand();
     cmd.CommandText = "SELECT * FROM Products WHERE UnitPrice >= @price";
-    cmd.Parameters.AddWithValue("price", request.MinimumPrice);
+
+    // We must cast DecimalValue to a decimal value because SqlClient
+    // does not understand what to do with a DecimalValue.
+    cmd.Parameters.AddWithValue("price", (decimal)request.MinimumPrice);
 
     SqlDataReader r = await cmd.ExecuteReaderAsync(
       CommandBehavior.SingleResult);

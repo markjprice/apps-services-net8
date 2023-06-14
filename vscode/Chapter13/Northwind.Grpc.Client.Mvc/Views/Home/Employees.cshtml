@@ -1,0 +1,35 @@
+﻿@using Google.Protobuf.Collections
+@using Northwind.Grpc.Client.Mvc
+@model RepeatedField<EmployeeReply>
+@{
+  ViewData["Title"] = "Employees";
+}
+<h1>@ViewData["Title"]</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Employee ID</th>
+      <th>Full Name</th>
+      <th>Job Title</th>
+      <th>Address</th>
+      <th>Birth Date</th>
+      <th>Photo</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (EmployeeReply e in Model)
+    {
+      <tr>
+        <td>@e.EmployeeId</td>
+        <td>@e.TitleOfCourtesy @e.FirstName @e.LastName</td>
+        <td>@e.Title</td>
+        <td>@e.Address<br />@e.City<br />@e.Region<br />
+            @e.PostalCode<br />@e.Country</td>
+        <td>@e.BirthDate.ToDateTimeOffset().ToString("D")</td>
+        <td><img src="data:image/jpg;base64,
+          @Convert.ToBase64String(e.Photo.ToByteArray())" />
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

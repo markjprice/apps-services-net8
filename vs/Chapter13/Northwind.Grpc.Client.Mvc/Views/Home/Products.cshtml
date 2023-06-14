@@ -3,11 +3,24 @@
 @model RepeatedField<ProductReply>
 @{
   ViewData["Title"] = "Products";
+  decimal price = 0;
 }
 <h1>@ViewData["Title"]</h1>
-<table>
+<form asp-action="Products" method="post">
+  <input name="minimumPrice" placeholder="Enter a minimum unit price" />
+  <input type="submit" value="Filter Products" />
+</form>
+<table class="table table-bordered">
   <thead>
-    <tr><th>Product ID</th><th>Product Name</th><th>Unit Price</th></tr>
+    <tr>
+      <th>Product ID</th>
+      <th>Product Name</th>
+      <th>Unit Price</th>
+      <th>Units In Stock</th>
+      <th>Units On Order</th>
+      <th>Reorder Level</th>
+      <th>Discontinued</th>
+    </tr>
   </thead>
   <tbody>
     @foreach (ProductReply p in Model)
@@ -15,7 +28,12 @@
       <tr>
         <td>@p.ProductId</td>
         <td>@p.ProductName</td>
-        <td>@p.UnitPrice</td>
+        @{ price = p.UnitPrice; }
+        <td>@price.ToString("C")</td>
+        <td>@p.UnitsInStock</td>
+        <td>@p.UnitsOnOrder</td>
+        <td>@p.ReorderLevel</td>
+        <td>@p.Discontinued</td>
       </tr>
     }
   </tbody>
