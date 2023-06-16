@@ -1,6 +1,70 @@
-﻿@{
+﻿@inject NorthwindContext db
+@inject IWebHostEnvironment webhost
+@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
+@functions {
+  public async Task<IDictionary<string, string>> GetShipperData()
+  {
+    // Find the shipper with ID of 1.
+    Shipper? shipper = await db.Shippers.FindAsync(1);
 
+    Dictionary<string, string> keyValuePairs = new();
+
+    if (shipper != null)
+    {
+      keyValuePairs = new()
+      {
+        { "ShipperId", shipper.ShipperId.ToString() },
+        { "CompanyName", shipper.CompanyName },
+        { "Phone", shipper.Phone ?? string.Empty }
+      };
+    }
+
+    return keyValuePairs;
+  }
+}
+<h1>@ViewData["Title"]</h1>
+<environment names="Development,Staging">
+  <div class="alert alert-warning">
+    <h2>Attention developers and testers</h2>
+    <p>
+      This is a warning that only developers and testers will see.
+      Current environment:
+      <span class="badge bg-warning">@webhost.EnvironmentName</span>
+    </p>
+  </div>
+</environment>
+<environment names="Production">
+  <div class="alert alert-info">
+    <h2>Welcome, visitor!</h2>
+    <p>
+      This is information that only a visitor to the production website
+      will see. Current environment:
+      <span class="badge bg-info">@webhost.EnvironmentName</span>
+    </p>
+  </div>
+</environment>
 <p>Use this page to detail your site's privacy policy.</p>
+<p>
+  <a asp-controller="Home" asp-action="Index"
+     class="btn btn-primary" role="button">Orders</a>
+
+  <a asp-controller="Home" asp-protocol="https"
+     class="btn btn-outline-primary" role="button">This Page</a>
+
+  <a asp-controller="Home" asp-action="Index" asp-route-id="ALFKI"
+     class="btn btn-outline-primary" role="button">
+    Orders for Alfreds Futterkiste
+  </a>
+
+  <a asp-controller="Home" asp-action="Index" asp-route-country="Brazil"
+     class="btn btn-outline-primary" role="button">Orders in Brazil</a>
+
+  <a asp-controller="Home" asp-action="Index" asp-fragment="endOfTable"
+     class="btn btn-outline-primary">Orders (end of table)</a>
+
+  <a asp-controller="Home" asp-action="Shipper"
+     asp-all-route-data="await GetShipperData()"
+     class="btn btn-outline-primary">Shipper</a>
+</p>

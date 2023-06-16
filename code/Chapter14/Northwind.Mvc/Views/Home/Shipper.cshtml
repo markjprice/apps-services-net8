@@ -1,0 +1,43 @@
+﻿@model Shipper
+@{
+  ViewData["Title"] = "Shippers";
+}
+<h1>@ViewData["Title"]</h1>
+<h2>Without Form Tag Helper</h2>
+<div>
+  <div class="mb-3">
+    <label for="shipperIdInput" class="form-label">Shipper Id</label>
+    <input type="number" class="form-control" id="shipperIdInput"
+           value="@Model.ShipperId">
+  </div>
+  <div class="mb-3">
+    <label for="companyNameInput" class="form-label">Company Name</label>
+    <input class="form-control" id="companyNameInput"
+           value="@Model.CompanyName">
+  </div>
+  <div class="mb-3">
+    <label for="phoneInput" class="form-label">Phone</label>
+    <input class="form-control" id="phoneInput" value="@Model.Phone">
+  </div>
+</div>
+<h2>With Form Tag Helper</h2>
+<form asp-controller="Home" asp-action="ProcessShipper"
+      class="form-horizontal" role="form">
+  <div>
+    <div class="mb-3">
+      <label asp-for="ShipperId" class="form-label" />
+      <input asp-for="ShipperId" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label asp-for="CompanyName" class="form-label" />
+      <input asp-for="CompanyName" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label asp-for="Phone" class="form-label" />
+      <input asp-for="Phone" class="form-control">
+    </div>
+    <div class="mb-3">
+      <input type="submit" class="form-control">
+    </div>
+  </div>
+</form>

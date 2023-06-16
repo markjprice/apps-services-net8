@@ -18,11 +18,23 @@ namespace Northwind.Mvc.Controllers
       _db = db;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(
+      string? id = null, string? country = null)
     {
       IEnumerable<Order> model = _db.Orders
         .Include(order => order.Customer)
-        .Include(order => order.OrderDetails)
+        .Include(order => order.OrderDetails);
+
+      if (id is not null)
+      {
+        model = model.Where(order => order.Customer?.CustomerId == id);
+      }
+      else if (country is not null)
+      {
+        model = model.Where(order => order.Customer?.Country == country);
+      }
+
+      model = model
         .OrderByDescending(order => order.OrderDetails
           .Sum(detail => detail.Quantity * detail.UnitPrice))
         .AsEnumerable();
@@ -39,6 +51,18 @@ namespace Northwind.Mvc.Controllers
     public IActionResult Error()
     {
       return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    public IActionResult Shipper(Shipper shipper)
+    {
+      return View(shipper);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult ProcessShipper(Shipper shipper)
+    {
+      return Json(shipper);
     }
   }
 }

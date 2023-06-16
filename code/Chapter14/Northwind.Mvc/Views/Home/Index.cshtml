@@ -1,18 +1,38 @@
-﻿@model IEnumerable<Order>
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model IEnumerable<Order>
+@inject IViewLocalizer Localizer
 @{
-  ViewData["Title"] = "Home Page";
+  ViewData["Title"] = Localizer["Orders"];
 }
 <div class="text-center">
   <h1 class="display-4">@ViewData["Title"]</h1>
+  <div class="row">
+    <div class="col">
+      <h2>Live</h2>
+      <p class="alert alert-info">
+        UTC: @DateTime.UtcNow.ToLongDateString() at
+        @DateTime.UtcNow.ToLongTimeString()
+      </p>
+    </div>
+    <div class="col">
+      <h2>Cached</h2>
+      <p class="alert alert-secondary">
+        <cache expires-after="@TimeSpan.FromSeconds(10)">
+          UTC: @DateTime.UtcNow.ToLongDateString() at
+          @DateTime.UtcNow.ToLongTimeString()
+        </cache>
+      </p>
+    </div>
+  </div>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>Order ID</th>
-        <th>Order Date</th>
-        <th>Company Name</th>
-        <th>Country</th>
-        <th>Item Count</th>
-        <th>Order Total</th>
+        <th>@Localizer["Order ID"]</th>
+        <th>@Localizer["Order Date"]</th>
+        <th>@Localizer["Company Name"]</th>
+        <th>@Localizer["Country"]</th>
+        <th>@Localizer["Item Count"]</th>
+        <th>@Localizer["Order Total"]</th>
       </tr>
     </thead>
     <tbody>
@@ -29,4 +49,5 @@
       }
     </tbody>
   </table>
+  <a id="endOfTable" />
 </div>
