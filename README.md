@@ -14,42 +14,42 @@ All of my books on my publisher Packt's website: https://subscription.packtpub.c
 
 ## Code solutions for Visual Studio 2022 and Visual Studio Code
 
-Visual Studio Code now has an extension named C# Dev Kit that includes a Solution Explorer so it can better work with Visual Studio 2022 solution files. All three Microsoft code editors/IDEs, Visual Studio 2022 for Windows, Visual Studio 2022 for Mac, and Visual Studio Code + C# Dev Kit can now use the same code solution files and projects for each chapter: [/code](/code). 
+Visual Studio Code now has an extension named **C# Dev Kit** that includes a solution explorer so it can better work with Visual Studio 2022 solution files. Visual Studio 2022 for Windows, Visual Studio 2022 for Mac, and Visual Studio Code + C# Dev Kit can now use the same code solution files and projects for each chapter, found here: [/code](/code). 
 
-> **For Visual Studio Code:** To use the chapter solution files with Visual Studio Code, install the **C# Dev Kit** extension. Then open the `ChapterNN` folder that contains a `ChapterNN.sln` solution file and wait for the **SOLUTION EXPLORER** pane to appear at the bottom of the **EXPLORER**. You can drag and drop to reorder the panes to put **SOLUTION EXPLORER** at the top. Learn more about the C# Dev Kit at the following link: https://devblogs.microsoft.com/visualstudio/announcing-csharp-dev-kit-for-visual-studio-code/
+> **For Visual Studio Code:** To use the chapter solution files with Visual Studio Code, install the **C# Dev Kit** extension. Then open the `ChapterNN` folder that contains a `ChapterNN.sln` solution file and wait for the **SOLUTION EXPLORER** pane to appear at the bottom of the **EXPLORER**. You can drag and drop to reorder the panes to put **SOLUTION EXPLORER** at the top. Learn more about C# Dev Kit at the following link: https://devblogs.microsoft.com/visualstudio/announcing-csharp-dev-kit-for-visual-studio-code/
 
 > **Warning!** If you use both Visual Studio 2022 and Visual Studio Code to open these solutions, be aware that the build process can conflict. This is because Visual Studio 2022 has its own non-standard build server that is different from the standard build server used by .NET SDK CLI. My recommendation is to only have a solution open in one code editor at any time. You should also clean the solutions between opening in different code editors. For example, after closing the solution in one code editor, I delete the `bin` and `obj` folders before then opening in a different code editor.
 
 ## Chapters
 
 **Introduction**
-- Chapter 1 Introducing Apps and Services with .NET
+- Chapter 1 Introducing Apps and Services with .NET [code/Chapter01](code/Chapter01)
 
 **Data**
-- Chapter 2 Managing Relational Data Using SQL Server
-- Chapter 3 Building Entity Models for SQL Server Using EF Core
-- Chapter 4 Managing NoSQL Data Using Azure Cosmos DB
+- Chapter 2 Managing Relational Data Using SQL Server [code/Chapter02](code/Chapter02)
+- Chapter 3 Building Entity Models for SQL Server Using EF Core [code/Chapter03](code/Chapter03)
+- Chapter 4 Managing NoSQL Data Using Azure Cosmos DB [code/Chapter04](code/Chapter04)
 
 **Specialized Libraries**
-- Chapter 5 Multitasking and Concurrency
-- Chapter 6 Implementing Popular Third-Party Libraries
-- Chapter 7 Handling Dates, Times, and Internationalization
+- Chapter 5 Multitasking and Concurrency [code/Chapter05](code/Chapter05)
+- Chapter 6 Implementing Popular Third-Party Libraries [code/Chapter06](code/Chapter06)
+- Chapter 7 Handling Dates, Times, and Internationalization [code/Chapter07](code/Chapter07)
 
 **Services**
-- Chapter 8 Building and Securing Web Services Using Minimal APIs
-- Chapter 9 Caching, Queuing, and Resilient Background Services
-- Chapter 10 Building Serverless Nanoservices Using Azure Functions
-- Chapter 11 Broadcasting Real-Time Communication Using SignalR
-- Chapter 12 Combining Data Sources Using GraphQL
-- Chapter 13 Building Efficient Microservices Using gRPC
+- Chapter 8 Building and Securing Web Services Using Minimal APIs [code/Chapter08](code/Chapter08)
+- Chapter 9 Caching, Queuing, and Resilient Background Services [code/Chapter09](code/Chapter09)
+- Chapter 10 Building Serverless Nanoservices Using Azure Functions [code/Chapter10](code/Chapter10)
+- Chapter 11 Broadcasting Real-Time Communication Using SignalR [code/Chapter11](code/Chapter11)
+- Chapter 12 Combining Data Sources Using GraphQL [code/Chapter12](code/Chapter12)
+- Chapter 13 Building Efficient Microservices Using gRPC [code/Chapter13](code/Chapter13)
 
 **Apps**
-- Chapter 14 Building Web User Interfaces Using ASP.NET Core
-- Chapter 15 Building Web Components Using Blazor
-- Chapter 16 Leveraging Open-Source Blazor Component Libraries
-- Chapter 17 Building Mobile and Desktop Apps Using .NET MAUI
-- Chapter 18 Implementing Model-View-ViewModel for .NET MAUI
-- Chapter 19 Integrating .NET MAUI Apps with Blazor and Native Platforms
+- Chapter 14 Building Web User Interfaces Using ASP.NET Core [code/Chapter14](code/Chapter14)
+- Chapter 15 Building Web Components Using Blazor [code/Chapter15](code/Chapter15)
+- Chapter 16 Leveraging Open-Source Blazor Component Libraries [code/Chapter16](code/Chapter16)
+- Chapter 17 Building Mobile and Desktop Apps Using .NET MAUI [code/Chapter17](code/Chapter17)
+- Chapter 18 Implementing Model-View-ViewModel for .NET MAUI [code/Chapter18](code/Chapter18)
+- Chapter 19 Integrating .NET MAUI Apps with Blazor and Native Platforms [code/Chapter19](code/Chapter19)
 - Chapter 20 Introducing the Survey Project Challenge
 
 ## Extra content to download
