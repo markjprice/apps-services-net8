@@ -1,0 +1,13 @@
+﻿@attribute [RenderModeServer]
+<h3>Counter: @CounterValue</h3>
+<button id="buttonIncrement" @onclick="IncrementCounter"
+  class="btn btn-outline-primary">Increment</button>
+
+@code {
+  public int CounterValue { get; set; } = 0;
+
+  public void IncrementCounter()
+  {
+    CounterValue++;
+  }
+}

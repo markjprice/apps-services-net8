@@ -1,0 +1,30 @@
+﻿@*@attribute [RenderModeServer]*@
+<div class="alert alert-@ColorTheme d-flex align-items-center
+     @(IsDismissable ? " alert-dismissible fade show" : "")" role="alert">
+  <div>
+    <h4 class="alert-heading"><i class="@Icon"></i> @Title</h4>
+    @Message
+    @if (IsDismissable)
+    {
+      <button type="button" class="btn-close"
+              data-bs-dismiss="alert" aria-label="Close"></button>
+    }
+  </div>
+</div>
+
+@code {
+  [Parameter]
+  public bool IsDismissable { get; set; } = true;
+
+  [Parameter]
+  public string ColorTheme { get; set; } = BootstrapColors.Primary;
+
+  [Parameter]
+  public string Icon { get; set; } = BootstrapIcons.InfoCircle;
+
+  [Parameter]
+  public string? Title { get; set; }
+
+  [Parameter]
+  public string? Message { get; set; }
+}

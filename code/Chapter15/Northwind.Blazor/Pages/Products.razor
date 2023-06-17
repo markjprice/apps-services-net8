@@ -1,0 +1,58 @@
+﻿@page "/products"
+@inject NorthwindContext db
+<h1>Products</h1>
+
+@*<form action="products" method="post">
+  <label for="minprice">Minimum Price</label>
+  <input type="text" id="minprice" name="minprice" />
+  <button type="submit">Search</button>
+</form>
+*@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Product ID</th>
+      <th>Product Name</th>
+      <th>Unit Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    @if ((products is null) || (products.Count == 0))
+    {
+      <tr><td colspan="4">No products found.</td></tr>
+    }
+    else
+    {
+      @foreach (Product p in products)
+      {
+        <tr>
+          <td>@p.ProductId</td>
+          <td>@p.ProductName</td>
+          <td>@(p.UnitPrice.HasValue ? 
+            p.UnitPrice.Value.ToString("C") : "n/a")</td>
+        </tr>
+      }
+    }
+  </tbody>
+</table>
+
+@code {
+  //[Parameter]
+  //public string? MinPrice { get; set; }
+
+  private List<Product>? products;
+
+  protected override async Task OnInitializedAsync()
+  {
+    //if (decimal.TryParse(MinPrice, out decimal price))
+    //{
+      products = await db.Products
+        //.Where(p => p.UnitPrice >= price)
+        .ToListAsync();
+    //}
+    //else
+    //{
+    //  products = Array.Empty<Product>();
+    //}
+  }
+}

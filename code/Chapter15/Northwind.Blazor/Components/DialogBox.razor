@@ -1,0 +1,56 @@
+﻿@attribute [RenderModeServer]
+
+<!-- Button to show the dialog box. -->
+<button type="button" class="btn btn-primary"
+        data-bs-toggle="modal" data-bs-target="#dialogBox">
+  @DialogTitle
+</button>
+
+<!-- Dialog box to popup. -->
+<div class="modal fade" id="dialogBox"
+     data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="dialogBoxLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dialogBoxLabel">@DialogTitle</h5>
+        <button type="button" class="btn-close"
+                data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        @ChildContent
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+        @onclick="OnClickPrimary">
+          @PrimaryButtonText
+        </button>
+        <button type="button" class="btn btn-secondary"
+                data-bs-dismiss="modal" @onclick="OnClickSecondary">
+          @SecondaryButtonText
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+@code {
+  [Parameter]
+  public string? DialogTitle { get; set; }
+
+  // ChildContent is a special name that is set automatically by any
+  // markup content within the component begin and end elements.
+  [Parameter]
+  public RenderFragment? ChildContent { get; set; }
+
+  [Parameter]
+  public string? PrimaryButtonText { get; set; } = "OK";
+
+  [Parameter]
+  public EventCallback<MouseEventArgs> OnClickPrimary { get; set; }
+
+  [Parameter]
+  public string? SecondaryButtonText { get; set; } = "Cancel";
+
+  [Parameter]
+  public EventCallback<MouseEventArgs> OnClickSecondary { get; set; }
+}
