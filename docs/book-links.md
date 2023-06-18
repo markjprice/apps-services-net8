@@ -6,10 +6,13 @@
   - [Other C# code editors and platforms](#other-c-code-editors-and-platforms)
   - [Command-Line Interfaces](#command-line-interfaces)
   - [.NET](#net)
-  - [C# language version and the journey to C# 11](#c-language-version-and-the-journey-to-c-11)
-  - [C# implemented proposals](#c-implemented-proposals)
   - [Azure and .NET](#azure-and-net)
   - [Help and learning](#help-and-learning)
+- [Chapter 1A - What's New in Modern C# and .NET](#chapter-1a---whats-new-in-modern-c-and-net)
+  - [C# language version and the journey to C# 11](#c-language-version-and-the-journey-to-c-11)
+  - [C# implemented proposals](#c-implemented-proposals)
+- [Chapter 1B - Benchmarking Performance and Testing](#chapter-1b---benchmarking-performance-and-testing)
+- [Chapter 1C - Observing and Modifying Code Execution Dynamically](#chapter-1c---observing-and-modifying-code-execution-dynamically)
   - [Assemblies and reflection](#assemblies-and-reflection)
   - [Expression Trees](#expression-trees)
   - [Source generators](#source-generators)
@@ -27,7 +30,7 @@
 - [Chapter 5 - Multitasking and Concurrency](#chapter-5---multitasking-and-concurrency)
 - [Chapter 6 - Implementing Popular Third-Party Libraries](#chapter-6---implementing-popular-third-party-libraries)
 - [Chapter 7 - Handling Dates, Times, and Internationalization](#chapter-7---handling-dates-times-and-internationalization)
-- [Chapter 8 - Building and Securing Web Services with Minimal APIs](#chapter-8---building-and-securing-web-services-with-minimal-apis)
+- [Chapter 8 - Building and Securing Web Services Using Minimal APIs](#chapter-8---building-and-securing-web-services-using-minimal-apis)
   - [Web service technologies and design](#web-service-technologies-and-design)
   - [Web service routing](#web-service-routing)
   - [Web service clients](#web-service-clients)
@@ -104,6 +107,20 @@
 - [.NET Release Schedule](https://github.com/dotnet/core/blob/master/roadmap.md)
 - [.NET Team Members](https://twitter.com/i/lists/120961876//members)
 
+## Azure and .NET
+- [State of Azure + .NET | .NET Conf 2022](https://www.youtube.com/watch?v=NBbI52liUR4)
+- [The Whirlwind Tour of Building .NET Apps in Azure | .NET Conf 2022](https://www.youtube.com/watch?v=45gTMoqSYHg)
+
+## Help and learning
+- [Raise an issue with the book](https://github.com/markjprice/apps-services-net7/issues)
+- [Microsoft Learn](https://learn.microsoft.com/)
+- [Official .NET Blog written by the .NET engineering teams](https://devblogs.microsoft.com/dotnet/)
+- [Stack Overflow](https://stackoverflow.com/)
+- [Google Advanced Search](https://www.google.com/advanced_search)
+- [.NET Videos](https://dotnet.microsoft.com/en-us/learn/videos)
+
+# Chapter 1A - What's New in Modern C# and .NET
+
 ## C# language version and the journey to C# 11
 - [What's New in C# 11 | .NET Conf 2022](https://www.youtube.com/watch?v=H18CfoinPZg)
 - [Early peek at C# 11 features](https://devblogs.microsoft.com/dotnet/early-peek-at-csharp-11-features/)
@@ -142,17 +159,11 @@
 - [Proposal: Semi-Auto-Properties; field keyword #140](https://github.com/dotnet/csharplang/issues/140)
 - [Working Set (of proposals)](https://github.com/dotnet/csharplang/milestone/19)
 
-## Azure and .NET
-- [State of Azure + .NET | .NET Conf 2022](https://www.youtube.com/watch?v=NBbI52liUR4)
-- [The Whirlwind Tour of Building .NET Apps in Azure | .NET Conf 2022](https://www.youtube.com/watch?v=45gTMoqSYHg)
+# Chapter 1B - Benchmarking Performance and Testing
 
-## Help and learning
-- [Raise an issue with the book](https://github.com/markjprice/apps-services-net7/issues)
-- [Microsoft Learn](https://learn.microsoft.com/)
-- [Official .NET Blog written by the .NET engineering teams](https://devblogs.microsoft.com/dotnet/)
-- [Stack Overflow](https://stackoverflow.com/)
-- [Google Advanced Search](https://www.google.com/advanced_search)
-- [.NET Videos](https://dotnet.microsoft.com/en-us/learn/videos)
+- [Benchmark.NET](https://github.com/dotnet/BenchmarkDotNet)
+
+# Chapter 1C - Observing and Modifying Code Execution Dynamically
 
 ## Assemblies and reflection
 - [.NET API Reference](https://learn.microsoft.com/en-us/dotnet/api/)
@@ -259,6 +270,7 @@
 - [Performance Improvements in .NET 7 | .NET Conf 2022](https://www.youtube.com/watch?v=yNPEdaxkTZw)
 
 # Chapter 6 - Implementing Popular Third-Party Libraries
+
 - [ImageSharp](https://github.com/SixLabors/ImageSharp)
 - [Humanizer](https://github.com/Humanizr/Humanizer)
 - [Serilog](https://serilog.net/)
@@ -275,7 +287,7 @@
 - [Globalizing and localizing .NET applications](https://learn.microsoft.com/en-us/dotnet/standard/globalization-localization/)
 - [Time zones](https://devblogs.microsoft.com/dotnet/cross-platform-time-zones-with-net-core/)
 
-# Chapter 8 - Building and Securing Web Services with Minimal APIs
+# Chapter 8 - Building and Securing Web Services Using Minimal APIs
 
 ## Web service technologies and design
 - [Media types](http://en.wikipedia.org/wiki/Media_type)
