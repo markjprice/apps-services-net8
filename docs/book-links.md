@@ -27,6 +27,7 @@
 - [Chapter 4 - Managing NoSQL Data Using Azure Cosmos DB](#chapter-4---managing-nosql-data-using-azure-cosmos-db)
   - [NoSQL data stores](#nosql-data-stores)
   - [Azure Cosmos DB](#azure-cosmos-db)
+- [Chapter 4A - Managing NoSQL Data Using Azure Cosmos DB](#chapter-4a---managing-nosql-data-using-azure-cosmos-db)
 - [Chapter 5 - Multitasking and Concurrency](#chapter-5---multitasking-and-concurrency)
 - [Chapter 6 - Implementing Popular Third-Party Libraries](#chapter-6---implementing-popular-third-party-libraries)
 - [Chapter 7 - Handling Dates, Times, and Internationalization](#chapter-7---handling-dates-times-and-internationalization)
@@ -254,6 +255,12 @@
 - [Diagnose and troubleshoot issues when using Azure Cosmos DB .NET SDK](https://learn.microsoft.com/en-us/azure/cosmos-db/sql/troubleshoot-dot-net-sdk)
 - [Migrate one-to-few relational data into Azure Cosmos DB SQL API account](https://learn.microsoft.com/en-us/azure/cosmos-db/sql/migrate-relational-to-cosmos-db-sql-api)
 - [Frequently asked questions about different APIs in Azure Cosmos DB](https://learn.microsoft.com/en-us/azure/cosmos-db/faq)
+
+# Chapter 4A - Managing NoSQL Data Using Azure Cosmos DB
+
+- [What is Azure Cosmos DB for Apache Gremlin?](https://learn.microsoft.com/en-us/azure/cosmos-db/gremlin/introduction)
+- [Apache TinkerPop](https://tinkerpop.apache.org/gremlin.html)
+- [Getting started with Gremlin's API](https://www.gremlin.com/community/tutorials/getting-started-with-gremlins-api/)
 
 # Chapter 5 - Multitasking and Concurrency
 
