@@ -11,6 +11,9 @@ This online-only section is about benchmarking performance and testing.
 - [Monitoring performance and memory using Benchmark.NET](#monitoring-performance-and-memory-using-benchmarknet)
   - [Building a console app with Benchmark.NET](#building-a-console-app-with-benchmarknet)
   - [Running a console app with Benchmark.NET](#running-a-console-app-with-benchmarknet)
+- [Practicing and exploring](#practicing-and-exploring)
+  - [Exercise 1B.1 – Test your knowledge](#exercise-1b1--test-your-knowledge)
+  - [Exercise 1B.2 – Explore topics](#exercise-1b2--explore-topics)
 - [Summary](#summary)
 
 # Monitoring performance and resource usage
@@ -408,6 +411,22 @@ Global total time: 00:01:29 (89.71 sec), executed benchmarks: 2
 ```
 
 The `Outliers` section is especially interesting because it shows that not only is `string` concatenation slower than `StringBuilder`, but it is also more inconsistent in how long it takes. Your results will vary, of course. Note there might not be a `Hints` and an `Outliers` section if there are no outliers when you run your benchmarks!
+
+# Practicing and exploring
+
+Test your knowledge and understanding by answering some questions, getting some hands-on practice, and exploring with deeper research the topics in this chapter.
+
+## Exercise 1B.1 – Test your knowledge
+
+Use the web to answer the following questions:
+
+1.	What information can you find out about a process?
+2.	How accurate is the `Stopwatch` class?
+
+## Exercise 1B.2 – Explore topics
+
+Use the links on the following page to learn more about the topics covered in this chapter:
+https://github.com/markjprice/apps-services-net8/blob/main/docs/book-links.md#chapter-1b---benchmarking-performance-and-testing
 
 # Summary
 
