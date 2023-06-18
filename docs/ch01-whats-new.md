@@ -1,4 +1,4 @@
-**What's New in Modern C# and .NET**
+**Chapter 1A - What's New in Modern C# and .NET**
 
 This online-only section covers the following topics:
 
@@ -21,13 +21,12 @@ This online-only section covers the following topics:
 - [Functional programming](#functional-programming)
   - [Record types and init-only setters](#record-types-and-init-only-setters)
   - [Switch expressions](#switch-expressions)
-- [Practicing and exploring](#practicing-and-exploring)
-  - [Exercise 2.1 – Test your knowledge](#exercise-21--test-your-knowledge)
-  - [Exercise 2.2 – Explore topics](#exercise-22--explore-topics)
-  - [Exercise 2.3 – Online content](#exercise-23--online-content)
   - [Default interface methods](#default-interface-methods)
   - [Generic math support](#generic-math-support)
   - [File-scoped types](#file-scoped-types)
+- [Practicing and exploring](#practicing-and-exploring)
+  - [Exercise 1A.1 – Test your knowledge](#exercise-1a1--test-your-knowledge)
+  - [Exercise 1A.2 – Explore topics](#exercise-1a2--explore-topics)
 - [Summary](#summary)
 
 
@@ -535,33 +534,6 @@ string message = s switch
 };
 ```
 
-# Practicing and exploring
-
-Test your knowledge and understanding by answering some questions, getting some hands-on practice, and exploring with deeper research the topics in this chapter.
-
-## Exercise 2.1 – Test your knowledge
-
-Use the web to answer the following questions:
-
-1.	Which type of .NET release is higher quality, STS or LTS?
-2.	In new .NET projects, nullable checks are enabled. What are two ways to disable them?
-3.	If you define any types in a top-level program, where must they go in the Program.cs file?
-4.	How do you import a class like Console so that its static members like WriteLine are available in all code files throughout a project?
-5.	What is the best new C# 11 language feature?
-
-## Exercise 2.2 – Explore topics
-
-Use the links on the following page to learn more about the topics covered in this chapter:
-
-https://github.com/markjprice/apps-services-net8/blob/main/book-links.md#chapter-2---whats-new-in-modern-net
-
-## Exercise 2.3 – Online content
-
-There are some advanced new features introduced with modern .NET including:
-- x
-
-Read more about them at the following link: 
-
 ## Default interface methods
 
 You can provide implementations of members in an interface. This is most useful when you have defined an interface, and in a later version you want to extend it. Normally you would not be able to without breaking any clients that consume your interface, because any types that implement the interface will not provide implementations for the new members. Now you can add new members with implementations in the interface and the types will inherit the default implementations in the interface. This is also useful for interactions with APIs for Android or Swift that also support this functionality.
@@ -582,7 +554,26 @@ As you can imagine, defining your own numeric types is a rare and advanced capab
 
 You can use `file` keyword.
 
+# Practicing and exploring
+
+Test your knowledge and understanding by answering some questions, getting some hands-on practice, and exploring with deeper research the topics in this chapter.
+
+## Exercise 1A.1 – Test your knowledge
+
+Use the web to answer the following questions:
+
+1.	Which type of .NET release is higher quality, STS or LTS?
+2.	In new .NET projects, nullable checks are enabled. What are two ways to disable them?
+3.	If you define any types in a top-level program, where must they go in the `Program`.cs file?
+4.	How do you import a class like `Console` so that its static members like `WriteLine` are available in all code files throughout a project?
+5.	What is the best new C# 11 language feature?
+
+## Exercise 1A.2 – Explore topics
+
+Use the links on the following page to learn more about the topics covered in this chapter:
+https://github.com/markjprice/apps-services-net8/blob/main/docs/book-links.md#chapter-1a---whats-new-in-modern-c-and-net
+
 # Summary
 
-In these online-only sections, you:
+In this online-only section, you:
 - Reviewed some of the new features in the C# compiler and the .NET libraries in modern versions.
