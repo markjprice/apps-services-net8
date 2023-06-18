@@ -1,6 +1,6 @@
 **Manipulating graph data with Gremlin API**
 
-> This is an optional bonus section for *Chapter 4 Managing NoSQL Data Using Azure Cosmos DB*. It is not required to complete the rest of the book.
+> This is an optional bonus section for *Chapter 4 - Managing NoSQL Data Using Azure Cosmos DB*. It is not required to complete the rest of the book.
 
 - [Comparing relational and graph databases](#comparing-relational-and-graph-databases)
 - [Key terms for graph databases](#key-terms-for-graph-databases)
@@ -10,7 +10,10 @@
 - [Adding edges using Azure portal](#adding-edges-using-azure-portal)
 - [Building a console app client for graph data](#building-a-console-app-client-for-graph-data)
 - [Testing the console app](#testing-the-console-app)
-- [Exercise 3.1A – Test your knowledge](#exercise-31a--test-your-knowledge)
+- [Practicing and exploring](#practicing-and-exploring)
+  - [Exercise 4A.1 – Test your knowledge](#exercise-4a1--test-your-knowledge)
+  - [Exercise 4A.2 – Explore topics](#exercise-4a2--explore-topics)
+- [Summary](#summary)
 
 The API for working with graph data in Azure Cosmos DB is Gremlin.
 
@@ -812,12 +815,23 @@ Total requests charge: 2,351.44 RUs
 
 7.	Close the browser.
 
-# Exercise 3.1A – Test your knowledge
+# Practicing and exploring
+
+Test your knowledge and understanding by answering some questions, getting some hands-on practice, and exploring with deeper research the topics in this chapter.
+
+## Exercise 4A.1 – Test your knowledge
 
 Answer the following questions:
-7.	What is the difference between a **vertex** and an **edge** in a graph database?
-8.	What package should you reference to programmatically execute Gremlin scripts?
-9.	What Gremlin command returns all vertices that have a label of `product` and have a property named `unitsInStock` with more than 10 units in stock?
-10.	Why do some edges have weights?
+1.	What is the difference between a **vertex** and an **edge** in a graph database?
+2.	What package should you reference to programmatically execute Gremlin scripts?
+3.	What Gremlin command returns all vertices that have a label of `product` and have a property named `unitsInStock` with more than 10 units in stock?
+4.	Why do some edges have weights?
+
+## Exercise 4A.2 – Explore topics
+
+Use the links on the following page to learn more about the topics covered in this chapter:
+https://github.com/markjprice/apps-services-net8/blob/main/docs/book-links.md#chapter-4a---managing-nosql-data-using-azure-cosmos-db
+
+# Summary
 
 > This is the end of the bonus section about Gremlin API.
