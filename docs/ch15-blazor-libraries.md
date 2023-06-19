@@ -99,20 +99,33 @@ builder.Services.AddScoped<TooltipService>();
 builder.Services.AddScoped<ContextMenuService>();
 ```
 
-3.	In the Shared folder, in MainLayout.razor, after the @inherits directive, add statements to embed dialog, notification, context menu, and tooltip components, as shown in the following markup:
+3.	In `MainLayout.razor`, after the `@inherits` directive, add statements to embed dialog, notification, context menu, and tooltip components, and then add `<div>` elements to divide the page into section, as shown in the following markup:
 ```html
+@inherits LayoutComponentBase
 <RadzenDialog />
 <RadzenNotification />
 <RadzenContextMenu />
 <RadzenTooltip />
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-auto">
+        <div class="alert alert-secondary">
+          Navigation (coming soon)
+        </div>
+      </div>
+      <div class="col">@Body</div>
+    </div>
+  </div>
+</main>
 ```
 
 ## Using the Radzen tooltip and context menu components
 
 Let's use the context menu component to show a menu of shipping company items:
 
-1.	In the Pages folder, in Index.razor, add statements to show a tooltip for the heading, show a context menu with shippers as items when the visitor right-clicks the heading, and then show what they clicked in the browser console, as shown in the following code:
-```html
+1.	In the `Pages` folder, in `Index.razor`, add statements to show a tooltip for the heading, show a context menu with shippers as items when the visitor right-clicks the heading, and then show what they clicked in the browser console, as shown in the following code:
+```cs
 @page "/"
 @inject TooltipService tooltipService
 @inject ContextMenuService contextMenuService
@@ -127,8 +140,7 @@ Let's use the context menu component to show a menu of shipping company items:
 
     Hello, Radzen Blazor!
 </h1>
-```
-```cs
+
 @code {
   ElementReference h1Element;
 
@@ -162,19 +174,19 @@ Let's use the context menu component to show a menu of shipping company items:
 }
 ```
 
-2.	Start the Northwind.BlazorLibraries project without debugging.
-    - If you are using Visual Studio 2022, then in the Visual Studio 2022 toolbar, select the https profile as the Startup Project, and Google Chrome as the Web Browser.
-    - If you are using Visual Studio Code, then at the command line or terminal, enter the following command: dotnet run --launch-profile https
-3.	In Chrome, show Developer Tools and view the Console.
-4.	On the home page, right-click the heading and note the menu items are the shipping companies, as shown in *Figure 15A.1*:
+2. Start the `Northwind.BlazorLibraries.Server` project without debugging.
+    - If you are using Visual Studio 2022, then in the Visual Studio 2022 toolbar, select the `https` profile as the **Startup Project**, and **Google Chrome** as the **Web Browser**.
+    - If you are using Visual Studio Code, then at the command line or terminal, enter the following command: `dotnet run --launch-profile https`
+3. In Chrome, show **Developer Tools** and view the **Console**.
+4. On the home page, right-click the heading and note the menu items are the shipping companies, as shown in *Figure 15A.1*:
 
-![]()
+![A context menu with shipping companies](assets/B19587_15A_01.png)
 *Figure 15A.1: A context menu with shipping companies*
 
 5.	Select a shipping company and note the output in the browser console, as shown in *Figure 15A.2*:
 
-![]()
-*Figure 16.2: The browser console showing the visitor clicked some items in the context menu*
+![The browser console showing the visitor clicked some items in the context menu](assets/B19587_15A_02.png)
+*Figure 15A.2: The browser console showing the visitor clicked some items in the context menu*
 
 6.	Close the browser and shut down the web server.
 
