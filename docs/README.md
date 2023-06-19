@@ -17,6 +17,16 @@
 - [Rate limiting using ASP.NET Core middleware](ch08-rate-limiting.md)
 - [Exposing Data via the Web Using OData Services](ch08-odata.md)
 
+# Chapter 14 online-only sections
+
+- [Prototyping with Bootstrap](ch14-bootstrap.md)
+
+# Chapter 15 online-only sections
+
+- [Blazor WebAssembly topics](ch15-blazor-webassembly.md)
+- [Blazor Progressive Web Apps topics](ch15-blazor-pwa.md.md)
+- [Leveraging Open Source Blazor Component Libraries](ch15-blazor-libraries.md)
+
 # Miscellaneous
 
 - [Command-Lines](command-lines.md)
