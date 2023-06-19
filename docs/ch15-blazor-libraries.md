@@ -11,14 +11,14 @@
 This chapter is about exploring open-source Blazor component libraries. We will look at Radzen Blazor in detail because it is free forever, and many of the other component libraries work in the same way. For example, they all include:
 - A NuGet package to install.
 -	Themes, stylesheets, and JavaScript libraries to register, that often work like or integrate with Bootstrap.
--	Namespaces to import, usually in _Imports.razor, so the components are available in your Razor files.
+-	Namespaces to import, usually in `_Imports.razor`, so the components are available in your Razor files.
 -	Services that must be registered as scoped dependency services, and matching components that must be instantiated in shared layouts before you can use features like notifications and dialog boxes.
 
 Once you have learned how one component library does this, the others are very similar.
 
 # Understanding open-source Blazor component libraries
 
-In Chapter 15, Building Web Components Using Blazor, you learned the key concepts around Blazor components and the practicalities of how to build them. Most of the time, you do not need to build your own components for common scenarios because there are plenty of Blazor component libraries, as shown in the following alphabetical list:
+In *Chapter 15, Building Web Components Using Blazor*, you learned the key concepts around Blazor components and the practicalities of how to build them. Most of the time, you do not need to build your own components for common scenarios because there are plenty of Blazor component libraries, as shown in the following alphabetical list:
 - Ant Design Blazor: https://antblazor.com/
 - Blazored libraries and components: https://github.com/Blazored
 - Blazorise: https://blazorise.com/
@@ -38,35 +38,43 @@ In this chapter, we will look at some of the components from the free open-sourc
 First, we will create a Blazor Web App project that we will then explore some of the Radzen Blazor components with:
 
 1. Use your preferred code editor to create a new Blazor WebAssembly project, as defined in the following list:
-    - Project template: **Blazor Web App** / `blazor`
+    - Project template: **Blazor WebAssembly App Empty** / `blazorwasm-empty`
     - Workspace/solution file and folder: `Chapter15`
     - Project file and folder: `Northwind.BlazorLibraries`
     - Configure for HTTPS: Selected.
-    - Do not use top-level statements: Cleared.
-2. In the `Northwind.BlazorLibraries` project, expand the Properties folder, and open the launchSettings.json file.
-3. For the https profile, for its applicationUrl setting, change the port numbers to 5161 for https and 5162 for http, as shown in the following setting:
-"applicationUrl": "https://localhost:5161;http://localhost:5162",
-5.	In the Northwind.BlazorLibraries project file, treat warnings as errors and add a reference to the Radzen Blazor package, as shown in the following markup:
-```xml
-<ItemGroup>
-  <PackageReference Include="Radzen.Blazor" Version="4.13.2" />
-</ItemGroup>
+    - ASP.NET Core hosted: Selected or use the `--hosted` switch.
+    - Progressive Web Application: Selected or use the `--pwa` switch.
+2. Note that three projects have been created, as shown in the following list:
+    - `Northwind.BlazorLibraries.Client`
+    - `Northwind.BlazorLibraries.Server`
+    - `Northwind.BlazorLibraries.Shared`
+3. In the `Northwind.BlazorLibraries.Server` project, expand the `Properties` folder, and open the `launchSettings.json` file.
+4. For the `https` profile, for its `applicationUrl` setting, change the port numbers to 5153 for `https` and `5154` for `http`, as shown in the following setting:
+```json
+"applicationUrl": "https://localhost:5153;http://localhost:5154",
 ```
 
-6.	In the _Imports.razor file, add statements to import the Radzen and Radzen Blazor namespaces, as shown in the following code:
+5. In the `Northwind.BlazorLibraries.Server` project, treat warnings as errors.
+6. In the `Northwind.BlazorLibraries.Client` project file, treat warnings as errors, and in the <ItemGroup> with package references, add a reference to the Radzen Blazor package, as shown in the following markup:
+```xml
+<PackageReference Include="Radzen.Blazor" Version="4.13.2" />
+```
+
+7. Build the `Northwind.BlazorLibraries.Client` project to restore packages.
+8.	In the `_Imports.razor` file, add statements to import the Radzen and Radzen Blazor namespaces, as shown in the following code:
 ```cs
 @using Radzen
 @using Radzen.Blazor
 ```
 
-7.	In `App.razor`, add markup in the <head> to set a blank favicon, use the latest version of Bootstrap including a <meta> element in the <head> to set the viewport, and to link to the default Radzen Blazor theme CSS file, as shown highlighted in the following markup:
+9.	In the `Northwind.BlazorLibraries.Client` project, in the `wwwroot` folder, in `index.html`, add markup in the <head> to set a blank favicon, use the latest version of Bootstrap including a <meta> element in the <head> to set the viewport, and to link to the default Radzen Blazor theme CSS file, as shown highlighted in the following markup:
 ```html
 <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <link rel="stylesheet" href="_content/Radzen.Blazor/css/default.css">
 ```
 
-8.	In App.razor, at the bottom of the <body>, add a <script> element to add support for advanced features provided by Popper.js and Radzen Blazor, as shown in the following markup:
+10.	In `index.html`, at the bottom of the `<body>`, add a `<script>` element to add support for advanced features provided by Popper.js and Radzen Blazor, as shown in the following markup:
 ```html
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous" suppress-error="BL9992"></script>
 <script src="_content/Radzen.Blazor/Radzen.Blazor.js" suppress-error="BL9992"></script>
@@ -78,12 +86,12 @@ Some Radzen Blazor themes require Bootstrap. If you want to avoid Bootstrap, the
 
 Let's enable some components that have related services that must be configured in the services collection and referenced in the main layout:
 
-1.	In the Northwind.BlazorLibraries project, in Program.cs, import the namespace for working with Radzen services, as shown in the following code:
+1. In the `Northwind.BlazorLibraries.Client` project, in `Program.cs`, import the namespace for working with Radzen services, as shown in the following code:
 ```cs
 using Radzen; // To use DialogService and so on.
 ```
 
-2.	In Program.cs, before the call to builder.Build(), add statements to enable dialog, notification, tooltip components, and context menu, as shown in the following code:
+2. In `Program.cs`, at the bottom of the section that configures services, add statements to enable dialog, notification, tooltip components, and context menu, as shown in the following code:
 ```cs
 builder.Services.AddScoped<DialogService>();
 builder.Services.AddScoped<NotificationService>();
