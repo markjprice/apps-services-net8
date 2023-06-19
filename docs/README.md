@@ -24,7 +24,7 @@
 # Chapter 15 online-only sections
 
 - [Blazor WebAssembly topics](ch15-blazor-webassembly.md)
-- [Blazor Progressive Web Apps topics](ch15-blazor-pwa.md.md)
+- [Blazor Progressive Web Apps topics](ch15-blazor-pwa.md)
 - [Leveraging Open Source Blazor Component Libraries](ch15-blazor-libraries.md)
 
 # Miscellaneous
