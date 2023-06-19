@@ -54,11 +54,11 @@
   - [Blazor hosting models](#blazor-hosting-models)
   - [Blazor components](#blazor-components)
   - [Advanced techniques](#advanced-techniques)
-- [Chapter 16 - Leveraging Open-Source Blazor Component Libraries](#chapter-16---leveraging-open-source-blazor-component-libraries)
-- [Chapter 17 - Building Mobile and Desktop Apps Using .NET MAUI](#chapter-17---building-mobile-and-desktop-apps-using-net-maui)
-- [Chapter 18 - Implementing Model-View-ViewModel for .NET MAUI](#chapter-18---implementing-model-view-viewmodel-for-net-maui)
-- [Chapter 19 - Integrating .NET MAUI Apps with Blazor and Native Platforms](#chapter-19---integrating-net-maui-apps-with-blazor-and-native-platforms)
-- [Chapter 20 - Introducing the Survey Project Challenge](#chapter-20---introducing-the-survey-project-challenge)
+  - [Leveraging Open-Source Blazor Component Libraries](#leveraging-open-source-blazor-component-libraries)
+- [Chapter 16 - Building Mobile and Desktop Apps Using .NET MAUI](#chapter-16---building-mobile-and-desktop-apps-using-net-maui)
+- [Chapter 17 - Implementing Model-View-ViewModel for .NET MAUI](#chapter-17---implementing-model-view-viewmodel-for-net-maui)
+- [Chapter 18 - Integrating .NET MAUI Apps with Blazor and Native Platforms](#chapter-18---integrating-net-maui-apps-with-blazor-and-native-platforms)
+- [Chapter 19 - Introducing the Survey Project Challenge](#chapter-19---introducing-the-survey-project-challenge)
 - [Epilogue](#epilogue)
   - [Next steps on your C# and .NET learning journey](#next-steps-on-your-c-and-net-learning-journey)
   - [Alternatives to using Azure resources](#alternatives-to-using-azure-resources)
@@ -463,7 +463,7 @@
 - [Testing Blazor Applications with Playwright | .NET Conf 2022](https://www.youtube.com/watch?v=gBky9_AskNQ)
 - [CSS Techniques for Blazor Developers | .NET Conf 2022](https://www.youtube.com/watch?v=w_x1keHyXAY)
 
-# Chapter 16 - Leveraging Open-Source Blazor Component Libraries
+## Leveraging Open-Source Blazor Component Libraries
 
 - [Awesome Blazor: A collection of awesome Blazor resources](https://github.com/AdrienTorris/awesome-blazor)
 - [Blazor University: Learn the new .NET SPA framework from Microsoft](https://blazor-university.com)
@@ -471,7 +471,7 @@
 - [Carl Franklin's Blazor Train](https://www.youtube.com/playlist?list=PL8h4jt35t1wjvwFnvcB2LlYL4jLRzRmoz)
 - [Welcome to PACMAN written in C# and running on Blazor WebAssembly](https://github.com/SteveDunn/PacManBlazor)
 
-# Chapter 17 - Building Mobile and Desktop Apps Using .NET MAUI
+# Chapter 16 - Building Mobile and Desktop Apps Using .NET MAUI
 
 - [State of .NET MAUI | .NET Conf 2022](https://www.youtube.com/watch?v=Z6UPJmerTo8)
 - [.NET Multi-platform App UI](https://dotnet.microsoft.com/en-us/apps/maui)
@@ -497,11 +497,11 @@
 - [Accelerate your WinUI 3 app with the Windows Community Toolkit | .NET Conf 2022](https://www.youtube.com/watch?v=WH-vRxvY95M)
 - [OSS Spotlight - Build amazing cross-platform UI for .NET with Avalonia UI!](https://www.youtube.com/watch?v=qcZSr2ejH5I)
 
-# Chapter 18 - Implementing Model-View-ViewModel for .NET MAUI
+# Chapter 17 - Implementing Model-View-ViewModel for .NET MAUI
 
 - [MVVM is easier than ever before with Source Generators, .NET 7, and the MVVM Toolkit| .NET Conf 2022](https://www.youtube.com/watch?v=oQluWTag-e4)
 
-# Chapter 19 - Integrating .NET MAUI Apps with Blazor and Native Platforms
+# Chapter 18 - Integrating .NET MAUI Apps with Blazor and Native Platforms
 
 - [Create native desktop & mobile apps using web skills in Blazor Hybrid | .NET Conf 2022](https://www.youtube.com/watch?v=ojcvL8KCOwo)
 - [Host a Blazor web app in a .NET MAUI app using BlazorWebView](https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/blazorwebview)
@@ -521,7 +521,7 @@
 - [Secure storage](https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/secure-storage)
 - [Modernize your WPF and Windows Forms application with Blazor | .NET Conf 2022](https://www.youtube.com/watch?v=niX1DbFwgq4)
 
-# Chapter 20 - Introducing the Survey Project Challenge
+# Chapter 19 - Introducing the Survey Project Challenge
 
 - [Survey Monkey Question Types](https://help.surveymonkey.com/en/create/question-types/)
 
