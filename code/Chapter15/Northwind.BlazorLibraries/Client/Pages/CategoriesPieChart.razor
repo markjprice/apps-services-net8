@@ -1,0 +1,64 @@
+﻿@page "/categories-pie-chart"
+
+@inject IHttpClientFactory httpClientFactory
+
+<RadzenCheckBox @bind-Value="@showDataLabels" Name="dataLabels">
+</RadzenCheckBox>
+<RadzenLabel Text="Show Data Labels" For="dataLabels"
+             Style="margin-left: 8px; vertical-align: middle;" />
+
+<RadzenChart>
+  <RadzenPieSeries Data="@categoryProducts" Title="Product Count"
+                   CategoryProperty="Category" ValueProperty="ProductCount">
+    <RadzenSeriesDataLabels Visible="@showDataLabels" />
+  </RadzenPieSeries>
+</RadzenChart>
+
+@code {
+  bool showDataLabels = false;
+
+  class DataItem
+  {
+    public string? Category { get; set; }
+    public decimal ProductCount { get; set; }
+  }
+
+  private DataItem[]? categoryProducts;
+
+  protected override async Task OnParametersSetAsync()
+  {
+    Category[]? categoriesArray = null;
+
+    // Web API service uses "Preserve" so
+    // we must control how references are handled.
+    JsonSerializerOptions jsonOptions = new()
+      {
+        ReferenceHandler = ReferenceHandler.Preserve,
+        PropertyNameCaseInsensitive = true
+      };
+
+    HttpClient client = httpClientFactory.CreateClient(
+      "Northwind.BlazorLibraries.ServerAPI");
+
+    string path = "api/categories";
+
+    try
+    {
+      categoriesArray = (await client.GetFromJsonAsync<Category[]?>(
+        path, jsonOptions));
+
+      categoryProducts = categoriesArray?
+        .Select(category => new DataItem
+          {
+            Category = category.CategoryName,
+            ProductCount = category.Products.Count()
+          })
+        .OrderByDescending(dataitem => dataitem.ProductCount)
+        .ToArray();
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+    }
+  }
+}

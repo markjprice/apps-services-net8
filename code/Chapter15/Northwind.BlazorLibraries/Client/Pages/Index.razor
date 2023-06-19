@@ -1,0 +1,90 @@
+﻿@page "/"
+@inject TooltipService tooltipService
+@inject ContextMenuService contextMenuService
+@inject NotificationService notificationService
+@inject DialogService dialogService
+
+<PageTitle>Index</PageTitle>
+
+<h1 @ref="h1Element"
+@onmouseover="@(args => ShowTooltip(h1Element ,
+      new TooltipOptions { Duration = 5000 }))"
+@oncontextmenu=@(args => ShowContextMenuWithItems(args))
+@oncontextmenu:preventDefault="true">
+
+  Hello, Radzen Blazor!
+</h1>
+
+@code {
+  ElementReference h1Element;
+
+  void ShowTooltip(ElementReference elementReference,
+  TooltipOptions? options = null)
+  {
+    tooltipService.Open(elementReference,
+    "Right-click this heading to see shipping companies.",
+    options);
+  }
+
+  void ShowContextMenuWithItems(MouseEventArgs args)
+  {
+    ContextMenuItem[] menuItems =
+  {
+      new() { Value = 1, Text = "Speedy Express" },
+      new() { Value = 2, Text = "United Package" },
+      new() { Value = 3, Text = "Federal Shipping" },
+  };
+
+    contextMenuService.Open(args, menuItems, OnMenuItemClick);
+  }
+
+  async void OnMenuItemClick(MenuItemEventArgs args)
+  {
+    Console.WriteLine(
+    $"Menu item clicked, Value={args.Value}, Text={args.Text}");
+
+    contextMenuService.Close();
+
+    if (args.CtrlKey)
+    {
+      bool? clickedYes = await dialogService.Confirm(
+  message: $"Visitor selected: {args.Text}",
+  title: $"Value={args.Value}",
+  new ConfirmOptions() { OkButtonText = "Yes", CancelButtonText = "No" });
+
+      string title = string.Format("You clicked \"{0}\"",
+  (clickedYes.GetValueOrDefault(true) ? "Yes" : "No"));
+
+      DialogOptions options = new()
+          {
+            CloseDialogOnOverlayClick = true,
+            CloseDialogOnEsc = true
+          };
+
+      dialogService.Open(title, ds =>
+  @<div>
+    <div class="row">
+      <div class="col-md-12">
+        @title
+      </div>
+    </div>
+  </div>
+  , options);
+    }
+    else // show notification
+    {
+      NotificationMessage message = new()
+        {
+          // 1=Info/Speedy Express
+          // 2=Success/United Package
+          // 3=Warning/Federal Shipping
+          Severity = (NotificationSeverity)args.Value,
+          Summary = $"Value={args.Value}",
+          Detail = $"Visitor selected: {args.Text}",
+          Duration = 4000 // milliseconds
+        };
+
+      notificationService.Notify(message);
+    }
+  }
+}

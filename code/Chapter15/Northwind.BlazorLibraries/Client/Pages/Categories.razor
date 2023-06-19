@@ -1,0 +1,118 @@
+﻿@page "/categories"
+
+@inject IHttpClientFactory httpClientFactory
+
+<h3>Categories</h3>
+
+<RadzenTabs>
+  <Tabs>
+    @if (categories is null)
+    {
+      <RadzenTabsItem Text="None">
+        <h3>No category found.</h3>
+        <div class="alert alert-info">
+          No products found for this category.
+        </div>
+      </RadzenTabsItem>
+    }
+    else
+    {
+      @foreach (Category category in categories)
+      {
+        <RadzenTabsItem Icon="@ConvertToIcon(category.CategoryName)">
+          <h3>
+            <RadzenImage Path="@ConvertToEmoji(category.CategoryName)" 
+                         Style="height:48px;width:48px;" />
+            @category.CategoryName
+            <RadzenBadge BadgeStyle="BadgeStyle.Warning" IsPill="true"
+                         Text="@category.Products.Count().ToString()" />
+          </h3>
+          <div class="alert alert-info">
+            @foreach (Product product in category.Products)
+            {
+              <RadzenBadge BadgeStyle="BadgeStyle.Info" 
+                           Text="@product.ProductName" />
+            }
+          </div>
+          @if (category.Picture is not null)
+          {
+            <div>
+              <img class="rounded float-start"
+                   src="@category.Picture.ConvertToBase64Jpeg()" />
+            </div>
+          }
+        </RadzenTabsItem>
+      }
+    }
+  </Tabs>
+</RadzenTabs>
+
+@code {
+  private IQueryable<Category>? categories;
+
+  private string ConvertToIcon(string categoryName)
+  {
+    return categoryName switch
+    {
+      "Beverages" => "coffee", // Google Material Icons
+      "Condiments" => "liquor",
+      "Confections" => "cake",
+      "Dairy Products" => "water_drop",
+      "Grains/Cereals" => "breakfast_dining",
+      "Meat/Poultry" => "kebab_dining",
+      "Produce" => "restaurant",
+      "Seafood" => "set_meal",
+      _ => "device_unknown"
+    };
+  }
+
+  private string ConvertToEmoji(string categoryName)
+  {
+    return categoryName switch
+    {
+      // These paths are relative to the wwwroot folder.
+      "Beverages" => "assets/Hot beverage/3D/hot_beverage_3d.png",
+      "Condiments" => "assets/Honey pot/3D/honey_pot_3d.png",
+      "Confections" => "assets/Lollipop/3D/lollipop_3d.png",
+      "Dairy Products" => "assets/Cheese wedge/3D/cheese_wedge_3d.png",
+      "Grains/Cereals" => "assets/Bread/3D/bread_3d.png",
+      "Meat/Poultry" => "assets/Cut of meat/3D/cut_of_meat_3d.png",
+      "Produce" => "assets/Leafy green/3D/leafy_green_3d.png",
+      "Seafood" => "assets/Lobster/3D/lobster_3d.png",
+      _ => "assets/Pot of food/3D/pot_of_food_3d.png"
+    };
+  }
+
+  protected override async Task OnParametersSetAsync()
+  {
+    Category[]? categoriesArray = null;
+
+    // Web API service uses "Preserve" so
+    // we must control how references are handled.
+    JsonSerializerOptions jsonOptions = new()
+      {
+        ReferenceHandler = ReferenceHandler.Preserve,
+        PropertyNameCaseInsensitive = true
+      };
+
+    HttpClient client = httpClientFactory.CreateClient(
+      "Northwind.BlazorLibraries.ServerAPI");
+
+    string path = "api/categories";
+
+    try
+    {
+      categoriesArray = (await client.GetFromJsonAsync<Category[]?>(
+          path, jsonOptions));
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+    }
+
+    if (categoriesArray is not null)
+    {
+      categories = categoriesArray.AsQueryable();
+    }
+  }
+}

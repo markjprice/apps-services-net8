@@ -1,0 +1,9 @@
+﻿@page "/htmleditor"
+
+<RadzenHtmlEditor @bind-Value=@HtmlValue />
+
+@code {
+  [Parameter]
+  public string HtmlValue { get; set; } =
+    "<h1>Hello, Radzen Blazor!</h1><p></p>";
+}

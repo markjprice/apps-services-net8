@@ -1,0 +1,78 @@
+﻿@page "/orders-bar-chart"
+@using System.Globalization
+@inject IHttpClientFactory httpClientFactory
+
+<RadzenCheckBox @bind-Value="@showDataLabels"
+                Name="dataLabels"></RadzenCheckBox>
+<RadzenLabel Text="Show Data Labels" For="dataLabels"
+             Style="margin-left: 8px; vertical-align: middle;" />
+
+<RadzenChart>
+  <RadzenBarSeries Data="@revenue" CategoryProperty="Country"
+                   LineType="LineType.Dashed" ValueProperty="Revenue">
+    <RadzenSeriesDataLabels Visible="@showDataLabels" />
+  </RadzenBarSeries>
+  <RadzenValueAxis Formatter="@FormatAsUSD">
+    <RadzenGridLines Visible="true" />
+    <RadzenAxisTitle Text="Revenue in USD" />
+  </RadzenValueAxis>
+  <RadzenBarOptions Radius="5" />
+  <RadzenLegend Visible="false" />
+</RadzenChart>
+
+@code {
+  bool showDataLabels = false;
+
+  class DataItem
+  {
+    public string? Country { get; set; }
+    public decimal Revenue { get; set; }
+  }
+
+  private string FormatAsUSD(object value)
+  {
+    return ((double)value).ToString("C0",
+      CultureInfo.GetCultureInfo("en-US"));
+  }
+
+  private DataItem[]? revenue;
+
+  protected override async Task OnParametersSetAsync()
+  {
+    Order[]? ordersArray = null;
+
+    // Web API service uses "Preserve" so
+    // we must control how references are handled.
+    JsonSerializerOptions jsonOptions = new()
+      {
+        ReferenceHandler = ReferenceHandler.Preserve,
+        PropertyNameCaseInsensitive = true
+      };
+
+    HttpClient client = httpClientFactory.CreateClient(
+      "Northwind.BlazorLibraries.ServerAPI");
+
+    string path = "api/orders";
+
+    try
+    {
+      ordersArray = (await client.GetFromJsonAsync<Order[]?>(
+        path, jsonOptions));
+
+      revenue = ordersArray?
+        .GroupBy(order => order.ShipCountry)
+        .Select(group => new DataItem
+          {
+            Country = group.Key,
+            Revenue = group.Sum(order => order.OrderDetails.Sum(
+          detail => detail.UnitPrice * detail.Quantity))
+          })
+        .OrderByDescending(dataitem => dataitem.Revenue)
+        .ToArray();
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+    }
+  }
+}

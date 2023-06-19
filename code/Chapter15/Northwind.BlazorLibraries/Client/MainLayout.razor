@@ -1,0 +1,48 @@
+﻿@inherits LayoutComponentBase
+<RadzenDialog />
+<RadzenNotification />
+<RadzenContextMenu />
+<RadzenTooltip />
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-auto">
+        <div class="alert alert-secondary">
+          <nav class="nav nav-pills flex-column">
+            <div class="nav-item px-3">
+              <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">
+                Home
+              </NavLink>
+            </div>
+            <div class="nav-item px-3">
+              <NavLink class="nav-link" href="categories" Match="NavLinkMatch.All">
+                Categories
+              </NavLink>
+            </div>
+            <div class="nav-item px-3">
+              <NavLink class="nav-link" href="htmleditor">
+                HTML Editor
+              </NavLink>
+            </div>
+            <div class="nav-item px-3">
+              <NavLink class="nav-link" href="orders-bar-chart">
+                Orders Bar Chart
+              </NavLink>
+            </div>
+            <div class="nav-item px-3">
+              <NavLink class="nav-link" href="categories-pie-chart">
+                Categories Pie Chart
+              </NavLink>
+            </div>
+            <div class="nav-item px-3">
+              <NavLink class="nav-link" href="employees">
+                Employees
+              </NavLink>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="col">@Body</div>
+    </div>
+  </div>
+</main>

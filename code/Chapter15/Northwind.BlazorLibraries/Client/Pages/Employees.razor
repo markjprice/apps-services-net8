@@ -1,0 +1,268 @@
+﻿@page "/employees"
+@using System.Net
+@inject IHttpClientFactory httpClientFactory
+@inject NotificationService notificationService
+
+<h3>Employees</h3>
+
+<RadzenCard>
+  <RadzenListBox AllowFiltering="true" TValue="int"
+                 FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive"
+                 Data=@employees
+                 TextProperty="FirstName"
+                 ValueProperty="EmployeeId"
+                 Change=@(args => OnChange(args, "ListBox with filtering"))
+                 Style="height:150px" Class="w-100" />
+</RadzenCard>
+<hr />
+@if (employee != null)
+{
+  <RadzenTemplateForm Data="@employee"
+                      Submit="@((Employee employee) => { Submit(employee); })">
+    <div class="row">
+      <div class="col-md-6">
+        <RadzenFieldset Text="Employee Details">
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Employee ID" />
+            </div>
+            <div class="col-md-8">
+              <RadzenNumeric style="width: 100%;" Name="EmployeeId"
+              @bind-Value="employee.EmployeeId" ReadOnly="true" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Title" />
+            </div>
+            <div class="col-md-8">
+              <RadzenTextBox style="width: 100%;" Name="Title"
+              @bind-Value="employee.Title" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Title of Courtesy" />
+            </div>
+            <div class="col-md-8">
+              <RadzenTextBox style="width: 100%;" Name="TitleOfCourtesy"
+              @bind-Value="employee.TitleOfCourtesy" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="First Name" />
+            </div>
+            <div class="col-md-8">
+              <RadzenTextBox style="width: 100%;" Name="FirstName"
+              @bind-Value="employee.FirstName" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Last Name" />
+            </div>
+            <div class="col-md-8">
+              <RadzenTextBox style="width: 100%;" Name="LastName"
+              @bind-Value="employee.LastName" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Birth Date" />
+            </div>
+            <div class="col-md-8">
+              <RadzenDatePicker style="width: 100%;" Name="BirthDate"
+              @bind-Value="employee.BirthDate" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Hire Date" />
+            </div>
+            <div class="col-md-8">
+              <RadzenDatePicker style="width: 100%;" Name="HireDate"
+              @bind-Value="employee.HireDate" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <RadzenTextArea style="width: 100%;" Name="Notes"
+              @bind-Value="employee.Notes" Rows="6" />
+            </div>
+          </div>
+        </RadzenFieldset>
+      </div>
+      <div class="col-md-6">
+        <RadzenFieldset Text="Home Address">
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Country" />
+            </div>
+            <div class="col-md-8">
+              <RadzenDropDown TValue="string" @bind-Value="employee.Country"
+                              Placeholder="USA" Data="@countries" style="width: 100%;"
+                              Name="Country">
+              </RadzenDropDown>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="City" />
+            </div>
+            <div class="col-md-8">
+              <RadzenDropDown TValue="string" @bind-Value="employee.City"
+                              Data="@cities" style="width: 100%;" Name="City">
+              </RadzenDropDown>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Region" />
+            </div>
+            <div class="col-md-8">
+              <RadzenTextBox style="width: 100%;" Name="Region"
+              @bind-Value="employee.Region" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Postal Code" />
+            </div>
+            <div class="col-md-8">
+              <RadzenTextBox style="width: 100%;" Name="PostalCode"
+              @bind-Value="employee.PostalCode" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Building/Street" />
+            </div>
+            <div class="col-md-8">
+              <RadzenTextBox style="width: 100%;" Name="Address"
+              @bind-Value="employee.Address" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Home Phone" />
+            </div>
+            <div class="col-md-8">
+              <RadzenTextBox style="width: 100%;" Name="HomePhone"
+              @bind-Value="employee.HomePhone" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 align-items-center d-flex">
+              <RadzenLabel Text="Picture" />
+            </div>
+            <div class="col-md-8">
+              @if (employee.Photo is not null)
+              {
+                <div>
+                  <img class="rounded float-start"
+                       src="@employee.Photo.ConvertToBase64Jpeg()" />
+                </div>
+              }
+            </div>
+          </div>
+        </RadzenFieldset>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-12 d-flex align-items-end justify-content-center"
+           style="margin-top: 16px;">
+        <RadzenButton ButtonType="ButtonType.Submit" Icon="save"
+                      Text="Save Changes" />
+      </div>
+    </div>
+  </RadzenTemplateForm>
+}
+
+@code {
+  private IQueryable<Employee>? employees;
+  private string[]? countries;
+  private string[]? cities;
+
+  private Employee? employee = null;
+
+  // Web API service uses "Preserve" so
+  // we must control how references are handled.
+  private JsonSerializerOptions jsonOptions = new()
+    {
+      ReferenceHandler = ReferenceHandler.Preserve,
+      PropertyNameCaseInsensitive = true
+    };
+
+  protected override async Task OnParametersSetAsync()
+  {
+    Employee[]? employeesArray = null;
+
+    HttpClient client = httpClientFactory.CreateClient(
+      "Northwind.BlazorLibraries.ServerAPI");
+
+    string path = "api/employees";
+
+    try
+    {
+      employeesArray = (await client.GetFromJsonAsync<Employee[]?>(
+        path, jsonOptions));
+
+      employees = employeesArray?.AsQueryable();
+
+      countries = (await client.GetFromJsonAsync<string[]?>(
+        "api/countries"));
+
+      cities = (await client.GetFromJsonAsync<string[]?>(
+        "api/cities"));
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+    }
+  }
+
+  void OnChange(object value, string name)
+  {
+    string? str = value is IEnumerable<object> ?
+      string.Join(", ", (IEnumerable<object>)value) :
+      value.ToString();
+
+    Console.WriteLine($"{name} value changed to {str}");
+
+    if (str != null)
+    {
+      employee = employees?.FirstOrDefault(employee =>
+        employee.EmployeeId == int.Parse(str));
+    }
+  }
+
+  private async void Submit(Employee employee)
+  {
+    HttpClient client = httpClientFactory.CreateClient(
+      "Northwind.BlazorLibraries.ServerAPI");
+
+    string path = $"api/employees/{employee.EmployeeId}";
+
+    try
+    {
+      HttpResponseMessage response = await client
+        .PutAsJsonAsync<Employee>(path, employee);
+
+      NotificationMessage message = new()
+        {
+          Severity = response.StatusCode == HttpStatusCode.OK ?
+              NotificationSeverity.Success : NotificationSeverity.Error,
+          Summary = $"{response.StatusCode}",
+          Detail = $"Employees affected: {await response.Content.ReadAsStringAsync()}",
+          Duration = 5000 // milliseconds
+        };
+
+      notificationService.Notify(message);
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+    }
+  }
+}
