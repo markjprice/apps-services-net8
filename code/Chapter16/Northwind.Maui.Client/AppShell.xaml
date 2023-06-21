@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+  x:Class="Northwind.Maui.Client.AppShell"
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:local="clr-namespace:Northwind.Maui.Client"
+  Shell.FlyoutBehavior="Flyout">
+
+  <Shell.FlyoutHeader>
+    <HorizontalStackLayout Spacing="10" HorizontalOptions="Start">
+      <Image Source="wind_face_3d.png" 
+             WidthRequest="80" HeightRequest="80" />
+      <Label Text="Northwind" FontFamily="OpenSansSemibold" 
+             FontSize="32" VerticalOptions="Center" />
+    </HorizontalStackLayout>
+  </Shell.FlyoutHeader>
+
+  <ShellContent Title="Home" 
+    Icon="file_cabinet_3d.png" 
+    ContentTemplate="{DataTemplate local:MainPage}"
+    Route="MainPage" />
+
+  <ShellContent Title="Categories" 
+    Icon="delivery_truck_3d.png" 
+    ContentTemplate="{DataTemplate local:CategoriesPage}"
+    Route="Categories" />
+
+  <ShellContent Title="Products" 
+    Icon="cityscape_3d.png" 
+    ContentTemplate="{DataTemplate local:ProductsPage}"
+    Route="Products" />
+
+  <ShellContent Title="Customers" 
+    Icon="card_index_3d.png" 
+    ContentTemplate="{DataTemplate local:CustomersPage}"
+    Route="Customers" />
+
+  <ShellContent Title="Employees" 
+    Icon="identification_card_3d.png" 
+    ContentTemplate="{DataTemplate local:EmployeesPage}"
+    Route="Employees" />
+
+  <ShellContent Title="Settings" 
+    Icon="gear_3d.png" 
+    ContentTemplate="{DataTemplate local:SettingsPage}" 
+    Route="Settings" />
+
+</Shell>

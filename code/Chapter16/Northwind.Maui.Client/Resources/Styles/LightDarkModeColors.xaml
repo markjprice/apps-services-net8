@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="Northwind.Maui.Client.Resources.Styles.LightDarkModeColors">
+
+  <Color x:Key="LightPageBackgroundColor">White</Color>
+  <Color x:Key="LightNavigationBarColor">AliceBlue</Color>
+  <Color x:Key="LightPrimaryColor">WhiteSmoke</Color>
+  <Color x:Key="LightSecondaryColor">Black</Color>
+  <Color x:Key="LightPrimaryTextColor">Black</Color>
+  <Color x:Key="LightSecondaryTextColor">White</Color>
+  <Color x:Key="LightTertiaryTextColor">Gray</Color>
+
+  <Color x:Key="DarkPageBackgroundColor">Black</Color>
+  <Color x:Key="DarkNavigationBarColor">Teal</Color>
+  <Color x:Key="DarkPrimaryColor">Teal</Color>
+  <Color x:Key="DarkSecondaryColor">White</Color>
+  <Color x:Key="DarkPrimaryTextColor">White</Color>
+  <Color x:Key="DarkSecondaryTextColor">White</Color>
+  <Color x:Key="DarkTertiaryTextColor">WhiteSmoke</Color>
+
+</ResourceDictionary>
