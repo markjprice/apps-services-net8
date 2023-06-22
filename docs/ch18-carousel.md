@@ -1,14 +1,15 @@
 **Create a categories page with the carousel control**
 
+In this online-only section, you will implement a web service to provide CRUD operations for categories in the Northwind database and then call the web service to display categories including photos in a rotating carousel.
+
 - [Creating a minimal API web service for categories](#creating-a-minimal-api-web-service-for-categories)
 - [Configuring the .NET MAUI app to allow unsecure connections](#configuring-the-net-maui-app-to-allow-unsecure-connections)
 - [Implementing the Model-View-ViewModel pattern](#implementing-the-model-view-viewmodel-pattern)
 - [Getting categories from the web service](#getting-categories-from-the-web-service)
 
-
 # Creating a minimal API web service for categories
 
-We will create a web service for working with categories and products in the Northwind database:
+We will create a web service for working with categories in the Northwind database:
 
 1.	Using your preferred code editor, add a web service project, as defined in the following list:
     - Project template: **ASP.NET Core Web API** / `webapi --use-minimal-apis`.
@@ -29,12 +30,17 @@ We will create a web service for working with categories and products in the Nor
 ```
 
 3.	At the command prompt or terminal, build the `Northwind.Maui.WebApi.Service` project to make sure the entity model class library projects outside the current solution are properly compiled, as shown in the following command: `dotnet build`.
-4.	In the `Properties` folder, in `launchSettings.json`, modify the `applicationUrl` to use port `5181` for `https` and port `5182` for `http`, as shown highlighted in the following configuration:
+4.	In the `Properties` folder, in `launchSettings.json`, for the `https` profile, modify the `applicationUrl` to use port `5181` for `https` and port `5182` for `http`, as shown highlighted in the following configuration:
 ```json
 "applicationUrl": "https://localhost:5181;http://localhost:5182",
 ```
 
-5.	In `Program.cs`, delete the statements about the weather service and replace them with statements to disable HTTPS redirection while developing and to configure minimal API endpoints for data operations on categories, as shown highlighted in the following code:
+5.	In `launchSettings.json`, for the `http` profile, modify the `applicationUrl` to use port `5182` for `http`, as shown highlighted in the following configuration:
+```json
+"applicationUrl": "http://localhost:5182",
+```
+
+6.	In `Program.cs`, delete the statements about the weather service and replace them with statements to disable HTTPS redirection while developing and to configure minimal API endpoints for data operations on categories, as shown highlighted in the following code:
 ```cs
 using Microsoft.AspNetCore.Mvc; // To use [FromServices].
 using Northwind.EntityModels; // To use AddNorthwindContext method.
@@ -120,17 +126,17 @@ app.MapDelete("api/categories/{id:int}", async (
 
 app.Run();
 ```
-3.	Start the web service project and note the Swagger documentation.
-4.	Click **GET /api/categories** to expand that section.
-5.	Click the **Try it out** button, click the **Execute** button, and note that category entities are returned.
-6.	Close the browser and shut down the web server.
+7.	Start the web service project and note the Swagger documentation.
+8.	Click **GET /api/categories** to expand that section.
+9.	Click the **Try it out** button, click the **Execute** button, and note that category entities are returned.
+10.	Close the browser and shut down the web server.
 
 # Configuring the .NET MAUI app to allow unsecure connections
 
-Now you will configure the Northwind.Maui.Blazor.Client project to allow unsecure HTTP requests to the web service:
+Now you will configure the `Northwind.Maui.Blazor.Client` project to allow unsecure HTTP requests to the web service:
 
-1.	In the Northwind.Maui.Blazor.Client project, in the Platforms/iOS folder, open the Info.plist file by right-clicking and opening it with the XML (Text) Editor.
-2.	At the bottom of the dictionary, add a new key named NSAppTransportSecurity that is a dictionary, and in it, add a key named NSAllowsArbitraryLoads that has a value of true, as shown highlighted in the following partial markup:
+1.	In the `Northwind.Maui.Blazor.Client` project, in the `Platforms/iOS` folder, open the `Info.plist` file by right-clicking and opening it with the **XML (Text) Editor**.
+2.	At the bottom of the dictionary, add a new key named `NSAppTransportSecurity` that is a dictionary, and in it, add a key named `NSAllowsArbitraryLoads` that has a value of `true`, as shown in the following partial markup:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
@@ -161,7 +167,7 @@ Now you will configure the Northwind.Maui.Blazor.Client project to allow unsecur
 </network-security-config>
 ```
 
-6.	In the `Android` folder, in `AndroidManifest.xml`, add an attribute to the `<application>` element to reference the new XML file, as shown highlighted in the following markup:
+6.	In the `Android` folder, in `AndroidManifest.xml`, add an attribute to the `<application>` element to reference the new XML file, as shown in the following markup:
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -180,9 +186,9 @@ Now you will configure the Northwind.Maui.Blazor.Client project to allow unsecur
 
 # Implementing the Model-View-ViewModel pattern
 
-Now, let’s define a model and a view model for working with categories:
+Now, let's define a model and a view model for working with categories:
 
-1.	In the Northwind.Maui.Blazor.Client project file, add package references for the .NET MAUI Community Toolkit and for the MVVM Community Toolkit, as shown in the following markup:
+1.	In the `Northwind.Maui.Blazor.Client` project file, add package references for the .NET MAUI Community Toolkit and for the MVVM Community Toolkit, as shown in the following markup:
 ```xml
 <PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
 <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
@@ -201,7 +207,7 @@ builder
   .ConfigureFonts(fonts =>
 ```
 
-4.	In the `Views/Categories` folder, add a new class named `Category.cs`. Modify it to use the MVVM Community Toolkit to implement an observable category model that matches the Category entity models defined in the SQL Server EF Core models, but with an extra property to generate a path to a picture of each category as an alternative to the bytes stored in the database, as shown in the following code:
+4.	In the `Views/Categories` folder, add a new class named `Category.cs`. Modify it to use the MVVM Community Toolkit to implement an observable category model that matches the `Category` entity models defined in the SQL Server EF Core models, but with an extra property to generate a path to a picture of each category as an alternative to the bytes stored in the database, as shown in the following code:
 ```cs
 // To use ObservableObject, [ObservableProperty].
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -312,7 +318,7 @@ internal partial class CategoriesViewModel : ObservableCollection<Category>
 
 Now, we can modify the categories page to show the categories in a carousel:
 
-1.	In `App.xaml`, modify the resources for the `PageBackgroundColor` and `PrimaryTextColor`, and the `BackgroundColor` for buttons, as shown highlighted in the following markup:
+1.	In `App.xaml`, modify the resources for the `PageBackgroundColor` and `PrimaryTextColor`, and the `BackgroundColor` for buttons, as shown in the following markup:
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -450,7 +456,7 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Development
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\apps-services-net7\Chapter19\Northwind.Maui.WebApi.Service
+      Content root path: C:\apps-services-net8\Chapter18\Northwind.Maui.WebApi.Service
 ```
 
 4.	Run the `Northwind.Maui.Blazor.Client` project using the Android emulator, navigate to the `Categories page`, and note that eight categories are loaded from the web service and displayed in the carousel, with indicator lights at the bottom of the page view, as shown in *Figure 18A.1*:
