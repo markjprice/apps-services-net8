@@ -8,13 +8,13 @@ namespace Northwind.Maui.Blazor.Client.Views.Orders;
 internal partial class DeviceInfoViewModel : ObservableObject
 {
   [RelayCommand]
-  private async void NavigateTo(string pageName)
+  private async Task NavigateToAsync(string pageName)
   {
     await Shell.Current.GoToAsync($"//{pageName}");
   }
 
   [RelayCommand]
-  private async void PopupToast()
+  private async Task PopupToastAsync()
   {
     IToast toast = Toast.Make(message: "This toast pops up.",
       duration: ToastDuration.Short, textSize: 18);
