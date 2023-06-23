@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:orders=
+               "clr-namespace:Northwind.Maui.Blazor.Client.Views.Orders"
+             x:Class="Northwind.Maui.Blazor.Client.Views.OrdersPage"
+             Title="Orders">
+
+  <ContentPage.BindingContext>
+    <orders:DeviceInfoViewModel />
+  </ContentPage.BindingContext>
+
+  <ContentPage.MenuBarItems>
+    <MenuBarItem Text="File">
+      <MenuFlyoutItem Text="Exit" />
+    </MenuBarItem>
+    <MenuBarItem Text="View">
+      <MenuFlyoutItem Text="Home" Clicked="Menu_Clicked"
+                    Command="{Binding NavigateToCommand}" 
+                    CommandParameter="home" />
+      <MenuFlyoutItem Text="Categories" Clicked="Menu_Clicked"
+                    Command="{Binding NavigateToCommand}" 
+                    CommandParameter="categories" />
+      <MenuFlyoutItem Text="Employees" Clicked="Menu_Clicked"
+                    Command="{Binding NavigateToCommand}" 
+                    CommandParameter="employees" />
+      <MenuFlyoutItem Text="Orders" Clicked="Menu_Clicked"
+                    Command="{Binding NavigateToCommand}" 
+                    CommandParameter="orders" />
+      <MenuFlyoutItem Text="Refresh" />
+    </MenuBarItem>
+    <MenuBarItem Text="Notify">
+      <MenuFlyoutItem Text="Popup Toast" Clicked="ToastMenu_Clicked"
+                  Command="{Binding PopupToastCommand}" />
+    </MenuBarItem>
+  </ContentPage.MenuBarItems>
+
+  <VerticalStackLayout Spacing="10">
+
+    <Frame BorderColor="{StaticResource PrimaryTextColor}" 
+           Margin="5" Padding="5">
+      <VerticalStackLayout Spacing="10">
+        <Label Text="Windowing"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center" />
+        <Button Text="New Window" x:Name="NewWindowButton" 
+                Clicked="NewWindowButton_Clicked" 
+                HorizontalOptions="Center" />
+      </VerticalStackLayout>
+    </Frame>
+
+    <Frame BorderColor="{StaticResource PrimaryTextColor}" 
+       Margin="5" Padding="5">
+      <VerticalStackLayout Spacing="10">
+        <Label Text="Device Information"
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" />
+        <HorizontalStackLayout Spacing="20">
+          <Label Text="Listen to battery events" 
+             VerticalOptions="Center" />
+          <Switch Toggled="BatterySwitch_Toggled" 
+              x:Name="BatterySwitch"
+              VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+        <Label x:Name="BatteryStateLabel" />
+        <Label x:Name="BatteryLevelLabel" />
+        <Label Text="{Binding DeviceModel}" />
+        <Label Text="{Binding DeviceType}" />
+        <Label Text="{Binding DevicePlatform}" />
+        <Label Text="{Binding DeviceVersion}" />
+        <Label Text="{Binding DisplayOrientation}" />
+        <Label Text="{Binding DisplayRotation}" />
+        <Label Text="{Binding DisplayDensity}" />
+        <Label Text="{Binding DisplayPixelWidth}" />
+        <Label Text="{Binding DisplayRefreshRate}" />
+      </VerticalStackLayout>
+    </Frame>
+
+  </VerticalStackLayout>
+  
+</ContentPage>
