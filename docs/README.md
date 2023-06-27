@@ -32,6 +32,6 @@
 - [Command-Lines](command-lines.md)
 - [8th Edition's errata and improvement](errata/README.md)
 - [8th Edition's book links](book-links.md)
-- [8th Edition's support for .NET 8](dotnet9.md)
+- [8th Edition's support for .NET 9 and 10](dotnet9.md)
 - [8th Edition's information for Technical Reviewers](reviewers.md)
 
