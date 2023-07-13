@@ -3,6 +3,8 @@
 If you are a Technical Reviewer for this book, then you will find useful information on this page.
 
 - [Installing previews](#installing-previews)
+- [Updating workloads](#updating-workloads)
+- [dotnet ef tool](#dotnet-ef-tool)
 - [Word document files](#word-document-files)
 - [Operating systems and code editors](#operating-systems-and-code-editors)
 - [Lifetime of .NET 8 and the book](#lifetime-of-net-8-and-the-book)
@@ -12,6 +14,34 @@ If you are a Technical Reviewer for this book, then you will find useful informa
 Microsoft releases official previews of .NET 8 on [Patch Tuesday](https://en.wikipedia.org/wiki/Patch_Tuesday) each month or one week later. I maintain a list of [.NET 8 preview releases](https://github.com/markjprice/cs11dotnet7/blob/main/docs/dotnet8.md) in the GitHub repo for the 7th edition.
 
 - [Download .NET 8 Previews](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+
+# Updating workloads
+
+After downloading and installing a .NET 8 preview, remember to update your workloads, as shown in the following command:
+```
+dotnet workload update
+```
+
+You can then list the workloads to check they have all been updated, as shown in the following command:
+```
+dotnet workload list
+```
+
+# dotnet ef tool
+
+Make sure you are using the latest EF Core command-line tool. 
+
+For example, to upgrade to the latest released version:
+```
+C:\>dotnet tool update --global dotnet-ef
+Tool 'dotnet-ef' was successfully updated from version '7.0.0' to version '7.0.3'.
+```
+
+To upgrade to the latest .NET 8 preview version:
+```
+C:\>dotnet tool update --global dotnet-ef --version 8.0-*
+Tool 'dotnet-ef' was successfully updated from version '7.0.3' to version '8.0.0-preview.1.23111.4'.
+```
 
 # Word document files
 
