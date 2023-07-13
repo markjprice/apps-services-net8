@@ -73,4 +73,4 @@ Although the book is written for .NET 8, I'd like the reader to know how to use 
 
 I plan to add a notes in Chapter 1 to help the readers who want to use previews and release versions of .NET 9 to be successful too.
 
-*Packt will likely only publish a .NET 9 edition of the *C# 13 and .NET 9 - Modern Cross-Platform Development Fundamentals* book. The third edition of the *Apps and Services with .NET* book is likely to be for .NET 10. So the second edition *Apps and Services with .NET 8* will need to be in the market for two years before being updated for .NET 10.
+> Packt will likely only publish a .NET 9 edition of the *C# 13 and .NET 9 - Modern Cross-Platform Development Fundamentals* book. The third edition of the *Apps and Services with .NET* book is likely to be for .NET 10. So the second edition *Apps and Services with .NET 8* will need to be in the market for two years before being updated for .NET 10.
