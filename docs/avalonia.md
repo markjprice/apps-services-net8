@@ -1,9 +1,9 @@
 **Avalonia 11**
 
-This page contains a tutorial based on the [ToDo List tutorial for Avalonia 11](https://docs.avaloniaui.net/docs/next/tutorials/todo-list-app/) 
+This page contains a tutorial based on the official [ToDo List tutorial](https://docs.avaloniaui.net/docs/next/tutorials/todo-list-app/) 
 from Avalonia 11's documentation but with the issues fixed.
 
-This tutorial contains instructions for you to use Microsoft Visual Studio 2022 on Windows.
+This tutorial contains step-by-step instructions using Visual Studio 2022 on Windows.
 
 - [Introduction to the ToDo List app](#introduction-to-the-todo-list-app)
 - [Install the Avalonia extension](#install-the-avalonia-extension)
@@ -11,7 +11,6 @@ This tutorial contains instructions for you to use Microsoft Visual Studio 2022 
 - [Create a New View](#create-a-new-view)
 - [Main Window Content](#main-window-content)
 - [Create a Model](#create-a-model)
-
 
 # Introduction to the ToDo List app
 

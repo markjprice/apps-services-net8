@@ -27,6 +27,10 @@
 - [Blazor Progressive Web Apps topics](ch15-blazor-pwa.md)
 - [Leveraging Open Source Blazor Component Libraries](ch15-blazor-libraries.md)
 
+# Appendix B online-only sections
+
+- [Avalonia 11](avalonia.md)
+
 # Miscellaneous
 
 - [Command-Lines](command-lines.md)
