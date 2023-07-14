@@ -9,6 +9,8 @@ This tutorial contains instructions for you to use Microsoft Visual Studio 2022 
 - [Install the Avalonia extension](#install-the-avalonia-extension)
 - [Create a New Project](#create-a-new-project)
 - [Create a New View](#create-a-new-view)
+- [Main Window Content](#main-window-content)
+- [Create a Model](#create-a-model)
 
 
 # Introduction to the ToDo List app
@@ -98,6 +100,44 @@ The final app will look like *Figure B.1*:
 
 *Figure B.7: Designer showing a preview of the user control*
 
+# Main Window Content
 
+1. In the `Views` folder, in `MainWindow.axaml`, in the `<Window>` element, add a namespace decalration, as shown in the following markup: `xmlns:views="clr-namespace:ToDoList.Views"`.
+2. In the `<Window>` element, change the title to `Avalonia To Do List`.
+3. Replace the `<TextBlock>` with `<views:ToDoListView/>`.
 
+The complete file should now look like this:
+```xml
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ToDoList.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="ToDoList.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        xmlns:views="clr-namespace:ToDoList.Views"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Avalonia To Do List">
+
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+
+  <views:ToDoListView/>
+
+</Window>
+```
+
+4. Save the changes to the file.
+5. Build the project.
+6. Start the project and note the main window now contains the user control with two check boxes, as shown in *Figure B.8*:
+
+![Running app with user control in main window](avalonia/avalonia-todo-08.png)
+
+*Figure B.8: Running app with user control in main window*
+
+# Create a Model
 
