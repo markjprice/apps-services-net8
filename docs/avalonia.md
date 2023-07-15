@@ -18,7 +18,7 @@ This tutorial contains step-by-step instructions and screenshots using Visual St
 
 # Introduction to the ToDo List app
 
-In this tutorial you will create a simple to do list application using Avalonia UI and the Model View View-Model (MVVM) pattern with binding to the to do list (collection) data.
+In this tutorial you will create a simple to do list app using Avalonia UI and the Model View View-Model (MVVM) pattern.
 
 The final app will look like *Figure B.1*:
 
@@ -31,11 +31,10 @@ The final app will look like *Figure B.1*:
 1. In Visual Studio 2022, navigate to **Extensions** | **Manage Extensions**.
 2. In the **Search box**, type `Avalonia`.
 3. Select the **Avalonia for Visual Studio** extension and then click **Download**.
-4. Follow the instructions (you will need to close Visual Studio while the VSIX installation runs).
 
 # Create a New Project
 
-> The original tutorial does not provide the new project template names.
+> The original tutorial does not say the new project template names.
 
 1. In Visual Studio 2022, navigate to **File** | **New Project**.
 2. In the **Create a new project** dialog box, in the **Search for templates** box, enter `avalonia`.
@@ -53,24 +52,24 @@ The final app will look like *Figure B.1*:
 
 > The original tutorial does not specify which MVVM Toolkit to use in the latest version (although it did in the older version). You must select **ReactiveUI** because this tutorial uses some of its features later.
 
-5. In the **Additional information** dialog box, for **Framework** select **.NET 7.0 (Standard Term Support)** (you will be able to select **.NET 8.0 (Long Term Support)** soon after November 2023), for **MVVM Toolkit** select **ReactiveUI**, for **Avalonia Version** select **11.0.0**, select the **Use Compiled Bindings** check box, clear the Remove View Locator check box, and then click the **Next** button, as shown in *Figure B.4*:
+5. In the **Additional information** dialog box, for **Framework** select **.NET 7.0 (Standard Term Support)** (you will be able to select **.NET 8.0 (Long Term Support)** soon after November 2023), for **MVVM Toolkit** select **ReactiveUI**, for **Avalonia Version** select **11.0.0**, select the **Use Compiled Bindings** check box, clear the **Remove View Locator** check box, and then click the **Create** button, as shown in *Figure B.4*:
 
 ![Providing additional information](avalonia/avalonia-todo-04.png)
 
 *Figure B.4: Providing additional information*
 
-6. Note the `MainWindow.axaml` file is open but the designer is stuck loading, as shown in *Figure B.5*:
+6. Note the `MainWindow.axaml` file is open but the designer is stuck "loading", as shown in *Figure B.5*:
 
 ![Designer stuck loading](avalonia/avalonia-todo-05.png)
 
 *Figure B.5: Designer stuck loading*
 
 7. Navigate to **Build** | **Build ToDoList**.
-8. After a few moments, note the designer finishes loading and shows a preview of the app, as shown in *Figure B.6*:
+8. After a few moments, note the designer finishes loading and shows a preview of the main window, as shown in *Figure B.6*:
 
-![Designer showing a preview of the app](avalonia/avalonia-todo-06.png)
+![Designer showing a preview of the main window](avalonia/avalonia-todo-06.png)
 
-*Figure B.6: Designer showing a preview of the app*
+*Figure B.6: Designer showing a preview of the main window*
 
 # Create a New View
 
@@ -78,7 +77,7 @@ The final app will look like *Figure B.1*:
 2. Click **Add** | **New Item**.
 3. In the **Add New Item** dialog box, in **C# Items**, select **Avalonia**, and then select **Avalonia UserControl (AvaloniaUI)**.
 4. For **Name** enter `ToDoListView` and then click the **Add** button.
-5. In the `ToDoListView.axaml` file, modify the contents to replace the `Welcome to Avalonia!` with a `<DockPanel>`, as shown in the following markup:
+5. In the `ToDoListView.axaml` file, modify the contents to replace the text that says `Welcome to Avalonia!` with a `<DockPanel>` containing a button and a stack of two check boxes, as shown in the following markup:
 ```xml
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -109,10 +108,10 @@ The final app will look like *Figure B.1*:
 
 # Main Window Content
 
-1. In the `Views` folder, in `MainWindow.axaml`, in the `<Window>` element, add a namespace declaration, as shown in the following markup: `xmlns:views="clr-namespace:ToDoList.Views"`.
+1. In the `Views` folder, in `MainWindow.axaml`, in the `<Window>` element, import the namespace for working with your project's views, as shown in the following markup: `xmlns:views="clr-namespace:ToDoList.Views"`.
 2. In the `<Window>` element, change the title to `Avalonia To Do List`.
 3. Remove the <Design.DataContext> element completely.
-4. Replace the `<TextBlock>` with `<views:ToDoListView/>`.
+4. Replace the `<TextBlock>` with `<views:ToDoListView />`.
 
 The complete file should now look like this:
 ```xml
