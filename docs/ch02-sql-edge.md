@@ -7,7 +7,7 @@
   - [Connecting from Visual Studio Code](#connecting-from-visual-studio-code)
 - [Creating the Northwind database using a SQL script](#creating-the-northwind-database-using-a-sql-script)
 - [Removing Docker resources](#removing-docker-resources)
-- [Running a container on Windows using the user interface](#running-a-container-on-windows-using-the-user-interface)
+- [Running a container using the user interface](#running-a-container-using-the-user-interface)
 
 # Installing Docker and the Azure SQL Edge container image
 
@@ -19,7 +19,7 @@ The Docker image we will use has Azure SQL Edge based on Ubuntu 18.4. It is supp
 2.	Start **Docker Desktop**, as shown in Figure 2A.1:
 
 ![Docker Desktop on Windows](assets/B19587_02A_01.png)
-*Figure 2A.1: Docker Desktop on Windows*
+*Figure 2A.1: Docker Desktop v4.21.1 (July 2023) on Windows*
 
 3.	At the command prompt or terminal, pull down the latest container image for Azure SQL Edge, as shown in the following command:
 ```
@@ -66,13 +66,13 @@ docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=s3cret-
 
 > **Good Practice**: The password must be at least 8 characters long and contain characters from three of the following four sets: uppercase letters, lowercase letters, digits, and symbols; otherwise, the container cannot set up the SQL Edge engine and will stop working.
 
-> On Windows 11, running the container image at the command prompt failed for me. See [here](#running-a-container-on-windows-using-the-user-interface) for steps that worked.
+> On Windows 11, running the container image at the command prompt failed for me. See [here](#running-a-container-using-the-user-interface) for steps that worked.
 
 2.	If your operating system firewall blocks access, then allow access.
 3.	In **Docker Desktop**, in the **Containers** section, confirm that the image is running, as shown in *Figure 2A.2*:
 
-![SQL Edge running in Docker Desktop on Mac](assets/B19587_02A_02.png)
-*Figure 2A.2: SQL Edge running in Docker Desktop on Mac*
+![Azure SQL Edge running in Docker Desktop on an Apple Silicon Mac](assets/B19587_02A_02.png)
+*Figure 2A.2: Azure SQL Edge running in Docker Desktop on an Apple Silicon Mac*
 
 9.	At the command prompt or terminal, ask Docker to list all containers, both running and stopped, as shown in the following command:
 ```
@@ -90,6 +90,12 @@ You can learn more about the `docker ps` command at the following link: https://
 # Connecting to Azure SQL Edge in a Docker container
 
 Use your preferred database tool to connect to Azure SQL Edge in the Docker container.
+
+Some differences in the database connection string:
+
+- **Data Source** aka **server**: `tcp:127.0.0.1,1433`
+- Must use **SQL Server Authentication** aka **SQL Login** i.e. you must supply a user name and password.
+- **Database**: `master` or leave blank. We will create the Northwind database using a SQL script.
 
 ## Connecting from Visual Studio 2022 
 
@@ -187,14 +193,14 @@ docker rm azuresqledge
 docker rmi mcr.microsoft.com/azure-sql-edge
 ```
 
-# Running a container on Windows using the user interface
+# Running a container using the user interface
 
 If entering a command at the prompt or terminal fails for you, try following these steps to use the user interface:
 
 1. In **Docker Desktop**, navigate to the **Images** tab.
 2. In the **mcr.microsoft.com/azuresqledge** row, click the **Run** action.
 3. In the **Run a new container** dialog box, expand **Optional settings**, and complete the configuration, as shown in *Figure 2A.15* and in the following items:
-    - Container name: `azuresqledge`
+    - Container name: `azuresqledge`, or leave blank to use a random name.
     - Ports:
         - Enter `1401` to map to **:1401/tcp**.
         - Enter `1433` to map to **:1433/tcp**.
