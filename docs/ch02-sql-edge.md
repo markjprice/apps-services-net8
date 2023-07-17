@@ -13,7 +13,11 @@ If you do not have a Windows computer, and you do not want to pay for Azure reso
 The Docker image we will use has Azure SQL Edge based on Ubuntu 18.4. It is supported with the Docker Engine 1.8 or later on Linux, or on Docker for Mac or Windows. Azure SQL Edge requires a 64-bit processor (either x64 or ARM64), with a minimum of one processor and 1 GB RAM on the host.
 
 1.	Install **Docker Desktop** from the following link: https://docs.docker.com/engine/install/.
-2.	Start **Docker Desktop**.
+2.	Start **Docker Desktop**., as shown in Figure 2A.1:
+
+![SQL Edge running in Docker Desktop on Windows](assets/B19587_02A_01.png)
+*Figure 2A.1: SQL Edge running in Docker Desktop on Windows*
+
 3.	At the command prompt or terminal, pull down the latest container image for Azure SQL Edge, as shown in the following command:
 ```
 docker pull mcr.microsoft.com/azure-sql-edge:latest
@@ -60,10 +64,10 @@ docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=s3cret-
 > **Good Practice**: The password must be at least 8 characters long and contain characters from three of the following four sets: uppercase letters, lowercase letters, digits, and symbols; otherwise, the container cannot set up the SQL Edge engine and will stop working.
 
 2.	If your operating system firewall blocks access, then allow access.
-3.	In **Docker Desktop**, in the **Containers** section, confirm that the image is running, as shown in *Figure 2A.1*:
+3.	In **Docker Desktop**, in the **Containers** section, confirm that the image is running, as shown in *Figure 2A.2*:
 
-![SQL Edge running in Docker Desktop on Windows](assets/B19587_02A_01.png)
-*Figure 2A.1: SQL Edge running in Docker Desktop on Windows*
+![SQL Edge running in Docker Desktop on Windows](assets/B19587_02A_02.png)
+*Figure 2A.2: SQL Edge running in Docker Desktop on Windows*
 
 9.	At the command prompt or terminal, ask Docker to list all containers, both running and stopped, as shown in the following command:
 ```
@@ -80,10 +84,10 @@ CONTAINER ID   IMAGE                              COMMAND                  CREAT
 
 # Connecting to Azure SQL Edge in a Docker container
 
-1.	Use your preferred database tool to connect to the SQL server, as shown in *Figure 2A.2*:
+1.	Use your preferred database tool to connect to the SQL server, as shown in *Figure 2A.3*:
 
-![Connecting to your Azure SQL Edge server from Visual Studio](assets/B19587_02A_02.png)
-*Figure 2A.2: Connecting to your Azure SQL Edge server from Visual Studio*
+![Connecting to your Azure SQL Edge server from Visual Studio](assets/B19587_02A_03.png)
+*Figure 2A.3: Connecting to your Azure SQL Edge server from Visual Studio*
 
 2.	Right-click the data connection and choose **New Query**.
 3.	Copy and paste the contents of the `Northwind4AzureSQLedge.sql` file into the query window and execute it.
