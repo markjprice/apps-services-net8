@@ -7,7 +7,7 @@
   - [Connecting from Visual Studio Code](#connecting-from-visual-studio-code)
 - [Creating the Northwind database using a SQL script](#creating-the-northwind-database-using-a-sql-script)
 - [Removing Docker resources](#removing-docker-resources)
-
+- [Running a container on Windows using the user interface](#running-a-container-on-windows-using-the-user-interface)
 
 # Installing Docker and the Azure SQL Edge container image
 
@@ -65,6 +65,8 @@ docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=s3cret-
 ```
 
 > **Good Practice**: The password must be at least 8 characters long and contain characters from three of the following four sets: uppercase letters, lowercase letters, digits, and symbols; otherwise, the container cannot set up the SQL Edge engine and will stop working.
+
+> On Windows 11, running the container image at the command prompt failed for me. See [here](#running-a-container-on-windows-using-the-user-interface) for steps that worked.
 
 2.	If your operating system firewall blocks access, then allow access.
 3.	In **Docker Desktop**, in the **Containers** section, confirm that the image is running, as shown in *Figure 2A.2*:
@@ -184,3 +186,23 @@ docker rm azuresqledge
 ```
 docker rmi mcr.microsoft.com/azure-sql-edge
 ```
+
+# Running a container on Windows using the user interface
+
+If entering a command at the prompt or terminal fails for you, try following these steps to use the user interface:
+
+1. In **Docker Desktop**, navigate to the **Images** tab.
+2. In the **mcr.microsoft.com/azuresqledge** row, click the **Run** action.
+3. In the **Run a new container** dialog box, expand **Optional settings**, and complete the configuration, as shown in *Figure 2A.15* and in the following items:
+    - Container name: `azuresqledge`
+    - Ports:
+        - Enter `1401` to map to **:1401/tcp**.
+        - Enter `1433` to map to **:1433/tcp**.
+    - Volumes: leave empty.
+    - Environent variables (click + to add a second one):
+        - Enter `ACCEPT_EULA` with value `Y` (or `1`).
+        - Enter `MSSQL_SA_PASSWORD` with value `s3cret-Ninja`.
+4. Click **Run**.
+
+![Running a container for Azure SQL Edge with the user interface](assets/B19587_02A_15.png)
+*Figure 2A.15: Running a container for Azure SQL Edge with the user interface*
