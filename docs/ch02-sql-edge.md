@@ -83,15 +83,15 @@ CONTAINER ID   IMAGE                              COMMAND                  CREAT
 183f02e84b2a   mcr.microsoft.com/azure-sql-edge   "/opt/mssql/bin/perm…"   8 minutes ago   Up 8 minutes   1401/tcp, 0.0.0.0:1433->1433/tcp   azuresqledge
 ```
 
-> You can learn more about the docker ps command at the following link: https://docs.docker.com/engine/reference/commandline/ps/.
+You can learn more about the `docker ps` command at the following link: https://docs.docker.com/engine/reference/commandline/ps/.
 
 # Connecting to Azure SQL Edge in a Docker container
 
-Use your preferred database tool to connect to the SQL server:
+Use your preferred database tool to connect to Azure SQL Edge in the Docker container.
 
 ## Connecting from Visual Studio 2022 
 
-1.	Navigate to **View** | **Server Explorer**.
+1.	In Visual Studio 2022, navigate to **View** | **Server Explorer**.
 2.  In the mini-toolbar, click the **Add New Connection...** button.
 2.  Enter the connection details, as shown in *Figure 2A.3*:
 
@@ -100,39 +100,66 @@ Use your preferred database tool to connect to the SQL server:
 
 ## Connecting from Visual Studio Code
 
+1. In Visual Studio Code, navigate to the **SQL** extension.
+2. In the **SQL** extension, click **Add Connection...**.
+3. Enter the server name:
+
 ![Specifying the server name](assets/B19587_02A_04.png)
 *Figure 2A.4: Specifying the server name*
+
+4. Leave the database name blank by pressing *Enter*.
 
 ![Specifying the database name (leave blank)](assets/B19587_02A_05.png)
 *Figure 2A.5: Specifying the database name (leave blank)*
 
+5. Select **SQL Login** so that we can specify a username and password.
+
 ![Choosing SQL Login to authenticate](assets/B19587_02A_06.png)
 *Figure 2A.6: Choosing SQL Login to authenticate*
+
+6. Enter the user ID: `sa``.
 
 ![Entering the user ID of sa](assets/B19587_02A_07.png)
 *Figure 2A.7: Entering the user ID of sa*
 
+7. Enter the password: `s3cret-Ninja`:
+
 ![Entering the password](assets/B19587_02A_08.png)
 *Figure 2A.8: Entering the password*
+
+8. Select **Yes** to save the password for the future.
 
 ![Saving the password for future use](assets/B19587_02A_09.png)
 *Figure 2A.9: Saving the password for future use*
 
+9. Enter a connection profile name: `Azure SQL Edge in Docker`.
+
 ![Naming the connection](assets/B19587_02A_10.png)
 *Figure 2A.10: Naming the connection*
 
+10. Click **Enable Trust Server Certificate**.
+
 ![Trusting the local developer certificate](assets/B19587_02A_11.png)
 *Figure 2A.11: Trusting the local developer certificate*
+
+11. Note the success notification message.
 
 ![Success notification](assets/B19587_02A_12.png)
 *Figure 2A.12: Success notification*
 
 # Creating the Northwind database using a SQL script
 
-1.	Right-click the data connection and choose **New Query**.
-2.	Copy and paste the contents of the `Northwind4AzureSQLedge.sql` file into the query window and execute it.
-3.	Wait to see the `Command completed successfully` message.
-4.	In **Server Explorer**, refresh the data connection if needed, right-click **Tables** and select **Refresh**, and note that 13 tables have been created, for example, `Categories`, `Customers`, and `Products`. Also note that dozens of views and stored procedures have also been created.
+1.	Open the `Northwind4AzureSQLedge.sql` file.
+2.  Right-click in the script and select **Execute Query**.
+    - If you are using Visual Studio 2022, then ???.
+    - If you are using Visual Studio Code, then select the **Azure SQL Edge in Docker** connection profile.
+3.	Wait to see the `Command completed successfully` message(s).
+4.	Refresh the data connection:
+    - If you are using Visual Studio 2022, then in **Server Explorer**, right-click **Tables** and select **Refresh**, and note that 13 tables have been created, for example, `Categories`, `Customers`, and `Products`. Also note that dozens of views and stored procedures have also been created.
+    - If you are using Visual Studio Code, then right-click the **Azure SQL Edge in Docker** connection profile and choose **Refresh**, and then expand **Databases**, expand **Northwind** and then expand **Tables**.
+
+![Northwind database created by SQL script in Visual Studio Code](assets/B19587_02A_14.png)
+*Figure 2A.14: Northwind database created by SQL script in Visual Studio Code*
 
 You now have a running instance of Azure SQL Edge containing the Northwind database that you can connect to from a console app.
 
