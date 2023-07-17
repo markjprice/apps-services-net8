@@ -92,7 +92,7 @@ Use your preferred database tool to connect to Azure SQL Edge in the Docker cont
 ## Connecting from Visual Studio 2022 
 
 1.	In Visual Studio 2022, navigate to **View** | **Server Explorer**.
-2.  In the mini-toolbar, click the **Add New Connection...** button.
+2.  In the mini-toolbar, click the **Connect to Database...** button.
 2.  Enter the connection details, as shown in *Figure 2A.3*:
 
 ![Connecting to your Azure SQL Edge server from Visual Studio 2022](assets/B19587_02A_03.png)
