@@ -186,7 +186,7 @@ docker stop azuresqledge
 docker rm azuresqledge
 ```
 
-> Removing the container will delete all data inside it.
+> **Warning!** Removing the container will delete all data inside it.
 
 3.	At the command prompt or terminal, remove the `azure-sql-edge` image to release its disk space, as shown in the following command:
 ```
