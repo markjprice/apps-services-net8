@@ -94,7 +94,7 @@ Use your preferred database tool to connect to Azure SQL Edge in the Docker cont
 Some differences in the database connection string:
 
 - **Data Source** aka **server**: `tcp:127.0.0.1,1433`
-- Must use **SQL Server Authentication** aka **SQL Login** i.e. you must supply a user name and password.
+- Must use **SQL Server Authentication** aka **SQL Login** i.e. you must supply a user name and password. Azure SQL Edge image has the `sa` user already created and you had to give it a strong password when you ran the container. We chose the password `s3cret-Ninja`.
 - **Database**: `master` or leave blank. We will create the Northwind database using a SQL script.
 
 ## Connecting from Visual Studio 2022 
