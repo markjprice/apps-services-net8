@@ -56,7 +56,7 @@ mcr.microsoft.com/azure-sql-edge:latest
 
 # Run the Azure SQL Edge container image
 
-1.	At the command prompt or terminal, run the container image for Azure SQL Edge with a strong password and name the container azuresqledge, as shown in the following command:
+1.	At the command prompt or terminal, run the container image for Azure SQL Edge with a strong password and name the container `azuresqledge`, as shown in the following command:
 ```
 docker run --cap-add SYS_PTRACE -e 'ACCEPT_EULA=1' -e 'MSSQL_SA_PASSWORD=s3cret-Ninja' -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge
 ```
