@@ -150,13 +150,14 @@ Use your preferred database tool to connect to Azure SQL Edge in the Docker cont
 # Creating the Northwind database using a SQL script
 
 1.	Open the `Northwind4AzureSQLedge.sql` file.
-2.  Right-click in the script and select **Execute Query**.
-    - If you are using Visual Studio 2022, then ???.
-    - If you are using Visual Studio Code, then select the **Azure SQL Edge in Docker** connection profile.
-3.	Wait to see the `Command completed successfully` message(s).
-4.	Refresh the data connection:
-    - If you are using Visual Studio 2022, then in **Server Explorer**, right-click **Tables** and select **Refresh**, and note that 13 tables have been created, for example, `Categories`, `Customers`, and `Products`. Also note that dozens of views and stored procedures have also been created.
-    - If you are using Visual Studio Code, then right-click the **Azure SQL Edge in Docker** connection profile and choose **Refresh**, and then expand **Databases**, expand **Northwind** and then expand **Tables**.
+2.  Execute the SQL script:
+    - If you are using Visual Studio 2022, right-click in the script, and then select **Execute**, and then wait to see the `Command completed successfully` message.
+    - If you are using Visual Studio Code, right-click in the script, select **Execute Query**, select the **Azure SQL Edge in Docker** connection profile, and then wait to see the `Commands completed successfully` messages.
+3.	Refresh the data connection:
+    - If you are using Visual Studio 2022, then in **Server Explorer**, right-click **Tables** and select **Refresh**.
+    - If you are using Visual Studio Code, then right-click the **Azure SQL Edge in Docker** connection profile and choose **Refresh**.
+4.  Expand **Databases**, expand **Northwind** and then expand **Tables**.
+5.  Note that 13 tables have been created, for example, `Categories`, `Customers`, and `Products`. Also note that dozens of views and stored procedures have also been created.
 
 ![Northwind database created by SQL script in Visual Studio Code](assets/B19587_02A_14.png)
 *Figure 2A.14: Northwind database created by SQL script in Visual Studio Code*
