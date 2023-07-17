@@ -13,10 +13,10 @@ If you do not have a Windows computer, and you do not want to pay for Azure reso
 The Docker image we will use has Azure SQL Edge based on Ubuntu 18.4. It is supported with the Docker Engine 1.8 or later on Linux, or on Docker for Mac or Windows. Azure SQL Edge requires a 64-bit processor (either x64 or ARM64), with a minimum of one processor and 1 GB RAM on the host.
 
 1.	Install **Docker Desktop** from the following link: https://docs.docker.com/engine/install/.
-2.	Start **Docker Desktop**., as shown in Figure 2A.1:
+2.	Start **Docker Desktop**, as shown in Figure 2A.1:
 
-![SQL Edge running in Docker Desktop on Windows](assets/B19587_02A_01.png)
-*Figure 2A.1: SQL Edge running in Docker Desktop on Windows*
+![Docker Desktop on Windows](assets/B19587_02A_01.png)
+*Figure 2A.1: Docker Desktop on Windows*
 
 3.	At the command prompt or terminal, pull down the latest container image for Azure SQL Edge, as shown in the following command:
 ```
