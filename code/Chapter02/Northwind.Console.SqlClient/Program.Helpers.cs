@@ -1,9 +1,23 @@
-﻿using Microsoft.Data.SqlClient; // SqlConnection
-using System.Collections; // IDictionary
+﻿using Microsoft.Data.SqlClient; // To use SqlConnection.
+using System.Collections; // To use IDictionary.
+using System.Globalization; // To use CultureInfo.
 
 partial class Program
 {
-  static void WriteLineInColor(string value, 
+  private static void ConfigureConsole(string culture = "en-US",
+    bool useComputerCulture = false)
+  {
+    // To enable Unicode characters like Euro symbol in the console.
+    OutputEncoding = System.Text.Encoding.UTF8;
+
+    if (!useComputerCulture)
+    {
+      CultureInfo.CurrentCulture = CultureInfo.GetCultureInfo(culture);
+    }
+    WriteLine($"CurrentCulture: {CultureInfo.CurrentCulture.DisplayName}");
+  }
+
+  private static void WriteLineInColor(string value, 
     ConsoleColor color = ConsoleColor.Black)
   {
     ConsoleColor previousColor = ForegroundColor;
@@ -12,11 +26,12 @@ partial class Program
     ForegroundColor = previousColor;
   }
 
-  static void OutputStatistics(SqlConnection connection)
+  private static void OutputStatistics(SqlConnection connection)
   {
     // Remove all the string values to see all the statistics.
-    string[] includeKeys = new string[] { "BytesSent",
-      "BytesReceived", "ExecutionTime", "SelectRows" };
+    string[] includeKeys = { 
+      "BytesSent", "BytesReceived", "ExecutionTime", "SelectRows" 
+    };
 
     IDictionary statistics = connection.RetrieveStatistics();
 

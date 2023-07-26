@@ -1,26 +1,29 @@
 ﻿using Dapper;
-using Microsoft.Data.SqlClient; // SqlConnection and so on
-using Northwind.Models; // Product
-using System.Collections;
-using System.Data; // CommandType
-using System.Text.Json; // Utf8JsonWriter, JsonSerializer
+using Microsoft.Data.SqlClient; // To use SqlConnection and so on.
+using Northwind.Models; // To use Product.
+using System.Data; // To use CommandType.
+using System.Text.Json; // To use Utf8JsonWriter, JsonSerializer.
 
 using static System.Environment;
 using static System.IO.Path;
 
+//ConfigureConsole(); // US English by default.
+
 // Simulate the French culture to test Euro symbol.
-// Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo("fr-FR");
+ConfigureConsole(culture: "fr-FR");
 
-// Enable special characters like Euro currency symbol.
-OutputEncoding = System.Text.Encoding.UTF8;
+//ConfigureConsole(useComputerCulture: true);
 
-SqlConnectionStringBuilder builder = new();
+#region Set up the connection string builder
 
-builder.InitialCatalog = "Northwind";
-builder.MultipleActiveResultSets = true;
-builder.Encrypt = true;
-builder.TrustServerCertificate = true;
-builder.ConnectTimeout = 10; // Default is 30 seconds.
+SqlConnectionStringBuilder builder = new()
+{
+  InitialCatalog = "Northwind",
+  MultipleActiveResultSets = true,
+  Encrypt = true,
+  TrustServerCertificate = true,
+  ConnectTimeout = 10 // Default is 30 seconds.
+};
 
 WriteLine("Connect to:");
 WriteLine("  1 - SQL Server on local machine");
@@ -32,24 +35,22 @@ Write("Press a key: ");
 ConsoleKey key = ReadKey().Key;
 WriteLine(); WriteLine();
 
-if (key is ConsoleKey.D1 or ConsoleKey.NumPad1)
+switch (key)
 {
-  builder.DataSource = "."; // Local SQL Server
-  // @".\apps-services-book"; // Local SQL Server with instance name
-}
-else if (key is ConsoleKey.D2 or ConsoleKey.NumPad2)
-{
-  builder.DataSource = // Azure SQL Database
-    "tcp:apps-services-book.database.windows.net,1433";
-}
-else if (key is ConsoleKey.D3 or ConsoleKey.NumPad3)
-{
-  builder.DataSource = "tcp:127.0.0.1,1433"; // Azure SQL Edge
-}
-else
-{
-  WriteLine("No data source selected.");
-  return;
+  case ConsoleKey.D1 or ConsoleKey.NumPad1:
+    builder.DataSource = ".";
+    break;
+  case ConsoleKey.D2 or ConsoleKey.NumPad2:
+    builder.DataSource = 
+      // Use your Azure SQL Database server name.
+      "tcp:apps-services-book.database.windows.net,1433";
+    break;
+  case ConsoleKey.D3 or ConsoleKey.NumPad3:
+    builder.DataSource = "tcp:127.0.0.1,1433";
+    break;
+  default:
+    WriteLine("No data source selected.");
+    return;
 }
 
 WriteLine("Authenticate using:");
@@ -93,6 +94,9 @@ else
   WriteLine("No authentication selected.");
   return;
 }
+#endregion
+
+#region Create and open the connection
 
 SqlConnection connection = new(builder.ConnectionString);
 
@@ -119,6 +123,8 @@ catch (SqlException ex)
     ConsoleColor.Red);
   return;
 }
+
+#endregion
 
 Write("Enter a unit price: ");
 string? priceText = ReadLine();
@@ -180,6 +186,8 @@ else if (key is ConsoleKey.D2 or ConsoleKey.NumPad2)
   cmd.Parameters.AddRange(new[] { p1, p2, p3 });
 }
 
+// The name "reader" would be better practice in the real world
+// but "r" is shorter in a print book.
 SqlDataReader r = await cmd.ExecuteReaderAsync();
 
 string horizontalLine = new string('-', 60);
@@ -193,20 +201,20 @@ string jsonPath = Combine(CurrentDirectory, "products.json");
 
 List<Product> products = new();
 
-using (FileStream jsonStream = File.Create(jsonPath))
+await using (FileStream jsonStream = File.Create(jsonPath))
 {
   Utf8JsonWriter jsonWriter = new(jsonStream);
   jsonWriter.WriteStartArray();
 
   while (await r.ReadAsync())
   {
-    Product p = new()
+    Product product = new()
     {
       ProductId = await r.GetFieldValueAsync<int>("ProductId"),
       ProductName = await r.GetFieldValueAsync<string>("ProductName"),
       UnitPrice = await r.GetFieldValueAsync<decimal>("UnitPrice")
     };
-    products.Add(p);
+    products.Add(product);
 
     WriteLine("| {0,5} | {1,-35} | {2,10:C} |",
       await r.GetFieldValueAsync<int>("ProductId"),
@@ -215,13 +223,13 @@ using (FileStream jsonStream = File.Create(jsonPath))
 
     jsonWriter.WriteStartObject();
 
-    jsonWriter.WriteNumber("productId", 
+    jsonWriter.WriteNumber("productId",
       await r.GetFieldValueAsync<int>("ProductId"));
-    jsonWriter.WriteString("productName", 
+    jsonWriter.WriteString("productName",
       await r.GetFieldValueAsync<string>("ProductName"));
-    jsonWriter.WriteNumber("unitPrice", 
+    jsonWriter.WriteNumber("unitPrice",
       await r.GetFieldValueAsync<decimal>("UnitPrice"));
-    
+
     jsonWriter.WriteEndObject();
   }
 
@@ -238,16 +246,21 @@ WriteLineInColor(JsonSerializer.Serialize(products),
 
 await r.CloseAsync();
 
-WriteLine($"Output count: {p2.Value}");
-WriteLine($"Return value: {p3.Value}");
+if (key is ConsoleKey.D2 or ConsoleKey.NumPad2)
+{
+  WriteLine($"Output count: {p2.Value}");
+  WriteLine($"Return value: {p3.Value}");
+}
 
 OutputStatistics(connection);
 
 await connection.CloseAsync();
 
+#region Using Dapper
+
 WriteLineInColor("Using Dapper", ConsoleColor.DarkGreen);
 
-connection.ResetStatistics();
+connection.ResetStatistics(); // So we can compare using Dapper.
 
 IEnumerable<Supplier> suppliers = connection.Query<Supplier>(
   sql: "SELECT * FROM Suppliers WHERE Country=@Country",
@@ -264,9 +277,9 @@ WriteLineInColor(JsonSerializer.Serialize(suppliers),
 
 OutputStatistics(connection);
 
-IEnumerable<Product> productsFromDapper = 
+IEnumerable<Product> productsFromDapper =
   connection.Query<Product>(sql: "GetExpensiveProducts",
-  param: new { price = 100M, count = 0 }, 
+  param: new { price = 100M, count = 0 },
   commandType: CommandType.StoredProcedure);
 
 foreach (Product p in productsFromDapper)
@@ -277,3 +290,5 @@ foreach (Product p in productsFromDapper)
 
 WriteLineInColor(JsonSerializer.Serialize(productsFromDapper),
   ConsoleColor.Green);
+
+#endregion
