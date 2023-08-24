@@ -9,7 +9,7 @@ public static class NorthwindContextExtensions
   /// <summary>
   /// Adds NorthwindContext to the specified IServiceCollection. Uses the SqlServer database provider.
   /// </summary>
-  /// <param name="services"></param>
+  /// <param name="services">The service collection.</param>
   /// <param name="connectionString">Set to override the default.</param>
   /// <returns>An IServiceCollection that can be used to add more services.</returns>
   public static IServiceCollection AddNorthwindContext(
@@ -25,6 +25,11 @@ public static class NorthwindContextExtensions
       builder.IntegratedSecurity = true;
       builder.TrustServerCertificate = true;
       builder.MultipleActiveResultSets = true;
+
+      /* // If using Azure SQL Edge
+      builder.DataSource = "tcp:127.0.0.1,1433";
+      builder.UserId = "<your_username>";
+      builder.Password = "<your_password>"; */
 
       // Because we want to fail fast. Default is 15 seconds.
       builder.ConnectTimeout = 3;
