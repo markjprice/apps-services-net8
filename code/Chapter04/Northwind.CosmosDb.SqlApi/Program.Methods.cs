@@ -3,7 +3,7 @@ using System.Net; // To use HttpStatusCode.
 using Northwind.EntityModels; // To use NorthwindContext and so on.
 using Northwind.CosmosDb.Items; // To use ProductCosmos and so on.
 using Microsoft.EntityFrameworkCore; // To use Include extension method.
-using Microsoft.Azure.Cosmos.Scripts;
+using Microsoft.Azure.Cosmos.Scripts; // To use StoredProcedureResponse and so on.
 using Azure;
 using System.Xml;
 
@@ -42,7 +42,7 @@ partial class Program
         {
           HttpStatusCode.OK => "exists",
           HttpStatusCode.Created => "created",
-          _ => "unknown",
+          _ => "unknown"
         };
 
         WriteLine("Database Id: {0}, Status: {1}.",
@@ -90,8 +90,8 @@ partial class Program
     }
     catch (HttpRequestException ex)
     {
-      WriteLine("Error: {0}", arg0: ex.Message);
-      WriteLine("Hint: Make sure the Azure Cosmos Emulator is running.");
+      WriteLine($"Error: {ex.Message}");
+      WriteLine("Hint: If you are using the Azure Cosmos Emulator then please make sure it is running.");
     }
     catch (Exception ex)
     {
@@ -209,8 +209,8 @@ partial class Program
     }
     catch (HttpRequestException ex)
     {
-      WriteLine("Error: {0}", arg0: ex.Message);
-      WriteLine("Hint: Make sure the Azure Cosmos Emulator is running.");
+      WriteLine($"Error: {ex.Message}");
+      WriteLine("Hint: If you are using the Azure Cosmos Emulator then please make sure it is running.");
     }
     catch (Exception ex)
     {
@@ -255,21 +255,21 @@ partial class Program
           WriteLine("Status code: {0}, Request charge: {1} RUs.",
             products.StatusCode, products.RequestCharge);
 
-          WriteLine("{0} products found.", arg0: products.Count);
+          WriteLine($"{products.Count} products found.");
 
           foreach (ProductCosmos product in products)
           {
             WriteLine("id: {0}, productName: {1}, unitPrice: {2:C}",
               arg0: product.id, arg1: product.productName,
-              arg2: product.unitPrice);
+              arg2: product.unitPrice.ToString());
           }
         }
       }
     }
     catch (HttpRequestException ex)
     {
-      WriteLine("Error: {0}", arg0: ex.Message);
-      WriteLine("Hint: Make sure the Azure Cosmos Emulator is running.");
+      WriteLine($"Error: {ex.Message}");
+      WriteLine("Hint: If you are using the Azure Cosmos Emulator then please make sure it is running.");
     }
     catch (Exception ex)
     {
@@ -327,8 +327,8 @@ partial class Program
     }
     catch (HttpRequestException ex)
     {
-      WriteLine("Error: {0}", arg0: ex.Message);
-      WriteLine("Hint: Make sure the Azure Cosmos Emulator is running.");
+      WriteLine($"Error: {ex.Message}");
+      WriteLine("Hint: If you are using the Azure Cosmos Emulator then please make sure it is running.");
     }
     catch (Exception ex)
     {
@@ -389,8 +389,8 @@ function insertProduct(product) {
     }
     catch (HttpRequestException ex)
     {
-      WriteLine("Error: {0}", arg0: ex.Message);
-      WriteLine("Hint: Make sure the Azure Cosmos Emulator is running.");
+      WriteLine($"Error: {ex.Message}");
+      WriteLine("Hint: If you are using the Azure Cosmos Emulator then please make sure it is running.");
     }
     catch (Exception ex)
     {
@@ -432,8 +432,8 @@ function insertProduct(product) {
     }
     catch (HttpRequestException ex)
     {
-      WriteLine("Error: {0}", arg0: ex.Message);
-      WriteLine("Hint: Make sure the Azure Cosmos Emulator is running.");
+      WriteLine($"Error: {ex.Message}");
+      WriteLine("Hint: If you are using the Azure Cosmos Emulator then please make sure it is running.");
     }
     catch (Exception ex)
     {
