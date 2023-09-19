@@ -280,7 +280,7 @@ Let's see how we could use it to compare performance between `string` concatenat
 2.	In the `Benchmarking` project, add a package reference to Benchmark.NET, remembering that you can find out the latest version and use that instead of the version I used, as shown in the following markup:
 ```xml
 <ItemGroup>
-  <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
+  <PackageReference Include="BenchmarkDotNet" Version="0.13.8" />
 </ItemGroup>
 ```
 3.	Build the project to restore packages.
@@ -340,6 +340,9 @@ BenchmarkRunner.Run<StringBenchmarks>();
 1.	Use your preferred coding tool to run the console app with its release configuration:
     - In Visual Studio 2022, in the toolbar, set **Solution Configurations** to **Release**, and then navigate to **Debug** | **Start Without Debugging**.
     - In Visual Studio Code, in a terminal, enter the `dotnet run --configuration Release` command.
+
+> **Important!** You must build the benchmarks in a **Release** build. This is important for performance testing, as most optimizations are disabled in **Debug** builds, in both the C# compiler and the JIT compiler.
+
 2.	Note the results, including some artifacts like report files, and the most important, a summary table that shows that `string` concatenation took a mean of 412.990 ns and `StringBuilder` took a mean of 275.082 ns, as shown in the following partial output:
 ```
 // ***** BenchmarkRunner: Finish  *****
