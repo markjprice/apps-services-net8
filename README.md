@@ -1,12 +1,12 @@
-> **IMPORTANT!** [Information for Technical Reviewers](docs/reviewers.md)
-
-[Common Mistakes, Improvements, and Errata aka list of corrections](docs/errata/README.md)
+> **IMPORTANT!** [Common Mistakes, Improvements, and Errata aka list of corrections](docs/errata/README.md)
 
 # Apps and Services with .NET 8, Second Edition
 
 Repository for the Packt Publishing book titled "Apps and Services with .NET 8" by Mark J. Price
 
 This book is expected to publish in December 2023.
+
+If you have purchased the paperback or Kindle edition, then you can request a free PDF copy at the following link: coming soon.
 
 My author page on Amazon: https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/ 
 
