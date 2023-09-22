@@ -28,7 +28,7 @@
   {
     TaskTitle("Starting call to web service...");
     OutputThreadInfo();
-    Thread.Sleep((new Random()).Next(2000, 4000));
+    Thread.Sleep(Random.Shared.Next(2000, 4000));
     TaskTitle("Finished call to web service.");
     return 89.99M;
   }
@@ -37,7 +37,7 @@
   {
     TaskTitle("Starting call to stored procedure...");
     OutputThreadInfo();
-    Thread.Sleep((new Random()).Next(2000, 4000));
+    Thread.Sleep(Random.Shared.Next(2000, 4000));
     TaskTitle("Finished call to stored procedure.");
     return $"12 products cost more than {amount:C}.";
   }
