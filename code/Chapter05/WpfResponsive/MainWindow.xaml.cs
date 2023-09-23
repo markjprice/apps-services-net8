@@ -18,21 +18,32 @@ namespace WpfResponsive
   /// </summary>
   public partial class MainWindow : Window
   {
-    // Change as needed to work with your Northwind database.
-    private const string connectionString =
-      "Data Source=.;" +
-      "Initial Catalog=Northwind;" +
-      "Integrated Security=true;" +
-      "Encrypt=false;" +
-      "MultipleActiveResultSets=true;";
+    private string connectionString;
 
-    private const string sql =
-      "WAITFOR DELAY '00:00:05';" +
+    private string sql = "WAITFOR DELAY '00:00:05';" +
       "SELECT EmployeeId, FirstName, LastName FROM Employees";
 
     public MainWindow()
     {
       InitializeComponent();
+
+      // Change as needed to work with your Northwind database.
+      SqlConnectionStringBuilder builder = new();
+
+      builder.DataSource = ".";
+      builder.InitialCatalog = "Northwind";
+      builder.Encrypt = false;
+      builder.MultipleActiveResultSets = true;
+      builder.ConnectTimeout = 5;
+
+      // To use Windows Integrated authentication.
+      builder.IntegratedSecurity = true;
+
+      // To use SQL Server authentication.
+      // builder.UserID = Environment.GetEnvironmentVariable("MY_SQL_USR");
+      // builder.Password = Environment.GetEnvironmentVariable("MY_SQL_PWD");
+
+      connectionString = builder.ConnectionString;
     }
 
     private void GetEmployeesSyncButton_Click(object sender, RoutedEventArgs e)

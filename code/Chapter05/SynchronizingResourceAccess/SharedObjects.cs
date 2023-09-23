@@ -1,4 +1,4 @@
-﻿static class SharedObjects
+﻿public static class SharedObjects
 {
   public static string? Message; // A shared resource.
   public static int Counter; // Another shared resource.

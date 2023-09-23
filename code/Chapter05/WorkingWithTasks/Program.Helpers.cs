@@ -1,6 +1,6 @@
 ﻿partial class Program
 {
-  static void SectionTitle(string title)
+  private static void SectionTitle(string title)
   {
     ConsoleColor previousColor = ForegroundColor;
     ForegroundColor = ConsoleColor.DarkYellow;
@@ -8,7 +8,7 @@
     ForegroundColor = previousColor;
   }
 
-  static void TaskTitle(string title)
+  private static void TaskTitle(string title)
   {
     ConsoleColor previousColor = ForegroundColor;
     ForegroundColor = ConsoleColor.Green;
@@ -16,7 +16,7 @@
     ForegroundColor = previousColor;
   }
 
-  static void OutputThreadInfo()
+  private static void OutputThreadInfo()
   {
     Thread t = Thread.CurrentThread;
 

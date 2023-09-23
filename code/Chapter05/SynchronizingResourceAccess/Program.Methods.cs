@@ -1,6 +1,6 @@
 ﻿partial class Program
 {
-  static void MethodA()
+  private static void MethodA()
   {
     try
     {
@@ -32,7 +32,7 @@
     }
   }
 
-  static void MethodB()
+  private static void MethodB()
   {
     try
     {

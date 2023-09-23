@@ -1,6 +1,6 @@
 ﻿partial class Program
 {
-  async static IAsyncEnumerable<int> GetNumbersAsync()
+  private static async IAsyncEnumerable<int> GetNumbersAsync()
   {
     Random r = Random.Shared;
 

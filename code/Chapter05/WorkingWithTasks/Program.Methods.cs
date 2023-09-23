@@ -1,6 +1,6 @@
 ﻿partial class Program
 {
-  static void MethodA()
+  private static void MethodA()
   {
     TaskTitle("Starting Method A...");
     OutputThreadInfo();
@@ -8,7 +8,7 @@
     TaskTitle("Finished Method A.");
   }
 
-  static void MethodB()
+  private static void MethodB()
   {
     TaskTitle("Starting Method B...");
     OutputThreadInfo();
@@ -16,7 +16,7 @@
     TaskTitle("Finished Method B.");
   }
 
-  static void MethodC()
+  private static void MethodC()
   {
     TaskTitle("Starting Method C...");
     OutputThreadInfo();
@@ -24,7 +24,7 @@
     TaskTitle("Finished Method C.");
   }
 
-  static decimal CallWebService()
+  private static decimal CallWebService()
   {
     TaskTitle("Starting call to web service...");
     OutputThreadInfo();
@@ -33,7 +33,7 @@
     return 89.99M;
   }
 
-  static string CallStoredProcedure(decimal amount)
+  private static string CallStoredProcedure(decimal amount)
   {
     TaskTitle("Starting call to stored procedure...");
     OutputThreadInfo();
@@ -42,7 +42,7 @@
     return $"12 products cost more than {amount:C}.";
   }
 
-  static void OuterMethod()
+  private static void OuterMethod()
   {
     TaskTitle("Outer method starting...");
 
@@ -52,7 +52,7 @@
     TaskTitle("Outer method finished.");
   }
 
-  static void InnerMethod()
+  private static void InnerMethod()
   {
     TaskTitle("Inner method starting...");
     Thread.Sleep(2000);
