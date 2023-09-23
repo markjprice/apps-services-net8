@@ -5,7 +5,7 @@ using System.Globalization; // To use CultureInfo.
 
 partial class Program
 {
-  static void ConfigureConsole(string culture = "en-US")
+  private static void ConfigureConsole(string culture = "en-US")
   {
     // To enable special characters like … (ellipsis) as a single character.
     OutputEncoding = System.Text.Encoding.UTF8;
@@ -18,7 +18,7 @@ partial class Program
     WriteLine();
   }
 
-  static void OutputCasings(string original)
+  private static void OutputCasings(string original)
   {
     WriteLine("Original casing: {0}", original);
     WriteLine("Lower casing: {0}", original.Transform(To.LowerCase));
@@ -30,7 +30,7 @@ partial class Program
     WriteLine();
   }
 
-  static void OutputSpacingAndDashes()
+  private static void OutputSpacingAndDashes()
   {
     string ugly = "ERROR_MESSAGE_FROM_SERVICE";
 
@@ -50,7 +50,7 @@ partial class Program
       ugly.Humanize().Transform(To.LowerCase, To.SentenceCase));
   }
 
-  static void OutputEnumNames()
+  private static void OutputEnumNames()
   {
     var favoriteAncientWonder = WondersOfTheAncientWorld.StatueOfZeusAtOlympia;
 
@@ -58,7 +58,7 @@ partial class Program
 
     WriteLine("Humanized: {0}.", favoriteAncientWonder.Humanize());
 
-    WriteLine("Humanized, then Titlerized: {0}",
+    WriteLine("Humanized, then Titleized: {0}",
       favoriteAncientWonder.Humanize().Titleize());
 
     WriteLine("Truncated to 8 characters: {0}",
@@ -68,20 +68,20 @@ partial class Program
       favoriteAncientWonder.ToString().Kebaberize());
   }
 
-  static void NumberFormatting()
+  private static void NumberFormatting()
   {
     Vocabularies.Default.AddIrregular("biceps", "bicepses");
     Vocabularies.Default.AddIrregular("attorney general", "attorneys general");
 
     int number = 123;
 
-    WriteLine("Original number: {0}", number);
-    WriteLine("Roman: {0}", number.ToRoman());
-    WriteLine("Words: {0}", number.ToWords());
-    WriteLine("Ordinal words: {0}", number.ToOrdinalWords());
+    WriteLine($"Original number: {number}");
+    WriteLine($"Roman: {number.ToRoman()}");
+    WriteLine($"Words: {number.ToWords()}");
+    WriteLine($"Ordinal words: {number.ToOrdinalWords()}");
     WriteLine();
     
-    string[] things = new[] { "fox", "person", "sheep", 
+    string[] things = { "fox", "person", "sheep", 
       "apple", "goose", "oasis", "potato", "die", "dwarf",
       "attorney general","biceps"};
 
@@ -112,7 +112,7 @@ partial class Program
       millions.ToMetric(decimals: 1));
   }
 
-  static void DateTimeFormatting()
+  private static void DateTimeFormatting()
   {
     DateTimeOffset now = DateTimeOffset.Now;
 
@@ -146,8 +146,7 @@ partial class Program
     WriteLine();
 
     // Examples of TimeSpan humanization.
-
-    int[] daysArray = new[] { 12, 13, 14, 15, 16 };
+    int[] daysArray = { 12, 13, 14, 15, 16 };
 
     foreach (int days in daysArray)
     {
@@ -165,8 +164,7 @@ partial class Program
     }
 
     // Examples of clock notation.
-
-    TimeOnly[] times = new[] { new TimeOnly(9, 0),
+    TimeOnly[] times = { new TimeOnly(9, 0),
       new TimeOnly(9, 15), new TimeOnly(15, 30) };
 
     foreach (TimeOnly time in times)

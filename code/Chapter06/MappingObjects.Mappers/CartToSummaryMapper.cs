@@ -16,21 +16,17 @@ public static class CartToSummaryMapper
       cfg.Internal().MethodMappingEnabled = false;
 
       // Configure the mapper using projections.
-
       cfg.CreateMap<Cart, Summary>()
-
        // Map the first and last names formatted to the full name.
        .ForMember(dest => dest.FullName, opt => opt.MapFrom(src =>
           string.Format("{0} {1}",
             src.Customer.FirstName,
             src.Customer.LastName)
         ))
-
         // Map the sum of items to the Total member.
         .ForMember(dest => dest.Total, opt => opt.MapFrom(
           src => src.Items.Sum(item => item.UnitPrice * item.Quantity)));
     });
-
     return config;
   }
-};
+}

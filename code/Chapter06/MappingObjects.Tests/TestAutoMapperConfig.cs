@@ -34,19 +34,15 @@ public class TestAutoMapperConfig
     );
 
     // Get the mapper configuration for converting a Cart to a Summary.
-
     MapperConfiguration config = CartToSummaryMapper.GetMapperConfiguration();
 
     // Create a mapper using the configuration.
-
     IMapper mapper = config.CreateMapper();
 
     // Perform the mapping.
-
     Summary summary = mapper.Map<Cart, Summary>(cart);
 
     // Assert the results.
-
     Assert.True(summary.FullName == "John Smith");
     Assert.True(summary.Total == 8.86M);
   }

@@ -6,7 +6,7 @@ public record class Summary
   public string? FullName { get; init; }
   public decimal Total { get; init; }
 
-  // This record class will have a default parameterless constructer.
+  // This record class will have a default parameterless constructor.
   // The following commented statement is automatically generated:
   // public Summary() { }
 }

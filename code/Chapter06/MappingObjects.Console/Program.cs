@@ -31,19 +31,15 @@ foreach (LineItem item in cart.Items)
 }
 
 // Get the mapper configuration for converting a Cart to a Summary.
-
 MapperConfiguration config = CartToSummaryMapper.GetMapperConfiguration();
 
 // Create a mapper using the configuration.
-
 IMapper mapper = config.CreateMapper();
 
 // Perform the mapping.
-
 Summary summary = mapper.Map<Cart, Summary>(cart);
 
 // Output the result.
-
 WriteLine();
 WriteLine("*** After mapping.");
 WriteLine($"Summary: {summary.FullName} spent {summary.Total:C}.");

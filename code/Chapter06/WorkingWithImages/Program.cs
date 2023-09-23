@@ -1,4 +1,6 @@
-﻿string imagesFolder = Path.Combine(
+﻿using System.Diagnostics;
+
+string imagesFolder = Path.Combine(
   Environment.CurrentDirectory, "images");
 
 WriteLine($"I will look for images in the following folder:\n{imagesFolder}");
@@ -39,4 +41,13 @@ foreach (string imagePath in images)
   }
 }
 
-WriteLine("Image processing complete. View the images folder.");
+WriteLine("Image processing complete.");
+
+if (OperatingSystem.IsWindows())
+{
+  Process.Start("explorer.exe", imagesFolder);
+}
+else
+{
+  WriteLine("View the images folder.");
+}
