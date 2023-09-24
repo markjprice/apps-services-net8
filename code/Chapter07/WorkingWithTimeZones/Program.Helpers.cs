@@ -2,7 +2,7 @@
 
 partial class Program
 {
-  static void SectionTitle(string title)
+  private static void SectionTitle(string title)
   {
     ConsoleColor previousColor = ForegroundColor;
     ForegroundColor = ConsoleColor.DarkYellow;
@@ -10,7 +10,7 @@ partial class Program
     ForegroundColor = previousColor;
   }
 
-  static void OutputTimeZones()
+  private static void OutputTimeZones()
   {
     // get the time zones registered with the OS
     ReadOnlyCollection<TimeZoneInfo> zones =
@@ -25,7 +25,7 @@ partial class Program
     }
   }
 
-  static void OutputDateTime(DateTime dateTime, string title)
+  private static void OutputDateTime(DateTime dateTime, string title)
   {
     SectionTitle(title);
     WriteLine($"Value: {dateTime}");
@@ -35,18 +35,18 @@ partial class Program
     WriteLine($"ToUniversalTime(): {dateTime.ToUniversalTime()}");
   }
 
-  static void OutputTimeZone(TimeZoneInfo zone, string title)
+  private static void OutputTimeZone(TimeZoneInfo zone, string title)
   {
     SectionTitle(title);
     WriteLine($"Id: {zone.Id}");
-    WriteLine("IsDaylightSavingTime(DateTime.Now): {0}",
-      zone.IsDaylightSavingTime(DateTime.Now));
+    WriteLine($"IsDaylightSavingTime(DateTime.Now): {
+      zone.IsDaylightSavingTime(DateTime.Now)}");
     WriteLine($"StandardName: {zone.StandardName}");
     WriteLine($"DaylightName: {zone.DaylightName}");
     WriteLine($"BaseUtcOffset: {zone.BaseUtcOffset}");
   }
 
-  static string GetCurrentZoneName(TimeZoneInfo zone, DateTime when)
+  private static string GetCurrentZoneName(TimeZoneInfo zone, DateTime when)
   {
     // time zone names change if Daylight Saving time is active
     // e.g. GMT Standard Time becomes GMT Summer Time

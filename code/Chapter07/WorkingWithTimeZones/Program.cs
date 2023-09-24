@@ -35,9 +35,9 @@ try
     dateTime: localTime, sourceTimeZone: TimeZoneInfo.Local,
     destinationTimeZone: otherZone);
 
-  WriteLine("{0} {1} is {2} {3}.",
-    localTime, GetCurrentZoneName(TimeZoneInfo.Local, localTime),
-    otherZoneTime, GetCurrentZoneName(otherZone, otherZoneTime));
+  WriteLine($"{localTime} {GetCurrentZoneName(TimeZoneInfo.Local, 
+    localTime)} is {otherZoneTime} {GetCurrentZoneName(otherZone, 
+    otherZoneTime)}.");
 }
 catch (TimeZoneNotFoundException)
 {

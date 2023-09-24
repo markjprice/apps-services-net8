@@ -19,11 +19,12 @@ WriteLine($"DateTime.Today:     {DateTime.Today:D}");
 DateTime xmas = new(year: 2024, month: 12, day: 25);
 WriteLine($"Christmas (default format): {xmas}");
 WriteLine($"Christmas (custom short format): {xmas:ddd, d/M/yy}");
-WriteLine($"Christmas (custom long format): {xmas:dddd, dd MMMM yyyy}");
+WriteLine($"Christmas (custom long format): {
+  xmas:dddd, dd MMMM yyyy}");
 WriteLine($"Christmas (standard long format): {xmas:D}");
 WriteLine($"Christmas (sortable): {xmas:u}");
 WriteLine($"Christmas is in month {xmas.Month} of the year.");
-WriteLine($"Christmas is day {xmas.DayOfYear} of the year 2024.");
+WriteLine($"Christmas is day {xmas.DayOfYear} of {xmas.Year}.");
 WriteLine($"Christmas {xmas.Year} is on a {xmas.DayOfWeek}.");
 
 SectionTitle("Date and time calculations");
@@ -37,11 +38,11 @@ WriteLine($"12 days after Christmas: {afterXmas:d}");
 TimeSpan untilXmas = xmas - DateTime.Now;
 
 WriteLine($"Now: {DateTime.Now}");
-WriteLine("There are {0} days and {1} hours until Christmas 2024.",
-  arg0: untilXmas.Days, arg1: untilXmas.Hours);
+WriteLine($"There are {untilXmas.Days} days and {untilXmas.Hours
+  } hours until Christmas {xmas.Year}.");
 
-WriteLine("There are {0:N0} hours until Christmas 2024.",
-  arg0: untilXmas.TotalHours);
+WriteLine($"There are {untilXmas.TotalHours:N0} hours " +
+  $"until Christmas {xmas.Year}.");
 
 DateTime kidsWakeUp = new(
   year: 2024, month: 12, day: 25,
@@ -49,8 +50,8 @@ DateTime kidsWakeUp = new(
 
 WriteLine($"Kids wake up: {kidsWakeUp}");
 
-WriteLine("The kids woke me up at {0}",
-  arg0: kidsWakeUp.ToShortTimeString());
+WriteLine($"The kids woke me up at {
+  kidsWakeUp.ToShortTimeString()}");
 
 SectionTitle("Milli-, micro-, and nanoseconds");
 
@@ -59,19 +60,19 @@ DateTime preciseTime = new(
   hour: 12, minute: 0, second: 0,
   millisecond: 6, microsecond: 999);
 
-WriteLine("Millisecond: {0}, Microsecond: {1}, Nanosecond: {2}",
-  preciseTime.Millisecond, preciseTime.Microsecond, preciseTime.Nanosecond);
+WriteLine($"Millisecond: {preciseTime.Millisecond}, Microsecond: {
+  preciseTime.Microsecond}, Nanosecond: {preciseTime.Nanosecond}");
 
 preciseTime = DateTime.UtcNow;
 
 // Nanosecond value will be 0 to 900 in 100 nanosecond increments.
-WriteLine("Millisecond: {0}, Microsecond: {1}, Nanosecond: {2}",
-  preciseTime.Millisecond, preciseTime.Microsecond, preciseTime.Nanosecond);
+WriteLine($"Millisecond: {preciseTime.Millisecond}, Microsecond: {
+  preciseTime.Microsecond}, Nanosecond: {preciseTime.Nanosecond}");
 
 SectionTitle("Globalization with dates and times");
 
 // Same as Thread.CurrentThread.CurrentCulture.
-WriteLine($"Current culture is: {CultureInfo.CurrentCulture.Name}");
+WriteLine($"Current culture: {CultureInfo.CurrentCulture.Name}");
 
 string textDate = "4 July 2024";
 DateTime independenceDay = DateTime.Parse(textDate);
@@ -92,15 +93,15 @@ WriteLine($"Text: {textDate}, DateTime: {independenceDay:d MMMM}");
 for (int year = 2022; year <= 2028; year++)
 {
   Write($"{year} is a leap year: {DateTime.IsLeapYear(year)}. ");
-  WriteLine("There are {0} days in February {1}.",
-    arg0: DateTime.DaysInMonth(year: year, month: 2), arg1: year);
+  WriteLine($"There are {DateTime.DaysInMonth(year: year, month: 2)
+    } days in February {year}.");
 }
 
-WriteLine("Is Christmas daylight saving time? {0}",
-  arg0: xmas.IsDaylightSavingTime());
+WriteLine($"Is Christmas daylight saving time? {
+  xmas.IsDaylightSavingTime()}");
 
-WriteLine("Is July 4th daylight saving time? {0}",
-  arg0: independenceDay.IsDaylightSavingTime());
+WriteLine($"Is July 4th daylight saving time? {
+  independenceDay.IsDaylightSavingTime()}");
 
 SectionTitle("Localizing the DayOfWeek enum");
 
@@ -111,19 +112,17 @@ Thread.CurrentThread.CurrentCulture =
   CultureInfo.GetCultureInfo("da-DK");
 
 // DayOfWeek is not localized to Danish.
-WriteLine("Culture: {0}, DayOfWeek: {1}",
-  Thread.CurrentThread.CurrentCulture.NativeName,
-  DateTime.Now.DayOfWeek);
+WriteLine($"Culture: {Thread.CurrentThread.CurrentCulture
+  .NativeName}, DayOfWeek: {DateTime.Now.DayOfWeek}");
 
 // Use dddd format code to get day of the week localized.
-WriteLine("Culture: {0}, DayOfWeek: {1:dddd}",
-  Thread.CurrentThread.CurrentCulture.NativeName,
-  DateTime.Now);
+WriteLine($"Culture: {Thread.CurrentThread.CurrentCulture
+  .NativeName}, DayOfWeek: {DateTime.Now:dddd}");
 
 // Use GetDayName method to get day of the week localized.
-WriteLine("Culture: {0}, DayOfWeek: {1}",
-  Thread.CurrentThread.CurrentCulture.NativeName,
-  DateTimeFormatInfo.CurrentInfo.GetDayName(DateTime.Now.DayOfWeek));
+WriteLine($"Culture: {Thread.CurrentThread.CurrentCulture
+  .NativeName}, DayOfWeek: {DateTimeFormatInfo.CurrentInfo
+  .GetDayName(DateTime.Now.DayOfWeek)}");
 
 Thread.CurrentThread.CurrentCulture = previousCulture;
 
@@ -143,26 +142,26 @@ SectionTitle("Working with date/time formats");
 DateTimeFormatInfo dtfi = DateTimeFormatInfo.CurrentInfo;
 // Or use Thread.CurrentThread.CurrentCulture.DateTimeFormat.
 
-WriteLine("Date separator: {0}", dtfi.DateSeparator);
-WriteLine("Time separator: {0}", dtfi.TimeSeparator);
+WriteLine($"Date separator: {dtfi.DateSeparator}");
+WriteLine($"Time separator: {dtfi.TimeSeparator}");
 
-WriteLine("Long date pattern: {0}", dtfi.LongDatePattern);
-WriteLine("Short date pattern: {0}", dtfi.ShortDatePattern);
+WriteLine($"Long date pattern: {dtfi.LongDatePattern}");
+WriteLine($"Short date pattern: {dtfi.ShortDatePattern}");
 
-WriteLine("Long time pattern: {0}", dtfi.LongTimePattern);
-WriteLine("Short time pattern: {0}", dtfi.ShortTimePattern);
+WriteLine($"Long time pattern: {dtfi.LongTimePattern}");
+WriteLine($"Short time pattern: {dtfi.ShortTimePattern}");
 
 Write("Day names:");
 for (int i = 0; i < dtfi.DayNames.Length - 1; i++)
 {
-  Write("  {0}", dtfi.GetDayName((DayOfWeek)i));
+  Write($"  {dtfi.GetDayName((DayOfWeek)i)}");
 }
 WriteLine();
 
 Write("Month names:");
 for (int i = 1; i < dtfi.MonthNames.Length; i++)
 {
-  Write("  {0}", dtfi.GetMonthName(i));
+  Write($"  {dtfi.GetMonthName(i)}");
 }
 WriteLine();
 

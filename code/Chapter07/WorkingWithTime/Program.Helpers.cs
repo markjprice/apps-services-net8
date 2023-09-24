@@ -7,7 +7,7 @@ partial class Program
   /// </summary>
   /// <param name="culture">Set to a culture code like fr-CA to use that culture.</param>
   /// <param name="overrideComputerCulture">Set to false to use your computer's culture.</param>
-  static void ConfigureConsole(string culture = "en-US",
+  private static void ConfigureConsole(string culture = "en-US",
     bool overrideComputerCulture = true)
   {
     // To enable special characters like Euro currency symbol.
@@ -22,13 +22,15 @@ partial class Program
     }
 
     CultureInfo ci = t.CurrentCulture;
-    WriteLine("Current culture: {0}", ci.DisplayName);
-    WriteLine("Short date pattern: {0}", ci.DateTimeFormat.ShortDatePattern);
-    WriteLine("Long date pattern: {0}", ci.DateTimeFormat.LongDatePattern);
+    WriteLine($"Current culture: {ci.DisplayName}");
+    WriteLine($"Short date pattern: {
+      ci.DateTimeFormat.ShortDatePattern}");
+    WriteLine($"Long date pattern: {
+      ci.DateTimeFormat.LongDatePattern}");
     WriteLine();
   }
 
-  static void SectionTitle(string title)
+  private static void SectionTitle(string title)
   {
     ConsoleColor previousColor = ForegroundColor;
     ForegroundColor = ConsoleColor.DarkYellow;

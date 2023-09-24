@@ -22,15 +22,15 @@ OutputCultures("Current culture");
 
 WriteLine("Example ISO culture codes:");
 
-string[] cultureCodes = new[] {
+string[] cultureCodes = {
   "da-DK", "en-GB", "en-US", "fa-IR",
   "fr-CA", "fr-FR", "he-IL", "pl-PL", "sl-SI" };
 
 foreach (string code in cultureCodes)
 {
   CultureInfo culture = CultureInfo.GetCultureInfo(code);
-  WriteLine("  {0}: {1} / {2}",
-    culture.Name, culture.EnglishName, culture.NativeName);
+  WriteLine($"  {culture.Name}: {culture.EnglishName} / {
+    culture.NativeName}");
 }
 
 WriteLine();
@@ -99,5 +99,8 @@ if (string.IsNullOrWhiteSpace(salaryText))
 DateTime dob = DateTime.Parse(dobText);
 int minutes = (int)DateTime.Today.Subtract(dob).TotalMinutes;
 decimal salary = decimal.Parse(salaryText);
+
+// WriteLine($"{name} was born on a {dob:dddd}. {name} is {
+//   minutes:N0} minutes old. {name} earns {salary:C}.");
 
 WriteLine(resources.GetPersonDetails(name, dob, minutes, salary));
