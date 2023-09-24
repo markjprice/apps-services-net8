@@ -27,7 +27,7 @@ public class FluentExamples
   [Fact]
   public void TestCollections()
   {
-    string[] names = new[] { "Alice", "Bob", "Charly" };
+    string[] names = { "Alice", "Bob", "Charly" };
 
     names.Should().HaveCountLessThan(4,
       "because the maximum items should be 3 or fewer");

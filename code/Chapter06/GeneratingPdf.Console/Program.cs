@@ -20,7 +20,7 @@ Catalog model = new()
     new() { CategoryId = 5, CategoryName = "Grains/Cereals"},
     new() { CategoryId = 6, CategoryName = "Meat/Poultry"},
     new() { CategoryId = 7, CategoryName = "Produce"},
-    new() { CategoryId = 8, CategoryName = "Seafood"},
+    new() { CategoryId = 8, CategoryName = "Seafood"}
   }
 };
 

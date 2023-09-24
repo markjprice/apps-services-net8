@@ -22,6 +22,7 @@ Order order = new()
   CustomerLevel = CustomerLevel.Gold,
   OrderDate = new(2022, month: 12, day: 1),
   ShipDate = new(2022, month: 12, day: 5),
+  // CustomerLevel is Gold so Total can be >20.
   Total = 49.99M
 };
 
