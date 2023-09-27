@@ -318,7 +318,6 @@ Optionally, a version can include these:
 Let's explore working with attributes:
 1.	Use your preferred code editor to add a new **Console App** / `console` project named `WorkingWithReflection` to the `Chapter01` solution/workspace.
     - In Visual Studio 2022, set the startup project to the current selection.
-    - In Visual Studio Code, select `WorkingWithReflection` as the active OmniSharp project.
 2.	In the project file, statically and globally import the `Console` class, as shown in the following markup:
 ```xml
 <ItemGroup>

@@ -71,8 +71,6 @@ There is no `dotnet new` project template for ASP.NET Core OData, but it uses co
     - **Enable OpenAPI support**: Selected.
     - **Do not use top-level statements**: Cleared.
 
-> In Visual Studio Code, select `Northwind.OData.Service` as the active OmniSharp project. 
-
 2.	Configure the project to treat warnings as errors, set invariant globalization to `false`, and add a package reference for ASP.NET Core OData alongside the existing package references for OpenApi and Swashbuckle, as shown highlighted in the following markup:
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -703,8 +701,7 @@ We will create an ASP.NET Core website project to act as a client, and a model c
     - Additional information - **Authentication type**: None 
     - For Visual Studio, leave all other options as their defaults.
 
-2.	If you are using Visual Studio 2022, set the startup project to the current selection. If you are using Visual Studio Code, select `Northwind.OData.Client.Mvc` as the active OmniSharp project.
-
+2.	If you are using Visual Studio 2022, set the startup project to the current selection.
 3.	Add a project reference to the `Northwind.Common.EntityModels.SqlServer` project in the `Chapter03` folder, as shown in the following markup:
 ```xml
 <ItemGroup>
