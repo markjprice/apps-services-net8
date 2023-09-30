@@ -13,7 +13,7 @@ public class ProductsController : ControllerBase
   private int pageSize = 10;
 
   private readonly ILogger<ProductsController> _logger;
-  private readonly NorthwindContext db;
+  private readonly NorthwindContext _db;
 
   private readonly IMemoryCache _memoryCache;
   private const string OutOfStockProductsKey = "OOSP";
@@ -27,7 +27,7 @@ public class ProductsController : ControllerBase
     IDistributedCache distributedCache)
   {
     _logger = logger;
-    db = context;
+    _db = context;
     _memoryCache = memoryCache;
     _distributedCache = distributedCache;
   }
@@ -37,8 +37,8 @@ public class ProductsController : ControllerBase
   [Produces(typeof(Product[]))]
   public IEnumerable<Product> Get(int? page)
   {
-    return db.Products
-      .Where(p => (p.UnitsInStock > 0) && (!p.Discontinued))
+    return _db.Products
+      .Where(p => p.UnitsInStock > 0 && !p.Discontinued)
       .OrderBy(product => product.ProductId)
       .Skip(((page ?? 1) - 1) * pageSize)
       .Take(pageSize);
@@ -55,8 +55,8 @@ public class ProductsController : ControllerBase
       out Product[]? cachedValue))
     {
       // If the cached value is not found, get the value from the database.
-      cachedValue = db.Products
-        .Where(p => (p.UnitsInStock == 0) && (!p.Discontinued))
+      cachedValue = _db.Products
+        .Where(p => p.UnitsInStock == 0 && !p.Discontinued)
         .ToArray();
 
       MemoryCacheEntryOptions cacheEntryOptions = new()
@@ -80,7 +80,7 @@ public class ProductsController : ControllerBase
   private Product[]? GetDiscontinuedProductsFromDatabase()
   {
     // If the cached value is not found, get the value from the database.
-    Product[]? cachedValue = db.Products
+    Product[]? cachedValue = _db.Products
       .Where(product => product.Discontinued)
       .ToArray();
 
@@ -140,7 +140,7 @@ public class ProductsController : ControllerBase
     )]
   public async ValueTask<Product?> Get(int id)
   {
-    return await db.Products.FindAsync(id);
+    return await _db.Products.FindAsync(id);
   }
 
   // GET api/products/cha
@@ -150,7 +150,7 @@ public class ProductsController : ControllerBase
     // Works correctly 1 out of 3 times.
     if (Random.Shared.Next(1, 4) == 1)
     {
-      return db.Products.Where(p => p.ProductName.Contains(name));
+      return _db.Products.Where(p => p.ProductName.Contains(name));
     }
 
     // Throws an exception at all other times.
@@ -161,8 +161,8 @@ public class ProductsController : ControllerBase
   [HttpPost]
   public async Task<IActionResult> Post([FromBody] Product product)
   {
-    db.Products.Add(product);
-    await db.SaveChangesAsync();
+    _db.Products.Add(product);
+    await _db.SaveChangesAsync();
     return Created($"api/products/{product.ProductId}", product);
   }
 
@@ -170,7 +170,7 @@ public class ProductsController : ControllerBase
   [HttpPut("{id}")]
   public async Task<IActionResult> Put(int id, [FromBody] Product product)
   {
-    Product? foundProduct = await db.Products.FindAsync(id);
+    Product? foundProduct = await _db.Products.FindAsync(id);
 
     if (foundProduct is null) return NotFound();
 
@@ -184,7 +184,7 @@ public class ProductsController : ControllerBase
     foundProduct.UnitPrice = product.UnitPrice;
     foundProduct.Discontinued = product.Discontinued;
 
-    await db.SaveChangesAsync();
+    await _db.SaveChangesAsync();
 
     return NoContent();
   }
@@ -193,10 +193,10 @@ public class ProductsController : ControllerBase
   [HttpDelete("{id}")]
   public async Task<IActionResult> Delete(int id)
   {
-    if (await db.Products.FindAsync(id) is Product product)
+    if (await _db.Products.FindAsync(id) is Product product)
     {
-      db.Products.Remove(product);
-      await db.SaveChangesAsync();
+      _db.Products.Remove(product);
+      await _db.SaveChangesAsync();
       return NoContent();
     }
     return NotFound();
