@@ -16,7 +16,6 @@ public class QueueWorker : BackgroundService
   private readonly IModel _channel;
   private readonly EventingBasicConsumer _consumer;
 
-
   public QueueWorker(ILogger<QueueWorker> logger)
   {
     _logger = logger;
@@ -40,15 +39,13 @@ public class QueueWorker : BackgroundService
 
       if (message is not null)
       {
-        _logger.LogInformation(
-          "Received product. Id: {0}, Name: {1}, Message: {2}",
-          message.Product.ProductId, message.Product.ProductName,
-          message.Text);
+        _logger.LogInformation($"Received product. Id: {
+          message.Product.ProductId}, Name: {message.Product
+          .ProductName}, Message: {message.Text}");
       }
       else
       {
-        _logger.LogInformation("Received unknown: {0}.",
-          args.Body.ToArray());
+        _logger.LogInformation($"Received unknown: {args.Body.ToArray()}.");
       }
     };
 

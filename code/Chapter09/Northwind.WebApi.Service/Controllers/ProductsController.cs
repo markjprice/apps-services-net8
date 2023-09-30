@@ -62,7 +62,7 @@ public class ProductsController : ControllerBase
       MemoryCacheEntryOptions cacheEntryOptions = new()
       {
         SlidingExpiration = TimeSpan.FromSeconds(5),
-        Size = cachedValue.Length
+        Size = cachedValue?.Length
       };
 
       _memoryCache.Set(OutOfStockProductsKey, cachedValue, cacheEntryOptions);
@@ -70,9 +70,8 @@ public class ProductsController : ControllerBase
 
     MemoryCacheStatistics? stats = _memoryCache.GetCurrentStatistics();
 
-    _logger.LogInformation(
-      "Memory cache. Total hits: {0}. Estimated size: {1}.", 
-      stats?.TotalHits, stats?.CurrentEstimatedSize);
+    _logger.LogInformation($"Memory cache. Total hits: {stats?
+      .TotalHits}. Estimated size: {stats?.CurrentEstimatedSize}.");
 
     return cachedValue ?? Enumerable.Empty<Product>();
   }
