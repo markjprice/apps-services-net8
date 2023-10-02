@@ -1,22 +1,12 @@
-﻿// To use [FunctionsStartup], FunctionsStartup, and so on.
-using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection; // To use AddHttpClient().
+using Microsoft.Extensions.Hosting;
+using System.Net.Http.Headers; // To use MediaTypeWithQualityHeaderValue.
 
-// To use AddHttpClient extension method.
-using Microsoft.Extensions.DependencyInjection;
-
-// To use MediaTypeWithQualityHeaderValue.
-using System.Net.Http.Headers;
-
-[assembly: FunctionsStartup(typeof(
-  Northwind.AzureFunctions.Service.AzureFunctionsStartup))]
-
-namespace Northwind.AzureFunctions.Service;
-
-public class AzureFunctionsStartup : FunctionsStartup
-{
-  public override void Configure(IFunctionsHostBuilder builder)
+var host = new HostBuilder()
+  .ConfigureFunctionsWorkerDefaults()
+  .ConfigureServices(services =>
   {
-    builder.Services.AddHttpClient(name: "Amazon",
+    services.AddHttpClient(name: "Amazon",
       configureClient: options =>
       {
         options.BaseAddress = new System.Uri("https://www.amazon.com");
@@ -46,5 +36,7 @@ public class AzureFunctionsStartup : FunctionsStartup
         options.DefaultRequestHeaders.UserAgent.Add(
           new(productName: "Chrome", productVersion: "114.0.5735.91"));
       });
-  }
-}
+  })
+  .Build();
+
+host.Run();

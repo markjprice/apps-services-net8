@@ -1,34 +1,27 @@
-﻿using Azure.Storage.Blobs; // To use BlobContainerClient.
-using Azure.Storage.Blobs.Models; // To use BlobContainerInfo.
-using Azure.Storage.Queues.Models; // To use QueueMessage.
-using Microsoft.Azure.WebJobs; // To use [FunctionName], [QueueTrigger].
+﻿using Microsoft.Azure.Functions.Worker; // To use [Function] and so on.
 using Microsoft.Extensions.Logging; // To use ILogger.
 using SixLabors.Fonts; // To use Font.
-using SixLabors.ImageSharp; // To use Image.
 using SixLabors.ImageSharp.Drawing; // To use IPath.
-using SixLabors.ImageSharp.Drawing.Processing; // To use IBrush, IPen.
-using SixLabors.ImageSharp.PixelFormats; // To use PixelColorBlendingMode.
-using SixLabors.ImageSharp.Processing; // To use Mutate extension method.
-using System.IO; // To use Stream, FileAccess.
-using System.Threading.Tasks; // To use Task<T>.
+using SixLabors.ImageSharp.Drawing.Processing; // To use Brush, Pen.
 
 namespace Northwind.AzureFunctions.Service;
 
-[StorageAccount("AzureWebJobsStorage")]
-public static class CheckGeneratorFunction
+public class CheckGeneratorFunction
 {
-  [FunctionName(nameof(CheckGeneratorFunction))]
-  public static async Task Run(
-    [QueueTrigger("checksQueue")] QueueMessage message,
-    [Blob("checks-blob-container")] BlobContainerClient blobContainerClient,
-    ILogger log)
+  private readonly ILogger _logger;
+
+  public CheckGeneratorFunction(ILoggerFactory loggerFactory)
   {
-    // Write some information about the message to the log.
-    log.LogInformation("C# Queue trigger function executed.");
-    log.LogInformation($"MessageId: {message.MessageId}.");
-    log.LogInformation($"InsertedOn: {message.InsertedOn}.");
-    log.LogInformation($"ExpiresOn: {message.ExpiresOn}.");
-    log.LogInformation($"Body: {message.Body}.");
+    _logger = loggerFactory.CreateLogger<NumbersToWordsFunction>();
+  }
+
+  [Function(nameof(CheckGeneratorFunction))]
+  [BlobOutput("checks-blob-container/check.png")]
+  public byte[] Run(
+    [QueueTrigger("checksQueue")] string message)
+  {
+    _logger.LogInformation("C# Queue trigger function executed.");
+    _logger.LogInformation($"Body: {message}.");
 
     // Create a new blank image with a white background.
     using (Image<Rgba32> image = new(width: 1200, height: 600,
@@ -41,8 +34,6 @@ public static class CheckGeneratorFunction
 
       Font font = family.CreateFont(72);
 
-      string amount = message.Body.ToString();
-
       DrawingOptions options = new()
       {
         GraphicsOptions = new()
@@ -53,11 +44,11 @@ public static class CheckGeneratorFunction
 
       // Define some pens and brushes.
 
-      IPen blackPen = Pens.Solid(Color.Black, 2);
-      IPen blackThickPen = Pens.Solid(Color.Black, 8);
-      IPen greenPen = Pens.Solid(Color.Green, 3);
-      IBrush redBrush = Brushes.Solid(Color.Red);
-      IBrush blueBrush = Brushes.Solid(Color.Blue);
+      Pen blackPen = Pens.Solid(Color.Black, 2);
+      Pen blackThickPen = Pens.Solid(Color.Black, 8);
+      Pen greenPen = Pens.Solid(Color.Green, 3);
+      Brush redBrush = Brushes.Solid(Color.Red);
+      Brush blueBrush = Brushes.Solid(Color.Blue);
 
       // Define some paths and draw them.
 
@@ -82,7 +73,7 @@ public static class CheckGeneratorFunction
 
       image.Mutate(x => x.Draw(options, blackPen, line2));
 
-      TextOptions textOptions = new(font)
+      RichTextOptions textOptions = new(font)
       {
         Origin = new PointF(100, 200),
         WrappingLength = 1000,
@@ -90,49 +81,44 @@ public static class CheckGeneratorFunction
       };
 
       image.Mutate(x => x.DrawText(
-        textOptions, amount, blueBrush, blackPen));
+        textOptions, message, blueBrush, blackPen));
 
-      string blobName = $"{System.DateTime.UtcNow:yyyy-MM-dd-hh-mm-ss}.png";
-      log.LogInformation($"Blob name: {blobName}.");
+      string blobName = $"{DateTime.UtcNow:yyyy-MM-dd-hh-mm-ss}.png";
+      _logger.LogInformation($"Blob filename: {blobName}.");
 
       try
       {
-        if (System.Environment.GetEnvironmentVariable("IS_LOCAL") == "true")
+        if (Environment.GetEnvironmentVariable("IS_LOCAL") == "true")
         {
           // Create blob in the local filesystem.
 
-          string folder = $@"{System.Environment.CurrentDirectory}\blobs";
+          string folder = $@"{Environment.CurrentDirectory}\blobs";
           if (!Directory.Exists(folder))
           {
             Directory.CreateDirectory(folder);
           }
-          log.LogInformation($"Blobs folder: {folder}");
+          _logger.LogInformation($"Blobs folder: {folder}");
 
           string blobPath = $@"{folder}\{blobName}";
 
-          await image.SaveAsPngAsync(blobPath);
+          image.SaveAsPng(blobPath);
         }
 
         // Create BLOB in Blob Storage via a memory stream.
 
-        Stream stream = new MemoryStream();
+        MemoryStream stream = new();
 
-        await image.SaveAsPngAsync(stream);
+        image.SaveAsPng(stream);
 
         stream.Seek(0, SeekOrigin.Begin);
 
-        blobContainerClient.CreateIfNotExists();
-
-        BlobContentInfo info = await blobContainerClient.UploadBlobAsync(
-          blobName, stream);
-
-        log.LogInformation(
-          $"Blob sequence number: {info.BlobSequenceNumber}.");
+        return stream.ToArray();
       }
       catch (System.Exception ex)
       {
-        log.LogError(ex.Message);
+        _logger.LogError(ex.Message);
       }
+      return Array.Empty<byte>();
     }
   }
 }

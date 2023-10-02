@@ -1,43 +1,44 @@
-﻿using Microsoft.Azure.WebJobs; // To use [FunctionName], [TimerTrigger].
+﻿using Microsoft.Azure.Functions.Worker; // To use [Function].
 using Microsoft.Extensions.Logging; // To use ILogger.
-using System.IO; // To use Stream, StreamReader.
 using System.IO.Compression; // To use GZipStream, CompressionMode.
-using System.Net.Http; // To use IHttpClientFactory, HttpClient.
-using System.Threading.Tasks; // To use Task<T>.
 
 namespace Northwind.AzureFunctions.Service;
 
 public class ScrapeAmazonFunction
 {
   private const string relativePath =
-    "11-NET-Cross-Platform-Development-Fundamentals/dp/1803237805/";
+    "12-NET-Cross-Platform-Development-Fundamentals/dp/1837635870/";
 
-  private readonly IHttpClientFactory clientFactory;
+  private readonly IHttpClientFactory _clientFactory;
+  private readonly ILogger _logger;
 
-  public ScrapeAmazonFunction(IHttpClientFactory clientFactory)
+  public ScrapeAmazonFunction(IHttpClientFactory clientFactory,
+    ILoggerFactory loggerFactory)
   {
-    this.clientFactory = clientFactory;
+    _clientFactory = clientFactory;
+    _logger = loggerFactory.CreateLogger<ScrapeAmazonFunction>();
   }
 
-  [FunctionName(nameof(ScrapeAmazonFunction))]
+  [Function(nameof(ScrapeAmazonFunction))]
   public async Task Run( // Every hour.
-    [TimerTrigger("0 0 * * * *")] TimerInfo timer,
-    ILogger log)
+    [TimerTrigger("0 0 * * * *")] TimerInfo timer)
   {
-    log.LogInformation("C# Timer trigger function executed at {0}.",
-      System.DateTime.UtcNow);
+    _logger.LogInformation($"C# Timer trigger function executed at {
+      DateTime.UtcNow}.");
 
-    log.LogInformation(
-      "C# Timer trigger function next three occurrences at: " +
-      $"{timer.FormatNextOccurrences(3, System.DateTime.UtcNow)}.");
-
-    HttpClient client = clientFactory.CreateClient("Amazon");
+    _logger.LogInformation(
+      $"C# Timer trigger function next occurrence at: {
+        timer.ScheduleStatus?.Next}.");
+    
+    HttpClient client = _clientFactory.CreateClient("Amazon");
     HttpResponseMessage response = await client.GetAsync(relativePath);
-    log.LogInformation($"Request: GET {client.BaseAddress}{relativePath}");
+
+    _logger.LogInformation(
+      $"Request: GET {client.BaseAddress}{relativePath}");
 
     if (response.IsSuccessStatusCode)
     {
-      log.LogInformation($"Successful HTTP request.");
+      _logger.LogInformation("Successful HTTP request.");
 
       // Read the content from a GZIP stream into a string.
       Stream stream = await response.Content.ReadAsStreamAsync();
@@ -65,16 +66,18 @@ public class ScrapeAmazonFunction
       // Parse the text into a number.
       if (int.TryParse(bsr, out int bestSellersRank))
       {
-        log.LogInformation($"Best Sellers Rank #{bestSellersRank:N0}.");
+        _logger.LogInformation(
+          $"Best Sellers Rank #{bestSellersRank:N0}.");
       }
       else
       {
-        log.LogError($"Failed to extract BSR number from: {bsrSection}.");
+        _logger.LogError(
+          $"Failed to extract BSR number from: {bsrSection}.");
       }
     }
     else
     {
-      log.LogError($"Bad HTTP request.");
+      _logger.LogError("Bad HTTP request.");
     }
   }
 }
