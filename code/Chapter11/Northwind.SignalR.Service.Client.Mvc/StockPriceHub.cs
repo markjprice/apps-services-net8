@@ -19,6 +19,8 @@ public class StockPriceHub : Hub
       cancellationToken.ThrowIfCancellationRequested();
 
       // Increment or decrement the current price by a random amount.
+      // The compiler does not need the extra parentheses but it
+      // is clearer for humans if you put them in.
       currentPrice += (Random.Shared.NextDouble() * 10.0) - 5.0;
 
       StockPrice stockPrice = new(stock, currentPrice);
