@@ -9,11 +9,11 @@ builder.Services
   .AddGraphQLServer()
   .AddFiltering()
   .AddSorting()
+  .AddSubscriptionType<Subscription>()
   .AddInMemorySubscriptions()
   .RegisterDbContext<NorthwindContext>()
   .AddQueryType<Query>()
-  .AddMutationType<Mutation>()
-  .AddSubscriptionType<Subscription>();
+  .AddMutationType<Mutation>();
 
 var app = builder.Build();
 
