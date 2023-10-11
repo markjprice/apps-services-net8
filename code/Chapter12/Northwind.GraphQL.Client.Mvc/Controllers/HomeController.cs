@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Northwind.GraphQL.Client.Mvc.Models;
+using Northwind.GraphQL.Client.Mvc.Models;  // To use IndexViewModel.
 using System.Diagnostics;
 using System.Text; // To use Encoding.
 

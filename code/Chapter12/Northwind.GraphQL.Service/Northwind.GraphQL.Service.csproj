@@ -5,19 +5,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    
-    <!--To remove this warning when targeting .NET 8 Preview 4-->
     <NoWarn>AD0001</NoWarn>
-    
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HotChocolate.AspNetCore" Version="13.2.1" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="13.5.1" />
     <PackageReference Include="HotChocolate.Data.EntityFramework"
-                      Version="13.2.1" />
-
-    <!--To use the latest preview of version 14-->
-    <!--<PackageReference Include="HotChocolate.AspNetCore" Version="14.0-*" />-->
+                      Version="13.5.1" />
   </ItemGroup>
 
   <ItemGroup>
