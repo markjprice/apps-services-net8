@@ -199,7 +199,7 @@ WriteLine(horizontalLine);
 // Define a file path to write to.
 string jsonPath = Combine(CurrentDirectory, "products.json");
 
-List<Product> products = new();
+List<Product> products = new(capacity: 77);
 
 await using (FileStream jsonStream = File.Create(jsonPath))
 {
