@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore; // DbSet<T>
+﻿using Microsoft.EntityFrameworkCore; // To use DbSet<T>.
 
 namespace Northwind.Models;
 

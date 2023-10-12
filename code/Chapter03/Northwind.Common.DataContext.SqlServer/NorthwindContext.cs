@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient; // To use SqlConnectionStringBuilder.
 
 namespace Northwind.EntityModels;
 
