@@ -12,7 +12,7 @@ Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-IE");
 
 //await ListProductItems();
 
-//await ListProductItems("SELECT p.id, p.productName, p.unitPrice FROM Items p WHERE p.category.categoryName = 'Beverages'");
+await ListProductItems("SELECT p.id, p.productName, p.unitPrice FROM Items p WHERE p.category.categoryName = 'Beverages'");
 
 //await DeleteProductItems();
 
@@ -20,5 +20,5 @@ Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-IE");
 
 //await ExecuteInsertProductStoredProcedure();
 
-await ListProductItems("SELECT p.id, p.productName, p.unitPrice FROM Items p WHERE p.productId = '78'");
+//await ListProductItems("SELECT p.id, p.productName, p.unitPrice FROM Items p WHERE p.productId = '78'");
 

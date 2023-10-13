@@ -12,17 +12,17 @@ using System.Xml;
 
 partial class Program
 {
-  /*
   // To use Azure Cosmos DB in the local emulator.
   private static string endpointUri = "https://localhost:8081/";
   private static string primaryKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-  */
 
+  /*
   // To use Azure Cosmos DB in the cloud.
   private static string account = "apps-services-book"; // use your account
   private static string endpointUri =
     $"https://{account}.documents.azure.com:443/";
   private static string primaryKey = "xN05xvMzv9ig8aNseFmMLCEGFE5ScZdW9xbDcfnJgsmZjvTUQFsBZaZwzcrl3pCij5udbBKm3fGtACDbJfJMzg=="; // use your key
+  */
 
   static async Task CreateCosmosResources()
   {
@@ -118,6 +118,14 @@ partial class Program
 
         using (NorthwindContext db = new())
         {
+          if (!db.Database.CanConnect())
+          {
+            WriteLine("Cannot connect to the SQL Server database to " + 
+              " read products using database connection string: " +
+              db.Database.GetConnectionString());
+            return;
+          }
+
           ProductCosmos[] products = db.Products
 
             // Get the related data for embedding.
