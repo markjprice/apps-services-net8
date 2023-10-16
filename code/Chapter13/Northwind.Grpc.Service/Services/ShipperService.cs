@@ -21,9 +21,8 @@ public class ShipperService : Shipper.ShipperBase
   public override async Task<ShipperReply?> GetShipper(
     ShipperRequest request, ServerCallContext context)
   {
-    _logger.LogCritical(
-      "This request has a deadline of {0:T}. It is now {1:T}.",
-      context.Deadline, DateTime.UtcNow);
+    _logger.LogCritical($"This request has a deadline of {
+      context.Deadline:T}. It is now {DateTime.UtcNow:T}.");
 
     // await Task.Delay(TimeSpan.FromSeconds(5));
 
@@ -43,8 +42,8 @@ public class ShipperService : Shipper.ShipperBase
 
     /*
     // To use SQL Server Authentication:
-    builder.UserID = userId;
-    builder.Password = password;
+    builder.UserID = Environment.GetEnvironmentVariable("MY_SQL_USR");
+    builder.Password = Environment.GetEnvironmentVariable("MY_SQL_PWD");
     builder.PersistSecurityInfo = false;
     */
 

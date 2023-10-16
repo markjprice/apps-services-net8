@@ -27,8 +27,8 @@ public class ProductService : Product.ProductBase
 
     /*
     // To use SQL Server Authentication:
-    builder.UserID = userId;
-    builder.Password = password;
+    builder.UserID = Environment.GetEnvironmentVariable("MY_SQL_USR");
+    builder.Password = Environment.GetEnvironmentVariable("MY_SQL_PWD");
     builder.PersistSecurityInfo = false;
     */
 
