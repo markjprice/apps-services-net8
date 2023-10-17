@@ -21,10 +21,12 @@ namespace Northwind.Mvc.Controllers
     public IActionResult Index(
       string? id = null, string? country = null)
     {
+      // Start with a simplified initial model.
       IEnumerable<Order> model = _db.Orders
         .Include(order => order.Customer)
         .Include(order => order.OrderDetails);
 
+      // Add filtering based on parameters.
       if (id is not null)
       {
         model = model.Where(order => order.Customer?.CustomerId == id);
@@ -34,6 +36,7 @@ namespace Northwind.Mvc.Controllers
         model = model.Where(order => order.Customer?.Country == country);
       }
 
+      // Add ordering and make enumerable.
       model = model
         .OrderByDescending(order => order.OrderDetails
           .Sum(detail => detail.Quantity * detail.UnitPrice))

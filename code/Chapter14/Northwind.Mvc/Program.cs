@@ -31,7 +31,7 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
-string[] cultures = new[] { "en-US", "en-GB", "fr", "fr-FR" };
+string[] cultures = { "en-US", "en-GB", "fr", "fr-FR" };
 
 RequestLocalizationOptions localizationOptions = new();
 
