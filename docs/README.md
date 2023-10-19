@@ -27,8 +27,11 @@
 - [Blazor Progressive Web Apps topics](ch15-blazor-pwa.md)
 - [Leveraging Open Source Blazor Component Libraries](ch15-blazor-libraries.md)
 
-# Appendix B online-only sections
+# Chapter 16 online-only sections
 
+- [Implementing Model-View-ViewModel for .NET MAUI](ch16-mvvm.md)
+- [Integrating .NET MAUI Apps with Blazor and Native Platforms](ch16-maui-blazor.md)
+- [Create a categories page with the carousel control](ch16-maui-carousel.md)
 - [Avalonia 11](avalonia.md)
 
 # Miscellaneous
@@ -38,4 +41,3 @@
 - [Book links](book-links.md)
 - [Book support for .NET 9 and 10](dotnet9.md)
 - [Information for Technical Reviewers](reviewers.md)
-
