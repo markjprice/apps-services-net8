@@ -1,11 +1,13 @@
-# Docs - Content Online
+# Docs
+
+## Additional content to support the book
 
 - [Command-Lines](command-lines.md)
 - [Errata and improvements](errata/README.md)
 - [Book links](book-links.md)
 - [Book support for .NET 9 and 10](dotnet9.md)
 
-# Online-only sections
+## Online-only sections
 
 - Chapter 1 - Introducing Apps and Services with .NET
   - [What's New in Modern C# and .NET](ch01-whats-new.md)
