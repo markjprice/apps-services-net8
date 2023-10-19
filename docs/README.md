@@ -37,3 +37,6 @@
   - [Integrating .NET MAUI Apps with Blazor and Native Platforms](ch16-maui-blazor.md)
   - [Create a categories page with the carousel control](ch16-maui-carousel.md)
   - [Avalonia 11](avalonia.md)
+
+- Epilogue
+  - [Introducing the Survey Project Challenge](ch17-survey-project.md)
