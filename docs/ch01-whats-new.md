@@ -566,7 +566,7 @@ Use the web to answer the following questions:
 2.	In new .NET projects, nullable checks are enabled. What are two ways to disable them?
 3.	If you define any types in a top-level program, where must they go in the `Program`.cs file?
 4.	How do you import a class like `Console` so that its static members like `WriteLine` are available in all code files throughout a project?
-5.	What is the best new C# 11 language feature?
+5.	What is the best new C# 12 language feature?
 
 ## Exercise 1A.2 – Explore topics
 
