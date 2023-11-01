@@ -5,7 +5,6 @@
              xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
              x:Class="Northwind.Maui.Client.SettingsPage"
              Title="Settings">
-
   <VerticalStackLayout HorizontalOptions="Center">
     <local:EnumPicker ios:Picker.UpdateMode="WhenFinished"
                       EnumType="{x:Type local:Theme}"
@@ -13,7 +12,5 @@
                       SelectedIndexChanged="ThemePicker_SelectionChanged"
                       Loaded="ThemePicker_Loaded"
                       x:Name="ThemePicker" />
-    <Label x:Name="statusLabel"
-               HorizontalOptions="Center" />
   </VerticalStackLayout>
 </ContentPage>

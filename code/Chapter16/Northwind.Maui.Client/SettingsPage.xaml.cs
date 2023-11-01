@@ -15,7 +15,7 @@ public partial class SettingsPage : ContentPage
     Picker picker = sender as Picker;
     Theme theme = (Theme)picker.SelectedItem;
 
-    ICollection<ResourceDictionary> resources = 
+    ICollection<ResourceDictionary> resources =
       Application.Current.Resources.MergedDictionaries;
 
     if (resources is not null)
@@ -27,9 +27,9 @@ public partial class SettingsPage : ContentPage
 
       ResourceDictionary themeResource = theme switch
       {
-        Theme.Dark  => new DarkModeTheme(),
+        Theme.Dark => new DarkModeTheme(),
         Theme.Light => new LightModeTheme(),
-        _           => new SystemModeTheme()
+        _ => new SystemModeTheme()
       };
 
       resources.Add(themeResource);

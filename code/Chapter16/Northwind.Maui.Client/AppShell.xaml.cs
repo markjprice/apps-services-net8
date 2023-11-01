@@ -1,9 +1,10 @@
-﻿namespace Northwind.Maui.Client;
-
-public partial class AppShell : Shell
+﻿namespace Northwind.Maui.Client
 {
-	public AppShell()
-	{
-		InitializeComponent();
-	}
+  public partial class AppShell : Shell
+  {
+    public AppShell()
+    {
+      InitializeComponent();
+    }
+  }
 }

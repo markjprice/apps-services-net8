@@ -1,10 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifer>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
 		<OutputType>Exe</OutputType>
 		<RootNamespace>Northwind.Maui.Client</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -16,7 +24,6 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.northwind.maui.client</ApplicationId>
-		<ApplicationIdGuid>160a73c7-9ff9-4c25-9f76-9dbbf38b03b4</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -32,6 +39,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon_round.svg">
+		  <Color>#512BD4</Color>
+		  <ForegroundFile>Resources\AppIcon\appiconfg.svg</ForegroundFile>
+		</MauiIcon>
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
@@ -49,23 +60,25 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	  <None Remove="Resources\AppIcon\appicon_round.svg" />
+	  <None Remove="Resources\Images\card_index_3d.png" />
+	  <None Remove="Resources\Images\cityscape_3d.png" />
+	  <None Remove="Resources\Images\delivery_truck_3d.png" />
+	  <None Remove="Resources\Images\euro_banknote_3d.png" />
+	  <None Remove="Resources\Images\file_cabinet_3d.png" />
+	  <None Remove="Resources\Images\gear_3d.png" />
+	  <None Remove="Resources\Images\identification_card_3d.png" />
+	  <None Remove="Resources\Images\magnifying_glass_tilted_left_3d.png" />
+	  <None Remove="Resources\Images\wind_face_3d.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\Styles\LightDarkModeColors.xaml.cs">
-	    <DependentUpon>LightDarkModeColors.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Styles\SystemModeTheme.xaml.cs">
-	    <DependentUpon>SystemModeTheme.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Styles\Northwind.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\Styles\LightModeTheme.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
-	  </Compile>
-	</ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0-rc.2.23479.6" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
+  </ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="CategoriesPage.xaml">
@@ -83,24 +96,34 @@
 	  <MauiXaml Update="ProductsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\LightDarkModeColors.xaml">
+	  <MauiXaml Update="Resources\Styles\DarkModeTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\SystemModeTheme.xaml">
+	  <MauiXaml Update="Resources\Styles\LightDarkModeColors.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Styles\LightModeTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\DarkModeTheme.xaml">
+	  <MauiXaml Update="Resources\Styles\Northwind.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\Northwind.xaml">
+	  <MauiXaml Update="Resources\Styles\SystemModeTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
-  
+
+	<!-- Build Properties must be defined within these property groups to ensure successful publishing
+       to the Mac App Store. See: https://aka.ms/maui-publish-app-store#define-build-properties-in-your-project-file -->
+  <PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst')) and '$(Configuration)' == 'Debug'">
+    <CodesignEntitlements>Platforms/MacCatalyst/Entitlements.Debug.plist</CodesignEntitlements>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="$(TargetFramework.Contains('-maccatalyst')) and '$(Configuration)' == 'Release'">
+    <CodesignEntitlements>Platforms/MacCatalyst/Entitlements.Release.plist</CodesignEntitlements>
+    <UseHardenedRuntime>true</UseHardenedRuntime>
+  </PropertyGroup>
 </Project>

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-  x:Class="Northwind.Maui.Client.AppShell"
-  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-  xmlns:local="clr-namespace:Northwind.Maui.Client"
-  Shell.FlyoutBehavior="Flyout">
+    x:Class="Northwind.Maui.Client.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Northwind.Maui.Client"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Northwind.Maui.Client"
+    FlyoutBackgroundColor="AliceBlue">
 
   <Shell.FlyoutHeader>
     <HorizontalStackLayout Spacing="10" HorizontalOptions="Start">
@@ -15,7 +17,7 @@
     </HorizontalStackLayout>
   </Shell.FlyoutHeader>
 
-  <ShellContent Title="Home" 
+  <ShellContent Title="Home"
     Icon="file_cabinet_3d.png" 
     ContentTemplate="{DataTemplate local:MainPage}"
     Route="MainPage" />

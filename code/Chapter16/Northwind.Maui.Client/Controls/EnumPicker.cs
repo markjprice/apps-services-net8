@@ -12,25 +12,25 @@ public class EnumPicker : Picker
 
   public static readonly BindableProperty EnumTypeProperty =
     BindableProperty.Create(
-      propertyName: nameof(EnumType), 
-      returnType: typeof(Type), 
+      propertyName: nameof(EnumType),
+      returnType: typeof(Type),
       declaringType: typeof(EnumPicker),
       propertyChanged: (bindable, oldValue, newValue) =>
-    {
-      EnumPicker picker = (EnumPicker)bindable;
-
-      if (oldValue != null)
       {
-        picker.ItemsSource = null;
-      }
+        EnumPicker picker = (EnumPicker)bindable;
 
-      if (newValue != null)
-      {
-        if (!((Type)newValue).GetTypeInfo().IsEnum)
-          throw new ArgumentException(
-            "EnumPicker: EnumType property must be enumeration type");
+        if (oldValue != null)
+        {
+          picker.ItemsSource = null;
+        }
 
-        picker.ItemsSource = Enum.GetValues((Type)newValue);
-      }
-    });
+        if (newValue != null)
+        {
+          if (!((Type)newValue).GetTypeInfo().IsEnum)
+            throw new ArgumentException(
+              "EnumPicker: EnumType property must be enumeration type");
+
+          picker.ItemsSource = Enum.GetValues((Type)newValue);
+        }
+      });
 }

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Maui.Client", "Northwind.Maui.Client\Northwind.Maui.Client.csproj", "{D9F4A6ED-8B51-4181-A55B-7A0143375B4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Northwind.Maui.Client", "Northwind.Maui.Client\Northwind.Maui.Client.csproj", "{60FFD765-A68B-49ED-8A30-FBBC15530F48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Northwind.Maui.WebApi.Service", "Northwind.Maui.WebApi.Service\Northwind.Maui.WebApi.Service.csproj", "{2384FAD7-ED5F-4C77-81DD-17E926B70C29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +13,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D9F4A6ED-8B51-4181-A55B-7A0143375B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D9F4A6ED-8B51-4181-A55B-7A0143375B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D9F4A6ED-8B51-4181-A55B-7A0143375B4C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{D9F4A6ED-8B51-4181-A55B-7A0143375B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D9F4A6ED-8B51-4181-A55B-7A0143375B4C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D9F4A6ED-8B51-4181-A55B-7A0143375B4C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{60FFD765-A68B-49ED-8A30-FBBC15530F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60FFD765-A68B-49ED-8A30-FBBC15530F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60FFD765-A68B-49ED-8A30-FBBC15530F48}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{60FFD765-A68B-49ED-8A30-FBBC15530F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60FFD765-A68B-49ED-8A30-FBBC15530F48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60FFD765-A68B-49ED-8A30-FBBC15530F48}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2384FAD7-ED5F-4C77-81DD-17E926B70C29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2384FAD7-ED5F-4C77-81DD-17E926B70C29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2384FAD7-ED5F-4C77-81DD-17E926B70C29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2384FAD7-ED5F-4C77-81DD-17E926B70C29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

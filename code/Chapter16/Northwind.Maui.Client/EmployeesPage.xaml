@@ -7,7 +7,7 @@
     <VerticalStackLayout>
 
     <Grid Background="DarkGray" Margin="10" 
-          Padding="5" x:Name="gridCalculator"
+          Padding="5" x:Name="GridCalculator"
           ColumnDefinitions="Auto,Auto,Auto,Auto"
           RowDefinitions="Auto,Auto,Auto,Auto">
       <Button Grid.Row="0" Grid.Column="0" Text="X" />

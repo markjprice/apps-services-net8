@@ -9,7 +9,7 @@ public partial class EmployeesPage : ContentPage
 
   private void ContentPage_Loaded(object sender, EventArgs e)
   {
-    foreach (Button button in gridCalculator.Children.OfType<Button>())
+    foreach (Button button in GridCalculator.Children.OfType<Button>())
     {
       button.FontSize = 24;
       button.WidthRequest = 54;
@@ -33,4 +33,5 @@ public partial class EmployeesPage : ContentPage
       Output.Text += button.Text;
     }
   }
+
 }

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-  x:Class="Northwind.Maui.Client.Resources.Styles.Northwind">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Northwind.Maui.Client.Resources.Styles.Northwind">
 
-  <LinearGradientBrush x:Key="rainbow">
+  <LinearGradientBrush x:Key="Rainbow">
     <GradientStop Color="Red" Offset="0" />
     <GradientStop Color="Orange" Offset="0.1" />
     <GradientStop Color="Yellow" Offset="0.3" />
