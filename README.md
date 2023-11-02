@@ -4,9 +4,9 @@
 
 Repository for the Packt Publishing book titled "Apps and Services with .NET 8" by Mark J. Price
 
-This book is expected to publish in December 2023.
+This book is expected to publish on December 12, 2023.
 
-If you have purchased the paperback or Kindle edition, then you can request a free PDF copy at the following link: coming soon.
+If you have purchased the paperback or Kindle edition, then you can request a free PDF copy at the following link: https://www.packtpub.com/page/free-ebook.
 
 My author page on Amazon: https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/ 
 
@@ -14,11 +14,11 @@ All of my books on my publisher Packt's website: https://subscription.packtpub.c
 
 ## Code solutions for Visual Studio 2022 and Visual Studio Code
 
-Visual Studio Code now has an extension named **C# Dev Kit** that includes a solution explorer so it can better work with Visual Studio 2022 solution files. Visual Studio 2022 for Windows, Visual Studio 2022 for Mac, and Visual Studio Code + C# Dev Kit can now use the same code solution files and projects for each chapter, found here: [/code](/code). 
+Visual Studio Code now has an extension named **C# Dev Kit** that includes a solution explorer so it can better work with Visual Studio 2022 solution files. Visual Studio 2022, Visual Studio Code + C# Dev Kit, and JetBrains Rider can now use the same code solution files and projects for each chapter, found here: [/code](/code). 
 
 > **For Visual Studio Code:** To use the chapter solution files with Visual Studio Code, install the **C# Dev Kit** extension. Then in Visual Studio Code, open the `ChapterNN` folder that contains a `ChapterNN.sln` solution file and wait for the **SOLUTION EXPLORER** pane to appear at the bottom of the **EXPLORER**. You can drag and drop to reorder the panes to put **SOLUTION EXPLORER** at the top. Learn more about C# Dev Kit at the following link: https://devblogs.microsoft.com/visualstudio/announcing-csharp-dev-kit-for-visual-studio-code/
 
-> **Warning!** If you use both Visual Studio 2022 and Visual Studio Code to open these solutions, be aware that the build process can conflict. This is because Visual Studio 2022 has its own non-standard build server that is different from the standard build server used by .NET SDK CLI. My recommendation is to only have a solution open in one code editor at any time. You should also clean the solutions between opening in different code editors. For example, after closing the solution in one code editor, I delete the `bin` and `obj` folders before then opening in a different code editor.
+> **Warning!** If you use multiple code editors to open these solutions, then be aware that the build process can conflict. This is because Visual Studio 2022 has its own non-standard build server that is different from the standard build server used by .NET SDK CLI. My recommendation is to only have a solution open in one code editor at any time. You should also clean the solutions between closing and opening in different code editors. For example, after closing the solution in one code editor, I delete the `bin` and `obj` folders before then opening in a different code editor.
 
 ## Chapters and code solutions
 
@@ -57,7 +57,7 @@ The appendix and color figures are available to download as PDFs:
 
 ## Important
 Corrections for typos and other mistakes and improvements like refactoring code. Useful links to other related material. 
-- [Online-only sections](https://github.com/markjprice/apps-services-net8/blob/main/docs/README.md)
+- [Online-only sections](docs/README.md)
 - [Common Mistakes, Improvements, and Errata aka list of corrections](docs/errata/README.md)
 - [Book Links](docs/book-links.md)
 - [Command-Lines](docs/command-lines.md) page lists all commands as a single line that can be copied and pasted to make it easier to enter commands at the prompt.
