@@ -47,9 +47,6 @@ Visual Studio Code now has an extension named **C# Dev Kit** that includes a sol
 - Chapter 14 Building Web User Interfaces Using ASP.NET Core: [code/Chapter14](code/Chapter14)
 - Chapter 15 Building Web Components Using Blazor: [code/Chapter15](code/Chapter15)
 - Chapter 16 Building Mobile and Desktop Apps Using .NET MAUI: [code/Chapter16](code/Chapter16)
-- Chapter 17 Implementing Model-View-ViewModel for .NET MAUI: [code/Chapter17](code/Chapter17)
-- Chapter 18 Integrating .NET MAUI Apps with Blazor and Native Platforms: [code/Chapter18](code/Chapter18)
-- Chapter 19 Introducing the Survey Project Challenge
 
 ## Extra content to download
 
