@@ -278,7 +278,7 @@ Let's see how we could use it to compare performance between `string` concatenat
 2.	In the `Benchmarking` project, add a package reference to Benchmark.NET, remembering that you can find out the latest version and use that instead of the version I used, as shown in the following markup:
 ```xml
 <ItemGroup>
-  <PackageReference Include="BenchmarkDotNet" Version="0.13.8" />
+  <PackageReference Include="BenchmarkDotNet" Version="0.13.10" />
 </ItemGroup>
 ```
 3.	Build the project to restore packages.
