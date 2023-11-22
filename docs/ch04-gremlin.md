@@ -270,7 +270,7 @@ Next, we will create console app project for creating the same Azure Cosmos DB r
 
 2.	Add a console app project, as defined in the following list:
     - Project template: **Console App** / `console`
-    - Workspace/solution file and folder: `Chapter04A`
+    - Solution file and folder: `Chapter04A`
     - Project file and folder: `Northwind.CosmosDb.Gremlin`
 3.	In the project file, treat warnings as errors, add a package reference for Azure Cosmos and Gremlin.NET, and add a project reference to the Northwind data context project that you created in *Chapter 3, Building Entity Models for SQL Server Using EF Core*, and statically and globally import the `Console` class, as shown highlighted in the following markup:
 

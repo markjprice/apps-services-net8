@@ -62,7 +62,7 @@ There is no `dotnet new` project template for ASP.NET Core OData, but it uses co
 
 1.	Use your preferred code editor to create a new project, as defined in the following list:
     - Project template: **ASP.NET Core Web API** / `webapi`
-    - Workspace/solution file and folder: `Chapter08`
+    - Solution file and folder: `Chapter08`
     - Project file and folder: `Northwind.OData.Service`
     - **Authentication Type**: None.
     - **Configure for HTTPS**: Selected.
@@ -697,7 +697,7 @@ We will create an ASP.NET Core website project to act as a client, and a model c
 1.	Use your preferred code editor to add an MVC website project, as defined in the following list:
     - Project template: **ASP.NET Core Web App (Model-View-Controller) [C#]** / `mvc`
     - Project file and folder: `Northwind.OData.Client.Mvc`
-    - Workspace/solution file and folder: `Chapter08`
+    - Solution file and folder: `Chapter08`
     - Additional information - **Authentication type**: None 
     - For Visual Studio, leave all other options as their defaults.
 

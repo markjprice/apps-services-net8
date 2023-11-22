@@ -47,7 +47,7 @@ First, we will create a Blazor Web App project that we will then explore some of
 
 1. Use your preferred code editor to create a new Blazor WebAssembly project, as defined in the following list:
     - Project template: **Blazor WebAssembly App Empty** / `blazorwasm-empty`
-    - Workspace/solution file and folder: `Chapter15`
+    - Solution file and folder: `Chapter15`
     - Project file and folder: `Northwind.BlazorLibraries`
     - Configure for HTTPS: Selected.
     - ASP.NET Core hosted: Selected or use the `--hosted` switch.
