@@ -90,7 +90,7 @@ independenceDay = DateTime.Parse(textDate,
 
 WriteLine($"Text: {textDate}, DateTime: {independenceDay:d MMMM}");
 
-for (int year = 2022; year <= 2028; year++)
+for (int year = 2023; year <= 2028; year++)
 {
   Write($"{year} is a leap year: {DateTime.IsLeapYear(year)}. ");
   WriteLine($"There are {DateTime.DaysInMonth(year: year, month: 2)
