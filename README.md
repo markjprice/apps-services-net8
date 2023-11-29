@@ -8,6 +8,8 @@ This book is expected to publish on December 12, 2023.
 
 If you have purchased the paperback or Kindle edition, then you can request a free PDF copy at the following link: https://www.packtpub.com/page/free-ebook.
 
+For questions about book pricing, distribution, and so on, please contact the publisher Packt at the following email address: customercare@packt.com
+
 My author page on Amazon: https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/ 
 
 All of my books on my publisher Packt's website: https://subscription.packtpub.com/search?query=mark+j.+price
