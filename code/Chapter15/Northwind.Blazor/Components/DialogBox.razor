@@ -1,11 +1,9 @@
-﻿@attribute [RenderModeServer]
-
+﻿@rendermode InteractiveServer
 <!-- Button to show the dialog box. -->
 <button type="button" class="btn btn-primary"
         data-bs-toggle="modal" data-bs-target="#dialogBox">
   @DialogTitle
 </button>
-
 <!-- Dialog box to popup. -->
 <div class="modal fade" id="dialogBox"
      data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -22,7 +20,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary"
-        @onclick="OnClickPrimary">
+                @onclick="OnClickPrimary">
           @PrimaryButtonText
         </button>
         <button type="button" class="btn btn-secondary"
@@ -36,21 +34,16 @@
 @code {
   [Parameter]
   public string? DialogTitle { get; set; }
-
   // ChildContent is a special name that is set automatically by any
   // markup content within the component begin and end elements.
   [Parameter]
   public RenderFragment? ChildContent { get; set; }
-
   [Parameter]
   public string? PrimaryButtonText { get; set; } = "OK";
-
   [Parameter]
   public EventCallback<MouseEventArgs> OnClickPrimary { get; set; }
-
   [Parameter]
   public string? SecondaryButtonText { get; set; } = "Cancel";
-
   [Parameter]
   public EventCallback<MouseEventArgs> OnClickSecondary { get; set; }
 }

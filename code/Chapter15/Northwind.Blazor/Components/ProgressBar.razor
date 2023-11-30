@@ -1,30 +1,23 @@
-﻿@attribute [RenderModeServer]
+﻿@rendermode InteractiveServer
 <div class="progress">
-  <div class="progress-bar progress-bar-striped bg-info
-              @(IsAnimated ? " progress-bar-animated" : "")"
-       role="progressbar" aria-label="@LabelText"
+  <div class="progress-bar progress-bar-striped bg-info @(IsAnimated ? " progress-bar-animated" : "")" 
+       role="progressbar" aria-label="@LabelText" 
        style="width: @Value%" aria-valuenow="@Value"
        aria-valuemin="@Minimum" aria-valuemax="@Maximum">
     @(ShowValue ? Value + "%" : "")
   </div>
 </div>
-
 @code {
   [Parameter]
   public int Value { get; set; } = 0;
-
   [Parameter]
   public int Minimum { get; set; } = 0;
-
   [Parameter]
   public int Maximum { get; set; } = 100;
-
   [Parameter]
   public bool IsAnimated { get; set; } = false;
-
   [Parameter]
   public bool ShowValue { get; set; } = false;
-
   [Parameter]
   public string? LabelText { get; set; } = "Progress bar";
 }

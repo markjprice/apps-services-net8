@@ -1,0 +1,44 @@
+﻿@rendermode InteractiveServer
+@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, Blazor Full Stack!</h1>
+
+Welcome to your new app.
+
+<Counter />
+
+<div class="row">
+  <div class="col">
+    <div class="alert alert-info">
+      <h4>Progress of database deletion</h4>
+      <ProgressBar Value="25" IsAnimated="true" ShowValue="true"
+                   LabelText="Progress of database deletion" />
+    </div>
+  </div>
+  <div class="col">
+    <DialogBox DialogTitle="Delete Database"
+               PrimaryButtonText="Yes" OnClickPrimary="Yes_Click"
+               SecondaryButtonText="No" OnClickSecondary="No_Click">
+      Are you sure you want to delete the entire database? Really?
+    </DialogBox>
+    <Alert IsDismissable="true"
+           Icon="@(BootstrapIcons.ExclamationTriangleFill)"
+           ColorTheme="@(BootstrapColors.Warning)"
+           Title="Warning"
+           Message="Deleting the database cannot be undone." />
+  </div>
+</div>
+@code {
+  private void Yes_Click(MouseEventArgs e)
+  {
+    Console.WriteLine("User clicked 'Primary' button at ({0}, {1}).",
+    arg0: e.ClientX, arg1: e.ClientY);
+  }
+  private void No_Click(MouseEventArgs e)
+  {
+    Console.WriteLine("User clicked 'Secondary' button at ({0}, {1}).",
+    arg0: e.ClientX, arg1: e.ClientY);
+  }
+}

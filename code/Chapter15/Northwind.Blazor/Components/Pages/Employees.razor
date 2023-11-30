@@ -1,0 +1,55 @@
+﻿@rendermode InteractiveServer
+@page "/employees/{country?}"
+@inject IHttpClientFactory httpClientFactory
+<h1>Employees @(string.IsNullOrWhiteSpace(Country)
+? "Worldwide" : "in " + Country)</h1>
+
+<QuickGrid Items="@employees" Class="table table-striped table-bordered">
+  <PropertyColumn Property="@(emp => emp.EmployeeId)"
+                  Title="ID" />
+  <PropertyColumn Property="@(emp => emp.FirstName)" />
+  <PropertyColumn Property="@(emp => emp.LastName)" />
+  <PropertyColumn Property="@(emp => emp.City)" />
+  <PropertyColumn Property="@(emp => emp.Country)" />
+  <PropertyColumn Property="@(emp => emp.HireDate)"
+                  Format="yyyy-MM-dd" />
+</QuickGrid>
+
+@code {
+  [Parameter]
+  public string? Country { get; set; }
+
+  // QuickGrid works best if it binds to an IQueryable<T> sequence.
+private IQueryable<Employee>? employees;
+  protected override async Task OnParametersSetAsync()
+  {
+    Employee[]? employeesArray = null;
+    // Employee entity has circular reference to itself so
+    // we must control how references are handled.
+    JsonSerializerOptions jsonOptions = new()
+      {
+        ReferenceHandler = ReferenceHandler.Preserve,
+        PropertyNameCaseInsensitive = true
+      };
+    HttpClient client = httpClientFactory.CreateClient(
+    "Northwind.Blazor.Service");
+    string path = "api/employees";
+    try
+    {
+      employeesArray = (await client.GetFromJsonAsync<Employee[]?>(
+      path, jsonOptions));
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine($"{ex.GetType()}: {ex.Message}");
+    }
+    if (employeesArray is not null)
+    {
+      employees = employeesArray.AsQueryable();
+      if (!string.IsNullOrWhiteSpace(Country))
+      {
+        employees = employees.Where(emp => emp.Country == Country);
+      }
+    }
+  }
+}
