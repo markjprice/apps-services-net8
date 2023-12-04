@@ -13,7 +13,7 @@ We will create a web service for working with categories in the Northwind databa
 
 1.	Using your preferred code editor, add a web service project, as defined in the following list:
     - Project template: **ASP.NET Core Web API** / `webapi --use-minimal-apis`.
-    - Workspace/solution file and folder: `Chapter18`.
+    - Workspace/solution file and folder: `Chapter16`.
     - Project file and folder: `Northwind.Maui.WebApi.Service`.
     - Authentication type: None.
     - Configure for HTTPS: Selected.
@@ -30,14 +30,14 @@ We will create a web service for working with categories in the Northwind databa
 ```
 
 3.	At the command prompt or terminal, build the `Northwind.Maui.WebApi.Service` project to make sure the entity model class library projects outside the current solution are properly compiled, as shown in the following command: `dotnet build`.
-4.	In the `Properties` folder, in `launchSettings.json`, for the `https` profile, modify the `applicationUrl` to use port `5181` for `https` and port `5182` for `http`, as shown highlighted in the following configuration:
+4.	In the `Properties` folder, in `launchSettings.json`, for the `https` profile, modify the `applicationUrl` to use port `5161` for `https` and port `5162` for `http`, as shown highlighted in the following configuration:
 ```json
-"applicationUrl": "https://localhost:5181;http://localhost:5182",
+"applicationUrl": "https://localhost:5161;http://localhost:5162",
 ```
 
-5.	In `launchSettings.json`, for the `http` profile, modify the `applicationUrl` to use port `5182` for `http`, as shown highlighted in the following configuration:
+5.	In `launchSettings.json`, for the `http` profile, modify the `applicationUrl` to use port `5162` for `http`, as shown highlighted in the following configuration:
 ```json
-"applicationUrl": "http://localhost:5182",
+"applicationUrl": "http://localhost:5162",
 ```
 
 6.	In `Program.cs`, delete the statements about the weather service and replace them with statements to disable HTTPS redirection while developing and to configure minimal API endpoints for data operations on categories, as shown highlighted in the following code:
@@ -265,7 +265,7 @@ internal partial class CategoriesViewModel : ObservableCollection<Category>
         == DevicePlatform.Android ? "10.0.2.2" : "localhost";
 
       HttpClient client = new()
-        { BaseAddress = new Uri($"http://{domain}:5182") };
+        { BaseAddress = new Uri($"http://{domain}:5162") };
 
       InfoMessage = $"BaseAddress: {client.BaseAddress}. ";
 
@@ -448,15 +448,15 @@ Now, we can modify the categories page to show the categories in a carousel:
 3.	Start the `Northwind.Maui.WebApi.Service` project using the `https` profile, and note the endpoints it is listening on, as shown highlighted in the following output:
 ```
 info: Microsoft.Hosting.Lifetime[14]
-      Now listening on: https://localhost:5181
+      Now listening on: https://localhost:5161
 info: Microsoft.Hosting.Lifetime[14]
-      Now listening on: http://localhost:5182
+      Now listening on: http://localhost:5162
 info: Microsoft.Hosting.Lifetime[0]
       Application started. Press Ctrl+C to shut down.
 info: Microsoft.Hosting.Lifetime[0]
       Hosting environment: Development
 info: Microsoft.Hosting.Lifetime[0]
-      Content root path: C:\apps-services-net8\Chapter18\Northwind.Maui.WebApi.Service
+      Content root path: C:\apps-services-net8\Chapter16\Northwind.Maui.WebApi.Service
 ```
 
 4.	Run the `Northwind.Maui.Blazor.Client` project using the Android emulator, navigate to the `Categories page`, and note that eight categories are loaded from the web service and displayed in the carousel, with indicator lights at the bottom of the page view, as shown in *Figure 18A.1*:

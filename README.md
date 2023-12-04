@@ -8,11 +8,15 @@ This book is expected to publish on December 12, 2023.
 
 If you have purchased the paperback or Kindle edition, then you can request a free PDF copy at the following link: https://www.packtpub.com/page/free-ebook.
 
+Join the Packt community on Discord: https://packt.link/apps_and_services_dotnet8. After accepting the Discord invite, find the channel for this book named **apps_and_services_2e**: https://discord.com/channels/963343534323269662/1166070194398048286.
+
 For questions about book pricing, distribution, and so on, please contact the publisher Packt at the following email address: customercare@packt.com
 
 My author page on Amazon: https://www.amazon.com/Mark-J-Price/e/B071DW3QGN/ 
 
 All of my books on my publisher Packt's website: https://subscription.packtpub.com/search?query=mark+j.+price
+
+My author page on Goodreads: https://www.goodreads.com/author/show/14224500.Mark_J_Price
 
 ## Code solutions for Visual Studio 2022 and Visual Studio Code
 

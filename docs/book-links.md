@@ -36,6 +36,7 @@
   - [Web service routing](#web-service-routing)
   - [Web service clients](#web-service-clients)
   - [Documenting web services](#documenting-web-services)
+  - [Ahead-of-time (AOT) compilation](#ahead-of-time-aot-compilation)
   - [Securing web services](#securing-web-services)
   - [Exposing Data via the Web Using OData](#exposing-data-via-the-web-using-odata)
 - [Chapter 9 - Caching, Queuing, and Resilient Background Services](#chapter-9---caching-queuing-and-resilient-background-services)
@@ -197,6 +198,7 @@
 
 ## Dapper and comparing to EF Core performance
 - [Dapper](https://github.com/DapperLib/Dapper)
+- [Dapper.AOT](https://www.nuget.org/packages/Dapper.AOT) and [How to make libraries compatible with native AOT - Dapper](https://devblogs.microsoft.com/dotnet/creating-aot-compatible-libraries/#dapper)
 - [Announcing Entity Framework Core 6.0 Preview 4: Performance Edition](https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-6-0-preview-4-performance-edition/)
 - [Announcing Entity Framework Core 7 Preview 6: Performance Edition](https://devblogs.microsoft.com/dotnet/announcing-ef-core-7-preview6-performance-optimizations/)
 
@@ -330,6 +332,11 @@
 - [Importance of documenting services](https://idratherbewriting.com/learnapidoc/)
 - [Benefits of setting version compatibility](https://learn.microsoft.com/en-us/aspnet/core/mvc/compatibility-version)
 - [Check latest version of analyzers package](http://www.nuget.org/packages/Microsoft.AspNetCore.Mvc.Api.Analyzers/)
+
+## Ahead-of-time (AOT) compilation
+- [Native AOT deployment](https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/)
+- [How to make libraries compatible with native AOT](https://devblogs.microsoft.com/dotnet/creating-aot-compatible-libraries/)
+- [ASP.NET Core support for native AOT](https://devblogs.microsoft.com/dotnet/announcing-asp-net-core-in-dotnet-8/#asp-net-core-support-for-native-aot)
 
 ## Securing web services
 - [Verifying that the tokens used to call your web APIs are requested with the expected claims](https://learn.microsoft.com/en-us/azure/active-directory/develop/scenario-protected-web-api-verification-scope-app-roles)

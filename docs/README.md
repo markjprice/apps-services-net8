@@ -2,6 +2,7 @@
 
 ## Additional content to support the book
 
+- [Appendix A — Answers to the Test Your Knowledge Questions](B19587_Appendix.pdf)
 - [Command-Lines](command-lines.md)
 - [Errata and improvements](errata/README.md)
 - [Book links](book-links.md)
