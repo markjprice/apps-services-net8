@@ -459,17 +459,17 @@ info: Microsoft.Hosting.Lifetime[0]
       Content root path: C:\apps-services-net8\Chapter16\Northwind.Maui.WebApi.Service
 ```
 
-4.	Run the `Northwind.Maui.Blazor.Client` project using the Android emulator, navigate to the `Categories page`, and note that eight categories are loaded from the web service and displayed in the carousel, with indicator lights at the bottom of the page view, as shown in *Figure 18A.1*:
+4.	Run the `Northwind.Maui.Blazor.Client` project using the Android emulator, navigate to the `Categories page`, and note that eight categories are loaded from the web service and displayed in the carousel, with indicator lights at the bottom of the page view, as shown in *Figure 16C.1*:
 
-![Categories in the carousel on Android](assets/B19587_18A_01.png)
-*Figure 18A.1: Categories in the carousel on Android*
+![Categories in the carousel on Android](assets/B19587_16C_01.png)
+*Figure 16C.1: Categories in the carousel on Android*
 
 5.	Note that the user can swipe left and right to flip between categories or click the dots in the indicator view to quickly jump to the matching category.
 6.	Close the Android emulator.
-7.	Run the Northwind.Maui.Blazor.Client project using the Windows machine, navigate to the Categories page, and note that eight categories are loaded from the web service and displayed in the carousel, with indicator lights at the bottom of the page view, as shown in *Figure 18A.2*:
+7.	Run the Northwind.Maui.Blazor.Client project using the Windows machine, navigate to the Categories page, and note that eight categories are loaded from the web service and displayed in the carousel, with indicator lights at the bottom of the page view, as shown in *Figure 16C.2*:
 
-![Categories in the carousel on Windows](assets/B19587_18A_02.png)
-*Figure 18A.2: Categories in the carousel on Windows*
+![Categories in the carousel on Windows](assets/B19587_16C_02.png)
+*Figure 16C.2: Categories in the carousel on Windows*
 
 8.	Note that the user can use the horizontal scrollbar at the bottom to scroll between categories or click the dots in the indicator view to quickly jump to the matching category.
 9.	Close the Windows app.

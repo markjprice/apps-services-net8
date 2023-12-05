@@ -57,9 +57,10 @@
   - [Advanced techniques](#advanced-techniques)
   - [Leveraging Open-Source Blazor Component Libraries](#leveraging-open-source-blazor-component-libraries)
 - [Chapter 16 - Building Mobile and Desktop Apps Using .NET MAUI](#chapter-16---building-mobile-and-desktop-apps-using-net-maui)
-- [Chapter 17 - Implementing Model-View-ViewModel for .NET MAUI](#chapter-17---implementing-model-view-viewmodel-for-net-maui)
-- [Chapter 18 - Integrating .NET MAUI Apps with Blazor and Native Platforms](#chapter-18---integrating-net-maui-apps-with-blazor-and-native-platforms)
-- [Chapter 19 - Introducing the Survey Project Challenge](#chapter-19---introducing-the-survey-project-challenge)
+  - [Implementing Model-View-ViewModel for .NET MAUI](#implementing-model-view-viewmodel-for-net-maui)
+  - [Integrating .NET MAUI Apps with Blazor and Native Platforms](#integrating-net-maui-apps-with-blazor-and-native-platforms)
+- [Chapter 17 - Epilogue](#chapter-17---epilogue)
+  - [Introducing the Survey Project Challenge](#introducing-the-survey-project-challenge)
 - [Epilogue](#epilogue)
   - [Next steps on your C# and .NET learning journey](#next-steps-on-your-c-and-net-learning-journey)
   - [Alternatives to using Azure resources](#alternatives-to-using-azure-resources)
@@ -504,11 +505,11 @@
 - [Accelerate your WinUI 3 app with the Windows Community Toolkit | .NET Conf 2022](https://www.youtube.com/watch?v=WH-vRxvY95M)
 - [OSS Spotlight - Build amazing cross-platform UI for .NET with Avalonia UI!](https://www.youtube.com/watch?v=qcZSr2ejH5I)
 
-# Chapter 17 - Implementing Model-View-ViewModel for .NET MAUI
+## Implementing Model-View-ViewModel for .NET MAUI
 
 - [MVVM is easier than ever before with Source Generators, .NET 7, and the MVVM Toolkit| .NET Conf 2022](https://www.youtube.com/watch?v=oQluWTag-e4)
 
-# Chapter 18 - Integrating .NET MAUI Apps with Blazor and Native Platforms
+## Integrating .NET MAUI Apps with Blazor and Native Platforms
 
 - [Create native desktop & mobile apps using web skills in Blazor Hybrid | .NET Conf 2022](https://www.youtube.com/watch?v=ojcvL8KCOwo)
 - [Host a Blazor web app in a .NET MAUI app using BlazorWebView](https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/blazorwebview)
@@ -528,7 +529,9 @@
 - [Secure storage](https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/secure-storage)
 - [Modernize your WPF and Windows Forms application with Blazor | .NET Conf 2022](https://www.youtube.com/watch?v=niX1DbFwgq4)
 
-# Chapter 19 - Introducing the Survey Project Challenge
+# Chapter 17 - Epilogue
+
+## Introducing the Survey Project Challenge
 
 - [Survey Monkey Question Types](https://help.surveymonkey.com/en/create/question-types/)
 
