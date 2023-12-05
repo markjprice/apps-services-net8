@@ -59,9 +59,8 @@
 - [Chapter 16 - Building Mobile and Desktop Apps Using .NET MAUI](#chapter-16---building-mobile-and-desktop-apps-using-net-maui)
   - [Implementing Model-View-ViewModel for .NET MAUI](#implementing-model-view-viewmodel-for-net-maui)
   - [Integrating .NET MAUI Apps with Blazor and Native Platforms](#integrating-net-maui-apps-with-blazor-and-native-platforms)
-- [Chapter 17 - Epilogue](#chapter-17---epilogue)
-  - [Introducing the Survey Project Challenge](#introducing-the-survey-project-challenge)
 - [Epilogue](#epilogue)
+  - [Introducing the Survey Project Challenge](#introducing-the-survey-project-challenge)
   - [Next steps on your C# and .NET learning journey](#next-steps-on-your-c-and-net-learning-journey)
   - [Alternatives to using Azure resources](#alternatives-to-using-azure-resources)
   - [Learn from other Packt books](#learn-from-other-packt-books)
@@ -529,13 +528,10 @@
 - [Secure storage](https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/secure-storage)
 - [Modernize your WPF and Windows Forms application with Blazor | .NET Conf 2022](https://www.youtube.com/watch?v=niX1DbFwgq4)
 
-# Chapter 17 - Epilogue
+# Epilogue
 
 ## Introducing the Survey Project Challenge
-
 - [Survey Monkey Question Types](https://help.surveymonkey.com/en/create/question-types/)
-
-# Epilogue
 
 ## Next steps on your C# and .NET learning journey
 - [Follow the Framework Design Guidelines](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/)
