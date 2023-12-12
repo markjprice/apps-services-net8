@@ -4,7 +4,7 @@ If you find any mistakes, then please [raise an issue in this repository](https:
 
 # Page 91 - Table-per-concrete-type (TPC) mapping strategy
 
-> Thanks to Jorge Morales for raising this issue via email.
+> Thanks to [Jorge Morales](https://github.com/jmoralesv) for raising this [issue on December 12, 2023](https://github.com/markjprice/apps-services-net7/issues/22).
 
 I show the SQL to define the two tables used in the TPC mapping strategy but it includes a foreign key constraint to a `People` table that does not exist, as shown in the following code:
 
