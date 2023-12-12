@@ -2,7 +2,10 @@
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
-# Page 91 - Table-per-concrete-type (TPC) mapping strategy
+- [Page 104 - Table-per-concrete-type (TPC) mapping strategy](#page-104---table-per-concrete-type-tpc-mapping-strategy)
+
+
+# Page 104 - Table-per-concrete-type (TPC) mapping strategy
 
 > Thanks to [Jorge Morales](https://github.com/jmoralesv) for raising this [issue on December 12, 2023](https://github.com/markjprice/apps-services-net7/issues/22).
 
