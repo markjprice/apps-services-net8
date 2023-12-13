@@ -1,7 +1,7 @@
 **Book Links**
 
 - [Chapter 1 - Introducing Apps and Services with .NET](#chapter-1---introducing-apps-and-services-with-net)
-  - [Visual Studio 2022 for Windows and Mac](#visual-studio-2022-for-windows-and-mac)
+  - [Visual Studio 2022 for Windows](#visual-studio-2022-for-windows)
   - [Visual Studio Code](#visual-studio-code)
   - [Other C# code editors and platforms](#other-c-code-editors-and-platforms)
   - [Command-Line Interfaces](#command-line-interfaces)
@@ -67,12 +67,10 @@
 
 # Chapter 1 - Introducing Apps and Services with .NET
 
-## Visual Studio 2022 for Windows and Mac
+## Visual Studio 2022 for Windows
 - [Download Visual Studio for Windows](https://visualstudio.microsoft.com/downloads/)
 - [Visual Studio for Windows documentation](https://learn.microsoft.com/en-us/visualstudio/windows/)
 - [MSBuild and 64-bit Visual Studio 2022](https://devblogs.microsoft.com/dotnet/msbuild-and-64-bit-visual-studio-2022/)
-- [Visual Studio 2022 for Mac is now available](https://devblogs.microsoft.com/visualstudio/visual-studio-2022-for-mac-is-now-available/)
-- [Visual Studio for Mac documentation](https://learn.microsoft.com/en-us/visualstudio/mac/)
 
 ## Visual Studio Code
 - [Download Visual Studio Code](https://code.visualstudio.com/)
@@ -97,10 +95,9 @@
 
 ## .NET
 - [Download .NET SDK](https://www.microsoft.com/net/download)
-- [.NET Conf 2022 Keynote: Welcome to .NET 7 | .NET Conf 2022](https://www.youtube.com/watch?v=8V_BUGFKdaI)
 - [Stack Overflow survey 2021 - Most loved frameworks and libraries](https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-other-frameworks-and-libraries)
 - [Themes of .NET](https://themesof.net/)
-- [Official list of .NET 7 supported operating systems](https://github.com/dotnet/core/blob/main/release-notes/7.0/supported-os.md)
+- [Official list of .NET 8 supported operating systems](https://github.com/dotnet/core/blob/main/release-notes/8.0/supported-os.md)
 - [.NET Support Policy](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
 - [.NET versions](https://learn.microsoft.com/en-us/dotnet/core/versions/)
 - [.NET Uninstall Tool](https://learn.microsoft.com/en-us/dotnet/core/additional-tools/uninstall-tool)
@@ -206,7 +203,7 @@
 
 ## EF Core
 - [EF Core documentation](https://learn.microsoft.com/en-us/ef/core/)
-- [Announcing the Plan for EF7](https://devblogs.microsoft.com/dotnet/announcing-the-plan-for-ef7/)
+- [New features in EF Core 8](https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-8.0/whatsnew)
 - [New features in EF Core 7](https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-7.0/whatsnew)
 - [New features in EF Core 6](https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-6.0/whatsnew)
 - [New features in EF Core 5](https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-5.0/whatsnew)
