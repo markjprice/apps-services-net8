@@ -2,9 +2,7 @@
 
 # Apps and Services with .NET 8, Second Edition
 
-Repository for the Packt Publishing book titled "Apps and Services with .NET 8" by Mark J. Price
-
-This book is expected to publish on December 12, 2023.
+Repository for the Packt Publishing book titled "Apps and Services with .NET 8" by Mark J. Price. This book was published on December 12, 2023.
 
 If you have purchased the paperback or Kindle edition, then you can request a free PDF copy at the following link: https://www.packtpub.com/page/free-ebook.
 
