@@ -34,17 +34,19 @@ In this online-only section, the goal is to review what is new since C# 6 and .N
 
 # Understanding modern .NET
 
-In 2020, .NET Core was rebranded .NET and the major version number skipped 4 to avoid confusion with legacy .NET Framework 4.x. Microsoft plans on annual major version releases every November from now on, rather like Apple does major version number releases of iOS every September.
+In 2020, .**NET Core** was rebranded **.NET** and the major version number skipped 4 to avoid confusion with legacy .NET Framework 4.x. Microsoft plans on annual major version releases every November from now on, rather like Apple does major version number releases of iOS every September.
 
 The following table shows when recent versions of modern .NET were released, when future releases are planned, and when they reach end of life and are therefore become officially unsupported and will receive no more bug fixes and security updates:
 
 Version|Support|Released|End of life
 ---|---|---|---
-.NET 6|LTS|November 8, 2021|November 8, 2024
-.NET 7|STS|November 8, 2022|May 2024
-.NET 8|LTS|November 2023|November 2026
+.NET 6|LTS|November 8, 2021|November 12, 2024
+.NET 7|STS|November 8, 2022|May 14, 2024
+.NET 8|LTS|November 2023|November 10, 2026
 .NET 9|STS|November 2024|May 2026
 .NET 10|LTS|November 2025|November 2028
+
+> You can check which .NET versions are currently supported and when they will reach endof-life at the following link: https://github.com/dotnet/core/blob/main/releases.md.
 
 ## Understanding .NET support
 
@@ -61,24 +63,27 @@ End of support or end of life means the date after which bug fixes, security upd
 
 .NET Runtime versioning follows semantic versioning; that is, a major increment indicates breaking changes, minor increments indicate new features, and patch increments indicate bug fixes.
 
-.NET SDK versioning does not follow semantic versioning. The major and minor version numbers are tied to the runtime version it is matched with. The patch number follows a convention that indicates the major and minor versions of the SDK. 
+.NET SDK versioning does not follow semantic versioning. The major and minor version numbers are tied to the runtime version it is matched with. The third number follows a convention that indicates the minor and patch versions of the SDK. The third number starts at `100` for the initial version (equivalent to `0.0` for minor and patch number). The first digit increments with minor increments, and the other two digits increment with patch increments. 
 
-For example, patch number 100 means SDK version 1.0, patch number 101 means SDK version 1.1, and patch number 200 means SDK version 2.0. You can see an example of this in the following table:
-
-Change|Runtime|SDK|SDK Meaning
----|---|---|---
-Initial release|8.0.0|8.0.100|.NET 8 SDK 1.0
-SDK bug fix|8.0.0|8.0.101|.NET 8 SDK 1.1
-Runtime and SDK bug fix|8.0.1|8.0.102|.NET 8 SDK 1.2
-SDK new feature|8.0.1|8.0.200|.NET 8 SDK 2.0
+Change|Runtime|SDK
+---|---|---
+Initial release|8.0.0|8.0.100
+SDK bug fix|8.0.0|8.0.101
+Runtime and SDK bug fix|8.0.1|8.0.102
+SDK new feature|8.0.1|8.0.200
 
 # What's new in modern C# and .NET?
 
 There were many language and library features introduced with C# 6 and .NET Core 1:
-- x
+- Null-Conditional Operator
+- Auto-Property Initializers
+- Nameof Expressions
+- Expression Bodied Functions and Properties
 
 There were many language and library features introduced with C# 7 and .NET Core 2:
-- x
+- The Main method, the application entry point, can be marked with the async keyword.
+- Inferred tuple names.
+- Default expressions.
 
 There were many language and library features introduced with C# 8 and .NET Core 3:
 - You can apply readonly to members of a struct.
