@@ -1,9 +1,10 @@
-**Improvements** (1 item)
+**Improvements** (2 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Print Book](#print-book)
   - [Page 169 - Nested and child tasks](#page-169---nested-and-child-tasks)
+  - [Page 258 - Formatting date and time values](#page-258---formatting-date-and-time-values)
 - [Bonus Content](#bonus-content)
 
 # Print Book
@@ -47,6 +48,10 @@ Inner method starting...
 Inner method finished.
 Console app is stopping.
 ```
+
+## Page 258 - Formatting date and time values
+
+In the next edition, I will add an extra row to *Table 7.3: Standard format code for date and time values* for the format code `m` or `M`. This uses a format that only shows day and month name, for example, **15 June**. I will also add a note that this format code only works when it is the only code. Combined with other codes it means minute (`m`) or month (`M`).
 
 # Bonus Content 
 
