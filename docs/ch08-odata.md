@@ -281,7 +281,7 @@ public class CategoriesController : ODataController
 }
 ```
 
-> **Warning!** For readers familiar with ASP.NET Core Web API, they might mistakenly name the parameter `id`. This is because with a Web API project, a default route is configured: `{http_method} http://.../{controller}/{id}` that will (1) instantiate the class named `{controller}Controller`, call the method with a matching name for the HTTP method e.g. `GET`, `POST` and so on, and (3) pass a parameter value named `{id}`. But an OData project is not a traditional Web API project. Controller classes that derive from `ODataController` are registered using different routes. Instead, the route is configured with a parameter named `key` so that is what the method parameter must be named to allow automatic route mapping to pass that parameter.  
+> **Warning!** For readers familiar with ASP.NET Core Web API, they might mistakenly name the parameter `id`. This is because with a Web API project, a default route is configured: `{http_method} http://.../{controller}/{id}` that will (1) instantiate the class named `{controller}Controller`, call the method with a matching name for the HTTP method e.g. `GET`, `POST` and so on, and (3) pass a parameter value named `{id}`. But an OData project is not a traditional Web API project. Controller classes that derive from `ODataController` are registered using different routes. Instead, the route is configured with a parameter named `key` so that is what the method parameter must be named to allow automatic route mapping to pass that parameter. A fuller explanation can be found at the following link: https://learn.microsoft.com/en-us/odata/webapi/routing-abstract.
 
 3.	Repeat the above step for `Products` and `Suppliers`.
 
