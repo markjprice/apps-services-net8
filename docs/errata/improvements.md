@@ -1,10 +1,11 @@
-**Improvements** (2 items)
+**Improvements** (3 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Print Book](#print-book)
   - [Page 169 - Nested and child tasks](#page-169---nested-and-child-tasks)
   - [Page 258 - Formatting date and time values](#page-258---formatting-date-and-time-values)
+  - [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
 - [Bonus Content](#bonus-content)
 
 # Print Book
@@ -52,6 +53,45 @@ Console app is stopping.
 ## Page 258 - Formatting date and time values
 
 In the next edition, I will add an extra row to *Table 7.3: Standard format code for date and time values* for the format code `m` or `M`. This uses a format that only shows day and month name, for example, **15 June**. I will also add a note that this format code only works when it is the only code. Combined with other codes it means minute (`m`) or month (`M`).
+
+## Page 460 - Implementing a function that works with queues and BLOBs
+
+> Thanks to [Jim Campbell](https://github.com/jimcbell) who raised this issue and provided solutions on [December 24, 2023](https://github.com/markjprice/apps-services-net7/issues/24).
+
+In Step 9, I tell the reader to modify the statements in the `CheckGeneratorFunction.cs` class file. There is an issue if running on Mac or Linux because I hardcoded the path to the fonts with the Windows path separator, as shown in the following code:
+```cs
+FontFamily family = collection.Add(
+  @"fonts\Caveat\static\Caveat-Regular.ttf");
+```
+
+I should have used cross-platform technique to build the path, as shown in the following code:
+```cs
+string pathToFont = System.IO.Path.Combine(
+  "fonts", "Caveat", "static", "Caveat-Regular.ttf");
+
+FontFamily family = collection.Add(pathToFont);
+```
+
+And to build the paths to the local folder to write the blob to, as shown in the following code:
+```cs
+if (System.Environment.GetEnvironmentVariable("IS_LOCAL") == "true")
+{
+  // Create blob in the local filesystem.
+  string folder = System.IO.Path.Combine(
+    System.Environment.CurrentDirectory, "blobs");
+
+  if (!Directory.Exists(folder))
+  {
+    Directory.CreateDirectory(folder);
+  }
+
+  log.LogInformation($"Blobs folder: {folder}");
+
+  string blobPath = System.IO.Path.Combine(folder,blobName);
+
+  await image.SaveAsPngAsync(blobPath);
+}
+```
 
 # Bonus Content 
 
