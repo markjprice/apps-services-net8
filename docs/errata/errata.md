@@ -1,8 +1,9 @@
-**Errata** (1 items)
+**Errata** (2 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Page 104 - Table-per-concrete-type (TPC) mapping strategy](#page-104---table-per-concrete-type-tpc-mapping-strategy)
+- [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
 
 
 # Page 104 - Table-per-concrete-type (TPC) mapping strategy
@@ -52,3 +53,23 @@ After the note saying, "Since there is not a single table with an IDENTITY colum
 ```sql
 CREATE SEQUENCE [PersonIds] AS int START WITH 4 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 ```
+
+# Page 644 - Comparing HTML Helpers and Tag Helpers
+
+> Thanks to [Stephen Harper](https://github.com/sjharper79) for raising this issue on [January 3, 2024](https://github.com/markjprice/apps-services-net7/issues/27).
+
+I show three statements that should produce the following markup:
+```html
+<a href="/home/privacy">View our privacy policy.</a>
+```
+
+But the first two statements use `Index` instead of `Home`. They should be as follows:
+```
+@Html.ActionLink("View our privacy policy.", "Privacy", "Home")
+
+@Html.ActionLink(linkText: "View our privacy policy.",
+  action: "Privacy", controller: "Home")
+```
+
+This will be fixed in the third edition.
+
