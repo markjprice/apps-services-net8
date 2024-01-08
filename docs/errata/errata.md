@@ -1,10 +1,10 @@
-**Errata** (2 items)
+**Errata** (3 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Page 104 - Table-per-concrete-type (TPC) mapping strategy](#page-104---table-per-concrete-type-tpc-mapping-strategy)
 - [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
-
+- [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
 
 # Page 104 - Table-per-concrete-type (TPC) mapping strategy
 
@@ -73,3 +73,8 @@ But the first two statements use `Index` instead of `Home`. They should be as fo
 
 This will be fixed in the third edition.
 
+# Page 726 - Adding shell navigation and more content pages
+
+> Thanks to [Stephen Harper](https://github.com/sjharper79) for raising this [issue on 8 January 2024](https://github.com/markjprice/apps-services-net7/issues/29).
+
+In Step 20, the method name should be `ClickMeButton_Clicked`.
