@@ -62,7 +62,7 @@ Let’s go!
 
 2. In the `Resources` folder, in the `Images` folder, add images for some icons that we will use for tab items in the navigation we are about to add.
 
-> You can download the images from the GitHub repository at the following link: https://github.com/markjprice/apps-services-net8/tree/main/code/Chapter18/Northwind.Maui.Blazor.Client/Resources/Images
+> You can download the images from the GitHub repository at the following link: https://github.com/markjprice/apps-services-net8/tree/main/code/Chapter16/Northwind.Maui.Blazor.Client/Resources/Images
 
 3. In the `Northwind.Maui.Blazor.Client` project, in `MauiProgram.cs`, note the extra statements compared to the equivalent project template for just .NET MAUI. The statements enable embedding Blazor components by adding support for a web view and registering a local weather
 service, as shown in the following code:
