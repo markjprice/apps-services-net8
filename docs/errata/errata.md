@@ -1,8 +1,9 @@
-**Errata** (3 items)
+**Errata** (4 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Page 104 - Table-per-concrete-type (TPC) mapping strategy](#page-104---table-per-concrete-type-tpc-mapping-strategy)
+- [Page 166 - Implementing stored procedures](#page-166---implementing-stored-procedures)
 - [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
 - [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
 
@@ -53,6 +54,21 @@ After the note saying, "Since there is not a single table with an IDENTITY colum
 ```sql
 CREATE SEQUENCE [PersonIds] AS int START WITH 4 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 ```
+
+# Page 166 - Implementing stored procedures
+
+> Thanks to [Tomasz](https://github.com/sikora507) for raising this [issue on January 21, 2024](https://github.com/markjprice/apps-services-net8/issues/3).
+
+I wrote, "Stored procedures are the only way to ensure ACID (Atomic, Consistent, Isolated, Durable) transactions 
+that combine multiple discrete activities into a single action that can be committed or rolled back.
+You cannot use client-side code to implement transactions."
+
+But there is another way if you are making multiple changes with the same partition key in a container by using a transactional batch.
+
+In the next edition, I will write, "Stored procedures are the only way to ensure ACID (Atomic, Consistent, Isolated, Durable) transactions 
+that combine multiple discrete activities into a single action that can be committed or rolled back across more than a single partition.
+You can use client-side code to implement transactions with the same partition key in a container by using a transactional batch, as described 
+at the following link: https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/transactional-batch."
 
 # Page 644 - Comparing HTML Helpers and Tag Helpers
 
