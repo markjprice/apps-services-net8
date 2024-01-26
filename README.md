@@ -16,6 +16,8 @@ All of my books on my publisher Packt's website: https://subscription.packtpub.c
 
 My author page on Goodreads: https://www.goodreads.com/author/show/14224500.Mark_J_Price
 
+Milan Jovanović's review: https://www.linkedin.com/feed/update/urn:li:activity:7155831658212986881/
+
 ## Code solutions for Visual Studio 2022 and Visual Studio Code
 
 Visual Studio Code now has an extension named **C# Dev Kit** that includes a solution explorer so it can better work with Visual Studio 2022 solution files. Visual Studio 2022, Visual Studio Code + C# Dev Kit, and JetBrains Rider can now use the same code solution files and projects for each chapter, found here: [/code](/code). 
