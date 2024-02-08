@@ -75,14 +75,16 @@ at the following link: https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/t
 
 > Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this [issue on February 8, 2024](https://github.com/markjprice/apps-services-net8/issues/5).
 
-In Step 6, I show the code to generate a PDF file but it includes a statement to set the license type. The `License` property and `enum` type are only available with package versions `2023.4.0` or later. If you use the `2022.12-*` or earlier versions with MIT license then you do not need to set the license. 
+In Step 6, I show the code to generate a PDF file but it includes a statement to set the license type. The `License` property and `enum` type are only available with package versions `2023.4.0` or later. If you use the `2022.12-*` or earlier versions with MIT license then you cannot set the license. 
 
 The following statement can therefore be commented out:
 ```cs
 QuestPDF.Settings.License = LicenseType.Community;
 ```
 
-In the next edition, I will add a note to explain this. I have commented out this statement in the GitHub solution since the project references the older packages with MIT license. If you choose to use a later version of the package, then you must uncomment the statement.
+I have commented out this statement in the GitHub solution since the project references the older packages with MIT license. If you choose to use a later version of the package, then you must uncomment the statement.
+
+In the next edition, I will add a note and code comments to explain this. 
 
 # Page 644 - Comparing HTML Helpers and Tag Helpers
 
