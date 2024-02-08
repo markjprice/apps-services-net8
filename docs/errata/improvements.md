@@ -1,16 +1,14 @@
-**Improvements** (3 items)
+**Improvements** (5 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
-- [Print Book](#print-book)
-  - [Page 169 - Nested and child tasks](#page-169---nested-and-child-tasks)
-  - [Page 258 - Formatting date and time values](#page-258---formatting-date-and-time-values)
-  - [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
-- [Bonus Content](#bonus-content)
+- [Page 169 - Nested and child tasks](#page-169---nested-and-child-tasks)
+- [Page 245 - Creating class libraries to generate PDF documents](#page-245---creating-class-libraries-to-generate-pdf-documents)
+- [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
+- [Page 258 - Formatting date and time values](#page-258---formatting-date-and-time-values)
+- [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
 
-# Print Book
-
-## Page 169 - Nested and child tasks
+# Page 169 - Nested and child tasks
 
 > Thanks to Amer Cejudo for emailing about this item.
 
@@ -50,11 +48,55 @@ Inner method finished.
 Console app is stopping.
 ```
 
-## Page 258 - Formatting date and time values
+# Page 245 - Creating class libraries to generate PDF documents
+
+In Step 6, I wrote to "add a package reference for QuestPDF", as shown in the following markup:
+```xml
+<ItemGroup>
+  <!-- The newest version with an MIT license. -->
+  <PackageReference Include="QuestPDF" Version="2022.12.6" />
+</ItemGroup>
+```
+
+In the next edition, I will give more examples, as shown in the following markup:
+```xml
+<ItemGroup>
+  <!-- The newest version with an MIT license as of February 2024. -->
+  <PackageReference Include="QuestPDF" Version="2022.12.15" />
+
+  <!-- To auto-upgrade to the newest version with an MIT license. -->
+  <!--<PackageReference Include="QuestPDF" Version="2022.12-*" />-->
+    
+  <!-- A 2023.* or later version requires setting the Settings.License property. -->
+  <!--<PackageReference Include="QuestPDF" Version="2023.12.5" />-->
+</ItemGroup>
+```
+
+# Page 249 - Creating a console app to generate PDF documents
+
+In Step 6, I wrote statements to generate a PDF file, but one of those statements will not work with the old MIT licensed package that we referenced earlier. 
+
+In the next edition, I will comment out the license type statements and add more comments to explain, as shown in the following code:
+```cs
+using GeneratingPdf.Document; // To use CatalogDocument.
+using GeneratingPdf.Models; // To use Catalog, Category.
+using QuestPDF.Fluent; // To use the GeneratePdf extension method.
+// using QuestPDF.Infrastructure; // To use LicenseType.
+
+// For evaluation purposes, feel free to use the QuestPDF Community 
+// License in a non-production environment.
+// Setting the license type is only required or possible with
+// version 2023.4.0 or later.
+// QuestPDF.Settings.License = LicenseType.Community;
+
+string filename = "catalog.pdf";
+```
+
+# Page 258 - Formatting date and time values
 
 In the next edition, I will add an extra row to *Table 7.3: Standard format code for date and time values* for the format code `m` or `M`. This uses a format that only shows day and month name, for example, **15 June**. I will also add a note that this format code only works when it is the only code. Combined with other codes it means minute (`m`) or month (`M`).
 
-## Page 460 - Implementing a function that works with queues and BLOBs
+# Page 460 - Implementing a function that works with queues and BLOBs
 
 > Thanks to [Jim Campbell](https://github.com/jimcbell) who raised this issue and provided solutions on [December 24, 2023](https://github.com/markjprice/apps-services-net7/issues/24).
 
@@ -92,7 +134,3 @@ if (System.Environment.GetEnvironmentVariable("IS_LOCAL") == "true")
   await image.SaveAsPngAsync(blobPath);
 }
 ```
-
-# Bonus Content 
-
-None so far.

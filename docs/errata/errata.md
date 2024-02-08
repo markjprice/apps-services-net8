@@ -1,9 +1,10 @@
-**Errata** (4 items)
+**Errata** (5 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Page 104 - Table-per-concrete-type (TPC) mapping strategy](#page-104---table-per-concrete-type-tpc-mapping-strategy)
 - [Page 166 - Implementing stored procedures](#page-166---implementing-stored-procedures)
+- [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
 - [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
 - [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
 
@@ -69,6 +70,19 @@ In the next edition, I will write, "Stored procedures are the only way to ensure
 that combine multiple discrete activities into a single action that can be committed or rolled back across more than a single partition.
 You can use client-side code to implement transactions with the same partition key in a container by using a transactional batch, as described 
 at the following link: https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/transactional-batch."
+
+# Page 249 - Creating a console app to generate PDF documents
+
+> Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this [issue on February 8, 2024](https://github.com/markjprice/apps-services-net8/issues/5).
+
+In Step 6, I show the code to generate a PDF file but it includes a statement to set the license type. The `License` property and `enum` type are only available with package versions. If you use the 2022.12.3 or earlier versions with MIT license then you do not need to set the license. 
+
+The following statement can be commented out:
+```cs
+QuestPDF.Settings.License = LicenseType.Community;
+```
+
+In the next edition, I will add a note to explain this. I have commented out this statement in the GitHub solution since it references the older package.
 
 # Page 644 - Comparing HTML Helpers and Tag Helpers
 
