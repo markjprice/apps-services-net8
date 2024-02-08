@@ -75,7 +75,7 @@ at the following link: https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/t
 
 > Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this [issue on February 8, 2024](https://github.com/markjprice/apps-services-net8/issues/5).
 
-In Step 6, I show the code to generate a PDF file but it includes a statement to set the license type. The `License` property and `enum` type are only available with package versions `2022.4.0` or later. If you use the `2022.12-*` or earlier versions with MIT license then you do not need to set the license. 
+In Step 6, I show the code to generate a PDF file but it includes a statement to set the license type. The `License` property and `enum` type are only available with package versions `2023.4.0` or later. If you use the `2022.12-*` or earlier versions with MIT license then you do not need to set the license. 
 
 The following statement can therefore be commented out:
 ```cs
