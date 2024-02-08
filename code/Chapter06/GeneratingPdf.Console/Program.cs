@@ -1,11 +1,13 @@
 ﻿using GeneratingPdf.Document; // To use CatalogDocument.
 using GeneratingPdf.Models; // To use Catalog, Category.
 using QuestPDF.Fluent; // To use the GeneratePdf extension method.
-using QuestPDF.Infrastructure; // To use LicenseType.
+// using QuestPDF.Infrastructure; // To use LicenseType.
 
 // For evaluation purposes, feel free to use the QuestPDF Community 
 // License in a non-production environment.
-QuestPDF.Settings.License = LicenseType.Community;
+// Setting the license type is only required or possible with
+// version 2023.4.0 or later.
+// QuestPDF.Settings.License = LicenseType.Community;
 
 string filename = "catalog.pdf";
 

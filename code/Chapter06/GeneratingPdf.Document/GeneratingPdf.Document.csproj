@@ -7,8 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- The newest version with an MIT license. -->
-    <PackageReference Include="QuestPDF" Version="2022.12.6" />
+    <!-- The newest version with an MIT license as of February 2024. -->
+    <PackageReference Include="QuestPDF" Version="2022.12.15" />
+
+    <!-- To auto-upgrade to the newest version with an MIT license. -->
+    <!--<PackageReference Include="QuestPDF" Version="2022.12-*" />-->
+    
+    <!-- A 2023.* or later version requires setting the Settings.License property. -->
+    <!--<PackageReference Include="QuestPDF" Version="2023.12.5" />-->
   </ItemGroup>
 
   <ItemGroup>
