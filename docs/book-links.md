@@ -475,6 +475,7 @@
 - [Blazor - app building workshop: In this workshop, we will build a complete Blazor app and learn about the various Blazor framework features along the way](https://github.com/dotnet-presentations/blazor-workshop/)
 - [Carl Franklin's Blazor Train](https://www.youtube.com/playlist?list=PL8h4jt35t1wjvwFnvcB2LlYL4jLRzRmoz)
 - [Welcome to PACMAN written in C# and running on Blazor WebAssembly](https://github.com/SteveDunn/PacManBlazor)
+- [Sortable Lists for Blazor using a SortableJS Component](https://devblogs.microsoft.com/dotnet/introducing-blazor-sortable/)
 
 # Chapter 16 - Building Mobile and Desktop Apps Using .NET MAUI
 
