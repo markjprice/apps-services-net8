@@ -375,6 +375,7 @@
 - [Resilience policies](https://github.com/App-vNext/Polly#resilience-policies)
 - [Retry with jitter](https://github.com/App-vNext/Polly/wiki/Retry-with-jitter)
 - [Transient fault handling and proactive resilience engineering](https://github.com/App-vNext/Polly/wiki/Transient-fault-handling-and-proactive-resilience-engineering)
+- [Resilience and chaos engineering](https://devblogs.microsoft.com/dotnet/resilience-and-chaos-engineering/)
 
 ## Queueing with RabbitMQ, Azure Service Bus, and Event Hub
 
