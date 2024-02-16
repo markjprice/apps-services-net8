@@ -118,7 +118,7 @@ In the next edition, I will add a warning about this on page 363, and on page 32
 
 # Page 366 - Exercise 8.4 – Exposing data via the web using OData services
 
-> Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this issue on [February 16, 2024](https://github.com/markjprice/apps-services-net8/issues/7) and [here]](https://github.com/markjprice/apps-services-net8/issues/8).
+> Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this issue on [February 16, 2024](https://github.com/markjprice/apps-services-net8/issues/7) and [here](https://github.com/markjprice/apps-services-net8/issues/8).
 
 The online section was written when Visual Studio 2022 did not have an HTTP Editor so the `.http` files were not tested with it. Instead, the section assumes you will use Visual Studio Code extension **REST Client**. But now that readers can use Visual Studio, readers should be warned that it has limitations that mean the `.http` files do not work.
 
