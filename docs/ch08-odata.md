@@ -2,6 +2,8 @@
 
 In this online-only section, you will be introduced to **OData**, a standard that makes it easy to expose data via the Web to make it accessible to any client that can make an HTTP request.
 
+> **Warning!** This chapter was written to use **REST Client** extension in Visual Studio Code. The `.http` files for this chapter use features like multi-line requests and requests containing spaces that are NOT supported by the HTTP Editor in Visual Studio 2022.
+
 This chapter will cover the following topics:
 
 - [Understanding OData](#understanding-odata)
@@ -55,6 +57,8 @@ GET https://example.com/v1/products?
   $select=ProductName,UnitPrice&
   $expand=Supplier
 ```
+
+> **Warning!** This chapter was written to use **REST Client** extension in Visual Studio Code. The HTTP request examples and `.http` files for this chapter use features like multi-line requests and requests containing spaces that are NOT supported by the HTTP Editor in Visual Studio 2022. The preceding nicely formatted multi-line request will give errors with the HTTP Editor in Visual Studio.
 
 # Building a web service that supports OData
 
@@ -447,6 +451,8 @@ GET {{base_address}}categories/
 ```
 
 > **Good Practice**: Put the query string part on a new line to make the queries easier to read, as shown in the previous example.
+
+> **Warning!** This chapter was written to use **REST Client** extension in Visual Studio Code. The HTTP request examples and `.http` files for this chapter use features like multi-line requests and requests containing spaces that are NOT supported by the HTTP Editor in Visual Studio 2022. The preceding nicely formatted multi-line request will give errors with the HTTP Editor in Visual Studio.
 
 2.	Click **Send Request** and note that the response is a JSON document containing all categories, but only the `CategoryId` and `CategoryName` properties.
 3.	Separated by `###`, add and send a request to get products with names that start with `Ch`, like `Chai` and `Chef Anton's Gumbo Mix`, or have a unit price of more than `50`, like `Mishi Kobe Niku` or `Sir Rodney's Marmalade`, as shown in the following request:
