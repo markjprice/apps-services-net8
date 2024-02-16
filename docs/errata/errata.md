@@ -1,4 +1,4 @@
-**Errata** (6 items)
+**Errata** (7 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -6,6 +6,7 @@ If you find any mistakes, then please [raise an issue in this repository](https:
 - [Page 166 - Implementing stored procedures](#page-166---implementing-stored-procedures)
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
 - [Page 328 - Configuring HTTP logging for the web service and Page 363 - Authenticating service clients using JWT bearer authentication](#page-328---configuring-http-logging-for-the-web-service-and-page-363---authenticating-service-clients-using-jwt-bearer-authentication)
+- [Page 366 - Exercise 8.4 – Exposing data via the web using OData services](#page-366---exercise-84--exposing-data-via-the-web-using-odata-services)
 - [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
 - [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
 
@@ -114,6 +115,35 @@ In the next edition, I will add a warning about this on page 363, and on page 32
   }
 }
 ```
+
+# Page 366 - Exercise 8.4 – Exposing data via the web using OData services
+
+> Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this issue on [February 16, 2024](https://github.com/markjprice/apps-services-net8/issues/7) and [here]](https://github.com/markjprice/apps-services-net8/issues/8).
+
+The online section was written when Visual Studio 2022 did not have an HTTP Editor so the `.http` files were not tested with it. Instead, the section assumes you will use Visual Studio Code extension **REST Client**. But now that readers can use Visual Studio, readers should be warned that it has limitations that mean the `.http` files do not work.
+
+In particular, multi-line requests and requests containing spaces will give errors.
+
+For example, the following request that works with REST Client:
+```
+GET {{base_address}}categories/
+  ?$select=CategoryId,CategoryName
+```
+Must be written all on one line with Visual Studio HTTP Editor:
+```
+GET {{base_address}}categories/?$select=CategoryId,CategoryName
+```
+
+For another example, the following request containing spaces that works with REST Client:
+```
+GET {{base_address}}products/?$filter=startswith(ProductName,'Ch') or (UnitPrice gt 50)
+```
+Must be written using %20 instead where there must be a space character with Visual Studio HTTP Editor:
+```
+GET {{base_address}}products/?$filter=startswith(ProductName,'Ch')%20or%20(UnitPrice%20gt%2050)
+```
+
+> Syntax not supported by Visual Studio's HTTP Editor can be found at the following link: https://learn.microsoft.com/en-us/aspnet/core/test/http-files?#unsupported-syntax.
 
 # Page 644 - Comparing HTML Helpers and Tag Helpers
 
