@@ -1,10 +1,11 @@
-**Errata** (5 items)
+**Errata** (6 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Page 104 - Table-per-concrete-type (TPC) mapping strategy](#page-104---table-per-concrete-type-tpc-mapping-strategy)
 - [Page 166 - Implementing stored procedures](#page-166---implementing-stored-procedures)
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
+- [Page 328 - Configuring HTTP logging for the web service and Page 363 - Authenticating service clients using JWT bearer authentication](#page-328---configuring-http-logging-for-the-web-service-and-page-363---authenticating-service-clients-using-jwt-bearer-authentication)
 - [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
 - [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
 
@@ -85,6 +86,34 @@ QuestPDF.Settings.License = LicenseType.Community;
 I have commented out this statement in the GitHub solution since the project references the older packages with MIT license. If you choose to use a later version of the package, then you must uncomment the statement.
 
 In the next edition, I will add a note and code comments to explain this. 
+
+# Page 328 - Configuring HTTP logging for the web service and Page 363 - Authenticating service clients using JWT bearer authentication
+
+> Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this issue on [February 14, 2024](https://github.com/markjprice/apps-services-net8/issues/6).
+
+In Step 4, I wrote, "In the `Northwind.WebApi.Service` project folder, at the command prompt or terminal, create
+a local JWT, as shown in the following command:"
+```
+dotnet user-jwts create
+```
+
+You will see an error, `'/' is an invalid start of a property name. Expected a '"'. Path: $ | LineNumber: 6 | BytePositionInLine: 6.` if any of the following files contain comment characters: `launchSettings.json`, `appSettings.json`, or `appSettings.<environment>.json`. 
+
+In the next edition, I will add a warning about this on page 363, and on page 328 I will NOT tell the reader to add a comment in the `appsettings.Development.json` file, as shown in the following markup:
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning",
+
+      // To enable logging HTTP requests, this must be
+      // set to Information (3) or higher.
+      "Microsoft.AspNetCore.HttpLogging": "Information"
+    }
+  }
+}
+```
 
 # Page 644 - Comparing HTML Helpers and Tag Helpers
 
