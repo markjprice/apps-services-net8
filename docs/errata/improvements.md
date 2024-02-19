@@ -1,4 +1,4 @@
-**Improvements** (5 items)
+**Improvements** (6 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -6,6 +6,7 @@ If you have suggestions for improvements, then please [raise an issue in this re
 - [Page 245 - Creating class libraries to generate PDF documents](#page-245---creating-class-libraries-to-generate-pdf-documents)
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
 - [Page 258 - Formatting date and time values](#page-258---formatting-date-and-time-values)
+- [Page 445 - Installing Azure Functions Core Tools](#page-445---installing-azure-functions-core-tools)
 - [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
 
 # Page 169 - Nested and child tasks
@@ -95,6 +96,27 @@ string filename = "catalog.pdf";
 # Page 258 - Formatting date and time values
 
 In the next edition, I will add an extra row to *Table 7.3: Standard format code for date and time values* for the format code `m` or `M`. This uses a format that only shows day and month name, for example, **15 June**. I will also add a note that this format code only works when it is the only code. Combined with other codes it means minute (`m`) or month (`M`).
+
+# Page 445 - Installing Azure Functions Core Tools
+
+> Thanks to [Phil Edmunds](https://github.com/Pip1987) who raised this issue and provided a solution on [February 19, 2024](https://github.com/markjprice/apps-services-net8/issues/9).
+
+In a note, I wrote, "Azure Functions Core Tools is included in the Azure development workload of Visual
+Studio 2022, so you might already have it installed."
+
+But you might not see .NET 8 shown as an option when creating an Azure Function if the tool is not up-to-date.
+
+In the next edition, I will add additional instructions, as follows:
+
+1. In Visual Studio, navigate to **Tools** | **Options**.
+2. In the **Options** dialog box, navigate to **Project and Solutions** | **Azure Functions**. 
+3. In the Manage Azure Functions toolsets and templates section, click the **Check for updates** button.
+4. If an update is found then click the **Download & Install** button, as shown in *Figure 1*:
+
+![Checking for tool updates for Azure Functions](improvement-01.png)
+*Figure 1: Checking for tool updates for Azure Functions*
+
+5. Click **OK**.
 
 # Page 460 - Implementing a function that works with queues and BLOBs
 
