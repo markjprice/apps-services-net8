@@ -1,4 +1,4 @@
-**Errata** (7 items)
+**Errata** (8 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -7,6 +7,7 @@ If you find any mistakes, then please [raise an issue in this repository](https:
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
 - [Page 328 - Configuring HTTP logging for the web service and Page 363 - Authenticating service clients using JWT bearer authentication](#page-328---configuring-http-logging-for-the-web-service-and-page-363---authenticating-service-clients-using-jwt-bearer-authentication)
 - [Page 366 - Exercise 8.4 – Exposing data via the web using OData services](#page-366---exercise-84--exposing-data-via-the-web-using-odata-services)
+- [Page 457 - Testing the Timer triggered function](#page-457---testing-the-timer-triggered-function)
 - [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
 - [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
 
@@ -144,6 +145,21 @@ GET {{base_address}}products/?$filter=startswith(ProductName,'Ch')%20or%20(UnitP
 ```
 
 > Syntax not supported by Visual Studio's HTTP Editor can be found at the following link: https://learn.microsoft.com/en-us/aspnet/core/test/http-files?#unsupported-syntax.
+
+# Page 457 - Testing the Timer triggered function
+
+> Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this issue on [February 16, 2024](https://github.com/markjprice/apps-services-net8/issues/11).
+
+In Step 4, I tell the reader to write some HTTP requests to trigger the functions. If you use the Visual Studio Code extension **REST Client** then they work. But if you use Visual Studio's **HTTP Editor** then each HTTP request must include an action like `GET`, `POST` and so on. 
+
+In the next edition, I will add `GET` actions to the requests, as shown in the following code:
+```
+### Get information about the NumbersToWordsFunction function.
+GET {{base_address}}admin/functions/NumbersToWordsFunction
+
+### Get information about the ScrapeAmazonFunction function.
+GET {{base_address}}admin/functions/ScrapeAmazonFunction
+```
 
 # Page 644 - Comparing HTML Helpers and Tag Helpers
 
