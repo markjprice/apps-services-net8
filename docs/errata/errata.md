@@ -161,6 +161,8 @@ GET {{base_address}}admin/functions/NumbersToWordsFunction
 GET {{base_address}}admin/functions/ScrapeAmazonFunction
 ```
 
+The solution files in GitHub were already correct. For example: https://github.com/markjprice/apps-services-net8/blob/main/scripts/http-requests/azurefunctions-scrapeamazon.http
+
 # Page 644 - Comparing HTML Helpers and Tag Helpers
 
 > Thanks to [Stephen Harper](https://github.com/sjharper79) for raising this issue on [January 3, 2024](https://github.com/markjprice/apps-services-net7/issues/27).
