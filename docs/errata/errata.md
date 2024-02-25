@@ -205,7 +205,7 @@ using SixLabors.ImageSharp.PixelFormats; // To use Rgba32.
 using SixLabors.ImageSharp.Processing; // To use Mutate.
 ```
 
-Later in the code for the `Run` method for the `CheckGeneratorFunction`, the variable for the logger was incorrectly written as `log`, as shown in the following code:
+Later in the print book code in the `Run` method for the `CheckGeneratorFunction`, the variable for the logger was incorrectly written as `log`, as shown in the following code:
 ```cs
 log.LogInformation($"Blobs folder: {folder}");
 ```
