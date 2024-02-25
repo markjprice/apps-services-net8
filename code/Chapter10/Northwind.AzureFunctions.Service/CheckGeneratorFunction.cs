@@ -1,8 +1,11 @@
 ﻿using Microsoft.Azure.Functions.Worker; // To use [Function] and so on.
 using Microsoft.Extensions.Logging; // To use ILogger.
 using SixLabors.Fonts; // To use Font.
+using SixLabors.ImageSharp; // To use Image.
 using SixLabors.ImageSharp.Drawing; // To use IPath.
 using SixLabors.ImageSharp.Drawing.Processing; // To use Brush, Pen.
+using SixLabors.ImageSharp.PixelFormats; // To use Rgba32.
+using SixLabors.ImageSharp.Processing; // To use Mutate.
 
 namespace Northwind.AzureFunctions.Service;
 
