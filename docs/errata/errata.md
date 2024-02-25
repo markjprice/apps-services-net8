@@ -198,12 +198,33 @@ To use the latest packages, in Step 3, reference two two latest `ImageSharp` pac
 <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.1" />
 ```
 
-In Step 9, add additional statements to import some needed namespaces, as shown in the following code:
+In Step 9, add additional statements to import some needed namespaces for `ImageSharp`, as shown in the following code:
 ```cs
 using SixLabors.ImageSharp; // To use Image.
 using SixLabors.ImageSharp.PixelFormats; // To use Rgba32.
 using SixLabors.ImageSharp.Processing; // To use Mutate.
 ```
+
+Later in the code for the `Run` method for the `CheckGeneratorFunction`, the variable for the logger was incorrectly written as `log`, as shown in the following code:
+```cs
+log.LogInformation($"Blobs folder: {folder}");
+```
+The variable name should be `_logger`, as shown in the following code:
+```cs
+_logger.LogInformation($"Blobs folder: {folder}");
+```
+
+The same issue occurred in the `catch` at the end of the method. The variable for the logger was incorrectly written as `log`, as shown in the following code:
+```cs
+log.LogError(ex.Message);
+```
+
+The variable name should be `_logger`, as shown in the following code:
+```cs
+_logger.LogError(ex.Message);
+```
+
+The code in the GitHub repository was already correct.
 
 # Page 644 - Comparing HTML Helpers and Tag Helpers
 
