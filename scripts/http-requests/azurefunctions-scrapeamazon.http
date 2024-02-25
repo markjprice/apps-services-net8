@@ -1,5 +1,5 @@
 ### Configure a variable for the Azure Functions base address.
-@base_address = http://localhost:7274/
+@base_address = http://localhost:5101/
 
 ### Get information about the NumbersToWordsFunction function.
 GET {{base_address}}admin/functions/NumbersToWordsFunction
