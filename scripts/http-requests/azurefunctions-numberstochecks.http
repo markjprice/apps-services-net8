@@ -1,0 +1,5 @@
+### Configure a variable for the Azure Functions base address.
+@base_address = http://localhost:5101/
+
+### Trigger the NumbersToChecksFunction function.
+GET {{base_address}}api/NumbersToChecksFunction?amount=123456
