@@ -1,4 +1,4 @@
-**Errata** (9 items)
+**Errata** (10 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -9,6 +9,7 @@ If you find any mistakes, then please [raise an issue in this repository](https:
 - [Page 366 - Exercise 8.4 – Exposing data via the web using OData services](#page-366---exercise-84--exposing-data-via-the-web-using-odata-services)
 - [Page 457 - Testing the Timer triggered function](#page-457---testing-the-timer-triggered-function)
 - [Page 462 - Implementing a function that works with queues and BLOBs](#page-462---implementing-a-function-that-works-with-queues-and-blobs)
+- [Page 595 - Getting request and response metadata](#page-595---getting-request-and-response-metadata)
 - [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
 - [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
 
@@ -225,6 +226,26 @@ _logger.LogError(ex.Message);
 ```
 
 The code in the GitHub repository was already correct.
+
+# Page 595 - Getting request and response metadata
+
+> Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this issue on [March 13, 2024](https://github.com/markjprice/apps-services-net8/issues/14).
+
+In Step 2, the code includes a statement written in an early task that stores the shipper summary in `ViewData`, as shown in the following code:
+```cs
+ViewData["shipper"] = "Shipper from gRPC service: " +
+  $"ID: {shipperReply.ShipperId}, Name: {shipperReply.CompanyName},"
+  + $" Phone: {shipperReply.Phone}.";
+```
+
+But that code should use the `ShipperSummary` property of the view model, as shown in the following code:
+```cs
+model.ShipperSummary = "Shipper from gRPC service: " +
+  $"ID: {shipperReply.ShipperId}, Name: {shipperReply.CompanyName},"
+  + $" Phone: {shipperReply.Phone}.";
+```
+
+Since that statement was already written and was only included to show that the new statements should be inserted before it, and this task does not change that statement, no reader should have been affected.
 
 # Page 644 - Comparing HTML Helpers and Tag Helpers
 
