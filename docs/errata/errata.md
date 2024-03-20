@@ -1,4 +1,4 @@
-**Errata** (10 items)
+**Errata** (11 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -10,6 +10,7 @@ If you find any mistakes, then please [raise an issue in this repository](https:
 - [Page 457 - Testing the Timer triggered function](#page-457---testing-the-timer-triggered-function)
 - [Page 462 - Implementing a function that works with queues and BLOBs](#page-462---implementing-a-function-that-works-with-queues-and-blobs)
 - [Page 595 - Getting request and response metadata](#page-595---getting-request-and-response-metadata)
+- [Page 607 - Adding product and employee gRPC clients](#page-607---adding-product-and-employee-grpc-clients)
 - [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
 - [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
 
@@ -246,6 +247,24 @@ model.ShipperSummary = "Shipper from gRPC service: " +
 ```
 
 Since that statement was already written and was only included to show that the new statements should be inserted before it, and this task does not change that statement, no reader should have been affected.
+
+# Page 607 - Adding product and employee gRPC clients
+
+> Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this issue on [March 20, 2024](https://github.com/markjprice/apps-services-net8/issues/15).
+
+In Step 10, I wrote, "In the `Views\Home` folder, add a new Razor View file named `Products.cshtml`, and modify it to show a table of products." The view renders a table of products. Above the table should be a simple form to allow the visitor to enter a minimum unit price to filter the products. But in the book, this form is missing from the markup. 
+
+Between the `<h1>` and the `<table>`, the markup in the book should have included the form, as shown in the following markup:
+```html
+<h1>@ViewData["Title"]</h1>
+<form asp-action="Products" method="post">
+  <input name="minimumPrice" placeholder="Enter a minimum unit price" />
+  <input type="submit" value="Filter Products" />
+</form>
+<table class="table table-primary table-bordered">
+```
+
+> The file was already correct in the GitHub repository, as shown at the following link: https://github.com/markjprice/apps-services-net8/blob/main/code/Chapter13/Northwind.Grpc.Client.Mvc/Views/Home/Products.cshtml
 
 # Page 644 - Comparing HTML Helpers and Tag Helpers
 
