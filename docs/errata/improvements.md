@@ -1,4 +1,4 @@
-**Improvements** (6 items)
+**Improvements** (7 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -6,6 +6,7 @@ If you have suggestions for improvements, then please [raise an issue in this re
 - [Page 245 - Creating class libraries to generate PDF documents](#page-245---creating-class-libraries-to-generate-pdf-documents)
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
 - [Page 258 - Formatting date and time values](#page-258---formatting-date-and-time-values)
+- [Page 318 - Testing web services using Swagger](#page-318---testing-web-services-using-swagger)
 - [Page 445 - Installing Azure Functions Core Tools](#page-445---installing-azure-functions-core-tools)
 - [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
 
@@ -96,6 +97,17 @@ string filename = "catalog.pdf";
 # Page 258 - Formatting date and time values
 
 In the next edition, I will add an extra row to *Table 7.3: Standard format code for date and time values* for the format code `m` or `M`. This uses a format that only shows day and month name, for example, **15 June**. I will also add a note that this format code only works when it is the only code. Combined with other codes it means minute (`m`) or month (`M`).
+
+# Page 318 - Testing web services using Swagger
+
+The ASP.NET Core team has decided to remove the dependency on the Swashbuckle package (Swagger) in .NET 9, as described in the following link:
+https://github.com/dotnet/aspnetcore/issues/54599
+
+In the next edition, I will move the sections about Swagger online to the GitHub repository, add the extra step to show how to manually add a package reference and configure it manually, and add a note to explain why the ASP.NET Core team removed it. 
+
+If the team adds their own equivalent testing UI then I will explain how to use it. But it looks like they will only add OpenAPI document generation support: "We will focus on the fundamental scenario of generating the OpenAPI document in JSON format in the .NET 9 timeframe and have already begun work."
+
+Other references to Swagger will also be removed, for example, on pages 10, 313, 314, 321, 322, 325, 373, 377, 380.
 
 # Page 445 - Installing Azure Functions Core Tools
 
