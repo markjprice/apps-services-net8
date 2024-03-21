@@ -1,4 +1,4 @@
-**Improvements** (7 items)
+**Improvements** (8 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -6,6 +6,7 @@ If you have suggestions for improvements, then please [raise an issue in this re
 - [Page 245 - Creating class libraries to generate PDF documents](#page-245---creating-class-libraries-to-generate-pdf-documents)
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
 - [Page 258 - Formatting date and time values](#page-258---formatting-date-and-time-values)
+- [Page 312 - Setting up an ASP.NET Core Web API project](#page-312---setting-up-an-aspnet-core-web-api-project)
 - [Page 318 - Testing web services using Swagger](#page-318---testing-web-services-using-swagger)
 - [Page 445 - Installing Azure Functions Core Tools](#page-445---installing-azure-functions-core-tools)
 - [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
@@ -97,6 +98,18 @@ string filename = "catalog.pdf";
 # Page 258 - Formatting date and time values
 
 In the next edition, I will add an extra row to *Table 7.3: Standard format code for date and time values* for the format code `m` or `M`. This uses a format that only shows day and month name, for example, **15 June**. I will also add a note that this format code only works when it is the only code. Combined with other codes it means minute (`m`) or month (`M`).
+
+# Page 312 - Setting up an ASP.NET Core Web API project
+
+In Step 3, I tell the reader to "Add a project reference to the Northwind database context project for SQL Server that you created in *Chapter 3, Building Entity Models for SQL Server Using EF Core*."
+
+In Step 5, I tell the reader to compile the project at the command line using `dotnet build`, but some readers do not follow this instruction, and instead use the **Build** menu in Visual Studio. When I told the reader to do the same thing in Chapter 4 on page 146, I also added a warning, as shown in the following note:
+
+> **Warning!** If you are using Visual Studio 2022 and you reference a project outside of the current solution, then using the Build menu gives the following error:
+> `NU1105 Unable to find project information for 'C:\apps-servicesnet8\Chapter03\Northwind.Common.DataContext.SqlServer\Northwind.Common.DataContext.SqlServer.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution.`
+>You must enter a `dotnet build` command at the command prompt or terminal. In **Solution Explorer**, you can right-click the project and select **Open in Terminal**.
+
+In the next edition, I will repeat this warning on page 312 after step 5 for those readers who have forgotten why they MUST use `dotnet build`.
 
 # Page 318 - Testing web services using Swagger
 
