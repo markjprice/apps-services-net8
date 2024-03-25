@@ -1,4 +1,4 @@
-**Improvements** (8 items)
+**Improvements** (9 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -8,6 +8,7 @@ If you have suggestions for improvements, then please [raise an issue in this re
 - [Page 258 - Formatting date and time values](#page-258---formatting-date-and-time-values)
 - [Page 312 - Setting up an ASP.NET Core Web API project](#page-312---setting-up-an-aspnet-core-web-api-project)
 - [Page 318 - Testing web services using Swagger](#page-318---testing-web-services-using-swagger)
+- [Page 395 - Building an MVC project to call the faulty web service](#page-395---building-an-mvc-project-to-call-the-faulty-web-service)
 - [Page 445 - Installing Azure Functions Core Tools](#page-445---installing-azure-functions-core-tools)
 - [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
 
@@ -121,6 +122,39 @@ In the next edition, I will move the sections about Swagger online to the GitHub
 If the team adds their own equivalent testing UI then I will explain how to use it. But it looks like they will only add OpenAPI document generation support: "We will focus on the fundamental scenario of generating the OpenAPI document in JSON format in the .NET 9 timeframe and have already begun work."
 
 Other references to Swagger will also be removed, for example, on pages 10, 313, 314, 321, 322, 325, 373, 377, 380.
+
+# Page 395 - Building an MVC project to call the faulty web service
+
+In Step 11, you implement the `Products` action method. After getting the response from the web service, you check if the status code is a success code, and if not then you store an error message for display in the view, as shown in the following code:
+```cs
+if (response.IsSuccessStatusCode)
+{
+  model.Products = await response.Content
+    .ReadFromJsonAsync<IEnumerable<Product>>();
+}
+else
+{
+  model.Products = Enumerable.Empty<Product>();
+
+  string content = await response.Content.ReadAsStringAsync();
+
+  // Use the range operator .. to start from zero and
+  // go to the first carriage return.
+  string exceptionMessage = content[..content.IndexOf("\r")];
+  model.ErrorMessage = string.Format("{0}: {1}:",
+    response.ReasonPhrase, exceptionMessage);
+}
+```
+
+The preceding code assumes that the content of the response contains a carriage return `\r` which will not always be the case. In the next edition, I will add a check to prevent an exception from occurring when there is no carriage return in the content of the response body, as shown in the following code:
+```cs
+// Use the range operator .. to start from zero and
+// go to the first carriage return.
+int posOfReturn = content.IndexOf("\r");
+string exceptionMessage = posOfReturn == -1 ? content : content[..posOfReturn];
+model.ErrorMessage = string.Format("{0}: {1}:",
+  response.ReasonPhrase, exceptionMessage);
+```
 
 # Page 445 - Installing Azure Functions Core Tools
 
