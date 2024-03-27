@@ -1,8 +1,9 @@
-**Errata** (11 items)
+**Errata** (12 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Page 104 - Table-per-concrete-type (TPC) mapping strategy](#page-104---table-per-concrete-type-tpc-mapping-strategy)
+- [Page 148 - Using a .NET app to create Azure Cosmos DB resources](#page-148---using-a-net-app-to-create-azure-cosmos-db-resources)
 - [Page 166 - Implementing stored procedures](#page-166---implementing-stored-procedures)
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
 - [Page 328 - Configuring HTTP logging for the web service and Page 363 - Authenticating service clients using JWT bearer authentication](#page-328---configuring-http-logging-for-the-web-service-and-page-363---authenticating-service-clients-using-jwt-bearer-authentication)
@@ -61,6 +62,52 @@ After the note saying, "Since there is not a single table with an IDENTITY colum
 ```sql
 CREATE SEQUENCE [PersonIds] AS int START WITH 4 INCREMENT BY 1 NO MINVALUE NO MAXVALUE NO CYCLE;
 ```
+
+# Page 148 - Using a .NET app to create Azure Cosmos DB resources
+
+> Thanks to **mdj._** in the Discord channel for raising this issue.
+
+In Step 6, you "define a method for the `Program` class that creates a Cosmos client and uses it to create a database named `Northwind` and a container named `Products`". 
+
+But when checking for a bad response from the Cosmos DB service when creating a container, I mistakenly copied code from earlier that checked creating the database. 
+
+The incorrect code in the book that creates and checks the container is as follows:
+```cs
+ContainerResponse containerResponse = await dbResponse.Database
+  .CreateContainerIfNotExistsAsync(
+    containerProperties, throughput: 1000 /* RU/s */);
+
+status = dbResponse.StatusCode switch
+{
+  HttpStatusCode.OK => "exists",
+  HttpStatusCode.Created => "created",
+  _ => "unknown",
+};
+
+WriteLine("Container Id: {0}, Status: {1}.",
+  arg0: containerResponse.Container.Id, arg1: status);
+```
+
+But `status = dbResponse.StatusCode switch` should be `status = containerResponse.StatusCode switch`.
+
+So the corrected code in the book would be as follows:
+```cs
+ContainerResponse containerResponse = await dbResponse.Database
+  .CreateContainerIfNotExistsAsync(
+    containerProperties, throughput: 1000 /* RU/s */);
+
+status = containerResponse.StatusCode switch
+{
+  HttpStatusCode.OK => "exists",
+  HttpStatusCode.Created => "created",
+  _ => "unknown",
+};
+
+WriteLine("Container Id: {0}, Status: {1}.",
+  arg0: containerResponse.Container.Id, arg1: status);
+```
+
+> This issue has been fixed in the code in this repository here: https://github.com/markjprice/apps-services-net8/blob/main/code/Chapter04/Northwind.CosmosDb.SqlApi/Program.Methods.cs#L68C18-L68C35.
 
 # Page 166 - Implementing stored procedures
 
