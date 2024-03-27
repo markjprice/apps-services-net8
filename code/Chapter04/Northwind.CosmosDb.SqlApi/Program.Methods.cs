@@ -65,7 +65,7 @@ partial class Program
           .CreateContainerIfNotExistsAsync(
             containerProperties, throughput: 1000 /* RU/s */);
 
-        status = dbResponse.StatusCode switch
+        status = containerResponse.StatusCode switch
         {
           HttpStatusCode.OK => "exists",
           HttpStatusCode.Created => "created",
