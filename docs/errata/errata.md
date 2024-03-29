@@ -241,11 +241,13 @@ global using ExecutionContext = global::System.Threading.ExecutionContext;
 
 But if you reference a later version of the packages, then ImageSharp has made some breaking changes, like NOT automatically importing those namespaces.
 
-To use the latest packages, in Step 3, reference two two latest `ImageSharp` packages, as shown in the following markup:
+To use the latest packages, in Step 3, reference the two latest `ImageSharp` packages (last checked on March 29, 2024), as shown in the following markup:
 ```xml
-<PackageReference Include="SixLabors.ImageSharp" Version="3.1.2" />
-<PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.1" />
+<PackageReference Include="SixLabors.ImageSharp" Version="3.1.3" />
+<PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.2" />
 ```
+
+> You can use the following link to check for later versions: https://www.nuget.org/packages?q=SixLabors.ImageSharp. But note more regressions could be introduced.
 
 In Step 9, add additional statements to import some needed namespaces for `ImageSharp`, as shown in the following code:
 ```cs
