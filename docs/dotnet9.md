@@ -12,8 +12,9 @@
 Microsoft will release previews of .NET 9 regularly starting in February 2024 until the final version on Tuesday, November 12, 2024, one week after the US Presidential Election on November 5.
 
 - [Download .NET 9.0 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+- [.NET 9 Release Index](https://github.com/dotnet/core/discussions/9234)
 - February 13, 2024: [Our Vision for .NET 9](https://devblogs.microsoft.com/dotnet/our-vision-for-dotnet-9/)
-- March, 2024: Announcing .NET 9 Preview 2
+- March 12, 2024: [.NET 9 Preview 2](https://github.com/dotnet/core/discussions/9217)
 - April, 2024: Announcing .NET 9 Preview 3
 - May, 2024: Announcing .NET 9 Preview 4
 - June, 2024: Announcing .NET 9 Preview 5
@@ -57,7 +58,7 @@ For projects that reference additional NuGet packages, use the latest NuGet pack
 </ItemGroup>
 ```
 
-To use .NET 9 Preview 1 packages, search https://www.nuget.org for the package and find its latest preview version number. For example, for Preview 1, as shown in the following markup:
+To use .NET 9 Preview 2 packages, search https://www.nuget.org for the package and find its latest preview version number. For example, for Preview 1, as shown in the following markup:
 ```xml
 <ItemGroup>
   <PackageReference
@@ -89,16 +90,14 @@ Official page: https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/
 
 Preview updates: https://github.com/dotnet/core/discussions
 
-The following new features will be mentioned in the 3rd edition of *Apps and Services with .NET 10* to be published in December 2025:
-- [New cryptography features](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview#cryptography)
-
 The following new features will be covered in the 9th edition of *C# 13 and .NET 9 - Modern Cross-Platform Development Fundamentals* to be published in November 2024:
 - JSON serialization options: `System.Text.Json` now has extra features like [indentation options](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview#indentation-options) and [default web options](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview#default-web-options).
 - LINQ: [New extension methods](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview#linq): `CountBy`, `AggregateBy`, and `Index`.
 - [PriorityQueue.Remove() method](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview#priorityqueueremove-method).
 
-The following new features will be mentioned in the 1st edition of *Tools and Skills for .NET 8 Pros* to be published in Summer 2024:
+The following new features will be mentioned in the 1st edition of *Tools and Skills for .NET 8* to be published in Summer 2024:
 - [New reflection features](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview#reflection)
+- [New cryptography features](https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-9/overview#cryptography)
 
 # .NET 10 downloads and announcements
 
