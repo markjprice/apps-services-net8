@@ -283,7 +283,7 @@ using (FileStream file = File.OpenWrite(Path.Combine(path, "file.txt")))
 
 This could be simplified, as shown in the following code:
 ```cs
-using (FileStream file = File.OpenWrite(Path.Combine(path, "file.txt")));
+using FileStream file = File.OpenWrite(Path.Combine(path, "file.txt"));
 ...
 // automatically calls Dispose at the end of current scope if the file is not null
 ```
