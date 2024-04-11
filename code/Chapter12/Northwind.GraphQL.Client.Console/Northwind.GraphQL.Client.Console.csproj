@@ -17,7 +17,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-    <PackageReference Version="13.5.1" Include="StrawberryShake.Server" />
+    <PackageReference Include="StrawberryShake.Server" Version="13.9.0" />
   </ItemGroup>
   
   <ItemGroup>

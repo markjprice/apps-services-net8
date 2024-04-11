@@ -9,9 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HotChocolate.AspNetCore" Version="13.5.1" />
+    <PackageReference Include="HotChocolate.AspNetCore" Version="13.9.0" />
     <PackageReference Include="HotChocolate.Data.EntityFramework"
-                      Version="13.5.1" />
+                      Version="13.9.0" />
   </ItemGroup>
 
   <ItemGroup>

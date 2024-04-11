@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client"
-                      Version="8.0.0" />
+                      Version="8.0.4" />
   </ItemGroup>
 
   <ItemGroup>
