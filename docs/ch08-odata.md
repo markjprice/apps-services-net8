@@ -2,6 +2,8 @@
 
 In this online-only section, you will be introduced to **OData**, a standard that makes it easy to expose data via the Web to make it accessible to any client that can make an HTTP request.
 
+> OData .NET 8 is coming in June 2024. You can read about the preview release at the following link: https://devblogs.microsoft.com/odata/odata-net-8-preview-release/.
+
 > **Warning!** This chapter was written to use **REST Client** extension in Visual Studio Code. The `.http` files for this chapter use features like multi-line requests and requests containing spaces that are NOT supported by the HTTP Editor in Visual Studio 2022.
 
 This chapter will cover the following topics:
