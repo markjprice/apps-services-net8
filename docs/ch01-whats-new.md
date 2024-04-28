@@ -11,7 +11,7 @@ This online-only section covers the following topics:
 - [Code simplification](#code-simplification)
   - [Top-level statements](#top-level-statements)
   - [Implicitly imported namespaces](#implicitly-imported-namespaces)
-  - [Using declarations](#using-declarations)
+  - [`using` declarations](#using-declarations)
   - [Target-typed new](#target-typed-new)
   - [Raw string literals](#raw-string-literals)
   - [Requiring properties to be set during instantiation](#requiring-properties-to-be-set-during-instantiation)
@@ -262,7 +262,7 @@ To control the implicit generation of this file and to control which namespaces 
 </Project>
 ```
 
-The `Using` element supports attributes to control how the namespace or type is imported, as shown in the following table:
+The `<Using>` element supports attributes to control how the namespace or type is imported, as shown in the following table:
 
 Attribute name|Description
 ---|---
@@ -271,7 +271,7 @@ Attribute name|Description
 `Static`|If `true`, imports the type statically, for example, `global using static System.Console;`
 `Alias`|An alias that can be used instead of the namespace or type, for example, `global using Env = System.Environment;`
 
-## Using declarations
+## `using` declarations
 
 You can simplify using blocks by removing the curly braces. For example, when working with a disposable resource like a file, as shown in the following code:
 ```cs
@@ -290,7 +290,7 @@ using FileStream file = File.OpenWrite(Path.Combine(path, "file.txt"));
 
 ## Target-typed new
 
-With C# 9, Microsoft introduced another syntax for instantiating objects known as target-typed new. When instantiating an object, you can specify the type first and then use new without repeating the type, as shown in the following code:
+With C# 9, Microsoft introduced another syntax for instantiating objects known as **target-typed `new`**. When instantiating an object, you can specify the type first and then use `new` without repeating the type name, as shown in the following code:
 ```cs
 XmlDocument xmlDoc = new(); // target-typed new in C# 9 or later
 ```
@@ -462,8 +462,6 @@ The `if` statement and throwing of the exception are done for you. The code is i
 The .NET product team claims to have saved more than 10,000 lines of code throughout the .NET libraries by using this feature. But this syntax is controversial within the C# developer community and unfortunately there were enough complaints during the previews that Microsoft reversed their decision and removed the feature from previews. It is unlikely to return.
 
 # Functional programming
-
-Functional Programming (FP) means
 
 ## Record types and init-only setters
 
