@@ -1,4 +1,4 @@
-**Errata** (12 items)
+**Errata** (13 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -8,6 +8,7 @@ If you find any mistakes, then please [raise an issue in this repository](https:
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
 - [Page 328 - Configuring HTTP logging for the web service and Page 363 - Authenticating service clients using JWT bearer authentication](#page-328---configuring-http-logging-for-the-web-service-and-page-363---authenticating-service-clients-using-jwt-bearer-authentication)
 - [Page 366 - Exercise 8.4 – Exposing data via the web using OData services](#page-366---exercise-84--exposing-data-via-the-web-using-odata-services)
+- [Page 449 - Implementing a simple function](#page-449---implementing-a-simple-function)
 - [Page 457 - Testing the Timer triggered function](#page-457---testing-the-timer-triggered-function)
 - [Page 462 - Implementing a function that works with queues and BLOBs](#page-462---implementing-a-function-that-works-with-queues-and-blobs)
 - [Page 595 - Getting request and response metadata](#page-595---getting-request-and-response-metadata)
@@ -195,6 +196,25 @@ GET {{base_address}}products/?$filter=startswith(ProductName,'Ch')%20or%20(UnitP
 ```
 
 > Syntax not supported by Visual Studio's HTTP Editor can be found at the following link: https://learn.microsoft.com/en-us/aspnet/core/test/http-files?#unsupported-syntax.
+
+# Page 449 - Implementing a simple function
+
+> Thanks to [Phil Edmunds](https://github.com/Pip1987) for raising this issue on [February 19, 2024](https://github.com/markjprice/apps-services-net8/issues/10) and to [DocVD](https://github.com/DocVD) for confirming that they experienced the same issue.
+
+If you get the following runtime exception:
+```
+[2024-02-19T22:04:57.896Z] Function 'NumbersToWordsFunction', Invocation id '1c7e2c25-32c6-4027-b30b-f29216597cfa': An exception was thrown by the invocation.
+[2024-02-19T22:04:57.897Z] Result: Function 'NumbersToWordsFunction', Invocation id '1c7e2c25-32c6-4027-b30b-f29216597cfa': An exception was thrown by the invocation.
+Exception: System.InvalidOperationException: Synchronous operations are disallowed. Call WriteAsync or set AllowSynchronousIO to true instead.
+```
+
+Then you can add the following statements to `Program.cs` to fix it:
+```cs
+services.Configure<KestrelServerOptions>(options =>
+  {
+      options.AllowSynchronousIO = true;
+  });
+```
 
 # Page 457 - Testing the Timer triggered function
 
