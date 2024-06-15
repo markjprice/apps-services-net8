@@ -1,4 +1,4 @@
-**Improvements** (9 items)
+**Improvements** (10 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -11,6 +11,7 @@ If you have suggestions for improvements, then please [raise an issue in this re
 - [Page 395 - Building an MVC project to call the faulty web service](#page-395---building-an-mvc-project-to-call-the-faulty-web-service)
 - [Page 445 - Installing Azure Functions Core Tools](#page-445---installing-azure-functions-core-tools)
 - [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
+- [Page 648 - Exploring the Anchor Tag Helper](#page-648---exploring-the-anchor-tag-helper)
 
 # Page 169 - Nested and child tasks
 
@@ -215,3 +216,11 @@ if (System.Environment.GetEnvironmentVariable("IS_LOCAL") == "true")
   await image.SaveAsPngAsync(blobPath);
 }
 ```
+
+# Page 648 - Exploring the Anchor Tag Helper
+
+> Thanks to [DocVD](https://github.com/DocVD) who raised this issue on [June 15, 2024](https://github.com/markjprice/apps-services-net8/issues/18).
+
+In Step 13, I wrote, "In the `Views/Home` folder, add an empty Razor view named `Shipper.cshtml`."
+
+In the next edition, I will add a warning box to remind readers that you must add a Razor view, not a Razor Page, and that on page 622 I show a table of the different Razor types to explain.
