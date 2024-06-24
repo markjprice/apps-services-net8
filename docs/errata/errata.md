@@ -1,4 +1,4 @@
-**Errata** (14 items)
+**Errata** (15 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -15,6 +15,7 @@ If you find any mistakes, then please [raise an issue in this repository](https:
 - [Page 595 - Getting request and response metadata](#page-595---getting-request-and-response-metadata)
 - [Page 607 - Adding product and employee gRPC clients](#page-607---adding-product-and-employee-grpc-clients)
 - [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
+- [Page 695 - Getting entities into a component by building a web service](#page-695---getting-entities-into-a-component-by-building-a-web-service)
 - [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
 
 # Page 104 - Table-per-concrete-type (TPC) mapping strategy
@@ -384,6 +385,35 @@ But the first two statements use `Index` instead of `Home`. They should be as fo
 ```
 
 This will be fixed in the third edition.
+
+# Page 695 - Getting entities into a component by building a web service
+
+> Thanks to [DocVD](https://github.com/DocVD) for raising this [issue on June 23, 2024](https://github.com/markjprice/apps-services-net8/issues/19).
+
+In Step 7, the variable named `Options` should be named `options`, as shown in the following code:
+```cs
+builder.Services.Configure<HttpJsonOptions>(options =>
+{
+  // If we do not preserve references then when the JSON serializer
+  // encounters a circular reference it will throw an exception.
+  options.SerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+});
+```
+
+This was caused by Microsoft Word autocorrect. The code in the GitHub respository was correct:
+https://github.com/markjprice/apps-services-net8/blob/main/code/Chapter15/Northwind.MinimalApi.Service/Program.cs#L21
+
+In Step 8, the variable named `Employee` should be named `employee`, as shown in the following code:
+```cs
+app.MapGet("api/employees/{id:int}", (
+  [FromServices] NorthwindContext db,
+  [FromRoute] int id) =>
+  {
+    Employee? employee = db.Employees.Find(id);
+```
+
+The code in the GitHub respository was correct:
+https://github.com/markjprice/apps-services-net8/blob/main/code/Chapter15/Northwind.MinimalApi.Service/Program.cs#L65
 
 # Page 726 - Adding shell navigation and more content pages
 
