@@ -1,7 +1,8 @@
-**Improvements** (10 items)
+**Improvements** (11 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
+- [Page 15 - Using Visual Studio Code for cross-platform development](#page-15---using-visual-studio-code-for-cross-platform-development)
 - [Page 169 - Nested and child tasks](#page-169---nested-and-child-tasks)
 - [Page 245 - Creating class libraries to generate PDF documents](#page-245---creating-class-libraries-to-generate-pdf-documents)
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
@@ -12,6 +13,12 @@ If you have suggestions for improvements, then please [raise an issue in this re
 - [Page 445 - Installing Azure Functions Core Tools](#page-445---installing-azure-functions-core-tools)
 - [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
 - [Page 648 - Exploring the Anchor Tag Helper](#page-648---exploring-the-anchor-tag-helper)
+
+# Page 15 - Using Visual Studio Code for cross-platform development
+
+> Thanks to [Emre Duman](https://github.com/Emopusta) who raised this issue on [June 27, 2024](https://github.com/markjprice/apps-services-net8/issues/20).
+
+I provided a link to the Stack Overflow 2023 survey but a more direct link to the chart about Visual Studio Code being the preferred IDE would be: https://survey.stackoverflow.co/2023/#most-popular-technologies-new-collab-tools-prof
 
 # Page 169 - Nested and child tasks
 
