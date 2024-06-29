@@ -1,4 +1,4 @@
-**Errata** (15 items)
+**Errata** (16 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -16,6 +16,7 @@ If you find any mistakes, then please [raise an issue in this repository](https:
 - [Page 607 - Adding product and employee gRPC clients](#page-607---adding-product-and-employee-grpc-clients)
 - [Page 644 - Comparing HTML Helpers and Tag Helpers](#page-644---comparing-html-helpers-and-tag-helpers)
 - [Page 695 - Getting entities into a component by building a web service](#page-695---getting-entities-into-a-component-by-building-a-web-service)
+- [Page 716 - Enabling Windows developer mode](#page-716---enabling-windows-developer-mode)
 - [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
 
 # Page 104 - Table-per-concrete-type (TPC) mapping strategy
@@ -414,6 +415,14 @@ app.MapGet("api/employees/{id:int}", (
 
 The code in the GitHub respository was correct:
 https://github.com/markjprice/apps-services-net8/blob/main/code/Chapter15/Northwind.MinimalApi.Service/Program.cs#L65
+
+# Page 716 - Enabling Windows developer mode
+
+> Thanks to **M** `m.0100.1101` in the book's Discord channel for raising this issue.
+
+In Step 1, I wrote, "Navigate to **Start** | **Settings** | **Privacy & security** | **For developers**, and then switch on **Developer Mode**. (You can also search for `developers`.)"
+
+In the more recent versions of Windows 11, Developer Mode has moved to: **Start** | **Settings** | **System** | **For developers**.
 
 # Page 726 - Adding shell navigation and more content pages
 
