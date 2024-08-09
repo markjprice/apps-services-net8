@@ -436,8 +436,8 @@ You can define your own attributes by inheriting from the Attribute class:
 ```cs
 namespace Packt.Shared;
 
-[AttributeUsage(AllowMultiple = true,
-  AttributeTargets.Class | AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, 
+  AllowMultiple = true)]
 public class CoderAttribute : Attribute
 {
   public string Coder { get; set; }
