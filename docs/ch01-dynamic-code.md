@@ -430,7 +430,7 @@ Assembly metadata:
 
 ## Creating custom attributes
 
-You can define your own attributes by inheriting from the Attribute class:
+You can define your own attributes by inheriting from the `Attribute` class:
 1.	Add a class file to your project named `CoderAttribute.cs`.
 2.	In `CoderAttribute.cs`, delete any existing statements and then define an attribute class that can decorate either classes or methods with two properties to store the name of a coder and the date they last modified some code, as shown in the following code:
 ```cs
