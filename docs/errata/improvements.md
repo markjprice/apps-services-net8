@@ -1,9 +1,10 @@
-**Improvements** (11 items)
+**Improvements** (12 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Page 15 - Using Visual Studio Code for cross-platform development](#page-15---using-visual-studio-code-for-cross-platform-development)
 - [Page 169 - Nested and child tasks](#page-169---nested-and-child-tasks)
+- [Page 178 - Starting tasks](#page-178---starting-tasks)
 - [Page 245 - Creating class libraries to generate PDF documents](#page-245---creating-class-libraries-to-generate-pdf-documents)
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
 - [Page 258 - Formatting date and time values](#page-258---formatting-date-and-time-values)
@@ -59,6 +60,12 @@ Inner method starting...
 Inner method finished.
 Console app is stopping.
 ```
+
+# Page 178 - Starting tasks
+
+> Thanks to `thebatman8150` in the book's Discord channel for asking a question that prompted this improvement.
+
+In Step 2, I show output of the three methods in random order because there is nothing to make the main thread wait for each method to finish before starting the next. But that output is just one example of many that the reader could see. In the next edition, I will add a note to warn the reader that their output is extremely unlikely to look the same as the book. In particular, I will point out the order of the method outputs: A, C, B.
 
 # Page 245 - Creating class libraries to generate PDF documents
 
