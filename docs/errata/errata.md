@@ -1,4 +1,4 @@
-**Errata** (16 items)
+**Errata** (17 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -7,6 +7,7 @@ If you find any mistakes, then please [raise an issue in this repository](https:
 - [Page 166 - Implementing stored procedures](#page-166---implementing-stored-procedures)
 - [Page 209 - Generating grayscale thumbnails](#page-209---generating-grayscale-thumbnails)
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
+- [Page 298 - Testing globalization and localization](#page-298---testing-globalization-and-localization)
 - [Page 328 - Configuring HTTP logging for the web service and Page 363 - Authenticating service clients using JWT bearer authentication](#page-328---configuring-http-logging-for-the-web-service-and-page-363---authenticating-service-clients-using-jwt-bearer-authentication)
 - [Page 366 - Exercise 8.4 – Exposing data via the web using OData services](#page-366---exercise-84--exposing-data-via-the-web-using-odata-services)
 - [Page 449 - Implementing a simple function](#page-449---implementing-a-simple-function)
@@ -172,6 +173,12 @@ QuestPDF.Settings.License = LicenseType.Community;
 I have commented out this statement in the GitHub solution since the project references the older packages with MIT license. If you choose to use a later version of the package, then you must uncomment the statement.
 
 In the next edition, I will add a note and code comments to explain this. 
+
+# Page 298 - Testing globalization and localization
+
+I wrote, "Microsoft has an online tool (found at the following link: https://www.microsoft.com/en-us/Language/) that can help you translate text in your user interfaces". But the link is now broken. 
+
+Instead, use the **Microsoft Terminology Search** link in the **Terminology** section of the page at the following link: https://learn.microsoft.com/en-us/globalization/reference/microsoft-language-resources.
 
 # Page 328 - Configuring HTTP logging for the web service and Page 363 - Authenticating service clients using JWT bearer authentication
 
