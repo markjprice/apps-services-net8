@@ -1,4 +1,4 @@
-**Improvements** (14 items)
+**Improvements** (15 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -6,6 +6,7 @@ If you have suggestions for improvements, then please [raise an issue in this re
 - [Page 48 - T-SQL data types](#page-48---t-sql-data-types)
 - [Page 169 - Nested and child tasks](#page-169---nested-and-child-tasks)
 - [Page 178 - Starting tasks](#page-178---starting-tasks)
+- [Page 205 - Which third-party libraries are most popular?](#page-205---which-third-party-libraries-are-most-popular)
 - [Page 235 - Making fluent assertions in unit testing](#page-235---making-fluent-assertions-in-unit-testing)
 - [Page 245 - Creating class libraries to generate PDF documents](#page-245---creating-class-libraries-to-generate-pdf-documents)
 - [Page 249 - Creating a console app to generate PDF documents](#page-249---creating-a-console-app-to-generate-pdf-documents)
@@ -102,6 +103,10 @@ Console app is stopping.
 
 In Step 2, I show output of the three methods in random order because there is nothing to make the main thread wait for each method to finish before starting the next. But that output is just one example of many that the reader could see. In the next edition, I will add a note to warn the reader that their output is extremely unlikely to look the same as the book. In particular, I will point out the order of the method outputs: A, C, B.
 
+# Page 205 - Which third-party libraries are most popular?
+
+I will add a warning note to say, "Third-party libraries change frequently, including their license requirements. The inclusion of a third-party package in this book is not an endorsement or recommendation of that package, and especially not future package versions."
+
 # Page 235 - Making fluent assertions in unit testing
 
 In this section, I show how to use the `FluentAssertions` package. At the time of publishing, the latest version of this package was `6.12.0`. 
@@ -110,7 +115,7 @@ Since version `8.0.0`, released on January 14, 2025, there has been a license ch
 
 Comments from the owner `dennisdoomen`: "v7 will remain free indefinitely and will still receive critical fixes. v8 will only require a license when you use it in non-commercial projects." (https://github.com/fluentassertions/fluentassertions/pull/2943#issuecomment-2590187813 and https://github.com/fluentassertions/fluentassertions/pull/2943#issuecomment-2590286302)
 
-In the next edition, I will recommend the use of v7.1 or later: https://www.nuget.org/packages/FluentAssertions/7.1.0
+In the next edition, I will use v7.1 or later minor updates to v7: https://www.nuget.org/packages/FluentAssertions/7.1.0
 
 Alternatively, there is a v7-forked repo named `AwesomeAssertions`: https://www.nuget.org/packages/AwesomeAssertions/7.0.0. You should be able to replace the package reference and everything will continue to work.
 

@@ -38,35 +38,35 @@ To make it easier to enter commands at the prompt, this page lists all commands 
 
 ## Page 20 - Managing Visual Studio Code extensions at the command prompt
 
-```
+```shell
 code --list-extensions
 ```
 
-```
+```shell
 code --install-extension ms-dotnettools.csdevkit
 ```
 
 ## Page 22 - Using other project templates
 
 Listing all installed project templates:
-```
+```shell
 dotnet new list
 ```
 
 Installing a new project template:
-```
+```shell
 dotnet new --install "Vue.Simple.Template"
 ```
 
 ## Page 29 - Getting help for the dotnet tool
 
 Getting help for a `dotnet` command like `build` in a web browser:
-```
+```shell
 dotnet help build
 ```
 
 Getting help for a `dotnet` command like `build` at the command prompt:
-```
+```shell
 dotnet build -?
 ```
 
@@ -75,29 +75,29 @@ dotnet build -?
 ## Page 85 - Setting up the dotnet-ef tool
 
 To check if you have already installed `dotnet-ef` as a global tool:
-```
+```shell
 dotnet tool list --global
 ```
 
 To uninstall an existing global tool:
-```
+```shell
 dotnet tool uninstall --global dotnet-ef
 ```
 
 To install the latest version as a global tool:
-```
+```shell
 dotnet tool install --global dotnet-ef
 ```
 
 To install the latest preview version 9 as a global tool:
-```
+```shell
 dotnet tool install --global dotnet-ef --version 9-*
 ```
 
 ## Page 90 - Defining the Northwind database model
 
 Generate an entity model (from a local SQL Server):
-```
+```shell
 dotnet ef dbcontext scaffold "Data Source=.;Initial Catalog=Northwind;Integrated Security=true;TrustServerCertificate=true;" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models --namespace Northwind.Models --data-annotations --context NorthwindDb
 ```
 
@@ -120,13 +120,13 @@ Azure SQL Database (replace `<your_server_name>`, `<your_user_name>`, and `<your
 
 ## Page 117 - Creating a class library for entity models using SQL Server
 
-```
+```shell
 dotnet ef dbcontext scaffold "Data Source=.;Initial Catalog=Northwind;Integrated Security=true;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer --namespace Northwind.EntityModels --data-annotations
 ```
 
 ## Page 126 - Running unit tests using Visual Studio Code
 
-```
+```shell
 dotnet test
 ```
 
@@ -135,12 +135,12 @@ dotnet test
 ## Page 363 - Authenticating service clients using JWT bearer authentication
 
 Create a local JWT, as shown in the following command:
-```
+```shell
 dotnet user-jwts create
 ```
 
 Print all the information for the ID that was assigned, as shown in the following command:
-```
+```shell
 dotnet user-jwts print d7e22000 --show-all
 ```
 
@@ -149,14 +149,14 @@ dotnet user-jwts print d7e22000 --show-all
 ## Page 402 - Setting up RabbitMQ using Docker
 
 Pull down the latest container image for RabbitMQ on Docker and run it, opening ports 5672 and 15672 to the container, which are used by default by AMQP, as shown in the following command:
-```
+```shell
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management
 ```
 
 ## Page 419 - Processing queued message using a worker service
 
 Start the RabbitMQ container, as shown in the following command:
-```
+```shell
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.12-management
 ```
 
@@ -165,24 +165,24 @@ docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.12-ma
 ## Page 444 - Testing locally with Azurite
 
 To install Azurite at the command prompt:
-```
+```shell
 npm install -g azurite
 ```
 
 ## Page 447 - Using the func CLI
 
 Create a new Azure Functions project using C#, as shown in the following command:
-```
+```shell
 func init --csharp
 ```
 
 Create a new Azure Functions function using HTTP trigger that can be called anonymously, as shown in the following command:
-```
+```shell
 func new --name NumbersToWordsFunction --template "HTTP trigger" --authlevel "anonymous"
 ```
 
 Start the function locally, as shown in the following command:
-```
+```shell
 func start
 ```
 
@@ -191,12 +191,12 @@ func start
 ## Page 484 - Building a web client using the SignalR JavaScript library
 
 Install the Library Manager CLI tool, as shown in the following command:
-```
+```shell
 dotnet tool install -g Microsoft.Web.LibraryManager.Cli
 ```
 
 Add the signalr.js and signalr.min.js libraries to the project from the unpkg source, as shown in the following command:
-```
+```shell
 libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files dist/browser/signalr.js --files dist/browser/signalr.min.js
 ```
 
@@ -205,17 +205,17 @@ libman install @microsoft/signalr@latest -p unpkg -d wwwroot/js/signalr --files 
 ## Page 544 - Creating a console app client using Strawberry Shake
 
 Create a tools manifest file, as shown in the following command:
-```
+```shell
 dotnet new tool-manifest
 ```
 
 Install Strawberry Shake tools for the local project, as shown in the following command:
-```
+```shell
 dotnet tool install StrawberryShake.Tools --local
 ```
 
 Add a client for your GraphQL service, as shown in the following command:
-```
+```shell
 dotnet graphql init https://localhost:5121/graphql/ -n NorthwindClient
 ```
 
@@ -224,7 +224,7 @@ dotnet graphql init https://localhost:5121/graphql/ -n NorthwindClient
 ## Page 594 - Improving a gRPC service with native AOT publish
 
 Run `Northwind.Grpc.Service.exe` and explicitly specify the URL with the port number to use, as shown in the following command:
-```
+```shell
 Northwind.Grpc.Service.exe --urls "https://localhost:5131"
 ```
 
@@ -233,7 +233,7 @@ Northwind.Grpc.Service.exe --urls "https://localhost:5131"
 ## Page 623 - Creating an ASP.NET Core MVC website
 
 Run database migrations so that the database used to store credentials for authentication is created, as shown in the following command:
-```
+```shell
 dotnet ef database update
 ```
 
@@ -242,7 +242,7 @@ dotnet ef database update
 ## Page 672 - Reviewing the new Blazor project template
 
 Create a new project using the Blazor Web App project template:
-```
+```shell
 dotnet new blazor --interactivity None -o Northwind.Blazor
 ```
 
@@ -251,47 +251,47 @@ dotnet new blazor --interactivity None -o Northwind.Blazor
 # Page 710 - Installing .NET MAUI workloads manually
 
 To see which workloads are currently installed, enter the following command:
-```
+```shell
 dotnet workload list
 ```
 
 To see which workloads are available to install, enter the following command:
-```
+```shell
 dotnet workload search
 ```
 
 To install the .NET MAUI workloads for all platforms, enter the following command at the command line or terminal:
-```
+```shell
 dotnet workload install maui
 ```
 
 To update all existing workload installations, enter the following command:
-```
+```shell
 dotnet workload update
 ```
 
 To add missing workload installations required for a project, in the folder containing the project file,
 enter the following command:
-```
+```shell
 dotnet workload restore <projectname>
 ```
 
 To remove leftover and unneeded workloads, as shown in the following command:
-```
+```shell
 dotnet workload clean
 ```
 
 ## Page 723 - Adding shell navigation and more content pages
 
 Create a **.NET MAUI ContentPage (XAML)** item using the CLI:
-```
+```shell
 dotnet new maui-page-xaml --name SettingsPage.xaml
 ```
 
 ## Page 729 - Defining resources to share across an app
 
 Create a **.NET MAUI Resource Dictionary** item using the CLI:
-```
+```shell
 dotnet new maui-dict-xaml --name Northwind.xaml
 ```
 
