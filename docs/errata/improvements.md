@@ -1,4 +1,4 @@
-**Improvements** (15 items)
+**Improvements** (16 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -16,6 +16,7 @@ If you have suggestions for improvements, then please [raise an issue in this re
 - [Page 395 - Building an MVC project to call the faulty web service](#page-395---building-an-mvc-project-to-call-the-faulty-web-service)
 - [Page 445 - Installing Azure Functions Core Tools](#page-445---installing-azure-functions-core-tools)
 - [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
+- [Page 507 - Building a service that supports GraphQL](#page-507---building-a-service-that-supports-graphql)
 - [Page 648 - Exploring the Anchor Tag Helper](#page-648---exploring-the-anchor-tag-helper)
 
 # Page 15 - Using Visual Studio Code for cross-platform development
@@ -282,6 +283,12 @@ if (System.Environment.GetEnvironmentVariable("IS_LOCAL") == "true")
   await image.SaveAsPngAsync(blobPath);
 }
 ```
+
+# Page 507 - Building a service that supports GraphQL
+
+> Thanks to [lenara122](https://github.com/lenara122) who raised this issue on [February 4, 2025](https://github.com/markjprice/apps-services-net8/issues/23).
+
+When I published in December 2023, HotChocolate was version 13. Since then, version 14 has been released with a breaking change that affects the code in my book. The `RegisterDbContext` method has been removed. If you choose to use version 14 or later, then you should switch to calling the `RegisterDbContextFactory` method instead. 
 
 # Page 648 - Exploring the Anchor Tag Helper
 
