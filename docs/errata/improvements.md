@@ -290,6 +290,8 @@ if (System.Environment.GetEnvironmentVariable("IS_LOCAL") == "true")
 
 When I published in December 2023, HotChocolate was version 13. Since then, version 14 has been released with a breaking change that affects the code in my book. The `RegisterDbContext` method has been removed. If you choose to use version 14 or later, then you should switch to calling the `RegisterDbContextFactory` method instead. 
 
+I will also add a note about migrating to future versions of HotChocolate with a reference to their documentation, for example: https://chillicream.com/docs/hotchocolate/v14/migrating/migrate-from-13-to-14
+
 # Page 648 - Exploring the Anchor Tag Helper
 
 > Thanks to [DocVD](https://github.com/DocVD) who raised this issue on [June 15, 2024](https://github.com/markjprice/apps-services-net8/issues/18).
