@@ -1,4 +1,4 @@
-**Improvements** (16 items)
+**Improvements** (17 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -17,6 +17,7 @@ If you have suggestions for improvements, then please [raise an issue in this re
 - [Page 445 - Installing Azure Functions Core Tools](#page-445---installing-azure-functions-core-tools)
 - [Page 460 - Implementing a function that works with queues and BLOBs](#page-460---implementing-a-function-that-works-with-queues-and-blobs)
 - [Page 507 - Building a service that supports GraphQL](#page-507---building-a-service-that-supports-graphql)
+- [Page 605 - Implementing the product and employee gRPC services](#page-605---implementing-the-product-and-employee-grpc-services)
 - [Page 648 - Exploring the Anchor Tag Helper](#page-648---exploring-the-anchor-tag-helper)
 
 # Page 15 - Using Visual Studio Code for cross-platform development
@@ -293,6 +294,22 @@ When I published in December 2023, HotChocolate was version 13. Since then, vers
 You will also need to register the Northwind data context with `builder.Services.AddDbContextFactory<NorthwindContext>();` instead of `builder.Services.AddNorthwindContext();`. If you don't then you will see the following error: `No service for type 'Microsoft.EntityFrameworkCore.IDbContextFactory1[Northwind.Models.NorthwindDb]' has been registered.`
 
 I will also add a note about migrating to future versions of HotChocolate with a reference to their documentation, for example: https://chillicream.com/docs/hotchocolate/v14/migrating/migrate-from-13-to-14
+
+# Page 605 - Implementing the product and employee gRPC services
+
+> Thanks to **Lena** in the book's Discord channel for raising this issue.
+
+In my original code solution for reading product entities using `SqlDataReader`, I wrote statements like the following code:
+```cs
+p.CategoryId = r.GetInt32("CategoryId");
+```
+
+This is fine when the `CategoryId` column has a value, which all initial product entities do. But if you have added new products to the table with `null` values for some columns like `CategoryId`, then then `GetInt32` will throw an exception. The table does allow `null` values for those columns, so we don't need to change the entity models. Instead it is the product reading code that should be improved.
+
+I have now [added `null` checks](https://github.com/markjprice/apps-services-net8/commit/fc6c5a7327b0f4ac9e29f3b585a330ee02252ac2) that set default values when a column value is `null`, as shown in the following code:
+```cs
+p.CategoryId = r.IsDbNull("CategoryId") ? 0 : r.GetInt32("CategoryId");
+```
 
 # Page 648 - Exploring the Anchor Tag Helper
 
