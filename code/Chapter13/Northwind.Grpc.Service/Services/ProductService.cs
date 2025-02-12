@@ -47,17 +47,17 @@ public class ProductService : Product.ProductBase
 
     p.ProductId = r.GetInt32("ProductId");
     p.ProductName = r.GetString("ProductName");
-    p.SupplierId = r.GetInt32("SupplierId");
-    p.CategoryId = r.GetInt32("CategoryId");
+    p.SupplierId = r.IsDBNull("SupplierId") ? 0 : r.GetInt32("SupplierId");
+    p.CategoryId = r.IsDBNull("CategoryId") ? 0 : r.GetInt32("CategoryId");
     p.QuantityPerUnit = r.GetString("QuantityPerUnit");
 
     // Uses our custom conversion from decimal to DecimalValue.
-    p.UnitPrice = r.GetDecimal("UnitPrice");
+    p.UnitPrice = r.IsDBNull("UnitPrice") ? 0M : r.GetDecimal("UnitPrice");
 
-    p.UnitsInStock = r.GetInt16("UnitsInStock");
-    p.UnitsOnOrder = r.GetInt16("UnitsOnOrder");
-    p.ReorderLevel = r.GetInt16("ReorderLevel");
-    p.Discontinued = r.GetBoolean("Discontinued");
+    p.UnitsInStock = r.IsDBNull("UnitsInStock") ? 0 : r.GetInt16("UnitsInStock");
+    p.UnitsOnOrder = r.IsDBNull("UnitsOnOrder") ? 0 : r.GetInt16("UnitsOnOrder");
+    p.ReorderLevel = r.IsDBNull("ReorderLevel") ? 0 : r.GetInt16("ReorderLevel");
+    p.Discontinued = r.IsDBNull("Discontinued") ? false : r.GetBoolean("Discontinued");
 
     return p;
   }
