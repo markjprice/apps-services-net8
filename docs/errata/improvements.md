@@ -1,9 +1,10 @@
-**Improvements** (17 items)
+**Improvements** (18 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Page 15 - Using Visual Studio Code for cross-platform development](#page-15---using-visual-studio-code-for-cross-platform-development)
 - [Page 48 - T-SQL data types](#page-48---t-sql-data-types)
+- [Page 75 - Generating objects with a data reader](#page-75---generating-objects-with-a-data-reader)
 - [Page 169 - Nested and child tasks](#page-169---nested-and-child-tasks)
 - [Page 178 - Starting tasks](#page-178---starting-tasks)
 - [Page 205 - Which third-party libraries are most popular?](#page-205---which-third-party-libraries-are-most-popular)
@@ -58,6 +59,25 @@ Consider `GUID` if:
 - You anticipate frequent data merges from multiple systems.
 
 Each choice has its place, and the "best" option ultimately depends on your specific use case and priorities.
+
+# Page 75 - Generating objects with a data reader
+
+> Thanks to **Lena** in the book's Discord channel for raising this issue.
+
+In Step 1, I wrote, "Add a new class file named `Product.cs`, and modify its contents to define a class to represent just
+the three columns we want from each row in the `Products` table, as shown in the following code:
+```cs
+namespace Northwind.Models;
+
+public class Product
+{
+  public int ProductId { get; set; }
+  public string? ProductName { get; set; }
+  public decimal? UnitPrice { get; set; }
+}
+```
+
+In later chapters, I use `Northwind.EntityModels` for the name of the namespace for models that represent entities. In the next edition, I will be consistent and use `Northwind.EntityModels` throughout the book.
 
 # Page 169 - Nested and child tasks
 
