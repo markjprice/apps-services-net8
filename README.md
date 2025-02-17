@@ -4,6 +4,8 @@
 
 Repository for the Packt Publishing book titled "Apps and Services with .NET 8" by Mark J. Price. This book was published on December 12, 2023.
 
+> **[FAQs](https://github.com/markjprice/markjprice/blob/main/FAQs.md)**
+
 If you have purchased the paperback or Kindle edition, then you can request a free PDF copy at the following link: https://www.packtpub.com/page/free-ebook.
 
 Join the Packt community on Discord: https://packt.link/apps_and_services_dotnet8. After accepting the Discord invite, find the channel for this book named **apps_and_services_2e**: https://discord.com/channels/963343534323269662/1166070194398048286.
