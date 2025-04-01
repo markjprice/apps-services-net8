@@ -1,8 +1,9 @@
-**Improvements** (18 items)
+**Improvements** (19 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
 - [Page 15 - Using Visual Studio Code for cross-platform development](#page-15---using-visual-studio-code-for-cross-platform-development)
+- [Page 40 - Azure Data Studio (ADS) retirement](#page-40---azure-data-studio-ads-retirement)
 - [Page 48 - T-SQL data types](#page-48---t-sql-data-types)
 - [Page 75 - Generating objects with a data reader](#page-75---generating-objects-with-a-data-reader)
 - [Page 169 - Nested and child tasks](#page-169---nested-and-child-tasks)
@@ -26,6 +27,10 @@ If you have suggestions for improvements, then please [raise an issue in this re
 > Thanks to [Emre Duman](https://github.com/Emopusta) who raised this issue on [June 27, 2024](https://github.com/markjprice/apps-services-net8/issues/20).
 
 I provided a link to the Stack Overflow 2023 survey but a more direct link to the chart about Visual Studio Code being the preferred IDE would be: https://survey.stackoverflow.co/2023/#most-popular-technologies-new-collab-tools-prof
+
+# Page 40 - Azure Data Studio (ADS) retirement
+
+**Azure Data Studio (ADS)** is being [retired on February 20, 2026](https://learn.microsoft.com/en-us/azure-data-studio/whats-happening-azure-data-studio), and Microsoft recommends using VS Code and the SQL extension instead, so in the next edition I will remove references to it like the note boxes on pages 40 and 42.
 
 # Page 48 - T-SQL data types
 
