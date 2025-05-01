@@ -1,4 +1,4 @@
-**Errata** (17 items)
+**Errata** (18 items)
 
 If you find any mistakes, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
@@ -19,6 +19,7 @@ If you find any mistakes, then please [raise an issue in this repository](https:
 - [Page 695 - Getting entities into a component by building a web service](#page-695---getting-entities-into-a-component-by-building-a-web-service)
 - [Page 716 - Enabling Windows developer mode](#page-716---enabling-windows-developer-mode)
 - [Page 726 - Adding shell navigation and more content pages](#page-726---adding-shell-navigation-and-more-content-pages)
+- [Page 730 - Changing shared resources dynamically](#page-730---changing-shared-resources-dynamically)
 
 # Page 104 - Table-per-concrete-type (TPC) mapping strategy
 
@@ -436,3 +437,24 @@ In the more recent versions of Windows 11, Developer Mode has moved to: **Start*
 > Thanks to [Stephen Harper](https://github.com/sjharper79) for raising this [issue on 8 January 2024](https://github.com/markjprice/apps-services-net7/issues/29).
 
 In Step 20, the method name should be `ClickMeButton_Clicked`.
+
+# Page 730 - Changing shared resources dynamically
+
+> Thanks to **M** `m.0100.1101` in the book's Discord channel for raising this issue on April 30, 2025 and finding a workaround.
+
+**M** wrote, "I'm trying to get the light/dark/system mode code to work using .NET 9 in the MAUI app sample described in the *Changing shared resources dynamically* section of Chapter 16. It appears the `Button` styles are being recognised and correctly changes colour etc when swapping modes.  But, the only way I can get the `ContentPage` styles to be recognised is to add `ApplyToDerivedTypes="True"` to the `Style` element, for example in `DarkModeTheme.xaml`:
+```xml
+<Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+  <Setter Property="BackgroundColor" Value="{StaticResource DarkPageBackgroundColor}" />
+</Style>" 
+```
+
+"I've found a workaround (thanks to https://github.com/dotnet/maui/issues/9736#issuecomment-1425099749) - add both the `ApplyToDerivedTypes` attribute and set the `FlyoutBackground` property:"
+```xml
+<Style TargetType="Shell" ApplyToDerivedTypes="True">
+  <Setter Property="FlyoutBackgroundColor" Value="{StaticResource DarkNavigationBarColor}" />
+  <Setter Property="FlyoutBackground" Value="{StaticResource DarkNavigationBarColor}" />
+</Style>
+```
+
+"Sounds like this may be a long standing bug in MAUI..."
