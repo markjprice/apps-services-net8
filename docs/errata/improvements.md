@@ -1,7 +1,8 @@
-**Improvements** (19 items)
+**Improvements** (20 items)
 
 If you have suggestions for improvements, then please [raise an issue in this repository](https://github.com/markjprice/apps-services-net8/issues) or email me at markjprice (at) gmail.com.
 
+- [All coding tasks](#all-coding-tasks)
 - [Page 15 - Using Visual Studio Code for cross-platform development](#page-15---using-visual-studio-code-for-cross-platform-development)
 - [Page 40 - Azure Data Studio (ADS) retirement](#page-40---azure-data-studio-ads-retirement)
 - [Page 48 - T-SQL data types](#page-48---t-sql-data-types)
@@ -21,6 +22,31 @@ If you have suggestions for improvements, then please [raise an issue in this re
 - [Page 507 - Building a service that supports GraphQL](#page-507---building-a-service-that-supports-graphql)
 - [Page 605 - Implementing the product and employee gRPC services](#page-605---implementing-the-product-and-employee-grpc-services)
 - [Page 648 - Exploring the Anchor Tag Helper](#page-648---exploring-the-anchor-tag-helper)
+
+# All coding tasks
+
+> Thanks to [CyberCeadda](https://github.com/CyberCeadda) who raised this issue on [June 22, 2025](https://github.com/markjprice/apps-services-net8/issues/24).
+
+The first time I tell the reader to run a project, I wrote, "Run the console app and note that the namespace for the Program class is null, as shown in
+the following output:"
+```
+Top-level functions example
+Namespace of Program class: null
+```
+
+Subsequent instructions are similar. 
+
+Prerequisites for my books like *Apps and Services with .NET 8* are familiarity with working with C#, .NET, and tools like Visual Studio. If not, I recommend reading my book for beginners, *C# 13 and .NET 9 - Modern Cross-Platform Development Fundamentals*.
+
+So I had assumed that readers know that they should "Run the console app" or start projects *without debugging* for two reasons:
+1. By default, the debugger will automatically close the console window at the end of the program, so it disappears before you can read it.
+2. Attaching the debugger uses resources and slows everything done.
+
+You should only attach the debugger when you need it.
+
+In the next edition, the first time I tell readers to start a project, I will remind them of the preceding information with a warning box like this:
+
+> **Good Practice**: When you start a project in Visual Studio, you can choose whether to attach a debugger or not. If you do not need to debug, then it is better not to attach one because attaching a debugger requires more resources and slows everything down. Attaching a debugger also limits you to only starting one project. If you want to run more than one project, each with a debugger attached, then you must start multiple instances of Visual Studio. Another reason to start without debugging is that if you start a console app with the debugger attached, by default it will automatically close the console window before you can read it. (To disable this behavior, navigate to **Tools** | **Options** | **Debugging** | **General** and clear the **Automatically close the console when debugging stops** check box.) In the toolbar, click the green outline triangle button (to the right of the project name in the top bar) to start without debugging, instead of the green solid triangle button (to the left of project name in the top bar), unless you need to debug.
 
 # Page 15 - Using Visual Studio Code for cross-platform development
 
