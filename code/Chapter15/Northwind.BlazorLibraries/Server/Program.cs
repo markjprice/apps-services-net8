@@ -87,6 +87,7 @@ app.MapPut("api/employees/{id:int}", async (
   foundEmployee.Country = employee.Country;
   foundEmployee.Region = employee.Region;
   foundEmployee.PostalCode = employee.PostalCode;
+  foundEmployee.HomePhone = employee.HomePhone;
   foundEmployee.ReportsTo = employee.ReportsTo;
   foundEmployee.Title = employee.Title;
   foundEmployee.TitleOfCourtesy = employee.TitleOfCourtesy;
